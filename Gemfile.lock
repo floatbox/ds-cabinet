@@ -1,3 +1,29 @@
+GIT
+  remote: git@github.com:SuperbCoders/DS-Spark-gem.git
+  revision: a7333ebc79086148925a6fdb968bfdf4461cd05c
+  specs:
+    ds-spark (0.0.1)
+      savon (= 2.1.0)
+
+GIT
+  remote: git@github.com:SuperbCoders/ds-siebel-gem.git
+  revision: 55b78fd651c972f667c6e019ba5ce9bcf22518ee
+  specs:
+    ds-siebel (0.0.1)
+      savon (= 2.1.0)
+
+GIT
+  remote: git@github.com:SuperbCoders/ds-sns-gem.git
+  revision: 6430105e8efccd30de031017f91935c02bd03853
+  branch: sns2
+  specs:
+    ds-sns (0.0.1)
+      andand
+      curb
+      guid
+      memoist
+      rails (>= 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -25,6 +51,10 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    akami (1.2.1)
+      gyoku (>= 0.4.0)
+      nokogiri
+    andand (1.3.3)
     arel (4.0.2)
     atomic (1.1.14)
     builder (3.1.4)
@@ -35,9 +65,15 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    curb (0.8.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    guid (0.1.1)
+    gyoku (1.0.0)
+      builder (>= 2.1.2)
     hike (1.2.3)
+    httpi (2.0.2)
+      rack
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -49,9 +85,14 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memoist (0.9.1)
     mime-types (1.25.1)
+    mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.4)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
+    nori (2.0.4)
     polyglot (0.3.4)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -77,6 +118,14 @@ GEM
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    savon (2.1.0)
+      akami (~> 1.2.0)
+      builder (>= 2.1.2)
+      gyoku (~> 1.0.0)
+      httpi (~> 2.0.2)
+      nokogiri (>= 1.4.0)
+      nori (~> 2.0.3)
+      wasabi (~> 3.0.0)
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
@@ -103,12 +152,18 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    wasabi (3.0.0)
+      httpi (~> 2.0)
+      nokogiri (>= 1.4.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  ds-siebel!
+  ds-sns!
+  ds-spark!
   jbuilder (~> 1.2)
   jquery-rails
   rails (= 4.0.3)

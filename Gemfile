@@ -43,3 +43,8 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Use DS gems
+gem 'ds-sns', git: 'git@github.com:SuperbCoders/ds-sns-gem.git', branch: 'sns2'
+gem 'ds-siebel', git: 'git@github.com:SuperbCoders/ds-siebel-gem.git'
+gem 'ds-spark', git: 'git@github.com:SuperbCoders/DS-Spark-gem.git'
