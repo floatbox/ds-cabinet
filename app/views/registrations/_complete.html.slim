@@ -1,0 +1,20 @@
+#complete
+  h1 Завершение регистрации
+  = form_tag registration_complete_path(:registration_id), method: :post, class: 'complete_registration', remote: true do
+    dl
+      dt Логин
+      dd
+        span.login
+    dl
+      dt Пароль
+      dd
+        = text_field_tag :password
+    dl
+      dt Код подтверждения
+      dd
+        = text_field_tag :sms_verification_code
+    
+    
+    a.cancel(href='#') Отмена
+    = link_to 'Получить код еще раз', registration_regenerate_sms_verification_code_path(:registration_id), method: :post, remote: true, class: 'regenerate_sms_verification_code'
+    = submit_tag 'Подтвердить'

@@ -15,6 +15,9 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
+# Use slim for markup
+gem 'slim-rails'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -48,3 +51,9 @@ end
 gem 'ds-sns', git: 'git@github.com:SuperbCoders/ds-sns-gem.git', branch: 'sns2'
 gem 'ds-siebel', git: 'git@github.com:SuperbCoders/ds-siebel-gem.git'
 gem 'ds-spark', git: 'git@github.com:SuperbCoders/DS-Spark-gem.git'
+
+# Helpers
+gem 'simple_form'
+
+# Localization
+gem 'russian'

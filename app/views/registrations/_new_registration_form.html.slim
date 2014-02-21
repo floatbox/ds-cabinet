@@ -1,0 +1,6 @@
+#new_registration_form
+  h1 Регистрация
+  = simple_form_for Registration.new, remote: true do |f|
+    = f.input :ogrn
+    = f.input :phone
+    = f.button :submit

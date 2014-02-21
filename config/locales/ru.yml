@@ -1,0 +1,14 @@
+ru:
+  activerecord:
+    models:
+      registration: Регистрация
+    attributes:
+      registration:
+        phone: Телефон
+        ogrn: ОГРН
+    errors:
+      models:
+        registration:
+          attributes:
+            company:
+              does_not_exist: Компания с таким ОГРН не существует
