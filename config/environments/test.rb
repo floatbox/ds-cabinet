@@ -33,4 +33,7 @@ DsCabinet::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  # Project-specific options
+  config.sms_gateway = 'https://api.sredda.ru:4444/SMSGateway/sms'
 end

@@ -8,11 +8,11 @@
     dl
       dt Пароль
       dd
-        = text_field_tag :password
+        = text_field_tag :password, '', class: 'registration_password'
     dl
       dt Код подтверждения
       dd
-        = text_field_tag :sms_verification_code
+        = text_field_tag :sms_verification_code, '', class: 'registration_sms_verification_code'
     
     
     a.cancel(href='#') Отмена

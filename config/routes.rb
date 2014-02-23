@@ -2,6 +2,7 @@ DsCabinet::Application.routes.draw do
   root to: 'pages#index'
 
   resources :registrations, only: [:create] do
+    post 'confirm'
     post 'complete'
     post 'regenerate_sms_verification_code'
   end

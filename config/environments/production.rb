@@ -77,4 +77,7 @@ DsCabinet::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Project-specific options
+  config.sms_gateway = 'https://api.sredda.ru:4444/SMSGateway/sms'
 end

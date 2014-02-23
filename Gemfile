@@ -57,3 +57,9 @@ gem 'simple_form'
 
 # Localization
 gem 'russian'
+
+# Use curb for working with external services
+gem 'curb'
+
+# Use workflow as state machine
+gem 'workflow'

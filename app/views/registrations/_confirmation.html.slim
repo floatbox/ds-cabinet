@@ -18,4 +18,4 @@
       span.ogrn
 
   a.cancel(href='#') Отмена
-  a.ok(href='#') Подтвердить
+  = link_to 'Подтвердить', registration_confirm_path(:registration_id), method: :post, remote: true, class: 'confirm'

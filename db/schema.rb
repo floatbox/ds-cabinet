@@ -11,11 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140219160503) do
+ActiveRecord::Schema.define(version: 20140222081743) do
 
   create_table "registrations", force: true do |t|
     t.string   "phone"
     t.string   "ogrn"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "workflow_state"
+  end
+
+  create_table "sms_verifications", force: true do |t|
+    t.string   "cookie"
+    t.string   "code"
+    t.integer  "attempts"
+    t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
