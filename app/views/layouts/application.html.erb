@@ -13,6 +13,7 @@
   <%= link_to 'Выйти', session_path('current_user'), method: :delete %>
 <% else %>
   <%= render partial: 'sessions/form' %>
+  <%= link_to 'Зарегистрироваться', '#', class: 'new_registration' %>
 <% end %>
 
 <%= yield %>

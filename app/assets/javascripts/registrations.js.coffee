@@ -7,6 +7,7 @@ $ ->
   sms_verification_code_sent = '#sms_verification_code_sent'
 
   # Hide all but the first form
+  $(registraton_form).hide()
   $(confirmation).hide()
   $(not_found).hide()
   $(complete).hide()
@@ -62,6 +63,13 @@ $ ->
     replace_id($(complete).find('form'), 'action', data.id)
     replace_id($(complete).find('a.regenerate_sms_verification_code'), 'href', data.id)
     $(complete).find('span.login').text(data.phone)
+
+  #
+  # General callbacks
+  #
+  $('body').on 'click', 'a.new_registration', (event) ->
+    event.preventDefault()
+    $(registraton_form).show()
 
   #
   # Registration form callbacks

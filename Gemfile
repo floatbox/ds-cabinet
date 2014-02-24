@@ -6,6 +6,10 @@ gem 'rails', '4.0.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+# Use Oracle adapter for reading from Siebel
+gem 'ruby-oci8'
+gem 'activerecord-oracle_enhanced-adapter', git: 'https://github.com/rsim/oracle-enhanced.git', branch: 'rails4'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

@@ -24,6 +24,13 @@ GIT
       memoist
       rails (>= 4.0.0)
 
+GIT
+  remote: https://github.com/rsim/oracle-enhanced.git
+  revision: f15de843c572f1d73a52907cb47f8a4b884c5ec5
+  branch: rails4
+  specs:
+    activerecord-oracle_enhanced-adapter (1.4.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -113,6 +120,7 @@ GEM
     rake (10.1.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    ruby-oci8 (2.1.7)
     russian (0.6.0)
       i18n (>= 0.5.0)
     sass (3.2.14)
@@ -175,6 +183,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-oracle_enhanced-adapter!
   coffee-rails (~> 4.0.0)
   curb
   ds-siebel!
@@ -183,6 +192,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   rails (= 4.0.3)
+  ruby-oci8
   russian
   sass-rails (~> 4.0.0)
   sdoc

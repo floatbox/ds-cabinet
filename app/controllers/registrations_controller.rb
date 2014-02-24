@@ -54,30 +54,16 @@ class RegistrationsController < ApplicationController
 
     def verify
       if with_sms_verification(@registration.phone)
-        head :no_content
+        @registration.verify!
+        if @registration.verified?
+          head :no_content
+        else
+          # TODO: This is ugly. Fix it with new markup.
+          render json: { sms_verification_code: ['не удалось сохранить данные. Попробуйте позже'] }, status: :unprocessable_entity
+        end
       else
         render json: { sms_verification_code: ['неверный код подтверждения'] }, status: :unprocessable_entity
       end
     end
 
-    def send_data_to_ds
-      id = create_uas_user
-      if id
-      end
-    end
-
-    def create_uas_user
-      user = Uas::User.new
-      user.login = @registration.phone
-      user.password = @registration.password
-      user.first_name = 'Не определено'
-      user.last_name = 'Не определено'
-      user.phone = @registration.phone
-      user.create['UserId']
-    rescue
-      nil
-    end
-
-    def create_sns_user
-    end
 end
