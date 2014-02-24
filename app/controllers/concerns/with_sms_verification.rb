@@ -15,20 +15,21 @@ module WithSmsVerification
   end
 
   # TODO: Some of this logic could be moved to Registration model validations.
-  def with_sms_verification(phone, success, error)
+  # @return [Boolean] whether verification was successful
+  def with_sms_verification(phone)
     # Try to find SMS verification request
     sms_verification = SmsVerification.where({ cookie: cookie, phone: phone }).first
 
     # No SMS code sent yet.
     unless sms_verification
       generate_sms_verification_code(phone)
-      error.()
+      false
     # SMS code was already sent
     else
       # SMS code is correct
       if sms_verification.code == params[:sms_verification_code]
         reset(sms_verification)
-        success.()
+        true
       # SMS code is incorrect
       else
         sms_verification.attempts += 1
@@ -39,7 +40,7 @@ module WithSmsVerification
           generate_sms_verification_code(phone)
         end
 
-        error.()
+        false
       end
     end
   end

@@ -28,9 +28,7 @@ class RegistrationsController < ApplicationController
   def complete
     @registration.password = params[:password]
     if @registration.valid?
-      success = -> { head :no_content }
-      error = -> { render json: { sms_verification_code: ['неверный код подтверждения'] }, status: :unprocessable_entity }
-      with_sms_verification(@registration.phone, success, error)
+      verify
     else
       render json: @registration.errors, status: :unprocessable_entity
     end
@@ -52,5 +50,34 @@ class RegistrationsController < ApplicationController
 
     def set_registration
       @registration = Registration.find(params[:registration_id])
+    end
+
+    def verify
+      if with_sms_verification(@registration.phone)
+        head :no_content
+      else
+        render json: { sms_verification_code: ['неверный код подтверждения'] }, status: :unprocessable_entity
+      end
+    end
+
+    def send_data_to_ds
+      id = create_uas_user
+      if id
+      end
+    end
+
+    def create_uas_user
+      user = Uas::User.new
+      user.login = @registration.phone
+      user.password = @registration.password
+      user.first_name = 'Не определено'
+      user.last_name = 'Не определено'
+      user.phone = @registration.phone
+      user.create['UserId']
+    rescue
+      nil
+    end
+
+    def create_sns_user
     end
 end
