@@ -41,9 +41,12 @@ module Uas
       end
     end
 
+    # Creates new user in UAS
+    # @return [Hash] JSON response
+    # @raise [InvalidArguments] if user was not created because of invalid data
+    # @raise [InternalError] if UAS did not response or any other errors occured
     def create
       response = Uas::Query.execute('user/?', request: create_data, method: :post)
-      puts response.inspect
       case response[:code]
       when 200 then JSON::parse(response[:body])
       when 400 then raise InvalidArguments
@@ -51,20 +54,34 @@ module Uas
       end
     end
 
-    def create_data
-      { 'Login' => login,
-        'Password' => password,
-        'FirstName' => first_name,
-        'LastName' => last_name,
-        'PatronymicName' => patronymic_name,
-        'Country' => country,
-        'Phone' => phone }
+    # Changes user's password
+    # @return [Boolean] whether password was successfully changed
+    def change_password(old_password, new_password)
+      url = "user/#{user_sys_name}/#{user_id}/password/?"
+      request = { oldPassword: old_password, newPassword: new_password }
+      response = Uas::Query.execute(url, request: request, method: :put)
+      case response[:code]
+      when 200 then true
+      else false
+      end
     end
 
-    def update_data
-      { 'FirstName' => first_name,
-        'LastName' => last_name }
-    end
+    private
+
+      def create_data
+        { 'Login' => login,
+          'Password' => password,
+          'FirstName' => first_name,
+          'LastName' => last_name,
+          'PatronymicName' => patronymic_name,
+          'Country' => country,
+          'Phone' => phone }
+      end
+
+      def update_data
+        { 'FirstName' => first_name,
+          'LastName' => last_name }
+      end
 
   end
 end

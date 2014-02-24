@@ -15,7 +15,11 @@ module Uas
       client = client(url)
 
       case method
-      when :post then client.post(request.to_json)
+      when :post
+        client.post(request.to_json)
+      when :put
+        client.post_body = Curl::postalize(JSON.dump(request))
+        client.http(:PUT)
       else client.get
       end
 
