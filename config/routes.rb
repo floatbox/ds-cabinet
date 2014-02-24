@@ -7,6 +7,8 @@ DsCabinet::Application.routes.draw do
     post 'regenerate_sms_verification_code'
   end
 
+  resources :sessions, only: [:create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

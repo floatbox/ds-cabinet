@@ -26,6 +26,21 @@ module Uas
       end
     end
 
+    # @param token [String] authentication token
+    # @return [Uas::User] user that was found by this token
+    # @raise [InvalidCredentials] if user was not found
+    # @raise [InternalError] if UAS did not response or any other errors occured
+    def self.find_by_token(token)
+      url = 'user/token/?'
+      request = { token: token }
+      response = Uas::Query.execute(url, request: request, method: :post)
+      case response[:code]
+      when 200 then Uas::User.hydrate_resource(JSON::parse(response[:body]))
+      when 400 then raise InvalidCredentials
+      else raise InternalError
+      end
+    end
+
     def create
       response = Uas::Query.execute('user/?', request: create_data, method: :post)
       puts response.inspect

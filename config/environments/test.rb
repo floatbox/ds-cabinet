@@ -41,4 +41,7 @@ DsCabinet::Application.configure do
   config.uas_url = 'https://pim.sredda.ru:4443/authentication'
   config.uas_sertificate = "#{Rails.root}/certs/ds_admin.pem"
   config.uas_query_log = true
+
+  # Authentication settings
+  config.auth_domain = '.sredda.ru'
 end
