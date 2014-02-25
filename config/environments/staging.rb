@@ -87,5 +87,5 @@ DsCabinet::Application.configure do
   config.uas_query_log = false
 
   # Authentication settings
-  config.auth_domain = '.dasreda.ru'
+  config.auth_domain = '.sredda.ru'
 end
