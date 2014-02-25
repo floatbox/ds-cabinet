@@ -13,21 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20140222081743) do
 
-  create_table "registrations", force: true do |t|
-    t.string   "phone"
-    t.string   "ogrn"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "workflow_state"
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
-  create_table "sms_verifications", force: true do |t|
-    t.string   "cookie"
-    t.string   "code"
-    t.integer  "attempts"
-    t.string   "phone"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "registrations" because of following NoMethodError
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fe07b4d3e48>
+
+# Could not dump table "sms_verifications" because of following NoMethodError
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fe07b4d3e48>
 
 end
