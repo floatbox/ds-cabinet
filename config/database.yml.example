@@ -27,3 +27,12 @@ production:
   username:
   password:
   host: localhost
+
+siebel:
+  adapter: oracle_enhanced
+  database: siebeldb
+  username: SAPBW
+  password: VQqhYsTt7h
+  port: 1521
+  host: 178.159.249.26
+  cursor_sharing: similar
