@@ -32,7 +32,8 @@ class Registration < ActiveRecord::Base
 
   def company
     @company ||= Ds::Spark::Company.where(ogrn: ogrn).first
-  rescue
+  rescue => e
+    logger.error "Can not find company in Spark. #{e.message}"
     nil
   end
 
