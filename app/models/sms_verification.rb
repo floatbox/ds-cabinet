@@ -8,10 +8,7 @@ class SmsVerification < ActiveRecord::Base
     request_body = build_request(phone).to_param
     client = build_client(Rails.configuration.sms_gateway)
     client.http_post(request_body)
-    # client.response_code == 200 ? client.body_str : false
-    # For testing purposes now there is hardcoded verification code.
-    # Remove it before deploying to production.
-    client.response_code == 200 ? '111111' : false
+    client.response_code == 200 ? client.body_str : false
   end
 
   private
