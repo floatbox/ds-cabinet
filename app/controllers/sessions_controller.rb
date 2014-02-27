@@ -4,9 +4,9 @@ class SessionsController < ActionController::Base
   def create
     login_info = Uas::User.login(params[:phone], params[:password])
     cookies[:auth_token] = { value: login_info.token, domain: Rails.configuration.auth_domain }
-    redirect_to root_url
+    head :ok
   rescue Uas::Error
-    redirect_to root_url
+    head :unprocessable_entity
   end
 
   # DELETE /session/:session_id

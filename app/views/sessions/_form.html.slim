@@ -1,11 +1,13 @@
-= form_tag sessions_path do
-  .field
-    = label_tag :phone
-    = text_field_tag :phone, params[:phone]
-
-  .field
-    = label_tag :password
-    = password_field_tag :password, params[:password]
-
-  .actions
-    = submit_tag 'Войти'
+section#new_session.header-14-sub.bg-midnight-blue(style='display: none;')
+  .background  
+  .container
+    .row
+      .span8.offset2
+        h3 Для входа введите номер телефона и пароль
+        p Вы можете <a href="#">зарегистрироваться</a> или <a href="#">восстановить пароль</a>
+        .subscribe-form
+          = form_tag sessions_path, remote: true do
+            .input-append
+              = text_field_tag :phone, params[:phone], class: 'span2', style: 'border-radius:6px; margin-right:10px;', placeholder: 'Ваш телефон'
+              = password_field_tag :password, params[:password], class: 'span2', placeholder: 'Пароль'
+              = submit_tag 'Войти', class: 'btn btn-primary'

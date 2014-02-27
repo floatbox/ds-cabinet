@@ -152,7 +152,7 @@
                 <%= link_to 'Выйти', session_path('current_user'), method: :delete %>
               <% else %>
                 <form class="navbar-form pull-left">
-                  <a class="btn btn-info" href="#">Войти</a>
+                  <a id='sign_in' class="btn btn-info" href="#">Войти</a>
                 </form>
               <% end %>
             </div>
@@ -160,6 +160,9 @@
         </div>
       </div>
     </header>
+    <% unless current_user %>
+      <%= render partial: 'sessions/form' %>
+    <% end %>
     <section class="header-10-sub v-center bg-midnight-blue">
       <div class="background">&nbsp;</div>
       <div>
