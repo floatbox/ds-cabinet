@@ -1,6 +1,22 @@
 #new_registration_form
-  h1 Регистрация
-  = simple_form_for Registration.new, remote: true do |f|
-    = f.input :ogrn
-    = f.input :phone
-    = f.button :submit
+  .row
+    .span8.offset2
+      h3 Зарегистрироваться просто
+      p.lead Введите ваш номер телефона и ОГРН компании – остальное мы сделаем сами
+
+  .row
+    .span6.offset3
+      .signup-form
+        = simple_form_for Registration.new, remote: true, authenticity_token: true do |f|
+          .controls.controls-row
+          .controls.controls-row
+            div
+              = f.input_field :phone, as: :string, pattern: false, size: nil, placeholder: 'Ваш телефон', class: 'span3'
+            div
+              = f.input_field :ogrn, as: :string, pattern: false, size: nil, placeholder: 'ОГРН вашей компании', class: 'span3'
+
+          .additional-links
+            | Регистрируясь, вы соглашаетесь с <a href="#">Условиями использования</a> и <a href="#">Политикой конфиденциальности</a>
+
+          .controls.controls-row
+            = f.button :submit, 'Зарегистрироваться', class: "btn btn-large btn-block btn-danger"

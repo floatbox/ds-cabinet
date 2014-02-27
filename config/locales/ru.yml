@@ -11,4 +11,6 @@ ru:
         registration:
           attributes:
             company:
-              does_not_exist: Компания с таким ОГРН не существует
+              does_not_exist: компания с таким ОГРН не существует
+            password:
+              wrong_confirmation: не совпадает с подтверждением

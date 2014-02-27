@@ -1,0 +1,18 @@
+#verify_phone
+
+  .row
+    .span8.offset2
+      p.lead Введите код подтверждения, который был выслан на ваш номер телефона.
+
+  .row
+    .span6.offset3
+      .signup-form
+        = form_tag registration_verify_phone_path(:registration_id), method: :post, remote: true do
+          .controls.controls-row
+            = text_field_tag :sms_verification_code, '', placeholder: 'Введите код подтверждения', id: 'registration_sms_verification_code', class: 'span6'
+
+          .additional-links
+            = link_to 'Сообщение не пришло, отправить еще раз', registration_regenerate_sms_verification_code_path(:registration_id), method: :post, remote: true, class: 'regenerate_sms_verification_code'
+
+          .controls.controls-row
+            = submit_tag 'Продолжить', class: 'btn btn-large btn-block btn-danger'

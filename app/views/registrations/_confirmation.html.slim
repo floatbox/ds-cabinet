@@ -1,21 +1,26 @@
 #confirmation
-  h1 Форма подтверждения данных о компании
-  dl
-    dt Название
-    dd
-      span.name
-  dl
-    dt Регион
-    dd
-      span.region
-  dl
-    dt ИНН
-    dd
-      span.inn
-  dl
-    dt ОГРН
-    dd
-      span.ogrn
+  .row
+    .span8.offset2
+      h3 Подтвердите данные о компании
 
-  a.cancel(href='#') Отмена
-  = link_to 'Подтвердить', registration_confirm_path(:registration_id), method: :post, remote: true, class: 'confirm'
+  .row
+    .span6.offset3
+      dl
+        dt Название
+        dd
+          span.name
+      dl
+        dt Регион
+        dd
+          span.region
+      dl
+        dt ИНН
+        dd
+          span.inn
+      dl
+        dt ОГРН
+        dd
+          span.ogrn
+
+      a.btn.btn-danger.cancel(href='#') Отмена
+      = link_to 'Подтвердить', registration_confirm_path(:registration_id), method: :post, remote: true, class: 'btn btn-success confirm'

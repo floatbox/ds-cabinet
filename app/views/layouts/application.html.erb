@@ -1,22 +1,452 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>DsCabinet</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Template CSS</title>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="shortcut icon" href="../../flat-ui/images/favicon.ico">
+        <link rel="stylesheet" href="../../flat-ui/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="../../flat-ui/bootstrap/css/bootstrap-responsive.css">
+        <link rel="stylesheet" href="../../flat-ui/css/flat-ui.css">
+        <!-- Using only with Flat-UI (free)-->
+        <link rel="stylesheet" href="../../common-files/css/icon-font.css">
+        <!-- end -->
+        <link rel="stylesheet" href="../../common-files/css/animations.css">
+        
+        <!-- If you don't use any of these blocks just remove unnecessary CSS files -->
+        <!-- blog -->
+        <link rel="stylesheet" href="../../ui-kit/ui-kit-blog/css/style.css">
+        <!-- contacts -->
+        <link rel="stylesheet" href="../../ui-kit/ui-kit-contacts/css/style.css">
+        <!-- content -->
+        <link rel="stylesheet" href="../../ui-kit/ui-kit-content/css/style.css">
+        <!-- crew -->
+        <link rel="stylesheet" href="../../ui-kit/ui-kit-crew/css/style.css">
+        <!-- footer -->
+        <link rel="stylesheet" href="../../ui-kit/ui-kit-footer/css/style.css">
+        <!-- header -->
+        <link rel="stylesheet" href="../../ui-kit/ui-kit-header/css/style.css">
+        <!-- price -->
+        <link rel="stylesheet" href="../../ui-kit/ui-kit-price/css/style.css">
+        <!-- projects -->
+        <link rel="stylesheet" href="../../ui-kit/ui-kit-projects/css/style.css">
 
-<% if current_user %>
-  Вы вошли как <%= current_user.login %>
-  <%= link_to 'Выйти', session_path('current_user'), method: :delete %>
-<% else %>
-  <%= render partial: 'sessions/form' %>
-  <%= link_to 'Зарегистрироваться', '#', class: 'new_registration' %>
-<% end %>
+        <%= javascript_include_tag "application" %>
+        <%= csrf_meta_tags %>
+        
+        <style>
+.h-7-section-5 {
+  background: #ebedee;
+  padding:50px 0;
+}
+.h-7-section-5 H3 {
+    text-align: center;
+}
+.h-7-section-5 .lead {
+    text-align: center;
+}
+.h-7-section-5 .brand {
+  color: #2c3e50!important;
+}
+.h-7-section-5 h3 {
+  color: #2c3e50;
+}
+.h-7-section-5 .lead {
+  color: rgba(44, 62, 80, 0.55);
+  margin-bottom: 58px;
+}
+.h-7-section-5 .additional-links {
+  font-size: 12px;
+  color: #bdc3c7;
+  margin: 10px 0 38px;
+}
+.h-7-section-5 .additional-links a {
+  color: #7f8c8d;
+  text-decoration: underline;
+}
+.h-7-section-5 .additional-links a:hover,
+.h-7-section-5 .additional-links a:focus,
+.h-7-section-5 .additional-links a.active {
+  color: #667071;
+}
+.h-7-section-5 .signup-form form {
+  margin: 0;
+}
+.h-7-section-5 .signup-form input[type="text"],
+.h-7-section-5 .signup-form input[type="password"] {
+  bord er-color: #fff;
+  col or: #2c3e50;
+}
+.h-7-section-5 .signup-form .btn-large {
+  font-weight: 500;
+}
+.h-7-section-5 .signup-form .btn-large:hover,
+.h-7-section-5 .signup-form .btn-large.active,
+.header-7-sub .h-7-section-5 .signup-form .btn-large:active {
+  background-color: #f1c40f;
+}
+.h-7-section-5 .signup-form .controls-row:first-child + .controls-row {
+  display: table;
+  width: 100%;
+}
+.h-7-section-5 .signup-form .controls-row:first-child + .controls-row > div {
+  display: table-cell;
+  width: 50%;
+  padding-left: 5px;
+}
+@media (max-width: 767px) {
+  .h-7-section-5 .signup-form .controls-row:first-child + .controls-row > div {
+    padding-left: 9px;
+  }
+}
+.h-7-section-5 .signup-form .controls-row:first-child + .controls-row > div:first-child {
+  padding-left: 0;
+  padding-right: 5px;
+}
+@media (max-width: 767px) {
+  .h-7-section-5 .signup-form .controls-row:first-child + .controls-row > div:first-child {
+    padding-right: 9px;
+  }
+}
+.h-7-section-5 .signup-form .controls-row:first-child + .controls-row input {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 41px;
+}
 
-<%= yield %>
 
-</body>
+.header-10-sub {height:700px;}
+.header-10-sub .background {
+  background-image: url("<%= image_path('img-1.jpg') %>");
+  opacity: 0.85;
+  filter: alpha(opacity=85);
+}
+        </style>
+        
+        
+    </head>
+
+    <body>
+    <!-- header-10 -->
+    <header class="header-10">
+      <div class="container">
+        <div class="navbar span12">
+          <div class="navbar-inner">
+            <button type="button" class="btn btn-navbar nav-pull-left"></button>
+            <a class="brand" href="#">Делай дело</a>
+            <div class="nav-collapse collapse pull-right">
+              <ul class="nav">
+                <li class="active"><a href="#">О проекте</a>
+                </li>
+                <li><a href="#">Тарифы</a>
+                </li>
+                <li><a href="#">Отзывы</a>
+                </li>
+              </ul>
+              <% if current_user %>
+                Вы вошли как <%= current_user.login %>
+                <%= link_to 'Выйти', session_path('current_user'), method: :delete %>
+              <% else %>
+                <form class="navbar-form pull-left">
+                  <a class="btn btn-info" href="#">Войти</a>
+                </form>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="header-10-sub v-center bg-midnight-blue">
+      <div class="background">&nbsp;</div>
+      <div>
+        <div class="container">
+          <div class="hero-unit">
+            <h1>Суперклассный сервис для предпринимателей</h1>
+            <p>
+              Упрощаем бухгалтерскую отченость, наводим порядок<br/>в юридических вопросах и документах.
+              <br/>Сделай дело!
+            </p>
+          </div>
+        </div>
+      </div>
+      <a class="control-btn fui-arrow-down" href="#"></a>
+    </section>
+
+                    <section class="h-7-section-5">
+                        <div>
+                            <div class="background">
+                                &nbsp;
+                            </div>
+
+
+                            <div class="container">
+                                <%= yield %>
+                            </div>
+                        </div>
+                    </section>
+
+
+    <!-- crew-4 -->
+    <section class="crew-4" style="padding-bottom:0;">
+      <div class="container">
+        <h3>Отзывы наших клиентов всегда положительные</h3>
+        <div class="members">
+          <div class="member-wrapper" style="vertical-align:top;">
+            <div class="member">
+              <div class="photo-wrapper">
+                <div class="photo">
+                  <img src="../../common-files/img/crew/vladimir-k.png" alt="">
+                </div>
+              </div>
+              <div class="info">
+                <div class="name">Владимир Кудинов</div>
+                Быстро, легко, удобно! Программа практически всё делает сама, не надо долго и нудно разыскивать порядок расчетов и заполнений форм. Достаточно только проверить правильность. И работать можно в любое удобное время на любом компьютере.
+                <div class="contacts">
+                  <a href="#">ООО «Рога и копыта»</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="member-wrapper" style="vertical-align:top;">
+            <div class="member">
+              <div class="photo-wrapper">
+                <div class="photo">
+                  <img src="../../common-files/img/crew/sergey-s.png" alt="">
+                </div>
+              </div>
+              <div class="info">
+                <div class="name">Сергей Есенин</div>
+                Я — директор, бухгалтер, юрист... Три в одном. Работаем вдвоем с мужем. Предоставляем юридические услуги в сфере гражданского права. На поиски бухгалтерских программ потратила уйму времени. Так как бухгалтерия для меня — не основная работа, хотелось простого оптимального решения, не отнимающего много времени от основных задач. Я нашла его в лице этого сервиса.
+                <div class="contacts">
+                  <a href="#">ИП Пупкин П.П.</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="member-wrapper" style="vertical-align:top;">
+            <div class="member">
+              <div class="photo-wrapper">
+                <div class="photo">
+                  <img src="../../common-files/img/crew/adrian-v.png" alt="">
+                </div>
+              </div>
+              <div class="info">
+                <div class="name">Андрей Лукин</div>
+                Ребята, вы молодцы! Такая доступная программа. Вчера после вебинара формировала пенсионный в Профи-версии. Одно наслаждение! После программ  пенсионного фонда Бухгалтерия.Контур — просто СКАЗКА! Не устану повторять спасибо вашим разработчикам! Успехов вам.
+                <div class="contacts">
+                  <a href="#">ЗАО «Сбербанк»</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/.container-->
+    </section>
+
+    <!-- content-19 -->
+    <section class="content-19">
+      <div class="container">
+        <div class="row">
+          <div class="span7">
+            <div class="quote">
+              <div class="quote-text">
+                Это суперклассный великолепный божественный веб-сервис, сделанный на коленке за две недели.
+              </div>
+              <div class="quote-author">
+                <div class="quote-author-photo"></div>
+                <div class="quote-author-name">
+                  КОНСТАНТИН ОСИНЦЕВ, МУЧЕНИК
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span3 offset1">
+            <div class="quote">
+              <div class="quote-author">
+                <div class="quote-author-photo"></div>
+                <div class="quote-author-name">Валерий К.</div>
+              </div>
+              <div class="quote-date">ООО «Дельфин»</div>
+              <div class="quote-text">Сразу видно, что сервис придуман за 3 часа в кафе. Но работает неплохо. Рекомендую!</div>
+            </div>
+            <div class="quote">
+              <div class="quote-author">
+                <div class="quote-author-photo"></div>
+                <div class="quote-author-name">Андрей З.</div>
+              </div>
+              <div class="quote-date">ООО «Английский завтрак»</div>
+              <div class="quote-text">Не ожидал, что из этого что-то получится. Мне нравится!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- content-16 -->
+    <section class="content-16 v-center" style="padding-bottom:0;">
+      <div>
+        <div class="container">
+          <h3><img src="../../common-files/icons/Money@2x.png" width="100" height="100" alt=""> Тарифные планы на бухгалтерское обслуживание </h3>
+          <p class="lead">Выберите подходящий</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- price-1 -->
+    <section class="price-1" style="padding-top:0; padding-bottom: 0;">
+      <div class="container">
+        <div class="row plans">
+          <div class="span3 plan">
+            <div class="title">Нулевой</div>
+            <div class="price">УСН, ЕНВД 2 500 руб./год</div>
+            <div class="price">ОСН 2 500 руб./кв.</div>
+            <div class="description">
+              <b>0</b> операций<br/> <b>0</b> сотрудников<br/> <b>0</b> первичных документов<br/> <b>Без</b> расчета з/п и доп. операций
+            </div>
+          </div>
+          <div class="span3 plan">
+            <div class="title">Начинающий</div>
+            <div class="price">УСН, ЕНВД 1 500 руб./мес.</div>
+            <div class="price">ОСН 2 500 руб./мес.</div>
+            <div class="description">
+              <b>5</b> операций<br/> <b>0</b> сотрудников<br/> <b>Первичка</b> - самостоятельно<br/><b>Доп. сотрудник</b> - 500 руб.<br/> <b>Доп. операция</b> - 100 руб.
+            </div>
+            <div class="ribbon">NEW</div>
+          </div>
+          <div class="span3 plan">
+            <div class="title">Уверенный</div>
+            <div class="price">УСН, ЕНВД 6 000 руб./мес.</div>
+            <div class="price">ОСН 9 000 руб./мес.</div>
+            <div class="description">
+              <b>5</b> операций<br/> <b>0</b> сотрудников<br/> <b>Первичка</b> - самостоятельно<br/><b>Доп. сотрудник</b> - 500 руб.<br/> <b>Доп. операция</b> - 100 руб.
+            </div>
+          </div>
+          <div class="span3 plan">
+            <div class="title">Профессионал</div>
+            <div class="price">УСН, ЕНВД 12 000 руб./мес.</div>
+            <div class="price">ОСН 15 000 руб./мес.</div>
+            <div class="description">
+             <b>5</b> операций<br/> <b>0</b> сотрудников<br/> <b>Первичка</b> - самостоятельно<br/><b>Доп. сотрудник</b> - 500 руб.<br/> <b>Доп. операция</b> - 100 руб.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/.container-->
+    </section>
+     <!-- content-16 -->
+    <section class="content-16 v-center" style="padding-bottom:0;">
+      <div>
+        <div class="container">
+          <h3>Тарифные планы на юридическое обслуживание </h3>
+          <p class="lead">Выберите подходящий</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- price-1 -->
+    <section class="price-1" style="padding-top:0;">
+      <div class="container">
+        <div class="row plans">
+          <div class="span3 plan">
+            <div class="title">Нулевой</div>
+            <div class="price">УСН, ЕНВД 2 500 руб./год</div>
+            <div class="price">ОСН 2 500 руб./кв.</div>
+            <div class="description">
+              <b>0</b> операций<br/> <b>0</b> сотрудников<br/> <b>0</b> первичных документов<br/> <b>Без</b> расчета з/п и доп. операций
+            </div>
+          </div>
+          <div class="span3 plan">
+            <div class="title">Начинающий</div>
+            <div class="price">УСН, ЕНВД 1 500 руб./мес.</div>
+            <div class="price">ОСН 2 500 руб./мес.</div>
+            <div class="description">
+              <b>5</b> операций<br/> <b>0</b> сотрудников<br/> <b>Первичка</b> - самостоятельно<br/><b>Доп. сотрудник</b> - 500 руб.<br/> <b>Доп. операция</b> - 100 руб.
+            </div>
+            <div class="ribbon">NEW</div>
+          </div>
+          <div class="span3 plan">
+            <div class="title">Уверенный</div>
+            <div class="price">УСН, ЕНВД 6 000 руб./мес.</div>
+            <div class="price">ОСН 9 000 руб./мес.</div>
+            <div class="description">
+              <b>5</b> операций<br/> <b>0</b> сотрудников<br/> <b>Первичка</b> - самостоятельно<br/><b>Доп. сотрудник</b> - 500 руб.<br/> <b>Доп. операция</b> - 100 руб.
+            </div>
+          </div>
+          <div class="span3 plan">
+            <div class="title">Профессионал</div>
+            <div class="price">УСН, ЕНВД 12 000 руб./мес.</div>
+            <div class="price">ОСН 15 000 руб./мес.</div>
+            <div class="description">
+             <b>5</b> операций<br/> <b>0</b> сотрудников<br/> <b>Первичка</b> - самостоятельно<br/><b>Доп. сотрудник</b> - 500 руб.<br/> <b>Доп. операция</b> - 100 руб.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/.container-->
+    </section>
+    
+<!-- footer-1 -->
+    <footer class="footer-1 bg-midnight-blue">
+      <div class="container">
+        <div class="row">
+          <div class="span5">
+            <p class="lead">Управляйте бизнесом <b>эффективно</b>.</p>
+            Проект компаний «Деловая среда» и «Сбербанк».
+            <p class="social-btns">
+              <img src="../../common-files/img/content/social-icons.png" alt="">
+            </p>
+          </div>
+          <nav>
+            <div class="span2 offset1">
+              <h6>Меню</h6>
+              <ul>
+                <li><a href="#">О проекте</a>
+                </li>
+                <li><a href="#">Тарифы</a>
+                </li>
+                <li><a href="#">Отзывы</a>
+                </li>
+                <li><a href="#">Регистрация</a>
+                </li>
+                <li><a href="#">Вход</a>
+                </li>
+              </ul>
+            </div>
+            <div class="span2">
+              <h6>Мы в соцсетях</h6>
+              <ul>
+                <li><a href="#">Facebook</a>
+                </li>
+                <li><a href="#">Вконтакте</a>
+                </li>
+                <li><a href="#">Одноклассники</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="span2 buy-btn">
+            <a class="btn btn-danger btn-block" href="#">Регистрация</a>
+или <a href="#">вход</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span5 additional-links">
+            <a href="#">Условия использования</a>
+            <a href="#">Обратная связь</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+        
+
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="../../flat-ui/js/bootstrap.min.js"></script>
+        <script src="../../common-files/js/modernizr.custom.js"></script>
+        <script src="../../common-files/js/page-transitions.js"></script>
+        <script src="../../common-files/js/startup-kit.js"></script>
+    </body>
 </html>

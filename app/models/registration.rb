@@ -3,19 +3,21 @@
 # Brief information about the states:
 #   * new                     Registration is just created and not even saved
 #   * awaiting_confirmation   It was saved to the database. Now it should be confirmed by user.
-#   * awaiting_verification   It was confirmed. User should enter password and SMS code to verify if.
-#   * verified                Everything is done, data was sent to UAS, SNS and Siebel.
+#   * awaiting_verification   It was confirmed. User should enter SMS code to verify it.
+#   * awaiting_password       It was verified. User should enter password.
+#   * done                    Everything is done, data was sent to UAS, SNS and Siebel.
 #
 class Registration < ActiveRecord::Base
   include Workflow
 
-  attr_accessor :password
+  attr_accessor :password, :password_confirmation
 
   validates_presence_of :phone, :ogrn
   validates_format_of :phone, with: /\A(\+[0-9]{11})\Z/i
   validates_format_of :ogrn, with: /\A([0-9]{13})\Z/i
   validate :company_exists, if: :new_record?
-  validates_presence_of :password, if: :awaiting_verification?
+  validates_presence_of :password, :password_confirmation, if: :awaiting_password?
+  validate :password_equals_to_confirmation, if: :awaiting_password?
 
   workflow do
     state :new do
@@ -25,9 +27,12 @@ class Registration < ActiveRecord::Base
       event :confirm, :transitions_to => :awaiting_verification
     end
     state :awaiting_verification do
-      event :verify, :transitions_to => :verified
+      event :verify, :transitions_to => :awaiting_password
     end
-    state :verified
+    state :awaiting_password do
+      event :send_to_ds, :transitions_to => :done
+    end
+    state :done
   end
 
   def company
@@ -65,8 +70,14 @@ class Registration < ActiveRecord::Base
       errors.add(:company, :does_not_exist) unless company
     end
 
-    # Callback on transition from awaiting_verification to verified state.
-    def verify
+    def password_equals_to_confirmation
+      if password.present? && password_confirmation.present?
+        errors.add(:password, :wrong_confirmation) unless password == password_confirmation
+      end
+    end
+
+    # Callback on transition from awaiting_password to done state.
+    def send_to_ds
       uas_user = create_uas_user
       contact = Contact.find_by_integration_id(uas_user['UserId'])
       person = create_sns_user(contact)

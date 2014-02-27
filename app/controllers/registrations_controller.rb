@@ -1,7 +1,7 @@
 class RegistrationsController < ApplicationController
   include WithSmsVerification
 
-  before_filter :set_registration, only: [:confirm, :complete, :regenerate_sms_verification_code]
+  before_filter :set_registration, only: [:confirm, :verify_phone, :complete, :regenerate_sms_verification_code]
 
   def new
   end
@@ -25,10 +25,29 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def verify_phone
+    if with_sms_verification(@registration.phone)
+      @registration.verify!
+      if @registration.awaiting_password?
+        head :no_content
+      else
+        head :unprocessable_entity
+      end
+    else
+      render json: { sms_verification_code: ['неверный код подтверждения'] }, status: :unprocessable_entity
+    end
+  end
+
   def complete
     @registration.password = params[:password]
+    @registration.password_confirmation = params[:password_confirmation]
     if @registration.valid?
-      verify
+      @registration.send_to_ds!
+      if @registration.done?
+        head :no_content
+      else
+        head :unprocessable_entity
+      end
     else
       render json: @registration.errors, status: :unprocessable_entity
     end
@@ -50,20 +69,6 @@ class RegistrationsController < ApplicationController
 
     def set_registration
       @registration = Registration.find(params[:registration_id])
-    end
-
-    def verify
-      if with_sms_verification(@registration.phone)
-        @registration.verify!
-        if @registration.verified?
-          head :no_content
-        else
-          # TODO: This is ugly. Fix it with new markup.
-          render json: { sms_verification_code: ['не удалось сохранить данные. Попробуйте позже'] }, status: :unprocessable_entity
-        end
-      else
-        render json: { sms_verification_code: ['неверный код подтверждения'] }, status: :unprocessable_entity
-      end
     end
 
 end

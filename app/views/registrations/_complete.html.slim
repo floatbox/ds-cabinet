@@ -1,20 +1,19 @@
 #complete
-  h1 Завершение регистрации
-  = form_tag registration_complete_path(:registration_id), method: :post, class: 'complete_registration', remote: true do
-    dl
-      dt Логин
-      dd
-        span.login
-    dl
-      dt Пароль
-      dd
-        = text_field_tag :password, '', class: 'registration_password'
-    dl
-      dt Код подтверждения
-      dd
-        = text_field_tag :sms_verification_code, '', class: 'registration_sms_verification_code'
-    
-    
-    a.cancel(href='#') Отмена
-    = link_to 'Получить код еще раз', registration_regenerate_sms_verification_code_path(:registration_id), method: :post, remote: true, class: 'regenerate_sms_verification_code'
-    = submit_tag 'Подтвердить'
+  .row
+    .span8.offset2
+      p.lead Придумайте пароль для входа в личный кабинет
+
+  .row
+    .span6.offset3
+      .signup-form
+        = form_tag registration_complete_path(:registration_id), method: :post, remote: true do
+          .controls.controls-row
+          .controls.controls-row
+            div
+              = text_field_tag :password, '', type: 'password', id: 'registration_password', class: 'span3', placeholder: 'Введите пароль'
+            div
+              = text_field_tag :password_confirmation, '', type: 'password', id: 'registration_password_confirmation', class: 'span3', placeholder: 'Повтор пароля'
+            
+
+          .controls.controls-row
+            = submit_tag 'Завершить регистрацию и перейти в личный кабинет', class: 'btn btn-large btn-block btn-danger'

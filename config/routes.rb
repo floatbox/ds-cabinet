@@ -3,6 +3,7 @@ DsCabinet::Application.routes.draw do
 
   resources :registrations, only: [:create] do
     post 'confirm'
+    post 'verify_phone'
     post 'complete'
     post 'regenerate_sms_verification_code'
   end
