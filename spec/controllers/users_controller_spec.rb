@@ -26,8 +26,34 @@ describe UsersController do
 
     context 'with invalid request' do
       let(:token) { 'fake_token' }
-      it 'returns respond with status code 500' do
+      it 'responds with status code 500' do
         post :token, request, session
+        response.code.should == '500'
+      end
+    end
+  end
+
+  describe 'POST token_light' do
+    let(:request) { { token: token } }
+    let(:session) { {} }
+
+    context 'with valid request' do
+      let(:login_info) { Uas::User.login(login, password) }
+      let(:token) { login_info.token }
+      let(:user) { login_info.user }
+
+      it 'returns JSON with basic user info' do
+        post :token_light, request, session
+        response.code.should == '200'
+        response.body.should == { name: "#{user.first_name} #{user.last_name}",
+                                  phone: user.login }.to_json
+      end
+    end
+
+    context 'with invalid request' do
+      let(:token) { 'fake_token' }
+      it 'responds with status code 500' do
+        post :token_light, request, session
         response.code.should == '500'
       end
     end
