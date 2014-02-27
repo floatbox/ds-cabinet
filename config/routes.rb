@@ -9,6 +9,8 @@ DsCabinet::Application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
 
+  post 'users/token' => 'users#token'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

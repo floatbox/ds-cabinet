@@ -1,8 +1,8 @@
-Ds::Sns::configure :development do
+Ds::Sns::configure :development, :test do
   log :all
 end
 
-Ds::Sns.configure :development, :staging do
+Ds::Sns.configure :development, :staging, :test do
   certificate "#{Rails.root}/certs/ds_admin.pem"
   service :social_network, 'https://sns.sredda.ru:4443/socialNetwork2'
   service :authorization, 'https://sns.sredda.ru:4443/authorization'

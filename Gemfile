@@ -53,6 +53,11 @@ group :development do
   gem 'capistrano3-unicorn'
 end
 
+# Use RSpec for testing
+group :development, :test do
+  gem 'rspec-rails'
+end
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
