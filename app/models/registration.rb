@@ -86,8 +86,8 @@ class Registration < ActiveRecord::Base
       uas_user = create_uas_user
       contact = Contact.find_by_integration_id(uas_user['UserId'])
       person = create_sns_user(contact)
-      account = create_siebel_company
-      company = create_sns_company(contact, account)
+      account = find_siebel_company(ogrn) || create_siebel_company
+      company = find_sns_company(person, account) || create_sns_company(person, account)
     rescue => e
       logger.error "Can not send data to DS. #{e.message}"
       halt
@@ -109,8 +109,17 @@ class Registration < ActiveRecord::Base
     # @return [Person] new SNS user
     def create_sns_user(contact)
       Ds::Sns.su do
-        Person.new(id: contact.id, name: 'Не определено').save
+        person = Person.new(id: contact.id, name: 'Не определено')
+        person.save
+        person
       end
+    end
+
+    # @param ogrn [String] OGRN of the company
+    # @return [Account] Siebel company with specified OGRN
+    # @return [nil] if nothing found
+    def find_siebel_company(ogrn)
+      Account.where(x_sbt_ogrn: ogrn).first
     end
 
     # @return [Account] new Siebel company
@@ -123,12 +132,26 @@ class Registration < ActiveRecord::Base
       account = Account.find_by_integration_id(account.siebel_integration_id) # Reload to get correct id
     end
 
-    # @param contact [Contact] contact that should be the admin of the company
+    # @param person [Person] SNS user that should be the admin of the company
     # @param account [Account] Siebel representation of the company
     # @return [Company] new SNS company
-    # @note Contact automatically becomes the admin of the account
-    def create_sns_company(contact, account)
-      Ds::Sns.as contact.id, 'siebel' do
+    # @note Person automatically becomes the admin of the account
+    def find_sns_company(person, account)
+      company = Ds::Sns.as person.id, 'siebel' do
+        Company.find(account.id)
+      end
+      Ds::Sns.su do
+        person.grant_role('CompanyAdministrator', company)
+      end if company
+      company
+    end
+
+    # @param person [Person] SNS user that should be the admin of the company
+    # @param account [Account] Siebel representation of the company
+    # @return [Company] new SNS company
+    # @note Person automatically becomes the admin of the account
+    def create_sns_company(person, account)
+      Ds::Sns.as person.id, 'siebel' do
         Company.new(id: account.id, name: account.full_name).save
       end
     end

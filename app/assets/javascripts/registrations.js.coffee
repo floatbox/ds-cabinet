@@ -118,10 +118,10 @@ $ ->
   #
 
   $("#{confirmation} a.confirm").on 'ajax:before', (event, data) ->
-    $(this).fadeTo('fast', 0.5)
+    $(confirmation).fadeTo('fast', 0.5)
 
   $("#{confirmation} a.confirm").on 'ajax:success', (event, data) ->
-    $(this).stop(true).fadeTo('fast', 1.0)
+    $(confirmation).stop(true).fadeTo('fast', 1.0)
     $(confirmation).hide()
     $(verify_phone).show()
 

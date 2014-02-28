@@ -31,7 +31,7 @@ module Uas
     # @return [Boolean] whether user exists
     def self.exist?(login)
       url = "user/login/?"
-      request = { login: login, password: SecureRandom.hex(32) + Time.now.to_s }
+      request = { login: login, password: SecureRandom.hex(32) }
       response = Uas::Query.execute(url, request: request, method: :post)
       if response[:code] == 400
         json = JSON::parse(response[:body])
