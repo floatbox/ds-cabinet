@@ -26,6 +26,20 @@ module Uas
       end
     end
 
+    # Checks existance of UAS user
+    # This method just tries to sign in with incorrect password and parses response from UAS.
+    # @return [Boolean] whether user exists
+    def self.exist?(login)
+      url = "user/login/?"
+      request = { login: login, password: SecureRandom.hex(32) + Time.now.to_s }
+      response = Uas::Query.execute(url, request: request, method: :post)
+      if response[:code] == 400
+        json = JSON::parse(response[:body])
+        return false if json['__type'] == 'DataObjectNotFoundFault'
+      end
+      true
+    end
+
     # @param token [String] authentication token
     # @return [Uas::User] user that was found by this token
     # @raise [InvalidCredentials] if user was not found

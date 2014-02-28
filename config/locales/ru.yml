@@ -10,6 +10,8 @@ ru:
       models:
         registration:
           attributes:
+            phone:
+              already_exist: уже существует
             company:
               does_not_exist: компания с таким ОГРН не существует
             password:

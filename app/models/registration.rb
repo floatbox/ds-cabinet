@@ -15,6 +15,7 @@ class Registration < ActiveRecord::Base
   validates_presence_of :phone, :ogrn
   validates_format_of :phone, with: /\A(\+[0-9]{11})\Z/i
   validates_format_of :ogrn, with: /\A([0-9]{13})\Z/i
+  validate :phone_uniqueness, if: :new_record?
   validate :company_exists, if: :new_record?
   validates_presence_of :password, :password_confirmation, if: :awaiting_password?
   validate :password_equals_to_confirmation, if: :awaiting_password?
@@ -65,6 +66,10 @@ class Registration < ActiveRecord::Base
   end
 
   private
+
+    def phone_uniqueness
+      errors.add(:phone, :already_exist) if Uas::User.exist?(phone)
+    end
 
     def company_exists
       errors.add(:company, :does_not_exist) unless company
