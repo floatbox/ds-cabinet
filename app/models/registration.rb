@@ -138,7 +138,11 @@ class Registration < ActiveRecord::Base
     # @note Person automatically becomes the admin of the account
     def find_sns_company(person, account)
       company = Ds::Sns.as person.id, 'siebel' do
-        Company.find(account.id)
+        begin
+          Company.find(account.id)
+        rescue
+          nil
+        end
       end
       Ds::Sns.su do
         person.grant_role('CompanyAdministrator', company)
