@@ -11,10 +11,8 @@
         = simple_form_for Registration.new, remote: true, authenticity_token: true do |f|
           .controls.controls-row
           .controls.controls-row
-            div
-              = f.input_field :phone, as: :string, pattern: false, size: nil, placeholder: 'Ваш телефон', class: 'span3'
-            div
-              = f.input_field :ogrn, as: :string, pattern: false, size: nil, placeholder: 'ОГРН вашей компании', class: 'span3'
+            = f.input_field :phone, as: :string, pattern: false, size: nil, placeholder: 'Ваш телефон', class: 'span3'
+            = f.input_field :ogrn, as: :string, pattern: false, size: nil, placeholder: 'ОГРН вашей компании', class: 'span3'
 
           .additional-links
             | Регистрируясь, вы соглашаетесь с <a href="#">Условиями использования</a> и <a href="#">Политикой конфиденциальности</a>
