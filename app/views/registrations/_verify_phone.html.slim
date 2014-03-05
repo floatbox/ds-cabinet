@@ -5,6 +5,7 @@
       p.lead Введите код подтверждения, который был выслан на ваш номер телефона.
 
   .row
+    .alert.alert-danger.error_messages
     .span6.offset3
       .signup-form
         = form_tag registration_verify_phone_path(:registration_id), method: :post, remote: true do

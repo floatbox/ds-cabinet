@@ -5,6 +5,7 @@
       p.lead Введите ваш номер телефона и ОГРН компании – остальное мы сделаем сами
 
   .row
+    .alert.alert-danger.error_messages
     .span6.offset3
       .signup-form
         = simple_form_for Registration.new, remote: true, authenticity_token: true do |f|

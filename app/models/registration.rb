@@ -68,7 +68,7 @@ class Registration < ActiveRecord::Base
   private
 
     def phone_uniqueness
-      errors.add(:phone, :already_exist) if Uas::User.exist?(phone)
+      errors.add(:phone, :already_exist) if phone.present? && Uas::User.exist?(phone)
     end
 
     def company_exists

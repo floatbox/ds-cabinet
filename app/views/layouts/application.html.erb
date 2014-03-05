@@ -147,14 +147,14 @@
                 <li><a href="#">Отзывы</a>
                 </li>
               </ul>
-              <% if current_user %>
-                Вы вошли как <%= current_user.login %>
-                <%= link_to 'Выйти', session_path('current_user'), method: :delete %>
-              <% else %>
-                <form class="navbar-form pull-left">
+              <form class="navbar-form pull-left">
+                <% if current_user %>
+                  Вы вошли как <%= current_user.login %>
+                  <%= link_to 'Выйти', session_path('current_user'), method: :delete, class: 'btn btn-info' %>
+                <% else %>
                   <a id='sign_in' class="btn btn-info" href="#">Войти</a>
-                </form>
-              <% end %>
+                <% end %>
+              </form>
             </div>
           </div>
         </div>

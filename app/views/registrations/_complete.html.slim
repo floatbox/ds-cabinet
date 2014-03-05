@@ -4,7 +4,12 @@
       p.lead Придумайте пароль для входа в личный кабинет
 
   .row
+    .alert.alert-danger.error_messages
     .span6.offset3
+      .well.well-sm
+        | Впоследствии для входа используйте номер вашего телефона: 
+        span.phone
+      
       .signup-form
         = form_tag registration_complete_path(:registration_id), method: :post, remote: true do
           .controls.controls-row
@@ -13,7 +18,6 @@
               = text_field_tag :password, '', type: 'password', id: 'registration_password', class: 'span3', placeholder: 'Введите пароль'
             div
               = text_field_tag :password_confirmation, '', type: 'password', id: 'registration_password_confirmation', class: 'span3', placeholder: 'Повтор пароля'
-            
 
           .controls.controls-row
             = submit_tag 'Завершить регистрацию и перейти в личный кабинет', class: 'btn btn-large btn-block btn-danger'

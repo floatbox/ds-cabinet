@@ -15,6 +15,16 @@ $ ->
   $(complete).hide()
   $(sms_verification_code_sent).hide()
 
+  # Hide error messages blocks
+  $('.error_messages').hide()
+
+  window.LOCALE =
+    phone: 'Телефон'
+    ogrn: 'ОГРН'
+    sms_verification_code: 'Код подтверждения'
+    password: 'Пароль'
+    password_confirmation: 'Подтверждение пароля'
+
   #
   # Helpers
   #
@@ -40,17 +50,20 @@ $ ->
   # Clears all error messages in registration form
   # @param form [String] selector of the form that should be cleared from error messages
   clear_error_messages = (form) ->
-    $("#{form} span.errors").text('')
+    $("#{form} .error_messages").empty().hide()
 
   # Shows errors messages in UI
   # @paran form [String] selector of validated form
   # @param errors [JSON] registation errors
   show_error_messages = (form, errors) ->
     form = $(form)
+    error = form.find('.error_messages')
+    message = ''
     for attribute, messages of errors
-      wrapper = form.find("#registration_#{attribute}").parent()
-      error = error_wrapper_for(wrapper)
-      error.text(messages.join(', '))
+      element = $('<span>').text("#{LOCALE[attribute]}: #{messages.join(', ')}")
+      error.append(element).append('<br/>')
+    error.show()
+
 
   # Fills confirmation dialog
   # @param data [JSON] registration object as JSON
@@ -69,7 +82,7 @@ $ ->
   # @param data [JSON] registration object as JSON
   fill_complete_dialog = (data) ->
     replace_id($(complete).find('form'), 'action', data.id)
-    $(complete).find('span.login').text(data.phone)
+    $(complete).find('span.phone').text(data.phone)
 
   #
   # General callbacks

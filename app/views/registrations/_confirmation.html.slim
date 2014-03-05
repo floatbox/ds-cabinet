@@ -1,26 +1,24 @@
 #confirmation
   .row
     .span8.offset2
-      h3 Подтвердите данные о компании
+      p.lead Подтвердите правильность данных о компании
+      .well.well-sm
+         center
+           | Вы регистрируете компанию 
+           span.name
+           | , ИНН 
+           span.inn
+           | , ОГРН 
+           span.ogrn
+
 
   .row
     .span6.offset3
-      dl
-        dt Название
-        dd
-          span.name
-      dl
-        dt Регион
-        dd
-          span.region
-      dl
-        dt ИНН
-        dd
-          span.inn
-      dl
-        dt ОГРН
-        dd
-          span.ogrn
-
-      a.btn.btn-danger.cancel(href='#') Отмена
-      = link_to 'Подтвердить', registration_confirm_path(:registration_id), method: :post, remote: true, class: 'btn btn-success confirm'
+      .signup-form
+        form
+          .controls.controls-row
+            = link_to 'Все верно, продолжить', registration_confirm_path(:registration_id), method: :post, remote: true, class: 'btn btn-large btn-block btn-danger confirm'
+            .additional-links
+              center 
+                | Нет, это не моя компания. 
+                a.cancel(href='#') Ввести ОГРН еще раз
