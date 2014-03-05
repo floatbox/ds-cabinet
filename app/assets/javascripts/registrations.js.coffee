@@ -25,6 +25,22 @@ $ ->
     password: 'Пароль'
     password_confirmation: 'Подтверждение пароля'
 
+  showPreloader = (form) ->
+    form = $(form)
+    formLeft = form.position().left
+    formTop = form.position().top
+    formWidth = form.outerWidth()
+    formHeight = form.outerHeight()
+    preloader = $('img#preloader')
+    width = preloader.outerWidth()
+    height = preloader.outerHeight()
+    preloader.css('left', "#{(formLeft + formWidth) / 2}px")
+    preloader.css('top', "#{(formTop + formHeight) / 2}px")
+    preloader.show()
+
+  hidePreloader = (form) ->
+    $('img#preloader').hide()
+
   #
   # Helpers
   #
@@ -96,10 +112,12 @@ $ ->
   #
   $('body').on 'ajax:before', registraton_form, (event, data) ->
     $(this).fadeTo('fast', 0.5)
+    showPreloader(registraton_form)
     clear_error_messages(registraton_form)
 
   $('body').on 'ajax:success', registraton_form, (event, data) ->
     $(this).stop(true).fadeTo('fast', 1.0)
+    hidePreloader(registraton_form)
     fill_confirmation_dialog(data)
     fill_verify_phone_dialog(data)
     fill_complete_dialog(data)
@@ -108,6 +126,7 @@ $ ->
 
   $('body').on 'ajax:error', registraton_form, (event, data) ->
     $(this).stop(true).fadeTo('fast', 1.0)
+    hidePreloader(registraton_form)
     errors = data.responseJSON
     if errors.company
       $(registraton_form).hide()
@@ -182,15 +201,18 @@ $ ->
 
   $("#{complete} form").on 'ajax:before', (event, data) ->
     $(this).fadeTo('fast', 0.5)
+    showPreloader(complete)
     clear_error_messages(complete)
 
   $("#{complete} form").on 'ajax:success', (event, data) ->
     $(this).stop(true).fadeTo('fast', 1.0)
+    hidePreloader(complete)
     alert('Вы успешно зарегистрировались!')
     $(complete).hide()
 
   $("#{complete} form").on 'ajax:error', (event, data) ->
     $(this).stop(true).fadeTo('fast', 1.0)
+    hidePreloader(complete)
     show_error_messages(complete, data.responseJSON)
 
   $("#{complete} a.cancel").on 'click', (event) ->
