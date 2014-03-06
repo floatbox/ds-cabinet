@@ -21,8 +21,8 @@ module Uas
       #   * InvalidCredentialsFault
       #   * DataObjectNotFoundFault
       # But it's better to raise the same error for both situations.
-      when 400 then raise InvalidCredentials
-      else raise InternalError
+      when 400 then raise InvalidCredentials, response[:body]
+      else raise InternalError, response[:body]
       end
     end
 
@@ -50,8 +50,8 @@ module Uas
       response = Uas::Query.execute(url, request: request, method: :post)
       case response[:code]
       when 200 then Uas::User.hydrate_resource(JSON::parse(response[:body]))
-      when 400 then raise InvalidCredentials
-      else raise InternalError
+      when 400 then raise InvalidCredentials, response[:body]
+      else raise InternalError, response[:body]
       end
     end
 
@@ -63,8 +63,8 @@ module Uas
       response = Uas::Query.execute('user/?', request: create_data, method: :post)
       case response[:code]
       when 200 then JSON::parse(response[:body])
-      when 400 then raise InvalidArguments
-      else raise InternalError
+      when 400 then raise InvalidArguments, response[:body]
+      else raise InternalError, response[:body]
       end
     end
 
