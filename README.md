@@ -46,3 +46,9 @@ Find user by token and respond with JSON that contains only name and phone. Work
 #### Status code
 * `200`   ok
 * `500`   error occured
+
+## Development
+
+OGRN example
+
+    1127746082903
