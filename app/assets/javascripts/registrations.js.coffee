@@ -41,6 +41,8 @@ $ ->
   hidePreloader = (form) ->
     $('img#preloader').hide()
 
+  $("#{registraton_form} input#registration_phone").mask('+7 (999) 999-99-99')
+
   #
   # Helpers
   #

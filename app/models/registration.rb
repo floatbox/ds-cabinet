@@ -36,6 +36,11 @@ class Registration < ActiveRecord::Base
     state :done
   end
 
+  # Remove symbols from the phone number
+  def phone=(value)
+    write_attribute(:phone, value.gsub('(', '').gsub(')', '').gsub(' ', '').gsub('-', ''))
+  end
+
   def company
     @company ||= Ds::Spark::Company.where(ogrn: ogrn).first
   rescue => e
