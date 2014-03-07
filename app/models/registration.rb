@@ -14,7 +14,7 @@ class Registration < ActiveRecord::Base
 
   validates_presence_of :phone, :ogrn
   validates_format_of :phone, with: /\A(\+[0-9]{11})\Z/i
-  validates_format_of :ogrn, with: /\A([0-9]{13})\Z/i
+  validates_format_of :ogrn, with: /\A([0-9]{13})([0-9]{2})?\Z/i
   validate :phone_uniqueness, if: :new_record?
   validate :company_exists, if: :new_record?
   validates_presence_of :password, :password_confirmation, if: :awaiting_password?
@@ -42,7 +42,7 @@ class Registration < ActiveRecord::Base
   end
 
   def company
-    @company ||= Ds::Spark::Company.where(ogrn: ogrn).first
+    @company ||= Ds::Spark::Company.find_by_ogrn_or_ogrnip(ogrn)
   rescue => e
     logger.error "Can not find company in Spark. #{e.message}"
     nil

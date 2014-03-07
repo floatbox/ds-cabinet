@@ -43,7 +43,7 @@ $ ->
 
   # Set masks on inputs
   $("#{registraton_form} input#registration_phone").mask('+7 (999) 999-99-99')
-  $("#{registraton_form} input#registration_ogrn").mask('9999999999999')
+  $("#{registraton_form} input#registration_ogrn").mask('9999999999999?99')
 
   #
   # Helpers
