@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require jquery.ui.effect.all
 //= require jquery.maskedinput.min
-//= require_tree .
+//= require ./registrations
+//= require ./sessions
