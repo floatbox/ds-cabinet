@@ -40,24 +40,19 @@
       <ul class="nav navbar-nav hidden-xs">
         <li>
           <div class="m-t m-b-small" id="panel-notifications">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment-alt icon-xlarge text-default"></i><b class="badge badge-notes bg-danger count-n">2</b></a>
-            <section class="dropdown-menu m-l-small m-t-mini">
-              <section class="panel panel-large arrow arrow-top">
-                <header class="panel-heading bg-white"><span class="h5"><strong>У вас <span class="count-n">5</span> уведомлений</strong></span></header>
-                <div class="list-group">
-                  <a href="#" class="media list-group-item">
-                  <span class="media-body block m-b-none">
-                  first v.1 (Bootstrap 2.3 based) released<br>
-                  <small class="text-muted">19 June 13</small>
-                  </span>
-                  </a>
-                </div>
-                <footer class="panel-footer text-small">
-                  <a href="#" class="pull-right"><i class="icon-cog"></i></a>
-                  <a href="#">Полный список уведомлений</a>
-                </footer>
+            <% unless current_user.notifications.unread.empty? %>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment-alt icon-xlarge text-default"></i><b class="badge badge-notes bg-danger count-n"><%= current_user.notifications.unread.count %></b></a>
+              <section class="dropdown-menu m-l-small m-t-mini">
+                <section class="panel panel-large arrow arrow-top">
+                  <header class="panel-heading bg-white"><span class="h5"><strong>У вас <span class="count-n"><%= current_user.notifications.unread.count %></span> <%= Russian.p(current_user.notifications.unread.count, 'уведомление', 'уведомления', 'уведомлений') %></strong></span></header>
+                  <%= render partial: 'notifications/notification', collection: current_user.notifications.unread %>
+                  <footer class="panel-footer text-small">
+                    <a href="#" class="pull-right"><i class="icon-cog"></i></a>
+                    <a href="#">Полный список уведомлений</a>
+                  </footer>
+                </section>
               </section>
-            </section>
+            <% end %>
           </div>
         </li>
         <% if current_user.concierge? %>

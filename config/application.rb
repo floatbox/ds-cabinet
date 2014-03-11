@@ -26,5 +26,6 @@ module DsCabinet
     config.i18n.default_locale = :ru
 
     config.middleware.use JQuery::FileUpload::Rails::Middleware
+    config.active_record.observers = :topic_observer
   end
 end

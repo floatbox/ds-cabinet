@@ -72,6 +72,7 @@ gem 'kaminari'
 gem 'acts-as-taggable-on'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'rails-observers'
 
 # Localization
 gem 'russian'

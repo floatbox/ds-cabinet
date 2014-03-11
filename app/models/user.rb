@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :topics
   has_many :messages
+  has_many :notifications
 
   scope :common, -> { where(concierge: false) }
   scope :concierges, -> { where(concierge: true) }
