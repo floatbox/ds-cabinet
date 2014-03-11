@@ -11,7 +11,7 @@ table.table
   - @users.each do |user|
     tr
       td= user.siebel.full_name
-      td= user.siebel_company.ogrn
+      td= user.siebel_company.try(:ogrn)
       td=l user.sns.created_at.to_date, format: :long
       td
       td= user.topics.count

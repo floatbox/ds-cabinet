@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def siebel_company
-    @siebel_company = Account.find(sns_company.id)
+    @siebel_company ||= Account.find(sns_company.id) if sns_company
   end
 
   private
