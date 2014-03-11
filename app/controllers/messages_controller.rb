@@ -1,13 +1,17 @@
 class MessagesController < ApplicationController
   before_action :set_topic
 
+  before_action :authorize
+  authorize_resource
+
   def create
     @message = @topic.messages.build(message_params)
     @message.user = current_user
+    redirect_url = current_user.concierge? ? concierge_topics_url : topics_url
     if @message.save
-      redirect_to topics_url
+      redirect_to redirect_url
     else
-      redirect_to topics_url, notice: 'Произошла ошибка'
+      redirect_to redirect_url, notice: 'Произошла ошибка'
     end
   end
 

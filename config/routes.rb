@@ -9,12 +9,21 @@ DsCabinet::Application.routes.draw do
   end
 
   resources :sessions, only: [:create, :destroy]
+
   resources :topics do
     resources :messages
   end
 
+  namespace :concierge do
+    resources :topics do
+      resources :messages
+    end
+  end
+
   post 'users/token' => 'users#token'
   post 'users/token_light' => 'users#token_light'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

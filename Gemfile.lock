@@ -65,6 +65,7 @@ GEM
     arel (4.0.2)
     atomic (1.1.14)
     builder (3.1.4)
+    cancan (1.6.10)
     capistrano (3.1.0)
       i18n
       rake (>= 10.0.0)
@@ -107,6 +108,9 @@ GEM
     jquery-ui-rails (4.2.0)
       railties (>= 3.2.16)
     json (1.8.1)
+    kaminari (0.15.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kgio (2.9.2)
     libv8 (3.16.14.3)
     mail (2.5.4)
@@ -233,6 +237,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-oracle_enhanced-adapter!
+  cancan
   capistrano
   capistrano-rails
   capistrano-rvm
@@ -245,6 +250,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-rails
+  kaminari
   pg
   rails (= 4.0.3)
   rspec-rails

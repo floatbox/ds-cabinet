@@ -2,6 +2,7 @@ class TopicsController < ApplicationController
   layout 'chat'
 
   before_action :authorize
+  authorize_resource
 
   def index
     @topics = current_user.topics.order('created_at DESC')
@@ -25,4 +26,5 @@ class TopicsController < ApplicationController
     def topic_params
       params.require(:topic).permit(:text)
     end
+
 end

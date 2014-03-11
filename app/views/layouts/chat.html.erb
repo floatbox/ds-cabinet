@@ -33,7 +33,7 @@
           </ul>
         </li>
       </ul>
-      <a class="navbar-brand" href="#">Делай дело</a>
+      <%= link_to 'Делай дело', topics_path, class: 'navbar-brand' %>
       <button type="button" class="btn btn-link pull-left nav-toggle visible-xs" data-toggle="class:slide-nav slide-nav-left" data-target="body">
       <i class="icon-reorder icon-xlarge text-default"></i>
       </button>
@@ -45,13 +45,6 @@
               <section class="panel panel-large arrow arrow-top">
                 <header class="panel-heading bg-white"><span class="h5"><strong>У вас <span class="count-n">5</span> уведомлений</strong></span></header>
                 <div class="list-group">
-                  <a href="#" class="media list-group-item">
-                  <span class="pull-left thumb-small"><img src="/images/avatar.jpg" alt="John said" class="img-circle"></span>
-                  <span class="media-body block m-b-none">
-                  Moved to Bootstrap 3.0<br>
-                  <small class="text-muted">23 June 13</small>
-                  </span>
-                  </a>
                   <a href="#" class="media list-group-item">
                   <span class="media-body block m-b-none">
                   first v.1 (Bootstrap 2.3 based) released<br>
@@ -69,6 +62,9 @@
         </li>
         <li>
           <div class="m-t-small">
+            <% if current_user.concierge? %>
+              <%= link_to 'Консьерж',concierge_topics_path, class: 'btn btn-sm btn-info' %>
+            <% end %>
             <%= link_to new_topic_path, class: 'btn btn-sm btn-info' do %>
               <i class="icon-plus"></i> НОВЫЙ ВОПРОС</a>
             <% end %>

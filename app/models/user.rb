@@ -24,10 +24,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def concierge?
-    false
-  end
-
   private
 
     def set_siebel_id

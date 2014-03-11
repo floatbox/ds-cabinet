@@ -75,3 +75,7 @@ gem 'curb'
 
 # Use workflow as state machine
 gem 'workflow'
+
+gem 'cancan'
+
+gem 'kaminari'
