@@ -1,0 +1,7 @@
+- if @user
+  h1 Топики пользователя #{@user.siebel.full_name}
+- else
+  h1 Все топики
+
+= render @topics
+= paginate @topics

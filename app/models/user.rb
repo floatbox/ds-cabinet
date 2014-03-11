@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   delegate :login, to: :uas
 
   has_many :topics
+  has_many :messages
+
+  scope :common, -> { where(concierge: false) }
+  scope :concierges, -> { where(concierge: true) }
 
   before_validation :set_siebel_id, unless: :siebel_id
 
@@ -22,6 +26,20 @@ class User < ActiveRecord::Base
     else
       Contact.find_by_integration_id(integration_id)
     end
+  end
+
+  def sns
+    @sns ||= Person.find(siebel_id)
+  end
+
+  def sns_company
+    @sns_company ||= Ds::Sns.as siebel_id, 'siebel' do
+      sns.companies.first
+    end
+  end
+
+  def siebel_company
+    @siebel_company = Account.find(sns_company.id)
   end
 
   private

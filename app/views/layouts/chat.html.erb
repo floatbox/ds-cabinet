@@ -33,7 +33,7 @@
           </ul>
         </li>
       </ul>
-      <%= link_to 'Делай дело', topics_path, class: 'navbar-brand' %>
+      <%= link_to 'Делай дело', root_path, class: 'navbar-brand' %>
       <button type="button" class="btn btn-link pull-left nav-toggle visible-xs" data-toggle="class:slide-nav slide-nav-left" data-target="body">
       <i class="icon-reorder icon-xlarge text-default"></i>
       </button>
@@ -60,21 +60,23 @@
             </section>
           </div>
         </li>
+        <% if current_user.concierge? %>
+          <%= render partial: 'concierge_navigation' %>
+        <% end %>
         <li>
           <div class="m-t-small">
-            <% if current_user.concierge? %>
-              <%= link_to 'Консьерж',concierge_topics_path, class: 'btn btn-sm btn-info' %>
-            <% end %>
-            <%= link_to new_topic_path, class: 'btn btn-sm btn-info' do %>
-              <i class="icon-plus"></i> НОВЫЙ ВОПРОС</a>
+            <% unless current_user.concierge? %>
+              <%= render partial: 'user_navigation' %>
             <% end %>
           </div>
         </li>
       </ul>
+      <!--
       <form class="navbar-form pull-left shift" action="" data-toggle="shift:appendTo" data-target=".nav-primary">
         <i class="icon-search text-muted"></i>
         <input type="text" class="input-sm form-control" placeholder="Поиск">
       </form>
+      !-->
     </header>
     <!-- / header -->
     <section id="content">
