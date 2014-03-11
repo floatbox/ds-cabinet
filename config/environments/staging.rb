@@ -88,6 +88,4 @@ DsCabinet::Application.configure do
 
   # Authentication settings
   config.auth_domain = '.sredda.ru'
-
-  ENV["NLS_LANG"] = "AMERICAN_AMERICA.UTF8"
 end
