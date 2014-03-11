@@ -4,11 +4,16 @@
     <%= simple_form_for [message.topic, message], html: { class: 'm-b-none' } do |f| %>
       <div class="input-group">
         <%= f.input_field :text, as: :string, placeholder: 'Введите ваш комментарий', class: 'form-control' %>
+        <%= f.input :attachment_ids, as: :hidden %>
         <span class="input-group-btn">
           <%= f.button :submit, 'ОТПРАВИТЬ', class: 'btn btn-primary' %>
         </span>
       </div>
+      <div class="attachments"></div>
+    <% end %>
+    <%= form_for Attachment.new, html: { class: 'fileupload', multipart: true } do |f| %>
       <div class="dropfile visible-lg m-t block">
+        <%= f.file_field :attachment, style: 'display:none' %>
         <small><i class="icon-cloud-upload"></i> Перетащите сюда файлы</small>
       </div>
     <% end %>

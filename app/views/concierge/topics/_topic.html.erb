@@ -21,8 +21,8 @@
     </section>
     <!-- .comment-list -->
     <section class="comment-list block">
-      <%= render topic.messages.order('created_at ASC') %>
-      <%= render partial: 'concierge/messages/form', object: topic.messages.build, as: :message %>
+      <%= render partial: 'messages/message', collection: topic.messages.order('created_at ASC') %>
+      <%= render partial: 'messages/form', object: topic.messages.build, as: :message %>
     </section>
     <!-- / .comment-list -->
   </div>

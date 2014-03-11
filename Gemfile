@@ -28,6 +28,7 @@ gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'jquery-fileupload-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -66,6 +67,11 @@ gem 'ds-spark', git: 'git@github.com:SuperbCoders/DS-Spark-gem.git'
 
 # Helpers
 gem 'simple_form'
+gem 'cancan'
+gem 'kaminari'
+gem 'acts-as-taggable-on'
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Localization
 gem 'russian'
@@ -75,9 +81,3 @@ gem 'curb'
 
 # Use workflow as state machine
 gem 'workflow'
-
-gem 'cancan'
-
-gem 'kaminari'
-
-gem 'acts-as-taggable-on'

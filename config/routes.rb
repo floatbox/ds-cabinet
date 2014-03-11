@@ -15,6 +15,8 @@ DsCabinet::Application.routes.draw do
     resources :messages
   end
 
+  resources :attachments
+
   namespace :concierge do
     resources :users do
       resources :topics

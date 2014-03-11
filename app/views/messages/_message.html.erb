@@ -11,5 +11,11 @@
     <div class="panel-body">
       <div><%= message.text %></div>
     </div>
+      <% message.attachments.each do |attachment| %>
+        <div>
+          <i class="icon-paperclip"></i>
+          <%= link_to attachment.attachment.file.filename, attachment.attachment.url, target: '_blank' %>
+        </div>
+      <% end %>
   </section>
 </article>

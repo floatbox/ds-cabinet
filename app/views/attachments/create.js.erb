@@ -1,0 +1,16 @@
+console.log('File uploaded')
+<% if @attachment.new_record? %>
+  alert('Не удалось загрузить файл.');
+<% else %>
+  var attachments = $('.uploading').closest('.comment-item').find('.attachments');
+  var attachment_ids = attachments.closest('form').find('#message_attachment_ids');
+  var ids = attachment_ids.val();
+  if (ids === '[]') { 
+    ids = '<%= @attachment.id %>';
+  } else {
+    ids = ids + ',<%= @attachment.id %>';
+  }
+  attachment_ids.val(ids);
+  $('.uploading').removeClass('uploading');
+  attachments.append("<%=j render @attachment %>")
+<% end %>

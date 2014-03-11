@@ -22,6 +22,15 @@ class MessagesController < ApplicationController
     end
 
     def message_params
-      params.require(:message).permit(:text)
+      fix_attachment_ids
+      params.require(:message).permit(:text, attachment_ids: [])
+    end
+
+    def fix_attachment_ids
+      if params[:message][:attachment_ids] == '[]'
+        params[:message][:attachment_ids] = nil
+      elsif params[:message][:attachment_ids]
+        params[:message][:attachment_ids] = params[:message][:attachment_ids].split(',')
+      end
     end
 end
