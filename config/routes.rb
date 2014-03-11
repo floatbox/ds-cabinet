@@ -9,6 +9,9 @@ DsCabinet::Application.routes.draw do
   end
 
   resources :sessions, only: [:create, :destroy]
+  resources :topics do
+    resources :messages
+  end
 
   post 'users/token' => 'users#token'
   post 'users/token_light' => 'users#token_light'

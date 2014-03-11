@@ -1,0 +1,21 @@
+<div class="row m-t">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
+    <section class="panel text-center">
+      <div class="panel-body">
+        <a class="btn btn-circle btn-twitter btn-lg"><i class="icon-user"></i></a>
+        <div class="h4"><%= topic.text %></div>
+        <div class="line m-l m-r"></div>
+        <h4><strong><%= topic.user.siebel.first_name %> <%= topic.user.siebel.last_name %></strong></h4>
+        <small><a href="#">ТЕГ1</a>, <a href="#">НАЛОГИ</a>, <a href="#">ПАНИКА</a>, <a href="#">ШТРАФЫ</a></small>
+      </div>
+    </section>
+    <!-- .comment-list -->
+    <section class="comment-list block">
+      <%= render topic.messages %>
+      <%= render partial: 'messages/form', object: topic.messages.build, as: :message %>
+    </section>
+    <!-- / .comment-list -->
+  </div>
+  <div class="col-lg-2"></div>
+</div>

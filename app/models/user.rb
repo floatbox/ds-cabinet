@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   attr_accessor :uas
   delegate :login, to: :uas
 
+  has_many :topics
+
   before_validation :set_siebel_id, unless: :siebel_id
 
   def self.find_by_token(token)
@@ -20,6 +22,10 @@ class User < ActiveRecord::Base
     else
       Contact.find_by_integration_id(integration_id)
     end
+  end
+
+  def concierge?
+    false
   end
 
   private

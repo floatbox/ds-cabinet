@@ -4,7 +4,7 @@ class SessionsController < ActionController::Base
   def create
     login_info = Uas::User.login(params[:phone], params[:password])
     cookies[:auth_token] = { value: login_info.token, domain: Rails.configuration.auth_domain }
-    head :ok
+    render json { redirect_to: topics_url }
   rescue Uas::Error
     head :unprocessable_entity
   end

@@ -6,6 +6,8 @@ ru:
       registration:
         phone: Телефон
         ogrn: ОГРН
+      topic:
+        text: Текст
     errors:
       models:
         registration:
