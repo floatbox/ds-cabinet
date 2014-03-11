@@ -26,6 +26,19 @@ class TopicsController < ApplicationController
     end
   end
 
+  def edit
+    @topic = Topic.find(params[:id])
+  end
+
+  def update
+    @topic = Topic.find(params[:id])
+    if @topic.update_attributes(topic_params)
+      redirect_to topic_url(@topic)
+    else
+      render 'edit', alert: 'Произошла ошибка'
+    end
+  end
+
   private
 
     def topic_params

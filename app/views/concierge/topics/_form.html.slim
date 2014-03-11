@@ -1,4 +1,4 @@
-= simple_form_for [:concierge, @topic] do |f|
+= simple_form_for [:concierge, @topic.user, @topic] do |f|
   = f.input :text
   = f.input :tag_list
   = f.button :submit, @topic.new_record? ? 'Создать' : 'Сохранить'

@@ -18,6 +18,9 @@ table.table
       td= user.messages.count
       td
         = link_to 'Просмотреть топики', concierge_user_topics_path(user), class: 'btn btn-sm'
+        |  
+        = link_to 'Создать топик', new_concierge_user_topic_path(user), class: 'btn btn-sm'
+        |  
         = link_to 'Назначить консьержа', edit_concierge_user_path(user), class: 'btn btn-sm'
 
 = paginate @users
