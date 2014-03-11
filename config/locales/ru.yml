@@ -8,6 +8,8 @@ ru:
         ogrn: ОГРН
       user:
         concierge: Консьерж
+        first_name: Имя
+        last_name: Фамилия
       topic:
         text: Текст
         tag_list: Теги (через запятую)

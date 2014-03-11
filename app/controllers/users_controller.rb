@@ -1,4 +1,22 @@
-class UsersController < ActionController::Base
+class UsersController < ApplicationController
+  layout 'chat'
+  protect_from_forgery with: :null_session
+
+  before_action :authorize, only: [:edit, :update]
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    @user.assign_attributes(user_params)
+    if @user.siebel.save
+      redirect_to root_url
+    else
+      render 'edit', alert: 'Не удалось сохранить профиль'
+    end
+  end
 
   # POST /users/token
   def token
@@ -38,6 +56,10 @@ class UsersController < ActionController::Base
       Uas::User.find_by_token(token)
     rescue Uas::Error
       nil
+    end
+
+    def user_params
+      params.require(:user).permit(:first_name, :last_name)
     end
 
 end

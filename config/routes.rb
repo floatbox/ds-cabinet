@@ -9,6 +9,7 @@ DsCabinet::Application.routes.draw do
   end
 
   resources :sessions, only: [:create, :destroy]
+  resources :users, only: [:edit, :update]
 
   resources :topics do
     resources :messages

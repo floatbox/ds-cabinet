@@ -23,11 +23,11 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">            
           <span class="hidden-xs-only"><%= current_user.siebel.full_name %></span>
-          <span class="thumb-small avatar inline"><img src="images/avatar.jpg" alt="" class="img-circle"></span>
+          <span class="thumb-small avatar inline"><img src="/images/avatar_dummy.png" alt="" class="img-circle"></span>
           <b class="caret hidden-xs-only"></b>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#"><span class="badge bg-danger pull-right">3</span>Уведомления</a></li>
+            <li><%= link_to 'Профиль', edit_user_path(current_user) %></li>
             <li class="divider"></li>
             <li><%= link_to 'Выйти', session_path('current_user'), method: :delete %></li>
           </ul>

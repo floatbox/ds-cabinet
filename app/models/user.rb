@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor :uas
   delegate :login, to: :uas
+  delegate :first_name, :last_name, :first_name=, :last_name=, to: :siebel
 
   belongs_to :concierge, class_name: 'User'
   has_many :users, foreign_key: :concierge_id
