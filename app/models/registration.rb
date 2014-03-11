@@ -93,6 +93,7 @@ class Registration < ActiveRecord::Base
       person = create_sns_user(contact)
       account = find_siebel_company(ogrn) || create_siebel_company
       company = find_sns_company(person, account) || create_sns_company(person, account)
+      User.create(siebel_id: contact.id, integration_id: contact.integration_id)
     rescue => e
       logger.error "Can not send data to DS. #{e.message}"
       halt

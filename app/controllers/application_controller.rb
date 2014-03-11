@@ -8,9 +8,7 @@ private
   # @return [Uas::User] currently logged in user
   def current_user
     token = request.cookies['auth_token']
-    @current_user ||= Uas::User.find_by_token(token) if token
-  rescue Uas::Error
-    nil
+    @current_user ||= User.find_by_token(token) if token
   end
   helper_method :current_user
 
