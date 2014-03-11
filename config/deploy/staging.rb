@@ -9,3 +9,4 @@ role :web, %w{w3dev-ds-cabinet@ono.rrv.ru}
 role :db,  %w{w3dev-ds-cabinet@ono.rrv.ru}
 
 set :deploy_to, '/www/dev-ds-cabinet.onomnenado.ru'
+set :branch, 'feature/chat'
