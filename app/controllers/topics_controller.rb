@@ -1,6 +1,8 @@
 class TopicsController < ApplicationController
   layout 'chat'
 
+  before_action :authorize
+
   def index
     @topics = current_user.topics.order('created_at DESC')
   end

@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="/css/font.css" cache="false">
     <link rel="stylesheet" href="/css/style.css">
     <!--[if lt IE 9]>
-    <script src="js/ie/respond.min.js" cache="false"></script>
-    <script src="js/ie/html5.js" cache="false"></script>
+    <script src="/js/ie/respond.min.js" cache="false"></script>
+    <script src="/js/ie/html5.js" cache="false"></script>
     <![endif]-->
     <%= javascript_include_tag "chat/application" %>
     <%= csrf_meta_tags %>
@@ -22,17 +22,14 @@
       <ul class="nav navbar-nav navbar-avatar pull-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">            
-          <span class="hidden-xs-only">Иван Петров</span>
-          <span class="thumb-small avatar inline"><img src="images/avatar.jpg" alt="Mika Sokeil" class="img-circle"></span>
+          <span class="hidden-xs-only"><%= current_user.siebel.full_name %></span>
+          <span class="thumb-small avatar inline"><img src="images/avatar.jpg" alt="" class="img-circle"></span>
           <b class="caret hidden-xs-only"></b>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">Настройки</a></li>
-            <li><a href="#">Профиль</a></li>
             <li><a href="#"><span class="badge bg-danger pull-right">3</span>Уведомления</a></li>
             <li class="divider"></li>
-            <li><a href="docs.html">Помощь</a></li>
-            <li><a href="signin.html">Выйти</a></li>
+            <li><%= link_to 'Выйти', session_path('current_user'), method: :delete %></li>
           </ul>
         </li>
       </ul>
