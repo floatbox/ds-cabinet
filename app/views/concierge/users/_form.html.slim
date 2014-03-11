@@ -1,0 +1,3 @@
+= simple_form_for [:concierge, @user] do |f|
+  = f.association :concierge, label_method: -> (c) { c.siebel.full_name }, collection: User.concierges
+  = f.button :submit, 'Сохранить'

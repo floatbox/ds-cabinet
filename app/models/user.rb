@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   attr_accessor :uas
   delegate :login, to: :uas
 
+  belongs_to :concierge, class_name: 'User'
+  has_many :users, foreign_key: :concierge_id
+
   has_many :topics
   has_many :messages
 

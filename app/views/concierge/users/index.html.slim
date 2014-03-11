@@ -13,10 +13,11 @@ table.table
       td= user.siebel.full_name
       td= user.siebel_company.try(:ogrn)
       td=l user.sns.created_at.to_date, format: :long
-      td
+      td= user.concierge.siebel.full_name if user.concierge
       td= user.topics.count
       td= user.messages.count
       td
         = link_to 'Просмотреть топики', concierge_user_topics_path(user), class: 'btn btn-sm'
+        = link_to 'Назначить консьержа', edit_concierge_user_path(user), class: 'btn btn-sm'
 
 = paginate @users
