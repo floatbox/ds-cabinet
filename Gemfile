@@ -79,3 +79,5 @@ gem 'workflow'
 gem 'cancan'
 
 gem 'kaminari'
+
+gem 'acts-as-taggable-on'

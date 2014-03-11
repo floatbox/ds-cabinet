@@ -7,7 +7,14 @@
         <div class="h4"><%= topic.text %></div>
         <div class="line m-l m-r"></div>
         <h4><strong><%= topic.user.siebel.first_name %> <%= topic.user.siebel.last_name %></strong></h4>
-        <small><a href="#">ТЕГ1</a>, <a href="#">НАЛОГИ</a>, <a href="#">ПАНИКА</a>, <a href="#">ШТРАФЫ</a></small>
+        <small>
+          <%= raw topic.tag_list.map { |t| link_to t, concierge_topics_path(tag: t) }.join(', ') %>
+        </small>
+        <div class="comment-action m-t-small">
+          <%= link_to edit_concierge_topic_path(topic), class: 'btn btn-white btn-xs' do %>
+            <i class="icon-pencil text-muted"></i>Редактировать
+          <% end %>
+        </div>
       </div>
     </section>
     <!-- .comment-list -->

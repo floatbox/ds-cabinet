@@ -6,6 +6,11 @@ class TopicsController < ApplicationController
 
   def index
     @topics = current_user.topics.order('created_at DESC')
+    @topics = @topics.tagged_with(params[:tag]) if params[:tag]
+  end
+
+  def show
+    @topic = Topic.find(params[:id])
   end
 
   def new

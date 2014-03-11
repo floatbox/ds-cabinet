@@ -7,10 +7,25 @@ class Concierge::TopicsController < Concierge::ApplicationController
   authorize_resource
 
   def index
-    if @user
-      @topics = @user.topics.order('created_at DESC').page(params[:page]).per(10)
+    @topics = @user ? @user.topics : Topic
+    @topics = @topics.tagged_with(params[:tag]) if params[:tag]
+    @topics = @topics.order('created_at DESC').page(params[:page]).per(10)
+  end
+
+  def show
+    @topic = Topic.find(params[:id])
+  end
+
+  def edit
+    @topic = Topic.find(params[:id])
+  end
+
+  def update
+    @topic = Topic.find(params[:id])
+    if @topic.update_attributes(topic_params)
+      redirect_to concierge_topic_url(@topic)
     else
-      @topics = Topic.order('created_at DESC').page(params[:page]).per(10)
+      render 'edit', alert: 'Произошла ошибка'
     end
   end
 
@@ -21,6 +36,6 @@ class Concierge::TopicsController < Concierge::ApplicationController
     end
 
     def topic_params
-      params.require(:topic).permit(:text)
+      params.require(:topic).permit(:text, :tag_list)
     end
 end

@@ -8,6 +8,7 @@ ru:
         ogrn: ОГРН
       topic:
         text: Текст
+        tag_list: Теги (через запятую)
     errors:
       models:
         registration:

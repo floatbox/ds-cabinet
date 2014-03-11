@@ -2,6 +2,7 @@
   h1 Топики пользователя #{@user.siebel.full_name}
 - else
   h1 Все топики
-
+- if params[:tag]
+  h2 По тегу #{params[:tag]}
 = render @topics
 = paginate @topics

@@ -58,6 +58,8 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    acts-as-taggable-on (3.0.1)
+      rails (>= 3, < 5)
     akami (1.2.1)
       gyoku (>= 0.4.0)
       nokogiri
@@ -237,6 +239,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-oracle_enhanced-adapter!
+  acts-as-taggable-on
   cancan
   capistrano
   capistrano-rails
