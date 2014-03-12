@@ -1,7 +1,7 @@
 <article class="comment-item media" id="comment-form">
   <a class="pull-left thumb-small avatar"><img src="/images/avatar_dummy.png" class="img-circle"></a>
   <section class="media-body">
-    <%= simple_form_for [message.topic, message], html: { class: 'm-b-none' } do |f| %>
+    <%= simple_form_for [message.topic, message], remote: true, html: { class: 'm-b-none' } do |f| %>
       <div class="input-group">
         <%= f.input_field :text, as: :string, placeholder: 'Введите ваш комментарий', class: 'form-control' %>
         <%= f.input :attachment_ids, as: :hidden %>

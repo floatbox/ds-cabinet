@@ -11,12 +11,7 @@ class MessagesController < ApplicationController
   def create
     @message = @topic.messages.build(message_params)
     @message.user = current_user
-    redirect_url = current_user.concierge? ? concierge_topic_url(@topic) : topic_url(@topic)
-    if @message.save
-      redirect_to redirect_url
-    else
-      redirect_to redirect_url, notice: 'Произошла ошибка'
-    end
+    @message.save
   end
 
   def edit
