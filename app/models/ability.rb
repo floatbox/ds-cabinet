@@ -18,7 +18,8 @@ class Ability
       can :read, User
       can [:read, :create, :update, :destroy], User
       can :attach_concierge, User, concierge_id: [nil, user.id]
-      can :manage, Topic, Message
+      can :manage, Topic
+      can :read, Message
       can :manage, Notification, user_id: user.id
     end
     #
