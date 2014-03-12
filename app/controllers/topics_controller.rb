@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   layout 'chat'
 
-  before_action :authorize
+  before_action :authenticate
   authorize_resource
 
   def index

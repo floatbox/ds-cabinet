@@ -16,9 +16,9 @@ private
   end
   helper_method :current_user
 
-  # Add this method to before_action to authorize access.
-  # @example before_filter :authorize
-  def authorize
+  # Add this method to before_action to authenticate access.
+  # @example before_action :authenticate
+  def authenticate
     redirect_to root_url if current_user.nil?
   end
 end

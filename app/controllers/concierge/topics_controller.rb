@@ -3,7 +3,7 @@ class Concierge::TopicsController < Concierge::ApplicationController
 
   before_action :set_user
 
-  before_action :authorize
+  before_action :authenticate
   authorize_resource
 
   def index

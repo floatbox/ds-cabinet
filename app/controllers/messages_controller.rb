@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   before_action :set_topic, only: [:index, :create]
 
-  before_action :authorize
+  before_action :authenticate
   authorize_resource
 
   def index

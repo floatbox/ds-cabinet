@@ -15,7 +15,11 @@ class Ability
     end
 
     if user.concierge?
-      can :manage, :all
+      can :read, User
+      can [:read, :create, :update, :destroy], User
+      can :attach_concierge, User, concierge_id: [nil, user.id]
+      can :manage, Topic, Message
+      can :manage, Notification, user_id: user.id
     end
     #
     # The first argument to `can` is the action you are giving the user 
