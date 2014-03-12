@@ -1,8 +1,12 @@
 class MessagesController < ApplicationController
-  before_action :set_topic, only: :create
+  before_action :set_topic, only: [:index, :create]
 
   before_action :authorize
   authorize_resource
+
+  def index
+    @messages = @topic.messages.order('created_at ASC')
+  end
 
   def create
     @message = @topic.messages.build(message_params)

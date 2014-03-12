@@ -1,4 +1,6 @@
 class Message < ActiveRecord::Base
+  include Notificationable
+
   belongs_to :topic
   belongs_to :user
 

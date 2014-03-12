@@ -2,16 +2,10 @@ module Notificationable
   extend ActiveSupport::Concern
 
   included do
-    has_many :notifications, as: :object
-    after_destroy :destroy_notifications
+    has_many :notifications, as: :object, dependent: :destroy
   end
 
   module ClassMethods
   end
 
-  private
-
-    def destroy_notifications
-      notifications.destroy_all
-    end
 end

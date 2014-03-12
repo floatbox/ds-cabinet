@@ -1,4 +1,6 @@
 class Topic < ActiveRecord::Base
+  include Notificationable
+
   belongs_to :user
   has_many :messages, dependent: :destroy
 

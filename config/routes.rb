@@ -14,7 +14,7 @@ DsCabinet::Application.routes.draw do
   resources :messages, only: [:edit, :update, :destroy]
 
   resources :topics do
-    resources :messages, only: :create
+    resources :messages, only: [:index, :create]
   end
 
   resources :attachments
@@ -26,7 +26,7 @@ DsCabinet::Application.routes.draw do
       resources :topics
     end
     resources :topics do
-      resources :messages, only: :create
+      resources :messages, only: [:index, :create]
     end
   end
 
