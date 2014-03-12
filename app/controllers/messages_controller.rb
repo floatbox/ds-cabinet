@@ -1,31 +1,35 @@
 class MessagesController < ApplicationController
+  before_action :authenticate
+
   before_action :set_topic, only: [:index, :create]
 
-  before_action :authenticate
-  authorize_resource
+  # Override Cancan resource loading
+  before_action :set_messages, only: [:index]
+  before_action :build_message, only: [:create]
+  load_and_authorize_resource
 
+  # GET /topic/:topic_id/messages
   def index
-    @messages = @topic.messages.order('created_at ASC')
   end
 
+  # POST /topic/:topic_id/messages
   def create
-    @message = @topic.messages.build(message_params)
     @message.user = current_user
     @message.save
   end
 
+  # GET /messages/:id
   def edit
-    @message = Message.find(params[:id])
     render layout: false
   end
 
+  # PATCH /messages/:id
   def update
-    @message = Message.find(params[:id])
     @message.update_attributes(message_params)
   end
 
+  # DELETE /messages/:id
   def destroy
-    @message = Message.find(params[:id])
     @result = @message.destroy
   end
 
@@ -33,6 +37,14 @@ class MessagesController < ApplicationController
 
     def set_topic
       @topic = Topic.find(params[:topic_id])
+    end
+
+    def set_messages
+      @messages = @topic.messages.order('created_at ASC')
+    end
+
+    def build_message
+      @message = @topic.messages.build(message_params)
     end
 
     def message_params

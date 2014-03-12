@@ -9,6 +9,7 @@ class Ability
     if user.persisted?
       can :manage, User, id: user.id
       can :read, Topic, user_id: user.id
+      can :create, [Topic, Message]
       can :manage, [Topic, Message] do |record|
         record.user_id == user.id && 3.days.since(record.created_at) > Time.now
       end
