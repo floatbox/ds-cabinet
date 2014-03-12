@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.effect.all
 //= require jquery-fileupload/basic
 //= require ./messages
 //= require ./modal_window
