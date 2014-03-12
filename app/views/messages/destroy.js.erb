@@ -1,0 +1,5 @@
+<% if @result %>
+  $('#message-id-<%= @message.id %>').hide();
+<% else %>
+  alert('Не удалось удалить сообщение');
+<% end %>

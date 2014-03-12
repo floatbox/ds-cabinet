@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_topic
+  before_action :set_topic, only: :create
 
   before_action :authorize
   authorize_resource
@@ -13,6 +13,21 @@ class MessagesController < ApplicationController
     else
       redirect_to redirect_url, notice: 'Произошла ошибка'
     end
+  end
+
+  def edit
+    @message = Message.find(params[:id])
+    render layout: false
+  end
+
+  def update
+    @message = Message.find(params[:id])
+    @message.update_attributes(message_params)
+  end
+
+  def destroy
+    @message = Message.find(params[:id])
+    @result = @message.destroy
   end
 
   private

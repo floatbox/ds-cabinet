@@ -1,0 +1,6 @@
+<% if @message.errors.any? %>
+  $('form#edit_message_<%= @message.id %> .alert').hide().fadeIn();
+<% else %>
+  $('#message-id-<%= @message.id %>').replaceWith("<%=j render partial: 'messages/message', object: @message %>");
+  $('#modal-window').modal('hide')
+<% end %>

@@ -11,8 +11,10 @@ DsCabinet::Application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resources :users, only: [:edit, :update]
 
+  resources :messages, only: [:edit, :update, :destroy]
+
   resources :topics do
-    resources :messages
+    resources :messages, only: :create
   end
 
   resources :attachments
@@ -24,7 +26,7 @@ DsCabinet::Application.routes.draw do
       resources :topics
     end
     resources :topics do
-      resources :messages
+      resources :messages, only: :create
     end
   end
 
