@@ -17,9 +17,11 @@ DsCabinet::Application.routes.draw do
     resources :messages, only: [:index, :create]
   end
 
-  resources :attachments
+  resources :notifications, only: [:index, :show] do
+    get :unread, on: :collection
+  end
 
-  resources :notifications, only: :show
+  resources :attachments
 
   namespace :concierge do
     resources :users do
@@ -30,6 +32,8 @@ DsCabinet::Application.routes.draw do
     end
   end
 
+
+  # API for Node.js application
   post 'users/token' => 'users#token'
   post 'users/token_light' => 'users#token_light'
 

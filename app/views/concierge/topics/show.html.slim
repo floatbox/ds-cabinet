@@ -1,4 +1,2 @@
 = render partial: 'concierge/topics/topic', object: @topic
-javascript:
-  function update() { $.get("#{topic_messages_url(@topic, format: 'js')}") }
-  setInterval(update, 30000)
+= render 'update_topic'

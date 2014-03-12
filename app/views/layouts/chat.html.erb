@@ -38,23 +38,11 @@
       <i class="icon-reorder icon-xlarge text-default"></i>
       </button>
       <ul class="nav navbar-nav hidden-xs">
-        <li>
-          <div class="m-t m-b-small" id="panel-notifications">
-            <% unless current_user.notifications.unread.empty? %>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment-alt icon-xlarge text-default"></i><b class="badge badge-notes bg-danger count-n"><%= current_user.notifications.unread.count %></b></a>
-              <section class="dropdown-menu m-l-small m-t-mini">
-                <section class="panel panel-large arrow arrow-top">
-                  <header class="panel-heading bg-white"><span class="h5"><strong>У вас <span class="count-n"><%= current_user.notifications.unread.count %></span> <%= Russian.p(current_user.notifications.unread.count, 'уведомление', 'уведомления', 'уведомлений') %></strong></span></header>
-                  <%= render partial: 'notifications/notification', collection: current_user.notifications.unread %>
-                  <footer class="panel-footer text-small">
-                    <a href="#" class="pull-right"><i class="icon-cog"></i></a>
-                    <a href="#">Полный список уведомлений</a>
-                  </footer>
-                </section>
-              </section>
-            <% end %>
-          </div>
-        </li>
+        <% unless current_user.notifications.unread.empty? %>
+          <li>
+            <%= render partial: 'notifications/panel', object: current_user.notifications.unread.page(0).per(5), as: :notifications %>
+          </li>
+        <% end %>
         <% if current_user.concierge? %>
           <%= render partial: 'concierge_navigation' %>
         <% end %>
@@ -94,5 +82,6 @@
     <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true"></div>
     <!-- Bootstrap -->
     <script src="/js/bootstrap.js"></script>
+    <%= render 'update_notifications' %>
   </body>
 </html>

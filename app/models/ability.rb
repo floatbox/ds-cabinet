@@ -12,6 +12,7 @@ class Ability
       can :manage, [Topic, Message] do |record|
         record.user_id == user.id && 3.days.since(record.created_at) > Time.now
       end
+      can :manage, Notification, user_id: user.id
     end
 
     if user.concierge?
@@ -20,7 +21,6 @@ class Ability
       can :attach_concierge, User, concierge_id: [nil, user.id]
       can :manage, Topic
       can :read, Message
-      can :manage, Notification, user_id: user.id
     end
     #
     # The first argument to `can` is the action you are giving the user 
