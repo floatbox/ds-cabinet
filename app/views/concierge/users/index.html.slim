@@ -3,6 +3,7 @@ table.table
   tr
     th ФИО
     th ОГРН
+    th Телефон
     th Дата регистрации
     th Консьерж
     th Топики
@@ -12,6 +13,7 @@ table.table
     tr
       td= user.siebel.full_name
       td= user.siebel_company.try(:ogrn)
+      td= user.siebel.phone_work
       td=l user.sns.created_at.to_date, format: :long
       td= user.concierge.siebel.full_name if user.concierge
       td= user.topics.count
