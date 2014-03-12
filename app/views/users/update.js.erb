@@ -1,0 +1,5 @@
+<% if @result %>
+  window.location.reload();
+<% else %>
+  $('form#edit_user_<%= @user.id %> .alert').hide().fadeIn();
+<% end %>

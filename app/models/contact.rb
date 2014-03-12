@@ -9,11 +9,13 @@ class Contact < ActiveRecord::Base
   siebel_attr :integration_id
   siebel_attr :last_name
   siebel_attr :first_name, column: 'fst_name'
+  siebel_attr :middle_name, column: 'mid_name'
+  siebel_attr :email, soap: 'EmailAddress', column: 'email_addr'
   siebel_attr :phone_work, soap: 'SBTWorkPhone', column: 'x_sbt_work_ph_num'
 
   after_save :reset_cache
 
-  SELECT_FIELDS = %w(ROW_ID INTEGRATION_ID X_SBT_WORK_PH_NUM FST_NAME LAST_NAME).map{|f| "SIEBEL.S_CONTACT.#{f}"}
+  SELECT_FIELDS = %w(ROW_ID INTEGRATION_ID X_SBT_WORK_PH_NUM FST_NAME LAST_NAME MID_NAME EMAIL_ADDR).map{|f| "SIEBEL.S_CONTACT.#{f}"}
   default_scope ->{ select(SELECT_FIELDS).where("EMP_FLG = 'N'") }
  
   def id

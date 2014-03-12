@@ -6,16 +6,13 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    render layout: false
   end
 
   def update
     @user = current_user
     @user.assign_attributes(user_params)
-    if @user.siebel.save
-      redirect_to root_url
-    else
-      render 'edit', alert: 'Не удалось сохранить профиль'
-    end
+    @result = @user.siebel.save
   end
 
   # POST /users/token
@@ -59,7 +56,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name)
+      params.require(:user).permit(:first_name, :last_name, :middle_name)
     end
 
 end
