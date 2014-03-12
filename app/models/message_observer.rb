@@ -1,10 +1,10 @@
-class TopicObserver < ActiveRecord::Observer
+class MessageObserver < ActiveRecord::Observer
   def after_create(record)
     if record.user.concierge
       Notification.create(
         user: record.user.concierge,
         object: record,
-        name: 'topic_created'
+        name: 'message_created'
       )
     end
   end
