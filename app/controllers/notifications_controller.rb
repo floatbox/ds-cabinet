@@ -31,7 +31,7 @@ class NotificationsController < ApplicationController
       when 'user_created' then concierge_user_topics_url(notification.object)
       when 'user_attached' then concierge_user_topics_url(notification.object)
       when 'topic_created' then concierge_topic_url(notification.object)
-      when 'message_created' then concierge_topic_url(notification.object.topic)
+      when 'message_created' then current_user.concierge? ? concierge_topic_url(notification.object.topic) : topic_url(notification.object.topic)
       else root_url
       end
     end

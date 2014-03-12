@@ -38,11 +38,9 @@
       <i class="icon-reorder icon-xlarge text-default"></i>
       </button>
       <ul class="nav navbar-nav hidden-xs">
-        <% unless current_user.notifications.unread.empty? %>
-          <li>
-            <%= render partial: 'notifications/panel', object: current_user.notifications.unread.page(0).per(5), as: :notifications %>
-          </li>
-        <% end %>
+        <li>
+          <%= render partial: 'notifications/panel', object: current_user.notifications.unread.page(0).per(5), as: :notifications %>
+        </li>
         <% if current_user.concierge? %>
           <%= render partial: 'concierge_navigation' %>
         <% end %>
