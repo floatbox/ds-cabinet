@@ -5,10 +5,17 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     user ||= User.new # guest user (not logged in)
+
+    if user.persisted?
+      can :manage, User, id: user.id
+      can :read, Topic, user_id: user.id
+      can :manage, [Topic, Message] do |record|
+        record.user_id == user.id && 3.days.since(record.created_at) > Time.now
+      end
+    end
+
     if user.concierge?
       can :manage, :all
-    else user.persisted?
-      can :manage, [Topic, Message], user_id: user.id
     end
     #
     # The first argument to `can` is the action you are giving the user 

@@ -1,5 +1,5 @@
 <% if @topic.errors.any? %>
   $('form#edit_topic_<%= @topic.id %> .alert').hide().fadeIn();
 <% else %>
-  window.location.replace('<%= topic_url(@topic) %>')
+  window.location.replace('<%= concierge_topic_url(@topic) %>')
 <% end %>
