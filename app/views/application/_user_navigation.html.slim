@@ -1,3 +1,4 @@
-= link_to new_topic_path, class: 'btn btn-sm btn-info' do
-  i.icon-plus
-  | НОВЫЙ ВОПРОС
+.m-t-small
+  = link_to new_topic_path, class: 'show-modal-window btn btn-sm btn-info', data: { target: '#modal-window', toggle: 'modal' } do
+    i.icon-plus  
+    | НОВЫЙ ВОПРОС

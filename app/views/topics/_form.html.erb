@@ -1,0 +1,21 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title">Задайте вопрос службе консьержей. Это может быть вопрос про ведение бухгалтерии, юридические аспекты деятельности или предпринимательство в целом.</h4>
+    </div>
+    <%= simple_form_for @topic, remote: true do |f| %>
+    <div class="modal-body">
+      <div class="alert alert-danger" style="display:none;">
+        <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+        <i class="icon-ban-circle icon-large"></i><strong>Ошибка!</strong> Введите текст и попробуйте еще раз.
+      </div>
+      <%= f.input_field :text, placeholder: 'Постарайтесь сформулировать вопрос кратко и емко', rows: 5, class: 'form-control', 'data-trigger' => 'keyup', 'data-rangelength' => "[20,200]" %>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
+      <%= f.button :submit, 'Отправить', class: 'btn btn-primary' %>
+    </div>
+    <% end %>
+  </div>
+</div>

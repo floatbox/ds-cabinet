@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require jquery-fileupload/basic
 //= require ./messages
+//= require ./modal_window

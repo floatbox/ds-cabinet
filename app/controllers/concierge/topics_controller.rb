@@ -18,28 +18,21 @@ class Concierge::TopicsController < Concierge::ApplicationController
 
   def new
     @topic = @user.topics.build
+    render layout: false
   end
 
   def create
-    @topic = @user.topics.build(topic_params)
-    if @topic.save
-      redirect_to concierge_topic_url(@topic)
-    else
-      render 'new', alert: 'Произошла ошибка'
-    end
+    @topic = @user.topics.create(topic_params)
   end
 
   def edit
     @topic = Topic.find(params[:id])
+    render layout: false
   end
 
   def update
     @topic = Topic.find(params[:id])
-    if @topic.update_attributes(topic_params)
-      redirect_to concierge_topic_url(@topic)
-    else
-      render 'edit', alert: 'Произошла ошибка'
-    end
+    @topic.update_attributes(topic_params)
   end
 
   private

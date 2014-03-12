@@ -8,7 +8,7 @@
         <% end %>
         <div class="h4">
           <%= topic.text %>
-          <%= link_to edit_topic_path(topic) do %>
+          <%= link_to edit_topic_path(topic), class: 'show-modal-window', data: { target: '#modal-window', toggle: 'modal' } do %>
             <i class="icon-cog text-primary"></i>
           <% end %>
         </div>
