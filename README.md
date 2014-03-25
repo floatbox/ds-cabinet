@@ -52,3 +52,25 @@ Find user by token and respond with JSON that contains only name and phone. Work
 OGRN example
 
     1127746082903
+
+## Подготовка к работе с Oracle
+
+Подключаемся к Oracle с помощью "ssh port binding" через "club.sredda.ru"
+
+Прописываем хост в `~/.ssh/config`:
+
+    Host sredda.ru
+      HostName club.sredda.ru
+      User u.sername
+
+Открываем "ssh тунель":
+
+    локальный порт : ip оракла : удаленный порт : сервер
+    ssh -L 1521:178.159.249.26:1521 sredda.ru
+
+## Авторизация
+
+Для работы авторизации требуется чтобы сайт находился на поддомене sredda.ru.
+Для этого достаточно добавить локальный домен в `/ets/hosts`, например:
+
+    127.0.0.1 local.sredda.ru
