@@ -89,11 +89,13 @@ class Registration < ActiveRecord::Base
     # Callback on transition from awaiting_password to done state.
     def send_to_ds
       uas_user = create_uas_user
-      contact = Contact.find_by_integration_id(uas_user['UserId'])
+      contact = Contact.find_by_integration_id(uas_user.user_id)
       person = create_sns_user(contact)
       account = find_siebel_company(ogrn) || create_siebel_company
       company = find_sns_company(person, account) || create_sns_company(person, account)
       User.create(siebel_id: contact.id, integration_id: contact.integration_id)
+      uas_user.is_disabled = false
+      uas_user.save
     rescue => e
       logger.error "Can not send data to DS. #{e.message}"
       halt
@@ -108,6 +110,7 @@ class Registration < ActiveRecord::Base
       user.first_name = 'Не определено'
       user.last_name = 'Не определено'
       user.phone = phone
+      user.is_disabled = true
       user.create
     end
 
