@@ -7,8 +7,10 @@
       <header class="panel-heading bg-white"><span class="h5"><strong>У вас <span class="count-n"><%= notifications.total_count %></span> <%= Russian.p(notifications.total_count, 'уведомление', 'уведомления', 'уведомлений') %></strong></span></header>
       <%= render partial: 'notifications/notification', collection: notifications %>
       <footer class="panel-footer text-small">
-        <a href="#" class="pull-right"><i class="icon-cog"></i></a>
-        <a href="#">Полный список уведомлений</a>
+        <%= link_to notifications_path, class: 'pull-right' do %>
+          <i class="icon-cog"></i>
+        <% end %>
+        <%= link_to 'Полный список уведомлений', notifications_path %>
       </footer>
     </section>
   </section>

@@ -1,0 +1,20 @@
+<h1>Уведомления</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Уведомление</th>
+    <th>Дата</th>
+  </tr>
+  <% @notifications.each do |notification| %>
+    <tr>
+      <td>
+        <%= link_to notification do %>
+          <%= render partial: "notifications/#{notification.name}", object: notification, as: :notification %>
+        <% end %>
+      </td>
+      <td><%=l notification.created_at, format: :long %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= paginate @notifications %>

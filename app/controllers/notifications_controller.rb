@@ -1,13 +1,15 @@
 # This controller manages notifications.
 # All its actions work with the notifications of current user only.
 class NotificationsController < ApplicationController
-  before_action :set_user, only: :index
+  layout 'chat'
+
+  before_action :authenticate
   load_and_authorize_resource
 
   # GET /notifications
   # Returns paginated list of all notifications
   def index
-    @notifications = @notifications.page(params[:page]).per(5)
+    @notifications = current_user.notifications.unread.page(params[:page]).per(20)
   end
 
   # GET /notifications/unread
