@@ -15,6 +15,8 @@ class Topic < ActiveRecord::Base
 
   validates :text, presence: true, length: { maximum: 100 }
 
+  default_scope { order('updated_at DESC') }
+
   private
 
     # By default author_id is the same as user_id

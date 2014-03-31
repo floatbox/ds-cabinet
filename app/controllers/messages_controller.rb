@@ -40,7 +40,7 @@ class MessagesController < ApplicationController
     end
 
     def set_messages
-      @messages = @topic.messages.order('created_at ASC')
+      @messages = @topic.messages
     end
 
     def build_message

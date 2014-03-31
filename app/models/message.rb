@@ -7,4 +7,6 @@ class Message < ActiveRecord::Base
   has_and_belongs_to_many :attachments
 
   validates_presence_of :text
+
+  default_scope { order('updated_at ASC') }
 end

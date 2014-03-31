@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
   authorize_resource
 
   def index
-    @topics = current_user.topics.order('created_at DESC').page(params[:page]).per(10)
+    @topics = current_user.topics.page(params[:page]).per(10)
     @topics = @topics.tagged_with(params[:tag]) if params[:tag]
   end
 

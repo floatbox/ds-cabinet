@@ -9,7 +9,7 @@ class Concierge::TopicsController < Concierge::ApplicationController
   def index
     @topics = @user ? @user.topics : Topic
     @topics = @topics.tagged_with(params[:tag]) if params[:tag]
-    @topics = @topics.order('created_at DESC').page(params[:page]).per(10)
+    @topics = @topics.page(params[:page]).per(10)
   end
 
   def show
