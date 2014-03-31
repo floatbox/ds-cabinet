@@ -30,6 +30,7 @@ DsCabinet::Application.routes.draw do
     resources :topics do
       resources :messages, only: [:index, :create]
     end
+    resources :tags, only: [:index, :destroy]
   end
 
 

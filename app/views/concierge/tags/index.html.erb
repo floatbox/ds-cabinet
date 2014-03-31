@@ -1,0 +1,16 @@
+<h1>Справочник тегов</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Тег</th>
+    <th>Действия</th>
+  </tr>
+  <% @tags.each do |tag| %>
+    <tr>
+      <td><%= link_to tag.name, concierge_topics_path(tag: tag.name) %></td>
+      <td>
+        <%= link_to 'Удалить', concierge_tag_path(tag), method: :delete, confirm: 'Точно удалить?', class: 'btn btn-danger' %>
+      </td>
+    </tr>
+  <% end %>
+</table>
