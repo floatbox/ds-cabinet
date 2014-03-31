@@ -15,7 +15,7 @@
           <% end %>
         </div>
         <div class="line m-l m-r"></div>
-        <h4><strong><%= topic.user.siebel.first_name %> <%= topic.user.siebel.last_name %></strong></h4>
+        <h4><strong><%= topic.author.siebel.full_name %></strong></h4>
         <small>
           <%= raw topic.tag_list.map { |t| link_to t, concierge_topics_path(tag: t) }.join(', ') %>
         </small>

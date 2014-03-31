@@ -6,7 +6,12 @@ class User < ActiveRecord::Base
   belongs_to :concierge, class_name: 'User'
   has_many :users, foreign_key: :concierge_id
 
+  # @return [ActiveRecord::Relation<Topic>] topics that are related to this user
   has_many :topics
+
+  # @return [ActiveRecord::Relation<Topic>] topics that were created by this user
+  has_many :authored_topics, class_name: 'Topic', foreign_key: :author_id
+
   has_many :messages
   has_many :notifications
 
@@ -52,4 +57,5 @@ class User < ActiveRecord::Base
     def set_siebel_id
       self.siebel_id = siebel.id
     end
+
 end

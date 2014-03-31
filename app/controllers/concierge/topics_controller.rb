@@ -18,11 +18,14 @@ class Concierge::TopicsController < Concierge::ApplicationController
 
   def new
     @topic = @user.topics.build
+    @topic.author_id = current_user.id
     render layout: false
   end
 
   def create
-    @topic = @user.topics.create(topic_params)
+    @topic = @user.topics.build(topic_params)
+    @topic.author_id = current_user.id
+    @topic.save
   end
 
   def edit
