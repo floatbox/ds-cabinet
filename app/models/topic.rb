@@ -15,7 +15,7 @@ class Topic < ActiveRecord::Base
 
   validates :text, presence: true, length: { maximum: 100 }
 
-  default_scope { order('updated_at DESC') }
+  default_scope { order('created_at DESC') }
 
   private
 

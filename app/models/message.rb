@@ -8,5 +8,5 @@ class Message < ActiveRecord::Base
 
   validates_presence_of :text
 
-  default_scope { order('updated_at ASC') }
+  default_scope { order('created_at ASC') }
 end
