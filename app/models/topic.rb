@@ -6,5 +6,6 @@ class Topic < ActiveRecord::Base
 
   acts_as_taggable
 
-  validates_presence_of :text
+  validates :text, presence: true, length: { maximum: 100 }
+
 end
