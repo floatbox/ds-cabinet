@@ -13,7 +13,7 @@ class Topic < ActiveRecord::Base
 
   before_validation :set_author_id, unless: :author_id
 
-  validates :text, presence: true, length: { maximum: 100 }
+  validates :text, presence: true, length: { maximum: 1000 }
 
   default_scope { order('created_at DESC') }
 
