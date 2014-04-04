@@ -38,6 +38,12 @@ DsCabinet::Application.routes.draw do
   post 'users/token' => 'users#token'
   post 'users/token_light' => 'users#token_light'
 
+  namespace :api do
+    namespace :v1 do
+      resources :topics
+    end
+  end
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

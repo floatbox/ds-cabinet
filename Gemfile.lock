@@ -99,6 +99,11 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
     guid (0.1.1)
     gyoku (1.0.0)
       builder (>= 2.1.2)
@@ -264,6 +269,7 @@ DEPENDENCIES
   ds-siebel!
   ds-sns!
   ds-spark!
+  factory_girl_rails
   jbuilder (~> 1.2)
   jquery-fileupload-rails
   jquery-rails

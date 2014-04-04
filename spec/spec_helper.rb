@@ -39,4 +39,20 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.include Requests::JsonHelpers, type: :request
 end
+
+# Siebel users for testing purposes
+USERS = {
+  user_1: {
+    login: '+71111111114',
+    siebel_id: '1-1LOG0C',
+    integration_id: 'UAS100397'
+  },
+  user_2: {
+    login: '+71111111120',
+    siebel_id: '1-1ORN0Y',
+    integration_id: 'UAS100452'
+  }
+}
