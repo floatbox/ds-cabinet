@@ -1,6 +1,8 @@
 class Topic < ActiveRecord::Base
   include Notificationable
 
+  WIDGET_TYPES = %w(purchase)
+
   # @return [User] user this topic is related to
   belongs_to :user
 
@@ -12,8 +14,10 @@ class Topic < ActiveRecord::Base
   acts_as_taggable
 
   before_validation :set_author_id, unless: :author_id
+  before_validation :set_text, if: :widget_type
 
   validates :text, presence: true, length: { maximum: 1000 }
+  validates :widget_type, inclusion: { in: WIDGET_TYPES }, if: :widget_type
 
   default_scope { order('created_at DESC') }
 
@@ -23,6 +27,11 @@ class Topic < ActiveRecord::Base
     # author_id should be overwritten in controller if it is not true
     def set_author_id
       self.author_id = user_id
+    end
+
+    # Set fake text if it is topic with widget
+    def set_text
+      self.text = widget_type
     end
 
 end

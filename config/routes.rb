@@ -40,7 +40,10 @@ DsCabinet::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :topics
+      resources :topics, only: :index
+      resources :users do
+        resources :topics, only: :create
+      end
     end
   end
 

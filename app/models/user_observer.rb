@@ -1,7 +1,7 @@
 class UserObserver < ActiveRecord::Observer
   
   def after_create(user)
-    User.concierges.all.each do |concierge|
+    User.concierges.each do |concierge|
       Notification.create(
         user: concierge,
         object: user,
