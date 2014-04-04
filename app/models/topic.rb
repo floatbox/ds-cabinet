@@ -3,6 +3,8 @@ class Topic < ActiveRecord::Base
 
   WIDGET_TYPES = %w(purchase)
 
+  serialize :widget_options, JSON
+
   # @return [User] user this topic is related to
   belongs_to :user
 

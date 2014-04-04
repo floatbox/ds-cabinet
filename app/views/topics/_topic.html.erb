@@ -3,27 +3,7 @@
   <div class="col-lg-8">
     <section class="panel text-center">
       <div class="panel-body">
-        <%= link_to topic_path(topic), class: 'btn btn-circle btn-twitter btn-lg' do %>
-          <i class="icon-user"></i>
-        <% end %>
-        <div class="h4">
-          <%= topic.text %>
-          <% if can? :edit, topic %>
-            <%= link_to edit_topic_path(topic), class: 'show-modal-window', data: { target: '#modal-window', toggle: 'modal' } do %>
-              <i class="icon-cog text-primary"></i>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="line m-l m-r"></div>
-        <h4><strong><%= topic.author.siebel.full_name %></strong></h4>
-        <h5>
-          <% unless topic.created_at == topic.updated_at %>
-            <label class="label bg-info m-l-mini">Отредактировано <%=l topic.updated_at, format: :long %></label>
-          <% end %>
-        </h5>
-        <small>
-          <%= raw topic.tag_list.map { |t| link_to t, topics_path(tag: t) }.join(', ') %>
-        </small>
+        <%= render partial: "topics/topic_#{topic.widget_type || 'default'}", object: topic, as: :topic %>
       </div>
     </section>
     <!-- .comment-list -->
