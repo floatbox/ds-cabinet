@@ -8,7 +8,7 @@ module API
       # GET /api/v1/topics
       def index
         @topics = Topic.all
-        render json: @topics, status: 200
+        render json: @topics, status: :ok
       end
 
       # POST /api/v1/users/:user_id/topics
@@ -16,9 +16,9 @@ module API
         @topic = @user.topics.build(topic_params)
         @topic.author = @author if @author
         if @topic.save
-          render json: @topic, status: 200
+          render json: @topic, status: :created, location: @topic
         else
-          render json: @topic.errors, status: 422
+          render json: @topic.errors, status: :unprocessable_entity
         end
       end
 

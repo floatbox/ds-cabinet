@@ -19,7 +19,7 @@ describe 'Topics API' do
 
     it 'creates new post' do
       post "/api/v1/users/#{user_1.id}/topics", { topic: { widget_type: 'purchase', widget_options: '{}' } }.to_json, headers
-      response.should be_success
+      response.status.should == 201
       json[:user_id].should == user_1.id
       json[:author_id].should == user_1.id
       json[:widget_type].should == 'purchase'
@@ -29,7 +29,7 @@ describe 'Topics API' do
 
     it 'creates new post with specified author' do
       post "/api/v1/users/#{user_1.id}/topics", { topic: { author_id: user_2.id, widget_type: 'purchase', widget_options: '{}' } }.to_json, headers
-      response.should be_success
+      response.status.should == 201
       json[:user_id].should == user_1.id
       json[:author_id].should == user_2.id
       json[:widget_type].should == 'purchase'

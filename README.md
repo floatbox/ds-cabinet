@@ -32,7 +32,7 @@ User should be specified as :user_id parameter in URL.
 
 #### Response
 
-* `200` Everything ok. Serialized topic will be returned.
+* `201` Topic was successfully created. Serialized topic will be returned.
 * `422` Invalid arguments. Array with errors will be returned.
 * `500` Something went terribly wrong :(
 
