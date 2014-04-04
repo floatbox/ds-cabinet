@@ -1,6 +1,42 @@
 # Client Cabinet
 
-## API
+## Topics API
+
+### Create topic
+
+Method: POST
+
+URL: /api/v1/users/:user_id/topics
+
+#### Summary
+
+Creates a topic for the specified user. Author could be the same as the user (if no author_id is passed) or someone else with specified id.
+
+#### Params
+
+This enpoint accepts JSON with the following structure:
+
+    { "topic": {
+        "author_id":"1",
+        "widget_type":"purchase",
+        "widget_options": {
+          "domain":"http://...",
+          "anything_else":""
+        }
+      }
+    }
+
+Parameter topic[author_id] is optional. It is used only when you want to specify the author of the topic.
+
+User should be specified as :user_id parameter in URL.
+
+#### Response
+
+* `200` Everything ok. Serialized topic will be returned.
+* `422` Invalid arguments. Array with errors will be returned.
+* `500` Something went terribly wrong :(
+
+## Users API
 
 ### Get full user info
 
