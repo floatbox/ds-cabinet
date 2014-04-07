@@ -3,7 +3,6 @@ module API
 
     class TopicsController < APIController
       before_action :set_user
-      before_action :set_author, only: :create
 
       # GET /api/v1/topics
       def index
@@ -14,7 +13,7 @@ module API
       # POST /api/v1/users/:user_id/topics
       def create
         @topic = @user.topics.build(topic_params)
-        @topic.author = @author if @author
+        @topic.author = @current_user
         if @topic.save
           render json: @topic, status: :created, location: @topic
         else
@@ -26,11 +25,6 @@ module API
 
         def set_user
           @user = User.find(params[:user_id]) if params[:user_id]
-        end
-
-        def set_author
-          author_id = params[:topic].try(:fetch, :author_id, nil)
-          @author = User.find(author_id) if author_id
         end
 
         def topic_params

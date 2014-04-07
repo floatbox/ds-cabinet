@@ -51,7 +51,7 @@ USERS = {
     integration_id: 'UAS100397'
   },
   user_2: {
-    login: '+71111111120',
+    login: '+71111111120', # concierge
     siebel_id: '1-1ORN0Y',
     integration_id: 'UAS100452'
   }

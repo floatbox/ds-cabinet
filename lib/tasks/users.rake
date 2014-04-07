@@ -7,4 +7,11 @@ namespace :users do
     end
   end
 
+  desc 'Resets API tokens for all the users'
+  task reset_api_token: :environment do
+    User.all.each do |user|
+      user.reset_api_token
+    end
+  end
+
 end

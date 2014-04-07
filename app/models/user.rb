@@ -18,11 +18,17 @@ class User < ActiveRecord::Base
   scope :common, -> { where(concierge: false) }
   scope :concierges, -> { where(concierge: true) }
 
+  after_create :reset_api_token, unless: :api_token
   before_validation :set_siebel_id, unless: :siebel_id
 
+  # Finds a user by UAS token
+  # @note This method has nothing common with API tokens.
+  # @param token [String] UAS token
+  # @return [User] user with passed UAS token if exists
+  # @return [nil] there is no user with such a token
   def self.find_by_token(token)
     uas = Uas::User.find_by_token(token)
-    user = User.find_or_create_by_integration_id(uas.user_id)
+    user = User.find_or_create_by(integration_id: uas.user_id)
     user.uas = uas
     user
   rescue Uas::Error
@@ -52,7 +58,20 @@ class User < ActiveRecord::Base
     @siebel_company ||= Account.find(sns_company.id) if sns_company
   end
 
+  # Sets new API token
+  def reset_api_token
+    update_column(:api_token, generate_api_token)
+  end
+
   private
+
+    # @return [String] unique API token
+    def generate_api_token
+      loop do
+        token = SecureRandom.hex(32)
+        break token unless self.class.exists?(api_token: token)
+      end
+    end
 
     def set_siebel_id
       self.siebel_id = siebel.id

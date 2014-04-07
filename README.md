@@ -2,6 +2,14 @@
 
 ## Topics API
 
+### Authentication
+
+The API uses token based authentication. Only concierges could be authenticated.
+
+Example of request header:
+
+    Authorization: Token token=16d7d6089b8fe0c5e19bfe10bb156832
+
 ### Create topic
 
 Method: POST
@@ -10,14 +18,13 @@ URL: /api/v1/users/:user_id/topics
 
 #### Summary
 
-Creates a topic for the specified user. Author could be the same as the user (if no author_id is passed) or someone else with specified id.
+Creates a topic by current user.
 
 #### Params
 
 This enpoint accepts JSON with the following structure:
 
     { "topic": {
-        "author_id":"1",
         "widget_type":"purchase",
         "widget_options": {
           "domain":"http://...",
@@ -26,13 +33,12 @@ This enpoint accepts JSON with the following structure:
       }
     }
 
-Parameter topic[author_id] is optional. It is used only when you want to specify the author of the topic.
-
 User should be specified as :user_id parameter in URL.
 
 #### Response
 
 * `201` Topic was successfully created. Serialized topic will be returned.
+* `401` Bad credentials. There is no user with passed token, or this user is not concierge.
 * `422` Invalid arguments. Array with errors will be returned.
 * `500` Something went terribly wrong :(
 
