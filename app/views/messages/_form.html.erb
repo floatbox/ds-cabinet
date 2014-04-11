@@ -12,7 +12,7 @@
       <div class="attachments"></div>
     <% end %>
     <%= form_for Attachment.new, html: { class: 'fileupload', multipart: true } do |f| %>
-      <div class="dropfile visible-lg m-t block">
+      <div class="dropfile m-t block">
         <%= f.file_field :attachment, style: 'display:none' %>
         <small><i class="icon-cloud-upload"></i> Перетащите сюда файлы</small>
       </div>
