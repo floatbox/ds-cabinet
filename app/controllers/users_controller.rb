@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   layout 'chat'
   protect_from_forgery with: :null_session
 
-  before_action :authenticate, only: [:edit, :update]
+  before_action :authenticate, only: [:update]
+  before_action :authenticate_with_response, only: [:edit]
 
   def edit
     @user = current_user

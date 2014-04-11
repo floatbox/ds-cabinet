@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate, only: [:index, :update, :destroy]
+  before_action :authenticate_with_response, only: [:edit]
 
   before_action :set_topic, only: [:index, :create]
 

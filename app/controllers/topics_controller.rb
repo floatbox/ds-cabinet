@@ -1,7 +1,8 @@
 class TopicsController < ApplicationController
   layout 'chat'
 
-  before_action :authenticate
+  before_action :authenticate, only: [:index, :show, :create, :update]
+  before_action :authenticate_with_response, only: [:new, :edit]
   authorize_resource
 
   def index

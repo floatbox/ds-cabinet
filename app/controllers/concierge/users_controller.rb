@@ -1,7 +1,8 @@
 class Concierge::UsersController < Concierge::ApplicationController
   layout 'chat'
 
-  before_action :authenticate
+  before_action :authenticate, only: [:index, :update]
+  before_action :authenticate_with_response, only: [:edit]
   load_and_authorize_resource
 
   def index

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, alert: exception.message
   end
 
-private
+protected
 
   # @return [Uas::User] currently logged in user
   def current_user
@@ -16,9 +16,15 @@ private
   end
   helper_method :current_user
 
-  # Add this method to before_action to authenticate access.
-  # @example before_action :authenticate
+  # Add this method to before_action to authenticate access with redirect.
+  # @example before_action :authenticate, only: [:show]
   def authenticate
     redirect_to root_url if current_user.nil?
+  end
+
+  # Add this method to before_action to authenticate access with 401 response code
+  # @example before_action :authenticate, only: [:new]
+  def authenticate_with_response
+    render nothing: true, status: 401 if current_user.nil?
   end
 end
