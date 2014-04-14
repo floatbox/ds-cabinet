@@ -83,10 +83,25 @@ module Uas
     end
 
     # Changes user's password
+    # @param old_password [String] old password
+    # @param new_password [String] new password
     # @return [Boolean] whether password was successfully changed
     def change_password(old_password, new_password)
       url = "user/#{user_sys_name}/#{user_id}/password/?"
       request = { oldPassword: old_password, newPassword: new_password }
+      response = Uas::Query.execute(url, request: request, method: :put)
+      case response[:code]
+      when 200 then true
+      else false
+      end
+    end
+
+    # Changes user's password without confirmation of the old one.
+    # @param new_password [String] new password
+    # @return [Boolean] whether password was successfully changed
+    def recover_password(new_password)
+      url = "user/#{user_sys_name}/#{user_id}/recovery/?"
+      request = { newPassword: new_password }
       response = Uas::Query.execute(url, request: request, method: :put)
       case response[:code]
       when 200 then true
