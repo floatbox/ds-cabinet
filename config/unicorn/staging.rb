@@ -7,7 +7,7 @@ old_pid    = pid_file + '.oldbin'
 
 timeout 30
 worker_processes 2
-listen 8080, tcp_nopush: true
+listen 8083, tcp_nopush: true
 pid pid_file
 stderr_path err_log
 stdout_path log_file
