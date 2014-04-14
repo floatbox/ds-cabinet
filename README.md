@@ -102,8 +102,9 @@ OGRN example
 Прописываем хост в `~/.ssh/config`:
 
     Host sredda.ru
-      HostName club.sredda.ru
-      User u.sername
+      HostName ono.rrv.ru
+      Port 2223
+      User w3dev-ds-cabinet
 
 Открываем "ssh тунель":
 
