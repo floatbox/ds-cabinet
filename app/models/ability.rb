@@ -10,7 +10,10 @@ class Ability
       can :manage, User, id: user.id
       can :read, Topic, user_id: user.id
       can :create, [Topic, Message]
-      can :manage, [Topic, Message] do |record|
+      can :manage, [Topic] do |record|
+        record.author_id == user.id && 3.days.since(record.created_at) > Time.now
+      end
+      can :manage, [Message] do |record|
         record.user_id == user.id && 3.days.since(record.created_at) > Time.now
       end
       can :manage, Notification, user_id: user.id
