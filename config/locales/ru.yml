@@ -6,6 +6,11 @@ ru:
       registration:
         phone: Телефон
         ogrn: ОГРН
+      recovery:
+        phone: Телефон
+        sms_verification_code: Код подтверждения
+        password: Пароль
+        password_confirmation: Подтверждение пароля
       user:
         concierge: Консьерж
         first_name: Имя
@@ -30,6 +35,13 @@ ru:
               already_exist: уже существует
             company:
               does_not_exist: компания с таким ОГРН не существует
+            password:
+              wrong_confirmation: не совпадает с подтверждением
+        recovery:
+          invalid_sms_verification_code: Неверный код подтверждения
+          attributes:
+            phone:
+              does_not_exist: не зарегистрирован в системе
             password:
               wrong_confirmation: не совпадает с подтверждением
 

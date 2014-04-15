@@ -11,7 +11,7 @@ describe 'Topics API' do
   describe 'GET /api/v1/topics' do
     let!(:topics) { [FactoryGirl.create(:topic), FactoryGirl.create(:topic)] }
     
-    it 'renders JSON with all topics', focus: true do
+    it 'renders JSON with all topics' do
       get '/api/v1/topics', {}, authorized_headers
       response.status.should == 200
       response.body.should == topics.reverse.to_json

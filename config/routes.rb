@@ -8,6 +8,11 @@ DsCabinet::Application.routes.draw do
     post 'regenerate_sms_verification_code'
   end
 
+  resources :recoveries, only: [:new, :create] do
+    post :verify, on: :member
+    patch :set_password, on: :member
+  end
+
   resources :sessions, only: [:create, :destroy]
   resources :users, only: [:edit, :update]
 

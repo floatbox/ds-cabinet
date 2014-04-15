@@ -12,22 +12,28 @@ describe Uas::User do
   end
 
   describe '#recover_password' do
-    let(:login) { '+71111111115' }
-    let(:user) { Uas::User.new(login: login, user_sys_name: 'siebel') }
+    let(:login) { '+71111111130' }
+    let(:user_id) { 'UAS100755' }
+    let(:user) do
+      user = Uas::User.new
+      user.user_id = user_id
+      user.user_sys_name = 'siebel'
+      user
+    end
     let(:old_password) { 'qwerty123' }
     let(:new_password) { 'testtesttest' }
     after { user.change_password(new_password, old_password) }
 
     it 'changes password of the user' do
       # Old password works, a new one does not
-      Uas::User.login(login, new_password).should raise_exception Uas::InvalidCredentials
+      expect { Uas::User.login(login, new_password) }.to raise_exception Uas::InvalidCredentials
       Uas::User.login(login, old_password).should be_kind_of Uas::LoginInfo
 
       # Recover the password
       user.recover_password(new_password).should == true
 
       # New password works, the old one does not
-      Uas::User.login(login, old_password).should raise_exception Uas::InvalidCredentials
+      expect { Uas::User.login(login, old_password) }.to raise_exception Uas::InvalidCredentials
       Uas::User.login(login, new_password).should be_kind_of Uas::LoginInfo
     end
   end

@@ -4,7 +4,9 @@ section#new_session.header-14-sub.bg-midnight-blue(style='display: none;')
     .row
       .span8.offset2
         h3 Для входа введите номер телефона и пароль
-        p Вы можете <a href="#">зарегистрироваться</a> или <a href="#">восстановить пароль</a>
+        p
+          | Вы можете <a href="#">зарегистрироваться</a> или 
+          = link_to 'восстановить пароль', new_recovery_path
         .subscribe-form
           = form_tag sessions_path, remote: true do
             .input-append

@@ -35,9 +35,9 @@ module Uas
       response = Uas::Query.execute(url, request: request, method: :post)
       if response[:code] == 400
         json = JSON::parse(response[:body])
-        return false if json['__type'] == 'DataObjectNotFoundFault'
+        return true if json['__type'] == 'InvalidCredentialsFault'
       end
-      true
+      false
     end
 
     # @param token [String] authentication token

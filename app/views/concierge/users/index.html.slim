@@ -19,7 +19,7 @@ table.table
           = link_to_if can?(:approve, user), '<i class="icon-unlock"></i>'.html_safe, approve_concierge_user_path(user), method: :put
       td= user.siebel.full_name
       td= user.siebel_company.try(:ogrn)
-      td= user.siebel.phone_work
+      td= user.siebel.phone
       td=l user.sns.created_at.to_date, format: :long
       td= user.concierge.siebel.full_name if user.concierge
       td

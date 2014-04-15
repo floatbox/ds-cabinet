@@ -1,0 +1,6 @@
+<div class="alert alert-danger">
+  <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+  <% target.errors.messages.each do |attribute, messages| %>
+    <p><strong><%= t("activerecord.attributes.#{target.class.name.singularize.underscore}.#{attribute}") unless attribute == :base %></strong> <%= messages.join(', ') %></p>
+  <% end %>
+</div>

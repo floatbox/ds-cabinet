@@ -15,4 +15,5 @@
 //= require jquery.ui.effect.all
 //= require jquery.maskedinput.min
 //= require ./registrations
+//= require ./recoveries
 //= require ./sessions
