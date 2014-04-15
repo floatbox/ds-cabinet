@@ -1,5 +1,5 @@
 <% if @topic.errors.any? %>
-  $('form#edit_topic_<%= @topic.id %> .alert').hide().fadeIn();
+  $('#edit_topic_<%= @topic.id %>').closest('.modal-dialog').replaceWith('<%=j render 'form' %>');
 <% else %>
   window.location.replace('<%= topic_url(@topic) %>')
 <% end %>

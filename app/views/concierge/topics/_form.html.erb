@@ -6,10 +6,12 @@
     </div>
     <%= simple_form_for [:concierge, @topic.user, @topic], remote: true do |f| %>
     <div class="modal-body">
-      <div class="alert alert-danger" style="display:none;">
-        <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
-        <i class="icon-ban-circle icon-large"></i><strong>Ошибка!</strong> Введите текст и попробуйте еще раз.
-      </div>
+      <% if @topic.errors.any? %>
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+          <i class="icon-ban-circle icon-large"></i><strong>Ошибка!</strong> Введите текст и попробуйте еще раз.
+        </div>
+      <% end %>
       <% if @topic.new_record? || @topic.author_id == current_user.id %>
         <%= f.input_field :text, placeholder: 'Постарайтесь сформулировать вопрос кратко и емко', rows: 5, class: 'form-control', 'data-trigger' => 'keyup' %>
       <% end %>

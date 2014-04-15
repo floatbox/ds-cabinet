@@ -2,17 +2,17 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      <h4 class="modal-title">Задайте вопрос службе консьержей. Это может быть вопрос о ведении бухгалтерии, юридических аспектах деятельности или предпринимательстве в целом.</h4>
+      <h4 class="modal-title">Редактировать сообщение</h4>
     </div>
-    <%= simple_form_for @topic, remote: true do |f| %>
+    <%= simple_form_for @message, remote: true do |f| %>
     <div class="modal-body">
-      <% if @topic.errors.any? %>
+      <% if @message.errors.any? %>
         <div class="alert alert-danger">
           <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
           <i class="icon-ban-circle icon-large"></i><strong>Ошибка!</strong> Введите текст и попробуйте еще раз.
         </div>
       <% end %>
-      <%= f.input_field :text, placeholder: 'Постарайтесь сформулировать вопрос кратко и емко', rows: 5, class: 'form-control', 'data-trigger' => 'keyup', 'data-rangelength' => "[20,200]" %>
+      <%= f.input_field :text, placeholder: 'Текст сообщения', rows: 5, class: 'form-control', 'data-trigger' => 'keyup' %>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>

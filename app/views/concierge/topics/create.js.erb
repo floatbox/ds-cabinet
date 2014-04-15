@@ -1,5 +1,5 @@
 <% if @topic.new_record? %>
-  $('form#new_topic .alert').hide().fadeIn();
+  $('#new_topic').closest('.modal-dialog').replaceWith('<%=j render 'form' %>');
 <% else %>
   window.location.replace('<%= concierge_topic_url(@topic) %>')
 <% end %>
