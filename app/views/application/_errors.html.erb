@@ -1,0 +1,10 @@
+<div class="alert alert-danger">
+  <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+  <i class="icon-ban-circle icon-large"></i><strong>Ошибка!</strong>
+  <% target.errors.messages.each do |attribute, messages| %>
+    <p>
+      <strong><%= t "activerecord.attributes.#{target.class.name.singularize.underscore}.#{attribute}"%></strong> 
+      <%= messages.join(', ') %>
+    </p>
+  <% end %>
+</div>

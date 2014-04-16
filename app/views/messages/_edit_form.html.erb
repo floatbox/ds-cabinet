@@ -7,10 +7,7 @@
     <%= simple_form_for @message, remote: true do |f| %>
     <div class="modal-body">
       <% if @message.errors.any? %>
-        <div class="alert alert-danger">
-          <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
-          <i class="icon-ban-circle icon-large"></i><strong>Ошибка!</strong> Введите текст и попробуйте еще раз.
-        </div>
+        <%= render 'errors', target: @message %>
       <% end %>
       <%= f.input_field :text, placeholder: 'Текст сообщения', rows: 5, class: 'form-control', 'data-trigger' => 'keyup' %>
     </div>
