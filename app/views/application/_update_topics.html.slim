@@ -1,0 +1,12 @@
+- url = ''
+- if current_user.concierge?
+  - if @user
+    - url = concierge_user_topics_url(@user, format: 'js')
+  - else
+    - url = concierge_topics_url(format: 'js')
+- else
+  - url = topics_url(format: 'js')
+
+javascript:
+  function update() { $.get("#{url}"); }
+  setInterval(update, 30000);

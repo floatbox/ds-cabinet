@@ -6,3 +6,4 @@
   h2 По тегу #{params[:tag]}
 = render partial: 'concierge/topics/topic', collection: @topics
 = paginate @topics
+= render 'update_topics'
