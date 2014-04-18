@@ -11,6 +11,7 @@
 </div>
 <div class="line m-l m-r"></div>
 <h4><strong><%= topic.author.siebel.full_name %></strong></h4>
+<div style="text-align:center;"><%=l topic.created_at, format: :long %></div>
 <h5>
   <% unless topic.created_at == topic.updated_at %>
     <label class="label bg-info m-l-mini">Отредактировано <%=l topic.updated_at, format: :long %></label>
