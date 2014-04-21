@@ -15,7 +15,13 @@ ru:
         tag_list: Теги (через запятую)
       message:
         text: Текст
+      attachment:
+        attachment: Файл
     errors:
+      messages:
+        wrong_size: "некорректный размер (должен быть %{file_size})"
+        size_too_small: "слишком маленький (должен быть не меньше чем %{file_size})"
+        size_too_big: "слишком большой (должен быть не больше чем %{file_size})"
       models:
         registration:
           attributes:

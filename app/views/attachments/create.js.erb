@@ -1,6 +1,5 @@
-console.log('File uploaded')
 <% if @attachment.new_record? %>
-  alert('Не удалось загрузить файл.');
+  alert('Не удалось загрузить файл. <%= @attachment.errors_as_text %>' );
 <% else %>
   var attachments = $('.uploading').closest('.comment-item').find('.attachments');
   var attachment_ids = attachments.closest('form').find('#message_attachment_ids');
