@@ -6,9 +6,14 @@
         <%= render partial: "concierge/topics/topic_#{topic.widget_type || 'default'}", object: topic, as: :topic %>
       </div>
     </section>
+    <section style="text-align:center;">
+      <% if defined?(topic_counter) && topic.messages.any? %>
+        <a href="#" class="expand_messages">Показать <%= topic.messages.size %> <%= Russian.p(topic.messages.size, 'комментарий', 'комментария', 'комментариев') %></a>
+      <% end %>
+    </section>
     <!-- .comment-list -->
     <section class="comment-list block">
-      <div class='messages'>
+      <div class='messages'<%= ' style="display:none;"'.html_safe if defined?(topic_counter)%>>
         <%= render partial: 'messages/message', collection: topic.messages %>
       </div>
       <%= render partial: 'messages/form', object: topic.messages.build, as: :message %>
