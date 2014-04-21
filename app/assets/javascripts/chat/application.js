@@ -16,3 +16,4 @@
 //= require jquery-fileupload/basic
 //= require ./messages
 //= require ./modal_window
+//= require ./length_validation

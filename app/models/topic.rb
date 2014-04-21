@@ -17,8 +17,9 @@ class Topic < ActiveRecord::Base
 
   before_validation :set_author_id, unless: :author_id
   before_validation :set_text, if: :widget_type
+  before_validation :fix_newlines
 
-  validates :text, presence: true, length: { maximum: 1000 }
+  validates :text, presence: true, length: { maximum: 1200 }
   validates :widget_type, inclusion: { in: WIDGET_TYPES }, if: :widget_type
 
   default_scope { order('created_at DESC') }
@@ -34,6 +35,10 @@ class Topic < ActiveRecord::Base
     # Set fake text if it is topic with widget
     def set_text
       self.text = widget_type
+    end
+
+    def fix_newlines
+      self.text = text.gsub("\r\n","\n") if self.text
     end
 
 end
