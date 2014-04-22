@@ -2,7 +2,7 @@
   <i class="icon-user"></i>
 <% end %>
 <div class="h4">
-  <%= topic.text %>
+  <%= paragraphs topic.text %>
   <% if can? :edit, topic %>
     <%= link_to edit_concierge_topic_path(topic), class: 'show-modal-window', data: { target: '#modal-window', toggle: 'modal' } do %>
       <i class="icon-cog text-primary"></i>

@@ -20,7 +20,7 @@
     </header>
     <div class="panel-body">
       <div>
-        <%= message.text %>
+        <%= paragraphs message.text %>
         <% message.attachments.each do |attachment| %>
           <span class="badge bg-warning">
             <%= link_to attachment.attachment.url, target: '_blank', style: 'color:white;' do %>
