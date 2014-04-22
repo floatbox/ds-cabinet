@@ -6,4 +6,5 @@
   form.find('#message_text').val('');
   form.find('#message_attachment_ids').val('');
   form.find('.attachments').html('');
+  $('#topic-id-<%= @message.topic.id %>').find('.messages').show();
 <% end %>
