@@ -16,8 +16,14 @@ table.table
       td= user.siebel.phone_work
       td=l user.sns.created_at.to_date, format: :long
       td= user.concierge.siebel.full_name if user.concierge
-      td= user.topics.count
-      td= user.messages.count
+      td
+        = user.topics.count
+        |  
+        span.badge.bg-success= user.topics.unread.count
+      td
+        = user.messages.count
+        |  
+        span.badge.bg-success= user.messages.unread.count
       td
         = link_to 'Просмотреть топики', concierge_user_topics_path(user), class: 'btn btn-sm'
         |  

@@ -1,5 +1,6 @@
 class Topic < ActiveRecord::Base
   include Notificationable
+  include Readable
 
   WIDGET_TYPES = %w(purchase)
 
@@ -39,6 +40,11 @@ class Topic < ActiveRecord::Base
 
     def fix_newlines
       self.text = text.gsub("\r\n","\n") if self.text
+    end
+
+    # Automatically read all the messages
+    def after_read_by(user)
+      messages.each { |m| m.read_by(user) }
     end
 
 end

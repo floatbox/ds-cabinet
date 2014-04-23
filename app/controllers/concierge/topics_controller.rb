@@ -15,6 +15,7 @@ class Concierge::TopicsController < Concierge::ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    @topic.read_by(current_user)
   end
 
   def new
