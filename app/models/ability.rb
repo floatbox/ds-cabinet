@@ -21,8 +21,10 @@ class Ability
 
     if user.concierge?
       can :read, [User, Topic, Message]
-      can [:read, :create, :update, :destroy], User
-      can :attach_concierge, User, concierge_id: [nil, user.id]
+      can [:read, :create, :destroy, :approve, :disapprove], User
+      can [:attach_concierge, :attach_concierge_update], User, concierge_id: [nil, user.id]
+      can [:edit, :update], User, approved: false
+      can :manage, User, id: user.id
       can :manage, [Topic] do |record|
         3.days.since(record.created_at) > Time.now
       end

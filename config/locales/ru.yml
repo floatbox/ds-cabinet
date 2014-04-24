@@ -10,6 +10,7 @@ ru:
         concierge: Консьерж
         first_name: Имя
         last_name: Фамилия
+        middle_name: Отчество
       topic:
         text: Текст
         tag_list: Теги (через запятую)

@@ -26,6 +26,13 @@ DsCabinet::Application.routes.draw do
   namespace :concierge do
     resources :users do
       resources :topics
+      member do
+        get :attach_concierge
+        put :attach_concierge_update
+        patch :attach_concierge_update
+        put :approve
+        put :disapprove
+      end
     end
     resources :topics do
       resources :messages, only: [:index, :create]

@@ -1,0 +1,4 @@
+h1 Назначить консьержа
+= simple_form_for @user, url: attach_concierge_update_concierge_user_path(@user) do |f|
+  = f.association :concierge, label_method: -> (c) { c.siebel.full_name }, collection: User.concierges
+  = f.button :submit, 'Сохранить'

@@ -1,6 +1,7 @@
 h1 Пользователи
 table.table
   tr
+    th
     th ФИО
     th ОГРН
     th Телефон
@@ -11,6 +12,11 @@ table.table
     th Действия
   - @users.each do |user|
     tr
+      td
+        - if user.approved?
+          = link_to_if can?(:disapprove, user), '<i class="icon-lock"></i>'.html_safe, disapprove_concierge_user_path(user), method: :put
+        - else
+          = link_to_if can?(:approve, user), '<i class="icon-unlock"></i>'.html_safe, approve_concierge_user_path(user), method: :put
       td= user.siebel.full_name
       td= user.siebel_company.try(:ogrn)
       td= user.siebel.phone_work
@@ -25,11 +31,15 @@ table.table
         |  
         span.badge.bg-success= user.messages.unread.count
       td
+        - if can? :edit, user
+          = link_to edit_concierge_user_path(user), class: 'btn btn-sm' do
+            i.icon-edit
+          |  
         = link_to 'Просмотреть топики', concierge_user_topics_path(user), class: 'btn btn-sm'
         |  
         = link_to 'Создать топик', new_concierge_user_topic_path(user), class: 'show-modal-window btn btn-sm', data: { target: '#modal-window', toggle: 'modal' }
         - if can? :attach_concierge, user
           |  
-          = link_to 'Назначить консьержа', edit_concierge_user_path(user), class: 'btn btn-sm'
+          = link_to 'Назначить консьержа', attach_concierge_concierge_user_path(user), class: 'btn btn-sm'
 
 = paginate @users
