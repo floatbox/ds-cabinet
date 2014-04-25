@@ -6,7 +6,7 @@ class Concierge::UsersController < Concierge::ApplicationController
 
   # GET /concierge/users
   def index
-    @users = @users.common.page(params[:page]).per(10)
+    @users = @users.common.order(:created_at).page(params[:page]).per(10)
   end
 
   # GET /concierge/users/:id
