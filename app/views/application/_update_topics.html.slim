@@ -1,11 +1,11 @@
 - url = ''
 - if current_user.concierge?
   - if @user
-    - url = concierge_user_topics_url(@user, format: 'js')
+    - url = concierge_user_topics_url(@user, page: params[:page], format: 'js')
   - else
-    - url = concierge_topics_url(format: 'js')
+    - url = concierge_topics_url(page: params[:page], format: 'js')
 - else
-  - url = topics_url(format: 'js')
+  - url = topics_url(page: params[:page], format: 'js')
 
 javascript:
   function update() { $.get("#{url}"); }

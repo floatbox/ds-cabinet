@@ -4,6 +4,7 @@
   h1 Все топики
 - if params[:tag]
   h2 По тегу #{params[:tag]}
-= render partial: 'concierge/topics/topic', collection: @topics
+#topics
+  = render partial: 'concierge/topics/topic', collection: @topics
 = paginate @topics
 = render 'update_topics'

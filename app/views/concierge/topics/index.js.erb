@@ -4,7 +4,7 @@ var newTopics = [];
     newTopics.push('#topic-id-<%= topic.id %>');
   }
 <% end %>
-$('section.main').html("<%=j render partial: 'concierge/topics/topic', collection: @topics %>")
+$('#topics').html("<%=j render partial: 'concierge/topics/topic', collection: @topics %>")
 newTopics.forEach(function(topic) {
   $(topic).find('.panel-body').hide().toggle('highlight', 2000);
 })
