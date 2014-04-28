@@ -46,7 +46,8 @@ class RegistrationsController < ApplicationController
       if @registration.done?
         head :no_content
       else
-        head :unprocessable_entity
+        @registration.errors.add(:base, :something_went_wrong)
+        render json: @registration.errors, status: :unprocessable_entity
       end
     else
       render json: @registration.errors, status: :unprocessable_entity

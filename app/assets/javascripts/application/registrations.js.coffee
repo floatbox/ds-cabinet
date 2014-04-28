@@ -19,6 +19,7 @@ $ ->
   $('.error_messages').hide()
 
   window.LOCALE =
+    base: 'Ошибка'
     phone: 'Телефон'
     ogrn: 'ОГРН'
     sms_verification_code: 'Код подтверждения'

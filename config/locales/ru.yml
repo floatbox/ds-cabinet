@@ -31,6 +31,8 @@ ru:
       models:
         registration:
           attributes:
+            base:
+              something_went_wrong: "Не удалось зарегистрироваться. Обратитесь, пожалуйста, в службу поддержки."
             phone:
               already_exist: уже существует
             company:

@@ -98,6 +98,7 @@ class Registration < ActiveRecord::Base
       uas_user.save
     rescue => e
       logger.error "Can not send data to DS. #{e.message}"
+      e.backtrace.each { |line| logger.error line }
       halt
     end
 
