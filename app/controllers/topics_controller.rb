@@ -3,6 +3,7 @@ class TopicsController < ApplicationController
 
   before_action :authenticate, only: [:index, :show, :create, :update]
   before_action :authenticate_with_response, only: [:new, :edit]
+  before_action :filter_concierge
   authorize_resource
 
   def index
@@ -37,6 +38,11 @@ class TopicsController < ApplicationController
 
     def topic_params
       params.require(:topic).permit(:text)
+    end
+
+    # Do not allow to access these pages for concierge
+    def filter_concierge
+      redirect_to url_for(controller: 'concierge/topics', action: params[:action]) if current_user.try(:concierge?)
     end
 
 end
