@@ -18,6 +18,7 @@ class Registration < ActiveRecord::Base
   validate :phone_uniqueness, if: :new_record?
   validate :company_exists, if: :new_record?
   validates_presence_of :password, :password_confirmation, if: :awaiting_password?
+  validates_length_of :password, minimum: 6, if: :awaiting_password?
   validate :password_equals_to_confirmation, if: :awaiting_password?
 
   workflow do
