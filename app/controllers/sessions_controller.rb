@@ -2,7 +2,8 @@ class SessionsController < ActionController::Base
 
   # POST /sessions
   def create
-    login_info = Uas::User.login(params[:phone], params[:password])
+    phone = params[:phone].to_s.gsub('(', '').gsub(')', '').gsub(' ', '').gsub('-', '')
+    login_info = Uas::User.login(phone, params[:password])
     cookies.permanent[:auth_token] = { value: login_info.token, domain: Rails.configuration.auth_domain }
     render json: { redirect_to: topics_url }
   rescue Uas::Error
