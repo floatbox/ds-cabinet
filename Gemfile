@@ -74,6 +74,8 @@ gem 'acts-as-taggable-on'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'rails-observers'
+gem 'exception_notification'
+gem 'letter_opener', group: :development
 
 # Localization
 gem 'russian'

@@ -98,6 +98,7 @@ class Registration < ActiveRecord::Base
       uas_user.is_disabled = false
       uas_user.save
     rescue => e
+      ExceptionNotifier.notify_exception(e, env: Rails.env, data: { message: 'Can not send data to DS' })
       logger.error "Can not send data to DS. #{e.message}"
       e.backtrace.each { |line| logger.error line }
       halt
