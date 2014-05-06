@@ -16,6 +16,7 @@ class Recovery < ActiveRecord::Base
   validates :phone, presence: true, format: { with: /\A(\+[0-9]{11})\Z/i }
   validate :validate_phone_existance
   validates_presence_of :password, :password_confirmation, if: :awaiting_password?
+  validates_length_of :password, minimum: 6, if: :awaiting_password?
   validate :password_equals_to_confirmation, if: :awaiting_password?
 
   # Remove symbols from the phone number
