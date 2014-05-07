@@ -5,9 +5,9 @@ Ds::Spark.configure :development do
 end
 
 Ds::Spark.configure :staging do
-  wsdl 'http://webservicefarm.interfax.ru/iFaxWebService/ifaxwebservice.asmx?WSDL'
-  login 'DasredaGate'
-  password 'OBCzyty'
+  wsdl 'http://sparkgatetest.interfax.ru/IfaxWebService/ifaxwebservice.asmx?WSDL'
+  login 'ds_gate'
+  password 'Vz3JW9h'
 end
 
 # TODO: Change to production credentials
