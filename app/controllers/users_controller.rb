@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+    authorize! :update, @user
     @user.assign_attributes(user_params)
     @result = @user.siebel.save
   end

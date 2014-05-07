@@ -16,6 +16,7 @@ ru:
         first_name: Имя
         last_name: Фамилия
         middle_name: Отчество
+        tax_treatment: Налоговый режим
       topic:
         text: Текст
         tag_list: Теги (через запятую)

@@ -8,6 +8,7 @@ class Ability
 
     if user.persisted?
       can :manage, User, id: user.id
+      cannot :update, User, approved: true
       can :read, Topic, user_id: user.id
       can :create, [Topic, Message]
       can :manage, [Topic] do |record|

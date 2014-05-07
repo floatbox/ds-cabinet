@@ -16,7 +16,7 @@ class Concierge::UsersController < Concierge::ApplicationController
   # PATCH /concierge/users/:id
   def update
     @user.assign_attributes(user_params)
-    if @user.siebel.save
+    if @user.save && @user.siebel.save
       redirect_to concierge_users_url
     else
       render 'edit', alert: 'Не удалось сохранить'
@@ -51,7 +51,7 @@ class Concierge::UsersController < Concierge::ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :middle_name)
+      params.require(:user).permit(:first_name, :last_name, :middle_name, :tax_treatment)
     end
 
     def user_attach_concierge_params
