@@ -9,8 +9,11 @@ DsCabinet::Application.routes.draw do
   end
 
   resources :recoveries, only: [:new, :create] do
-    post :verify, on: :member
-    patch :set_password, on: :member
+    member do
+      post :verify
+      patch :set_password
+      post :regenerate_sms_verification_code
+    end
   end
 
   resources :sessions, only: [:create, :destroy]

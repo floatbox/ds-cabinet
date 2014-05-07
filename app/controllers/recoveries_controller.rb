@@ -1,7 +1,7 @@
 class RecoveriesController < ApplicationController
   include WithSmsVerification
 
-  before_action :set_recovery, only: [:verify, :set_password]
+  before_action :set_recovery, only: [:verify, :set_password, :regenerate_sms_verification_code]
 
   # GET /recoveries/new
   def new
@@ -37,6 +37,15 @@ class RecoveriesController < ApplicationController
       redirect_to root_path
     else
       render 'verify'
+    end
+  end
+
+  # POST /recoveries/:id/regenerate_sms_verification_code
+  def regenerate_sms_verification_code
+    if generate_sms_verification_code(@recovery.phone)
+      head :no_content
+    else
+      head :unprocessable_entity
     end
   end
 

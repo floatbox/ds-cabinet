@@ -42,6 +42,7 @@ ru:
               wrong_confirmation: не совпадает с подтверждением
         recovery:
           invalid_sms_verification_code: Неверный код подтверждения
+          something_went_wrong: "Не удалось восстановить пароль. Обратитесь, пожалуйста, в службу поддержки."
           attributes:
             phone:
               does_not_exist: не зарегистрирован в системе

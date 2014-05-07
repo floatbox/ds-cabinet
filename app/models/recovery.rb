@@ -39,11 +39,17 @@ class Recovery < ActiveRecord::Base
     def set_password
       if valid?
         siebel_user = Contact.find_by(email_addr: phone)
-        return halt unless siebel_user
+        unless siebel_user
+          errors.add(:base, :something_went_wrong)
+          return halt
+        end
         user = Uas::User.new
         user.user_id = siebel_user.integration_id
         user.user_sys_name = 'siebel'
-        halt unless user.recover_password(password)
+        unless user.recover_password(password)
+          errors.add(:base, :something_went_wrong)
+          halt
+        end
       else
         halt
       end
