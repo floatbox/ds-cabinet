@@ -17,7 +17,7 @@
       </section>
 
       <div class='messages<%= ' collapsable' if defined?(topic_counter) && topic.messages.size > 5 %>'>
-        <%= render partial: 'messages/message', collection: topic.messages %>
+        <%= render partial: 'messages/message', collection: topic.messages, locals: { total_size: topic.messages.size } %>
       </div>
 
       <%= render partial: 'messages/form', object: topic.messages.build, as: :message %>
