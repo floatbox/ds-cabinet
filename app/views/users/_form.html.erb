@@ -22,21 +22,21 @@
                 <div class="form-group">
                   <label class="col-lg-3 control-label">Организация</label>
                   <div class="col-lg-8">
-                    <input class="form-control" disabled="true" value="<%=j @user.siebel_company.full_name %>"/>
+                    <input class="form-control" disabled="true" value="<%=j @user.siebel_company.try(:full_name) %>"/>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="col-lg-3 control-label">ИНН</label>
                   <div class="col-lg-8">
-                    <input class="form-control" disabled="true" value="<%=j @user.siebel_company.inn %>"/>
+                    <input class="form-control" disabled="true" value="<%=j @user.siebel_company.try(:inn) %>"/>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="col-lg-3 control-label">ОГРН</label>
                   <div class="col-lg-8">
-                    <input class="form-control" disabled="true" value="<%=j @user.siebel_company.ogrn %>"/>
+                    <input class="form-control" disabled="true" value="<%=j @user.siebel_company.try(:ogrn) %>"/>
                   </div>
                 </div>
 
