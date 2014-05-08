@@ -1,0 +1,9 @@
+.collapse_messages {
+  display: none;
+}
+
+.messages.collapsable {
+  .comment-item.collapsable {
+    display: none;
+  }
+}

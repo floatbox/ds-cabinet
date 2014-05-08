@@ -1,4 +1,4 @@
-<article id="message-id-<%= message.id %>" class="comment-item media arrow arrow-left">
+<article id="message-id-<%= message.id %>" class="comment-item media arrow arrow-left<%= ' collapsable' if defined?(message_counter) && message_counter >= 5 %>">
   <a class="pull-left thumb-small avatar"><img src="/images/avatar_dummy.png" class="img-circle"></a>
   <section class="media-body panel">
     <header class="panel-heading clearfix">

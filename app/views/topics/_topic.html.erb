@@ -6,14 +6,24 @@
         <%= render partial: "topics/topic_#{topic.widget_type || 'default'}", object: topic, as: :topic %>
       </div>
     </section>
+
     <!-- .comment-list -->
     <section class="comment-list block">
-      <div class='messages'>
+      <div class='messages<%= ' collapsable' if defined?(topic_counter) && topic.messages.size > 5 %>'>
         <%= render partial: 'messages/message', collection: topic.messages %>
       </div>
+
+      <section style="text-align:center;">
+        <% if defined?(topic_counter) && topic.messages.size > 5 %>
+          <a href="#" class="expand_messages">Показать все комментарии</a>
+          <a href="#" class="collapse_messages">Свернуть комментарии</a>
+        <% end %>
+      </section>
+
       <%= render partial: 'messages/form', object: topic.messages.build, as: :message %>
     </section>
     <!-- / .comment-list -->
+
   </div>
   <div class="col-lg-2"></div>
 </div>
