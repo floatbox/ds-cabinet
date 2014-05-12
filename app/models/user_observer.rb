@@ -2,7 +2,8 @@ class UserObserver < ActiveRecord::Observer
   
   def after_create(user)
     notify_conierges_about_new_user(user)
-    create_welcome_topic(user)
+    assign_random_concierge_to(user)
+    create_welcome_topic_for(user)
   end
 
   def after_update(user)
@@ -31,11 +32,17 @@ class UserObserver < ActiveRecord::Observer
       )
     end
 
-    # Creates welcome topic from random concierge to new user
-    def create_welcome_topic(user)
+    # Finds random concierge and assigns him to the newly created user
+    def assign_random_concierge_to(user)
       concierge = User.concierges.order('RANDOM()').limit(1).first
+      user.concierge = concierge
+      user.save
+    end
+
+    # Creates welcome topic from the concierge to the user
+    def create_welcome_topic_for(user)
       text = I18n.t('system_messages.welcome_topic')
-      user.topics.create(text: text, author_id: concierge.id)
+      user.topics.create(text: text, author_id: user.concierge.id)
     end
 
 end
