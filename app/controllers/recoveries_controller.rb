@@ -34,6 +34,7 @@ class RecoveriesController < ApplicationController
     @recovery.password_confirmation = params[:recovery][:password_confirmation]
     @recovery.set_password!
     if @recovery.done?
+      log_in_as @recovery
       redirect_to root_path
     else
       render 'verify'
@@ -57,6 +58,13 @@ class RecoveriesController < ApplicationController
 
     def set_recovery
       @recovery = Recovery.find(params[:id])
+    end
+
+    def log_in_as(recovery)
+      login_info = Uas::User.login(recovery.phone, recovery.password)
+      cookies.permanent[:auth_token] = { value: login_info.token, domain: Rails.configuration.auth_domain }
+    rescue Uas::Error
+      nil
     end
 
 end
