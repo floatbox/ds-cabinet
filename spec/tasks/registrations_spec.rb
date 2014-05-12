@@ -46,6 +46,11 @@ describe 'registrations rake tasks' do
       it_behaves_like 'not notified registration'
     end
 
+    context 'verified_and_deferred_registration' do
+      before { FactoryGirl.create(:verified_and_deferred_registration) }
+      it_behaves_like 'not notified registration'
+    end
+
     context 'done' do
       before { FactoryGirl.create(:registration) }
       it_behaves_like 'not notified registration'

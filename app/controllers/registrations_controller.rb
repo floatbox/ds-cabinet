@@ -27,12 +27,19 @@ class RegistrationsController < ApplicationController
 
   def verify_phone
     if with_sms_verification(@registration.phone)
-      @registration.verify!
-      if @registration.awaiting_password?
-        head :no_content
+
+      if @registration.siebel_company_exists?
+        @registration.verify_and_defer!
+      else
+        @registration.verify!
+      end
+
+      if @registration.awaiting_password? || @registration.verified_and_deferred?
+        render json: { status: @registration.workflow_state }
       else
         head :unprocessable_entity
       end
+
     else
       render json: { sms_verification_code: ['неверный код подтверждения'] }, status: :unprocessable_entity
     end

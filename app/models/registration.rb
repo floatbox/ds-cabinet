@@ -30,10 +30,12 @@ class Registration < ActiveRecord::Base
     end
     state :awaiting_verification do
       event :verify, :transitions_to => :awaiting_password
+      event :verify_and_defer, :transitions_to => :verified_and_deferred
     end
     state :awaiting_password do
       event :send_to_ds, :transitions_to => :done
     end
+    state :verified_and_deferred
     state :done
   end
 
@@ -76,6 +78,11 @@ class Registration < ActiveRecord::Base
     return if admin_notified?
     update_column(:admin_notified, true)
     RegistrationMailer.admin_notification_email(self).deliver
+  end
+
+  # @return [Boolean] whether the company with specified OGRN is alredy exists in Siebel
+  def siebel_company_exists?
+    find_siebel_company(ogrn) ? true : false
   end
 
   private

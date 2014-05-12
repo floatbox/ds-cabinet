@@ -15,5 +15,9 @@ FactoryGirl.define do
     factory :awaiting_password_registration do
       workflow_state 'awaiting_password'
     end
+
+    factory :verified_and_deferred_registration do
+      workflow_state 'verified_and_deferred'
+    end
   end
 end

@@ -4,6 +4,7 @@ $ ->
   confirmation = '#confirmation'
   not_found = '#not_found'
   verify_phone = '#verify_phone'
+  verified_and_deferred = '#verified_and_deferred'
   complete = '#complete'
   sms_verification_code_sent = '#sms_verification_code_sent'
 
@@ -12,6 +13,7 @@ $ ->
   $(confirmation).hide()
   $(not_found).hide()
   $(verify_phone).hide()
+  $(verified_and_deferred).hide()
   $(complete).hide()
   $(sms_verification_code_sent).hide()
 
@@ -180,7 +182,10 @@ $ ->
     return unless event.target is this
     $(verify_phone).stop(true).fadeTo('fast', 1.0)
     $(verify_phone).hide()
-    $(complete).show()
+    if data.status == 'awaiting_password'
+      $(complete).show()
+    else
+      $(verified_and_deferred).show()
 
   $("#{verify_phone} form").on 'ajax:error', (event, data) ->
     return unless event.target is this
