@@ -1,9 +1,23 @@
 require 'spec_helper'
 
 describe 'Topics API' do
-  let!(:user_1) { User.find_or_create_by(integration_id: USERS[:user_1][:integration_id]) }
-  let!(:user_2) { User.find_or_create_by(integration_id: USERS[:user_2][:integration_id]) }
-  before { user_2.update_column(:concierge, true) unless user_2.concierge }
+  let!(:user_1) do
+    User.observers.disable :all do
+      User.find_or_create_by(integration_id: USERS[:user_1][:integration_id])
+    end
+  end
+  let!(:user_2) do
+    User.observers.disable :all do
+      User.find_or_create_by(integration_id: USERS[:user_2][:integration_id])
+    end
+  end
+
+  before do
+    unless user_2.concierge?
+      user_2.toggle(:concierge)
+      user_2.save
+    end
+  end
 
   let(:unauthorized_headers) { { 'CONTENT_TYPE' => Mime::JSON.to_s } }
   let(:authorized_headers) { unauthorized_headers.merge({ 'Authorization' => token_header(user_2.api_token) }) }

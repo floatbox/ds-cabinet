@@ -44,6 +44,7 @@ class RegistrationsController < ApplicationController
     if @registration.valid?
       @registration.send_to_ds!
       if @registration.done?
+        @registration.notify_admin
         head :no_content
       else
         @registration.errors.add(:base, :something_went_wrong)

@@ -71,6 +71,13 @@ class Registration < ActiveRecord::Base
     }))
   end
 
+  # Sends notification about this registration to admin
+  def notify_admin
+    return if admin_notified?
+    update_column(:admin_notified, true)
+    RegistrationMailer.admin_notification_email(self).deliver
+  end
+
   private
 
     def phone_uniqueness

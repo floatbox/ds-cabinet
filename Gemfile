@@ -56,6 +56,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'timecop'
 end
 
 # Use debugger
@@ -85,3 +86,6 @@ gem 'curb'
 
 # Use workflow as state machine
 gem 'workflow'
+
+# Use whenever for cron tasks
+gem 'whenever', require: false
