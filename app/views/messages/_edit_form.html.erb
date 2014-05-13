@@ -9,7 +9,7 @@
       <% if @message.errors.any? %>
         <%= render 'errors', target: @message %>
       <% end %>
-      <%= f.input_field :text, placeholder: 'Текст сообщения', maxlength: false, rows: 5, class: 'form-control' %>
+      <%= f.input_field :text, placeholder: 'Текст сообщения', maxlength: false, rows: 5, class: 'form-control submit_by_hotkey' %>
       <%= render 'length_validation' %>
     </div>
     <div class="modal-footer">

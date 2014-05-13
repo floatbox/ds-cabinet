@@ -3,7 +3,7 @@
   <section class="media-body">
     <%= simple_form_for [message.topic, message], remote: true, html: { class: 'm-b-none' } do |f| %>
       <div class="input-group">
-        <%= f.input_field :text, as: :text, placeholder: 'Введите ваш комментарий', class: 'form-control', autocomplete: 'off' %>
+        <%= f.input_field :text, as: :text, placeholder: 'Введите ваш комментарий', class: 'form-control submit_by_hotkey', autocomplete: 'off' %>
         <%= f.input :attachment_ids, as: :hidden %>
         <span class="input-group-btn">
           <%= f.button :submit, 'ОТПРАВИТЬ', class: 'btn btn-primary', style: "height:54px;" %>

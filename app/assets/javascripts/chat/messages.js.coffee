@@ -9,3 +9,10 @@ $ ->
         data.submit()
       done: (e, data) ->
         $(this).fadeTo('fast', 1.0)
+
+  $('body').on 'keypress', '.submit_by_hotkey', (e) ->
+    if e.ctrlKey and e.keyCode is 13
+      e.preventDefault()
+      $(this).closest('form').submit()
+      false
+    true
