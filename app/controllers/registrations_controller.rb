@@ -21,7 +21,8 @@ class RegistrationsController < ApplicationController
       @registration.confirm!
       head :no_content
     else
-      head :unprocessable_entity
+      @registration.errors.add(:base, :something_went_wrong)
+      render json: @registration.errors, status: :unprocessable_entity
     end
   end
 
@@ -37,7 +38,8 @@ class RegistrationsController < ApplicationController
       if @registration.awaiting_password? || @registration.verified_and_deferred?
         render json: { status: @registration.workflow_state }
       else
-        head :unprocessable_entity
+        @registration.errors.add(:base, :something_went_wrong)
+        render json: @registration.errors, status: :unprocessable_entity
       end
 
     else

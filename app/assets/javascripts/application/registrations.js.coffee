@@ -30,6 +30,7 @@ $ ->
 
   showPreloader = (form) ->
     form = $(form)
+    form.addClass('submit-disabled')
     formLeft = form.position().left
     formTop = form.position().top
     formWidth = form.outerWidth()
@@ -40,8 +41,12 @@ $ ->
     preloader.css('left', "#{(formLeft + formWidth) / 2}px")
     preloader.css('top', "#{(formTop + formHeight) / 2}px")
     preloader.show()
+    form.fadeTo('fast', 0.5)
 
   hidePreloader = (form) ->
+    form = $(form)
+    form.removeClass('submit-disabled')
+    form.stop(true).fadeTo('fast', 1.0)
     $('img#preloader').hide()
 
   # Set masks on inputs
@@ -118,12 +123,11 @@ $ ->
   # Registration form callbacks
   #
   $('body').on 'ajax:before', registraton_form, (event, data) ->
-    $(this).fadeTo('fast', 0.5)
+    return false if $(registraton_form).hasClass('submit-disabled')
     showPreloader(registraton_form)
     clear_error_messages(registraton_form)
 
   $('body').on 'ajax:success', registraton_form, (event, data) ->
-    $(this).stop(true).fadeTo('fast', 1.0)
     hidePreloader(registraton_form)
     fill_confirmation_dialog(data)
     fill_verify_phone_dialog(data)
@@ -132,7 +136,6 @@ $ ->
     $(confirmation).show()
 
   $('body').on 'ajax:error', registraton_form, (event, data) ->
-    $(this).stop(true).fadeTo('fast', 1.0)
     hidePreloader(registraton_form)
     errors = data.responseJSON
     if errors.company
@@ -157,12 +160,17 @@ $ ->
   #
 
   $("#{confirmation} a.confirm").on 'ajax:before', (event, data) ->
-    $(confirmation).fadeTo('fast', 0.5)
+    return false if $(confirmation).hasClass('submit-disabled')
+    showPreloader(confirmation)
 
   $("#{confirmation} a.confirm").on 'ajax:success', (event, data) ->
-    $(confirmation).stop(true).fadeTo('fast', 1.0)
+    hidePreloader(confirmation)
     $(confirmation).hide()
     $(verify_phone).show()
+
+  $("#{confirmation} a.confirm").on 'ajax:error', (event, data) ->
+    hidePreloader(confirmation)
+    show_error_messages(confirmation, data.responseJSON)
 
   $('body').on 'click', "#{confirmation} a.cancel", (event) ->
     event.preventDefault()
@@ -174,13 +182,14 @@ $ ->
   #
 
   $("#{verify_phone} form").on 'ajax:before', (event, data) ->
+    return false if $(verify_phone).hasClass('submit-disabled')
     return unless event.target is this
-    $(verify_phone).fadeTo('fast', 0.5)
+    showPreloader(verify_phone)
     clear_error_messages(verify_phone)
 
   $("#{verify_phone} form").on 'ajax:success', (event, data) ->
     return unless event.target is this
-    $(verify_phone).stop(true).fadeTo('fast', 1.0)
+    hidePreloader(verify_phone)
     $(verify_phone).hide()
     if data.status == 'awaiting_password'
       $(complete).show()
@@ -189,10 +198,11 @@ $ ->
 
   $("#{verify_phone} form").on 'ajax:error', (event, data) ->
     return unless event.target is this
-    $(verify_phone).stop(true).fadeTo('fast', 1.0)
+    hidePreloader(verify_phone)
     show_error_messages(verify_phone, data.responseJSON)
 
   $("#{verify_phone} a.regenerate_sms_verification_code").on 'ajax:success', (event, data) ->
+    hidePreloader(verify_phone)
     $(verify_phone).hide()
     $(sms_verification_code_sent).show()
 
@@ -210,18 +220,16 @@ $ ->
   #
 
   $("#{complete} form").on 'ajax:before', (event, data) ->
-    $(this).fadeTo('fast', 0.5)
+    return false if $(complete).hasClass('submit-disabled')
     showPreloader(complete)
     clear_error_messages(complete)
 
   $("#{complete} form").on 'ajax:success', (event, data) ->
-    $(this).stop(true).fadeTo('fast', 1.0)
     hidePreloader(complete)
     alert('Вы успешно зарегистрировались!')
     $(complete).hide()
 
   $("#{complete} form").on 'ajax:error', (event, data) ->
-    $(this).stop(true).fadeTo('fast', 1.0)
     hidePreloader(complete)
     show_error_messages(complete, data.responseJSON)
 
