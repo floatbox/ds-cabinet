@@ -9,7 +9,13 @@ class RegistrationsController < ApplicationController
   def create
     @registration = Registration.new(registration_params)
     if @registration.save
-      @registration.register!
+
+      if @registration.siebel_company_exists?
+        @registration.defer!
+      else
+        @registration.register!
+      end
+
       render json: @registration
     else
       render json: @registration.errors, status: :unprocessable_entity
@@ -28,14 +34,9 @@ class RegistrationsController < ApplicationController
 
   def verify_phone
     if with_sms_verification(@registration.phone)
+      @registration.verify!
 
-      if @registration.siebel_company_exists?
-        @registration.verify_and_defer!
-      else
-        @registration.verify!
-      end
-
-      if @registration.awaiting_password? || @registration.verified_and_deferred?
+      if @registration.awaiting_password?
         render json: { status: @registration.workflow_state }
       else
         @registration.errors.add(:base, :something_went_wrong)

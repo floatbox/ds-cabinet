@@ -4,7 +4,7 @@ $ ->
   confirmation = '#confirmation'
   not_found = '#not_found'
   verify_phone = '#verify_phone'
-  verified_and_deferred = '#verified_and_deferred'
+  deferred = '#deferred'
   complete = '#complete'
   sms_verification_code_sent = '#sms_verification_code_sent'
 
@@ -13,7 +13,7 @@ $ ->
   $(confirmation).hide()
   $(not_found).hide()
   $(verify_phone).hide()
-  $(verified_and_deferred).hide()
+  $(deferred).hide()
   $(complete).hide()
   $(sms_verification_code_sent).hide()
 
@@ -129,11 +129,15 @@ $ ->
 
   $('body').on 'ajax:success', registraton_form, (event, data) ->
     hidePreloader(registraton_form)
-    fill_confirmation_dialog(data)
-    fill_verify_phone_dialog(data)
-    fill_complete_dialog(data)
     $(registraton_form).hide()
-    $(confirmation).show()
+
+    if data.workflow_state is 'deferred'
+      $(deferred).show()
+    else
+      fill_confirmation_dialog(data)
+      fill_verify_phone_dialog(data)
+      fill_complete_dialog(data)
+      $(confirmation).show()
 
   $('body').on 'ajax:error', registraton_form, (event, data) ->
     hidePreloader(registraton_form)
@@ -191,10 +195,7 @@ $ ->
     return unless event.target is this
     hidePreloader(verify_phone)
     $(verify_phone).hide()
-    if data.status == 'awaiting_password'
-      $(complete).show()
-    else
-      $(verified_and_deferred).show()
+    $(complete).show()
 
   $("#{verify_phone} form").on 'ajax:error', (event, data) ->
     return unless event.target is this

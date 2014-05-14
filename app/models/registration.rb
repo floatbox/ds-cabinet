@@ -24,18 +24,18 @@ class Registration < ActiveRecord::Base
   workflow do
     state :new do
       event :register, :transitions_to => :awaiting_confirmation
+      event :defer, :transitions_to => :deferred
     end
     state :awaiting_confirmation do
       event :confirm, :transitions_to => :awaiting_verification
     end
     state :awaiting_verification do
       event :verify, :transitions_to => :awaiting_password
-      event :verify_and_defer, :transitions_to => :verified_and_deferred
     end
     state :awaiting_password do
       event :send_to_ds, :transitions_to => :done
     end
-    state :verified_and_deferred
+    state :deferred
     state :done
   end
 
@@ -69,7 +69,7 @@ class Registration < ActiveRecord::Base
 
   def as_json(options = {})
     super((options || {}).merge({
-      methods: [:inn, :name, :region]
+      methods: [:inn, :name, :region, :workflow_state]
     }))
   end
 
