@@ -48,6 +48,11 @@ class Concierge::UsersController < Concierge::ApplicationController
     redirect_to concierge_users_url
   end
 
+  # GET /concierge/users/:id/new_widget
+  def new_widget
+    render layout: false
+  end
+
   private
 
     def user_params

@@ -40,6 +40,7 @@ DsCabinet::Application.routes.draw do
         patch :attach_concierge_update
         put :approve
         put :disapprove
+        get :new_widget
       end
     end
     resources :topics do

@@ -3,7 +3,10 @@
   var widgetOptions = {
     id: <%= topic.id %>,
     domain: 'delo-widgets-dev.sredda.ru:8082',
-    path: '/purchase'
+    path: '/purchases/show',
+    params: {
+      topic_id: <%= topic.id %>
+    }
   };
   createWidget('widget_<%= topic.id %>', widgetOptions);
 </script>
