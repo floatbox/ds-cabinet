@@ -55,6 +55,7 @@ class RegistrationsController < ApplicationController
       @registration.send_to_ds!
       if @registration.done?
         @registration.notify_admin
+        log_in_as @registration
         head :no_content
       else
         @registration.errors.add(:base, :something_went_wrong)
@@ -81,6 +82,13 @@ class RegistrationsController < ApplicationController
 
     def set_registration
       @registration = Registration.find(params[:registration_id])
+    end
+
+    def log_in_as(registration)
+      login_info = Uas::User.login(registration.phone, registration.password)
+      cookies.permanent[:auth_token] = { value: login_info.token, domain: Rails.configuration.auth_domain }
+    rescue Uas::Error
+      nil
     end
 
 end

@@ -227,8 +227,8 @@ $ ->
 
   $("#{complete} form").on 'ajax:success', (event, data) ->
     hidePreloader(complete)
-    alert('Вы успешно зарегистрировались!')
     $(complete).hide()
+    location.reload()
 
   $("#{complete} form").on 'ajax:error', (event, data) ->
     hidePreloader(complete)
