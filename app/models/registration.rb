@@ -10,6 +10,8 @@
 class Registration < ActiveRecord::Base
   include Workflow
 
+  SPARK_ATTRIBUTES = { inn: :inn, company_name: :name, region_code: :region_code }
+
   attr_accessor :password, :password_confirmation
 
   validates_presence_of :phone, :ogrn
@@ -44,6 +46,23 @@ class Registration < ActiveRecord::Base
     write_attribute(:phone, value.gsub('(', '').gsub(')', '').gsub(' ', '').gsub('-', ''))
   end
 
+  def ogrn=(value)
+    if value != ogrn || inn.nil? || company_name.nil?
+      @company = nil
+      write_attribute(:ogrn, value)
+      SPARK_ATTRIBUTES.each do |attribute, spark_attribute|
+        write_attribute(attribute, company.try(spark_attribute))
+      end
+    end
+  end
+
+  SPARK_ATTRIBUTES.each do |attribute, spark_attribute|
+    define_method attribute do
+      value = read_attribute(attribute)
+      value ? value : write_attribute(attribute, company.try(spark_attribute))
+    end
+  end
+
   def company
     @company ||= Ds::Spark::Company.find_by_ogrn_or_ogrnip(ogrn)
   rescue => e
@@ -55,21 +74,13 @@ class Registration < ActiveRecord::Base
     @user = { phone: phone }
   end
 
-  def inn
-    company.try(:inn)
-  end
-
   def name
-    company.try(:name)
-  end
-
-  def region
-    company.try(:region_code)
+    company_name
   end
 
   def as_json(options = {})
     super((options || {}).merge({
-      methods: [:inn, :name, :region, :workflow_state]
+      methods: [:inn, :name, :workflow_state]
     }))
   end
 
@@ -151,7 +162,7 @@ class Registration < ActiveRecord::Base
     # @return [Account] new Siebel company
     def create_siebel_company
       account = Account.new
-      account.full_name = company.name
+      account.full_name = company_name
       account.inn = inn
       account.ogrn = ogrn
       account.save
