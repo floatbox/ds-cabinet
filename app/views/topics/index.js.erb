@@ -1,10 +1,11 @@
-var newTopics = [];
 <% @topics.each do |topic| %>
   if ($('#topic-id-<%= topic.id %>').length == 0) {
-    newTopics.push('#topic-id-<%= topic.id %>');
+    var topic = $("<%=j render partial: 'topics/topic', object: topic, as: :topic %>");
+    $('#topics').prepend(topic);
+    $(topic).find('.panel-body').hide().toggle('highlight', 2000);
+  }
+  else {
+    var topic = $('#topic-id-<%= topic.id %>');
+    topic.find('.topic-body').html("<%=j render partial: 'topics/topic_body', object: topic, as: :topic %>")
   }
 <% end %>
-$('section.main').html("<%=j render partial: 'topics/topic', collection: @topics %>")
-newTopics.forEach(function(topic) {
-  $(topic).find('.panel-body').hide().toggle('highlight', 2000);
-})

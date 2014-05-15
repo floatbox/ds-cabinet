@@ -2,8 +2,8 @@
   <div class="col-lg-2"></div>
   <div class="col-lg-8">
     <section class="panel text-center">
-      <div class="panel-body">
-        <%= render partial: "concierge/topics/topic_#{topic.widget_type || 'default'}", object: topic, as: :topic %>
+      <div class="panel-body topic-body">
+        <%= render partial: 'concierge/topics/topic_body', object: topic, as: :topic %>
       </div>
     </section>
 
