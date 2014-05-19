@@ -1,4 +1,6 @@
 DsCabinet::Application.routes.draw do
+  get '/' => redirect('/legko')
+
   root to: 'pages#index'
 
   resources :registrations, only: [:create] do
