@@ -82,7 +82,7 @@ DsCabinet::Application.configure do
   config.sms_gateway = 'https://api.sredda.ru:4444/SMSGateway/sms'
 
   # UAS settings
-  config.uas_url = 'https://pim.sredda.ru:4443/authentication'
+  config.uas_url = 'https://pim.sredda.ru/authentication'
   config.uas_sertificate = "#{Rails.root}/certs/ds_admin.pem"
   config.uas_query_log = false
 
