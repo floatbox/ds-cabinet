@@ -37,6 +37,7 @@ DsCabinet::Application.routes.draw do
   namespace :concierge do
     resources :users do
       resources :topics
+      resources :search_queries, only: :index
       member do
         get :attach_concierge
         put :attach_concierge_update

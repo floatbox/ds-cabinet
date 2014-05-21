@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
 
   has_many :messages
   has_many :notifications
+  has_many :search_queries
 
   scope :common, -> { where(concierge: false) }
   scope :concierges, -> { where(concierge: true) }

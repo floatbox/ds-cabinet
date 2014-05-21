@@ -1,0 +1,8 @@
+h1 Поисковые запросы пользователя #{@user.siebel.full_name}
+
+table.table
+  - @search_queries.each do |search_query|
+    tr
+      td= link_to search_query.text, user_search_path(@user, q: search_query.text)
+
+= paginate @search_queries

@@ -11,48 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521085725) do
+ActiveRecord::Schema.define(version: 20140521092017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
 # Could not dump table "attachments" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fa9762a8808>
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
 
 # Could not dump table "attachments_messages" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fa9762a8808>
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
 
 # Could not dump table "config_items" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fa9762a8808>
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
 
 # Could not dump table "messages" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fa9762a8808>
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
 
 # Could not dump table "notifications" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fa9762a8808>
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
 
 # Could not dump table "recoveries" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fa9762a8808>
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
 
 # Could not dump table "registrations" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fa9762a8808>
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
+
+# Could not dump table "search_queries" because of following NoMethodError
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
 
 # Could not dump table "shortcuts" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fa9762a8808>
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
 
 # Could not dump table "sms_verifications" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fa9762a8808>
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
 
 # Could not dump table "taggings" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fa9762a8808>
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
 
 # Could not dump table "tags" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fa9762a8808>
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
 
 # Could not dump table "topics" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fa9762a8808>
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
 
 # Could not dump table "users" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007fa9762a8808>
+#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::PostgreSQLAdapter:0x007f7fd8e925a0>
 
 end

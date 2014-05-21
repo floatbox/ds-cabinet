@@ -32,7 +32,8 @@ table.table
         - if can? :edit, user
           => link_to edit_concierge_user_path(user), class: 'btn btn-sm' do
             i.icon-edit
-        => link_to 'Просмотреть топики', concierge_user_topics_path(user), class: 'btn btn-sm'
+        => link_to 'Топики', concierge_user_topics_path(user), class: 'btn btn-sm'
+        => link_to 'Запросы', concierge_user_search_queries_path(user), class: 'btn btn-sm'
         => link_to 'Создать топик', new_concierge_user_topic_path(user), class: 'show-modal-window btn btn-sm', data: { target: '#modal-window', toggle: 'modal' }
         => link_to 'Создать виджет', new_widget_concierge_user_path(user), class: 'show-modal-window btn btn-sm', data: { target: '#modal-window', toggle: 'modal' }
         - if can? :attach_concierge, user

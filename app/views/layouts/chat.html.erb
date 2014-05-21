@@ -53,7 +53,9 @@
             <% end %>
           </div>
         </li>
-        <%= render partial: 'search_bar' %>
+        <% if !current_user.concierge? || params[:user_id].present? %>
+          <%= render partial: 'search_bar' %>
+        <% end %>
       </ul>
       <!--
       <form class="navbar-form pull-left shift" action="" data-toggle="shift:appendTo" data-target=".nav-primary">

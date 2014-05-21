@@ -7,6 +7,7 @@ class SearchController < ApplicationController
   # GET /users/:user_id/search
   def index
     authorize! :search, @user
+    @user.search_queries.create(text: params[:q])
     @search = Search.new(@user, params[:q])
     @shortcuts = @search.shortcuts
     @topics = @search.topics

@@ -31,6 +31,7 @@ class Ability
       end
       can :manage, ConfigItem
       can :manage, Shortcut
+      can :read, SearchQuery
     end
     #
     # The first argument to `can` is the action you are giving the user 
