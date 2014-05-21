@@ -80,3 +80,6 @@ ru:
       awaiting_verification: Не подтвержден телефон
       awaiting_password: "Телефон подтвержден, регистрация не завершена"
       deferred: "Привязка уже зарегистрированной компании"
+
+  config_items:
+    search_banned_words: Запрещенные для поиска слова

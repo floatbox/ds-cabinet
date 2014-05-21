@@ -59,4 +59,14 @@ namespace :deploy do
     end
   end
 
+  task :run_bootstrap_tasks do
+    on roles(:app), in: :sequence, wait: 5 do
+      within release_path do
+        execute :bundle, "exec rake bootstrap:all RAILS_ENV=#{fetch(:stage)}"
+      end
+    end
+  end
+
 end
+
+after 'deploy:updated', 'deploy:run_bootstrap_tasks'

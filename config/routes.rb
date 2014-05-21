@@ -50,6 +50,7 @@ DsCabinet::Application.routes.draw do
       resources :messages, only: [:index, :create]
     end
     resources :tags, only: [:index, :destroy]
+    resources :config_items, only: [:index, :update]
   end
 
   # API for Node.js application

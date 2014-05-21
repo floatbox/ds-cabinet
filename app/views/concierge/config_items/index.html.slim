@@ -1,0 +1,9 @@
+h1 Настройки
+
+table.table
+  - @config_items.each do |config_item|
+    tr
+      = simple_form_for [:concierge, config_item] do |f|
+        td(style='width:10%;')=t "config_items.#{config_item.key}"
+        td(style='width:85%;')= f.input_field :value, placeholder: config_item.default, rows: 3, style: 'width:100%;'
+        td= f.button :submit, 'Сохранить'

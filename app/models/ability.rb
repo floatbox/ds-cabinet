@@ -29,6 +29,7 @@ class Ability
       can :manage, [Topic] do |record|
         3.days.since(record.created_at) > Time.now
       end
+      can :manage, ConfigItem
     end
     #
     # The first argument to `can` is the action you are giving the user 

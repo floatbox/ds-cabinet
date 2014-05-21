@@ -7,7 +7,11 @@ class Search
   end
 
   def any?
-    topics.any? || messages.any?
+    !banned? && (topics.any? || messages.any?)
+  end
+
+  def banned?
+    banned_words.include?(downcase_query)
   end
 
   def topics
@@ -22,5 +26,11 @@ class Search
 
     def downcase_query
       query.mb_chars.downcase.to_s
+    end
+
+    def banned_words
+      banned_words = ConfigItem['search_banned_words']
+      banned_words = banned_words.split("\r\n").map { |s| s.split(' ') }.flatten
+      banned_words.map { |word| word.mb_chars.downcase.to_s }
     end
 end

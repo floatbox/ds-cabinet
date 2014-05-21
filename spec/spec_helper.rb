@@ -40,6 +40,10 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  config.before(:all) do
+    ConfigItem.find_or_create_by(key: 'search_banned_words', default: '')
+  end
+
   config.include Requests::JsonHelpers, type: :request
 end
 
