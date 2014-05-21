@@ -1,0 +1,23 @@
+<h1>Результаты поиска</h1>
+
+<% if @search.any? %>
+
+  <% if @topics.any? %>
+    <h2>Найденные топики</h2>
+    <% @topics.each do |topic| %>
+      <%= render partial: 'search/topic', object: topic, as: :topic %>
+    <% end %>
+  <% end %>
+
+  <% if @messages.any? %>
+    <h2>Найденные комментарии</h2>
+    <% @messages.each do |message| %>
+      <%= render partial: 'search/message', object: message, as: :message %>
+    <% end %>
+  <% end %>
+
+<% else %>
+
+<p>Ничего не найдено</p>
+
+<% end %>

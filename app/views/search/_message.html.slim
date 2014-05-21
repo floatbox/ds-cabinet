@@ -1,0 +1,3 @@
+.search-message
+  div= link_to message.topic.text, topic_path(message.topic)
+  div= highlighted message.text, params[:q]

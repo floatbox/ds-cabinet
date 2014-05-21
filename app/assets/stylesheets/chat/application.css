@@ -11,3 +11,6 @@
  *= require_self
  *= require ./topics
  */
+
+body { padding-top: 70px; }
+.highlighted { background-color: yellow; }

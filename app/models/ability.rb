@@ -22,7 +22,7 @@ class Ability
 
     if user.concierge?
       can :read, [User, Topic, Message]
-      can [:read, :create, :destroy, :approve, :disapprove, :new_widget], User
+      can [:read, :create, :destroy, :approve, :disapprove, :new_widget, :search], User
       can [:attach_concierge, :attach_concierge_update], User, concierge_id: [nil, user.id]
       can [:edit, :update], User, approved: false
       can :manage, User, id: user.id

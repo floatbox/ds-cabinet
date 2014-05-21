@@ -17,7 +17,10 @@ DsCabinet::Application.routes.draw do
   end
 
   resources :sessions, only: [:create, :destroy]
-  resources :users, only: [:edit, :update]
+
+  resources :users, only: [:edit, :update] do
+    get 'search', to: 'search#index', as: :search
+  end
 
   resources :messages, only: [:edit, :update, :destroy]
 
@@ -48,7 +51,6 @@ DsCabinet::Application.routes.draw do
     end
     resources :tags, only: [:index, :destroy]
   end
-
 
   # API for Node.js application
   post 'users/token' => 'users#token'
