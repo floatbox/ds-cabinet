@@ -8,6 +8,7 @@ class SearchController < ApplicationController
   def index
     authorize! :search, @user
     @search = Search.new(@user, params[:q])
+    @shortcuts = @search.shortcuts
     @topics = @search.topics
     @messages = @search.messages
   end

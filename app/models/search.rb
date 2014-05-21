@@ -7,11 +7,15 @@ class Search
   end
 
   def any?
-    !banned? && (topics.any? || messages.any?)
+    !banned? && (shortcuts.any? || topics.any? || messages.any?)
   end
 
   def banned?
     banned_words.include?(downcase_query)
+  end
+
+  def shortcuts
+    @shortcuts ||= Shortcut.where('LOWER(shortcuts.question) LIKE ?', "%#{downcase_query}%")
   end
 
   def topics

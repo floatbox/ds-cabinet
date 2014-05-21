@@ -2,15 +2,21 @@
 
 <% if @search.any? %>
 
+  <% if @shortcuts.any? %>
+    <% @shortcuts.each do |shortcut| %>
+      <%= render partial: 'search/shortcut', object: shortcut, as: :shortcut %>
+    <% end %>
+  <% end %>
+
   <% if @topics.any? %>
-    <h2>Найденные топики</h2>
+    <h2>Топики</h2>
     <% @topics.each do |topic| %>
       <%= render partial: 'search/topic', object: topic, as: :topic %>
     <% end %>
   <% end %>
 
   <% if @messages.any? %>
-    <h2>Найденные комментарии</h2>
+    <h2>Комментарии</h2>
     <% @messages.each do |message| %>
       <%= render partial: 'search/message', object: message, as: :message %>
     <% end %>

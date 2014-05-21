@@ -1,0 +1,16 @@
+h1 Shortcuts
+
+= link_to 'Создать', new_concierge_shortcut_path, class: 'btn'
+
+table.table
+  tr
+    th Вопрос
+    th Ответ
+    th
+  - @shortcuts.each do |shortcut|
+    tr
+      td= shortcut.question
+      td= shortcut.answer
+      td
+        => link_to 'Редактировать', edit_concierge_shortcut_path(shortcut), class: 'btn'
+        => link_to 'Удалить', concierge_shortcut_path(shortcut), method: :delete, data: { confirm: 'Точно удалить?' }, class: 'btn btn-danger'

@@ -24,6 +24,9 @@ ru:
         text: Текст
       attachment:
         attachment: Файл
+      shortcut:
+        question: Вопрос
+        answer: Ответ
     errors:
       messages:
         wrong_size: "некорректный размер (должен быть %{file_size})"

@@ -1,0 +1,5 @@
+= simple_form_for [:concierge, @shortcut] do |f|
+  = f.input :question
+  = f.input :answer
+  = f.button :submit, 'Сохранить', class: 'btn btn-primary'
+  = link_to 'Отмена', concierge_shortcuts_path, class: 'btn'

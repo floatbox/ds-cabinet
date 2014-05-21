@@ -30,6 +30,7 @@ class Ability
         3.days.since(record.created_at) > Time.now
       end
       can :manage, ConfigItem
+      can :manage, Shortcut
     end
     #
     # The first argument to `can` is the action you are giving the user 

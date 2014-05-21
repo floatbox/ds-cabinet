@@ -51,6 +51,7 @@ DsCabinet::Application.routes.draw do
     end
     resources :tags, only: [:index, :destroy]
     resources :config_items, only: [:index, :update]
+    resources :shortcuts, except: [:show]
   end
 
   # API for Node.js application
