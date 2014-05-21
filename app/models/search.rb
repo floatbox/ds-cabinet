@@ -26,6 +26,10 @@ class Search
     @messages ||= Message.joins(:topic).where(topics: { user_id: user.id }).where('LOWER(messages.text) LIKE ?', "%#{downcase_query}%")
   end
 
+  def size
+    any? ? shortcuts.size + topics.size + messages.size : 0
+  end
+
   private
 
     def downcase_query
