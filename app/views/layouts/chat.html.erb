@@ -24,7 +24,14 @@
       <ul class="nav navbar-nav navbar-avatar pull-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">            
-          <span class="hidden-xs-only"><%= current_user.siebel.full_name %></span>
+          <span class="hidden-xs-only">
+            <% if current_user.siebel.full_name == 'Не определено Не определено' %>
+              <%=l Date.today, format: :long %>, <span id="time"></span>
+              <script type="text/javascript">startTime();</script>
+            <% else %>
+              <%= current_user.siebel.full_name %>
+            <% end %>
+          </span>
           <span class="thumb-small avatar inline"><img src="/images/avatar_dummy.png" alt="" class="img-circle"></span>
           <b class="caret hidden-xs-only"></b>
           </a>
