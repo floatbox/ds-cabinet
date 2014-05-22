@@ -1,0 +1,16 @@
+<div class="step step-2" id="confirmation">
+  <h3 class="title">Подтвердите правильность данных о компании</h3>
+  <h3 class="title highlight error_messages"></h3>
+
+  <div class="correct">
+    Вы регистрируете компанию <span class="name"></span>, <strong>ИНН <span class="inn"></span>, ОГРН <span class="ogrn"></span></strong>
+  </div>
+
+  <div class="step-form">
+    <form action="">
+      <%= link_to 'Все верно, продолжить', registration_confirm_path(:registration_id), method: :post, remote: true, class: 'button confirm', style: 'text-decoration:none;' %>
+    </form>
+  </div>
+
+  <p>Нет, это не моя компания. <%= link_to 'Ввести ОГРН еще раз', '#', class: 'cancel' %></p>
+</div>

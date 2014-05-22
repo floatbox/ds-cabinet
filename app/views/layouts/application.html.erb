@@ -1,229 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Делай дело</title>
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <link rel="shortcut icon" href="/flat-ui/images/favicon.ico">
-        <link rel="stylesheet" href="/flat-ui/bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" href="/flat-ui/bootstrap/css/bootstrap-responsive.css">
-        <link rel="stylesheet" href="/flat-ui/css/flat-ui.css">
-        <!-- Using only with Flat-UI (free)-->
-        <link rel="stylesheet" href="/common-files/css/icon-font.css">
-        <!-- end -->
-        <link rel="stylesheet" href="/common-files/css/animations.css">
-        
-        <!-- If you don't use any of these blocks just remove unnecessary CSS files -->
-        <!-- blog -->
-        <link rel="stylesheet" href="/ui-kit/ui-kit-blog/css/style.css">
-        <!-- contacts -->
-        <link rel="stylesheet" href="/ui-kit/ui-kit-contacts/css/style.css">
-        <!-- content -->
-        <link rel="stylesheet" href="/ui-kit/ui-kit-content/css/style.css">
-        <!-- crew -->
-        <link rel="stylesheet" href="/ui-kit/ui-kit-crew/css/style.css">
-        <!-- footer -->
-        <link rel="stylesheet" href="/ui-kit/ui-kit-footer/css/style.css">
-        <!-- header -->
-        <link rel="stylesheet" href="/ui-kit/ui-kit-header/css/style.css">
-        <!-- price -->
-        <link rel="stylesheet" href="/ui-kit/ui-kit-price/css/style.css">
-        <!-- projects -->
-        <link rel="stylesheet" href="/ui-kit/ui-kit-projects/css/style.css">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Делай дело</title>
 
-        <%= javascript_include_tag "application/application" %>
-        <%= csrf_meta_tags %>
-        
-        <style>
-.h-7-section-5 {
-  background: #ebedee;
-  padding:50px 0;
-}
-.h-7-section-5 H3 {
-    text-align: center;
-}
-.h-7-section-5 .lead {
-    text-align: center;
-}
-.h-7-section-5 .brand {
-  color: #2c3e50!important;
-}
-.h-7-section-5 h3 {
-  color: #2c3e50;
-}
-.h-7-section-5 .lead {
-  color: rgba(44, 62, 80, 0.55);
-  margin-bottom: 58px;
-}
-.h-7-section-5 .additional-links {
-  font-size: 12px;
-  color: #bdc3c7;
-  margin: 10px 0 38px;
-}
-.h-7-section-5 .additional-links a {
-  color: #7f8c8d;
-  text-decoration: underline;
-}
-.h-7-section-5 .additional-links a:hover,
-.h-7-section-5 .additional-links a:focus,
-.h-7-section-5 .additional-links a.active {
-  color: #667071;
-}
-.h-7-section-5 .signup-form form {
-  margin: 0;
-}
-.h-7-section-5 .signup-form input[type="text"],
-.h-7-section-5 .signup-form input[type="password"] {
-  bord er-color: #fff;
-  col or: #2c3e50;
-}
-.h-7-section-5 .signup-form .btn-large {
-  font-weight: 500;
-}
-.h-7-section-5 .signup-form .btn-large:hover,
-.h-7-section-5 .signup-form .btn-large.active,
-.header-7-sub .h-7-section-5 .signup-form .btn-large:active {
-  background-color: #f1c40f;
-}
-.h-7-section-5 .signup-form .controls-row:first-child + .controls-row {
-  display: table;
-  width: 100%;
-}
-.h-7-section-5 .signup-form .controls-row:first-child + .controls-row > div {
-  display: table-cell;
-  width: 50%;
-  padding-left: 5px;
-}
-@media (max-width: 767px) {
-  .h-7-section-5 .signup-form .controls-row:first-child + .controls-row > div {
-    padding-left: 9px;
-  }
-}
-.h-7-section-5 .signup-form .controls-row:first-child + .controls-row > div:first-child {
-  padding-left: 0;
-  padding-right: 5px;
-}
-@media (max-width: 767px) {
-  .h-7-section-5 .signup-form .controls-row:first-child + .controls-row > div:first-child {
-    padding-right: 9px;
-  }
-}
-.h-7-section-5 .signup-form .controls-row:first-child + .controls-row input {
-  width: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  height: 41px;
-}
+  <!-- Bootstrap -->
+  <link href="/legko-bs/css/bootstrap.css" rel="stylesheet">
+  <link href="/legko-bs/css/style.css" rel="stylesheet">
 
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
-.header-10-sub {height:700px;}
-.header-10-sub .background {
-  background-image: url("<%= image_path('img-1.jpg') %>");
-  opacity: 0.85;
-  filter: alpha(opacity=85);
-}
-        </style>
-        
-        
-    </head>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="/"><img src="/legko-bs/images/header-logo.png" height="58" width="75" alt="" class="header-logo pull-left"></a>
 
-    <body>
-    <!-- header-10 -->
-    <header class="header-10">
-      <div class="container">
-        <div class="navbar span12">
-          <div class="navbar-inner">
-            <button type="button" class="btn btn-navbar nav-pull-left"></button>
-            <a class="brand" href="#">Делай дело</a>
-            <div class="nav-collapse collapse pull-right">
-              <ul class="nav">
-                <li class="active"><a href="#">О проекте</a>
-                </li>
-                <li><a href="#">Тарифы</a>
-                </li>
-                <li><a href="#">Отзывы</a>
-                </li>
-              </ul>
-              <form class="navbar-form pull-left">
-                <% if current_user %>
-                  Вы вошли как <%= current_user.login %>
-                  <%= link_to 'Выйти', session_path('current_user'), method: :delete, class: 'btn btn-info' %>
-                <% else %>
-                  <a id='sign_in' class="btn btn-info" href="#">Войти</a>
-                <% end %>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+      <ul class="nav nav-pills pull-right">
+        <li><a href="/">Контакты</a></li>
+        <li class="active">
+          <% if current_user %>
+            Вы вошли как <%= current_user.login %>
+            <%= link_to 'Выйти', session_path('current_user'), method: :delete, class: 'btn btn-info' %>
+          <% else %>
+            <a id='sign_in' class="btn btn-info" href="#">Войти</a>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+
     <% unless current_user %>
       <%= render partial: 'sessions/form' %>
     <% end %>
 
-    <%= yield %>
+    <div class="jumbotron j-home">
+      <%= yield %>
+    </div>
 
-    <!-- footer-1 -->
-    <footer class="footer-1 bg-midnight-blue">
-      <div class="container">
-        <div class="row">
-          <div class="span5">
-            <p class="lead">Управляйте бизнесом <b>эффективно</b>.</p>
-            Проект компаний «Деловая среда» и «Сбербанк».
-            <p class="social-btns">
-              <img src="../../common-files/img/content/social-icons.png" alt="">
-            </p>
-          </div>
-          <nav>
-            <div class="span2 offset1">
-              <h6>Меню</h6>
-              <ul>
-                <li><a href="#">О проекте</a>
-                </li>
-                <li><a href="#">Тарифы</a>
-                </li>
-                <li><a href="#">Отзывы</a>
-                </li>
-                <li><a href="#">Регистрация</a>
-                </li>
-                <li><a href="#">Вход</a>
-                </li>
-              </ul>
-            </div>
-            <div class="span2">
-              <h6>Мы в соцсетях</h6>
-              <ul>
-                <li><a href="#">Facebook</a>
-                </li>
-                <li><a href="#">Вконтакте</a>
-                </li>
-                <li><a href="#">Одноклассники</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-          <div class="span2 buy-btn">
-            <a class="btn btn-danger btn-block" href="#">Регистрация</a>
-            или <a href="#">вход</a>
-          </div>
-        </div>
-        <div class="row">
-          <div class="span5 additional-links">
-            <a href="#">Условия использования</a>
-            <a href="#">Обратная связь</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-        
+    <div class="footer">
+      <p class="footer-copy pull-left"> © 2014 ЗАО «Деловая среда»</p>
+      <p class="footer-contacts pull-right">
+        +7-800-100-90-80<br>
+        <a href="mailto:support@dasreda.ru">support@dasreda.ru</a>
+      </p>
+    </div>
+  </div>
 
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="/flat-ui/js/bootstrap.min.js"></script>
-        <script src="/common-files/js/modernizr.custom.js"></script>
-        <script src="/common-files/js/page-transitions.js"></script>
-        <script src="/common-files/js/startup-kit.js"></script>
-    </body>
+  <%= javascript_include_tag "application/application" %>
+  <script src="/legko-bs/js/bootstrap.min.js"></script>
+</body>
 </html>

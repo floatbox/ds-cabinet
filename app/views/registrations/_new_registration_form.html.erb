@@ -1,0 +1,15 @@
+<div class="step step-1" id="new_registration_form">
+  <h3 class="title highlight error_messages"></h3>
+
+  <div class="step-form">
+    <%= simple_form_for Registration.new, remote: true, authenticity_token: true do |f| %>
+      <%= f.input_field :phone, as: :string, pattern: false, size: nil, placeholder: 'Ваш телефон', class: 'form-control' %>
+      <%= f.input_field :ogrn, as: :string, pattern: false, size: nil, placeholder: 'ОГРН компании', class: 'form-control' %>
+      <%= f.button :submit, 'Регистрация', class: "button" %>
+    <% end %>
+  </div>
+
+  <div class="accept">
+    Регистрируясь, вы соглашаетесь с <a href="">Условиями использования</a> и <a href="">Политикой конфиденциальности</a>
+  </div>
+</div>

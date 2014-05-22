@@ -1,16 +1,12 @@
-section.header-14-sub.bg-midnight-blue
-  .background  
-  .container
-    .row
-      .span8.offset2
-        h3 Введите пароль
-        - if @recovery.errors.any?
-          = render partial: 'recoveries/errors', object: @recovery, as: :target
-        .subscribe-form
-          = simple_form_for @recovery, url: set_password_recovery_path(@recovery) do |f|
-            div
-              = f.input_field :password, class: 'span2', placeholder: 'Пароль'
-            div
-              = f.input_field :password_confirmation, class: 'span2', placeholder: 'Еще раз'
-            div
-              = f.button :submit, 'Далее', class: 'btn btn-primary'
+section
+  h3 Введите пароль
+  - if @recovery.errors.any?
+    = render partial: 'recoveries/errors', object: @recovery, as: :target
+  .subscribe-form
+    = simple_form_for @recovery, url: set_password_recovery_path(@recovery) do |f|
+      div
+        = f.input_field :password, class: 'span2', placeholder: 'Пароль'
+      div
+        = f.input_field :password_confirmation, class: 'span2', placeholder: 'Еще раз'
+      div
+        = f.button :submit, 'Далее', class: 'btn btn-primary'

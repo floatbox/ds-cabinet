@@ -1,15 +1,11 @@
-section.header-14-sub.bg-midnight-blue
-  .background  
-  .container
-    .row
-      .span8.offset2
-        h3 Введите код из SMS
-        - if @recovery.errors.any?
-          = render partial: 'recoveries/errors', object: @recovery, as: :target
-        .subscribe-form
-          = form_tag verify_recovery_path(@recovery) do
-            .input-append
-              = text_field_tag :sms_verification_code, '', class: 'span2', placeholder: 'Код подтверждения'
-              = submit_tag 'Далее', class: 'btn btn-primary'
-        .additional-links
-          = link_to 'Сообщение не пришло, отправить еще раз', regenerate_sms_verification_code_recovery_path(@recovery), method: :post, remote: true, id: 'recovery_regenerate_sms_verification_code'
+section
+  h3 Введите код из SMS
+  - if @recovery.errors.any?
+    = render partial: 'recoveries/errors', object: @recovery, as: :target
+  .subscribe-form
+    = form_tag verify_recovery_path(@recovery) do
+      .input-append
+        = text_field_tag :sms_verification_code, '', class: 'span2', placeholder: 'Код подтверждения'
+        = submit_tag 'Далее', class: 'btn btn-primary'
+  .additional-links
+    = link_to 'Сообщение не пришло, отправить еще раз', regenerate_sms_verification_code_recovery_path(@recovery), method: :post, remote: true, id: 'recovery_regenerate_sms_verification_code'

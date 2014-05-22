@@ -1,0 +1,17 @@
+<div class="step step-4" id="complete">
+  <h3 class="title">Придумайте пароль для входа в личный кабинет</h3>
+  <h3 class="title highlight error_messages"></h3>
+
+  <p>Впоследствии для входа используйте номер вашего телефона: <span class="phone"></span></p>
+
+  <%= form_tag registration_complete_path(:registration_id), method: :post, remote: true do %>
+    <div class="step-form">
+      <%= text_field_tag :password, '', type: 'password', id: 'registration_password', class: 'form-control', placeholder: 'Введите пароль' %>
+      <%= text_field_tag :password_confirmation, '', type: 'password', id: 'registration_password_confirmation', class: 'form-control', placeholder: 'Повтор пароля' %>
+    </div>
+
+    <div class="step-form">
+      <%= submit_tag 'Завершить регистрацию', class: 'button' %>
+    </div>
+  <% end %>
+</div>
