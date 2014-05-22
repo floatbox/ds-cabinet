@@ -88,4 +88,7 @@ DsCabinet::Application.configure do
 
   # Authentication settings
   config.auth_domain = '.dasreda.ru'
+
+  # Widgets settings
+  config.widget_domain = 'legko.li'
 end

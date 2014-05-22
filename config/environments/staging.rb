@@ -89,6 +89,9 @@ DsCabinet::Application.configure do
   # Authentication settings
   config.auth_domain = '.sredda.ru'
 
+  # Widgets settings
+  config.widget_domain = 'delo-widgets-dev.sredda.ru:8082'
+
   config.middleware.use ExceptionNotification::Rack,
   email: {
     email_prefix: "[dev-ds-cabinet] ",

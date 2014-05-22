@@ -2,7 +2,7 @@
 <script type="text/javascript">
   var widgetOptions = {
     id: <%= topic.id %>,
-    domain: 'delo-widgets-dev.sredda.ru:8082',
+    domain: '<%= Rails.configuration.widget_domain %>',
     path: '/purchases/show',
     params: {
       topic_id: <%= topic.id %>

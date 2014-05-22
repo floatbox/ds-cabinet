@@ -44,4 +44,7 @@ DsCabinet::Application.configure do
 
   # Authentication settings
   config.auth_domain = '.sredda.ru'
+
+  # Widgets settings
+  config.widget_domain = 'delo-widgets-dev.sredda.ru:8082'
 end
