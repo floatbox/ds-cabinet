@@ -17,3 +17,4 @@
 //= require ./registrations
 //= require ./recoveries
 //= require ./sessions
+//= require ./promo
