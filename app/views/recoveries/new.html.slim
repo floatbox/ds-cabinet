@@ -1,9 +1,9 @@
-section
-  h3 Введите ваш телефон для восстановления пароля
-  - if @recovery.errors.any?
-    = render partial: 'recoveries/errors', object: @recovery, as: :target
-  .subscribe-form
-    = simple_form_for @recovery do |f|
-      .input-append
-        = f.input_field :phone, class: 'span2', placeholder: 'Ваш телефон'
-        = f.button :submit, 'Далее', class: 'btn btn-primary'
+.steps
+  .step.step-1
+    h3 Введите ваш телефон для восстановления пароля
+    - if @recovery.errors.any?
+      = render partial: 'recoveries/errors', object: @recovery, as: :target
+    .step-form
+      = simple_form_for @recovery do |f|
+        = f.input_field :phone, class: 'form-control', placeholder: 'Ваш телефон'
+        = f.button :submit, 'Далее', class: 'button'
