@@ -16,7 +16,7 @@ DsCabinet::Application.routes.draw do
     end
   end
 
-  resources :sessions, only: [:create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
 
   resources :users, only: [:edit, :update] do
     get 'search', to: 'search#index', as: :search

@@ -1,4 +1,10 @@
-class SessionsController < ActionController::Base
+class SessionsController < ApplicationController
+
+  protect_from_forgery with: :null_session
+
+  # GET /sessions/new
+  def new
+  end
 
   # POST /sessions
   def create

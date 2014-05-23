@@ -32,15 +32,11 @@
             Вы вошли как <%= current_user.login %>
             <%= link_to 'Выйти', session_path('current_user'), method: :delete, class: 'btn btn-info' %>
           <% else %>
-            <a id='sign_in' class="btn btn-info" href="#">Войти</a>
+            <a id='sign_in' class="btn btn-info" href="<%= new_session_path %>">Войти</a>
           <% end %>
         </li>
       </ul>
     </div>
-
-    <% unless current_user %>
-      <%= render partial: 'sessions/form' %>
-    <% end %>
 
     <div class="jumbotron j-home">
       <%= yield %>
