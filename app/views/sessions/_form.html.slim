@@ -7,5 +7,5 @@
   .step-form
     = form_tag sessions_path, remote: true do
       = text_field_tag :phone, params[:phone], class: 'form-control', placeholder: 'Ваш телефон'
-      = password_field_tag :password, params[:password], class: 'form-control', placeholder: 'Пароль'
+      = text_field_tag :password, params[:password], class: 'form-control', placeholder: 'Пароль'
       = submit_tag 'Войти', class: 'button'
