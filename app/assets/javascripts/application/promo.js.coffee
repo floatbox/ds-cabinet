@@ -1,6 +1,7 @@
 $ ->
   promos = []
   heights = []
+  classes = ['j-home', 'j-signin']
   current = 0
 
   $('.promo').each ->
@@ -12,6 +13,10 @@ $ ->
   $(promos[0]).show()
 
   setInterval ->
+    nextImageIndex = current + 1
+    nextImageIndex = 0 if nextImageIndex >= promos.length
+    $('.jumbotron').removeClass(classes[current]).addClass(classes[nextImageIndex])
+
     $(promos[current]).animate {height: 0}, 400, 'linear', ->
       $(promos[current]).hide()
       current++
