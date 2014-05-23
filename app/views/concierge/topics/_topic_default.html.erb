@@ -1,5 +1,5 @@
 <%= link_to concierge_topic_path(topic), class: 'btn btn-circle btn-twitter btn-lg' do %>
-  <i class="icon-user"></i>
+  <i class="icon-user pull-left"></i> <span class="pull-right fio"><%= topic.author.siebel.full_name %></span>
 <% end %>
 <div class="h4">
   <%= paragraphs topic.text %>

@@ -42,7 +42,9 @@
           </ul>
         </li>
       </ul>
-      <%= link_to 'Делай дело', root_path, class: 'navbar-brand' %>
+      <%= link_to root_path, class: 'navbar-brand' do %>
+        <%= image_tag 'header-logo.png', height: '58', width: '75' %>
+      <% end %>
       <button type="button" class="btn btn-link pull-left nav-toggle visible-xs" data-toggle="class:slide-nav slide-nav-left" data-target="body">
       <i class="icon-reorder icon-xlarge text-default"></i>
       </button>
