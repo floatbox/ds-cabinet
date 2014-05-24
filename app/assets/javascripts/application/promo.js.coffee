@@ -11,9 +11,10 @@ $ ->
     $(this).hide()
     $(this).css(height: 0) if promos.length > 1
 
-  $(promos[0]).show()
+  $(promos[0]).addClass('current').show()
 
   setInterval ->
+    return if $(promos[current]).hasClass('disabled')
     nextImageIndex = current + 1
     nextImageIndex = 0 if nextImageIndex >= promos.length
     $('.jumbotron').removeClass(classes[current]).addClass(classes[nextImageIndex])
@@ -21,9 +22,9 @@ $ ->
     $('.wrap-content').animate {top:tops[nextImageIndex]}, 400, 'linear'
 
     $(promos[current]).animate {height: 0}, 400, 'linear', ->
-      $(promos[current]).hide()
+      $(promos[current]).removeClass('current').hide()
       current++
       current = 0 if current >= promos.length
-      $(promos[current]).show()
+      $(promos[current]).addClass('current').show()
       $(promos[current]).animate {height: "#{heights[current]}px"}, 400, 'linear'
   , 7000

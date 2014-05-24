@@ -1,5 +1,6 @@
 $ ->
   # Define forms IDs
+  pre_new_registration_form = '#pre_new_registration_form'
   registraton_form = '#new_registration_form'
   confirmation = '#confirmation'
   not_found = '#not_found'
@@ -9,6 +10,7 @@ $ ->
   sms_verification_code_sent = '#sms_verification_code_sent'
 
   # Hide all but the first form
+  $(pre_new_registration_form).show()
   $(registraton_form).hide()
   $(confirmation).hide()
   $(not_found).hide()
@@ -50,8 +52,13 @@ $ ->
     $('img#preloader').hide()
 
   # Set masks on inputs
+  $("#{pre_new_registration_form} input#registration_phone").mask('+7 (999) 999-99-99')
+  $("#{pre_new_registration_form} input#registration_ogrn").mask('9999999999999?99')
   $("#{registraton_form} input#registration_phone").mask('+7 (999) 999-99-99')
   $("#{registraton_form} input#registration_ogrn").mask('9999999999999?99')
+
+  $('body').on 'keydown', "#{pre_new_registration_form} input#registration_phone, #{pre_new_registration_form} input#registration_ogrn", ->
+    $('.promo').addClass('disabled')
 
   #
   # Helpers
@@ -112,12 +119,54 @@ $ ->
     replace_id($(complete).find('form'), 'action', data.id)
     $(complete).find('span.phone').text(data.phone)
 
+  # Removed promo blocks, their styles, shows next form with animation
+  setup_registration_steps = (next_form) ->
+    oldHeight = "#{$(next_form).outerHeight()}px"
+    $(next_form).css(height:'0px')
+
+    $('.wrap-content').animate {top: '135px'}, 400, 'linear'
+    $('.promo').addClass('disabled').animate {height:'0px'}, 400, 'linear', ->
+      $(this).hide()
+      $(next_form).show().css(opacity:'0')
+      $(next_form).animate {height: oldHeight}, 200, 'linear', ->
+        $(next_form).hide().css(opacity:'1').fadeIn()
+        $('.wrap-content').addClass('steps').removeClass('wrap-content')
+
+    $(pre_new_registration_form).fadeOut()
+
   #
   # General callbacks
   #
   $('body').on 'click', 'a.new_registration', (event) ->
     event.preventDefault()
     $(registraton_form).show()
+
+  #
+  # Pre registration form callbacks
+  #
+  $('body').on 'ajax:before', pre_new_registration_form, (event, data) ->
+    return false if $(pre_new_registration_form).hasClass('submit-disabled')
+    showPreloader(pre_new_registration_form)
+
+  $('body').on 'ajax:success', pre_new_registration_form, (event, data) ->
+    hidePreloader(pre_new_registration_form)
+
+    if data.workflow_state is 'deferred'
+      setup_registration_steps(deferred)
+    else
+      fill_confirmation_dialog(data)
+      fill_verify_phone_dialog(data)
+      fill_complete_dialog(data)
+      setup_registration_steps(confirmation)
+
+  $('body').on 'ajax:error', pre_new_registration_form, (event, data) ->
+    hidePreloader(pre_new_registration_form)
+    errors = data.responseJSON
+    if errors.company
+      setup_registration_steps(not_found)
+    else
+      setup_registration_steps(registraton_form)
+      show_error_messages(registraton_form, errors)
 
   #
   # Registration form callbacks

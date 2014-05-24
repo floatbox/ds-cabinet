@@ -180,11 +180,6 @@ strong { font-weight: normal; }
 
 .steps p { text-align: center; font-size: 11px; }
 
-.step-1 { display: none; }
-.step-2 { display: none; }
-.step-3 { display: block; }
-.step-4 { display: none; }
-
 .steps .correct { max-width: 900px; margin: 0 auto; padding: 12px 14px; background: #fff; color: #555; border: 2px solid #b3babf; border-radius: 7px; font-size: 15px; font-family: 'Gotham Pro Regular'; }
     .steps .correct strong { font-family: 'Gotham Pro Medium'; }
 
