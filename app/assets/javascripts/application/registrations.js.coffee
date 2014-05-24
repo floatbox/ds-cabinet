@@ -9,7 +9,7 @@ $ ->
   sms_verification_code_sent = '#sms_verification_code_sent'
 
   # Hide all but the first form
-  $(registraton_form).show()
+  $(registraton_form).hide()
   $(confirmation).hide()
   $(not_found).hide()
   $(verify_phone).hide()

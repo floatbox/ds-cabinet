@@ -49,7 +49,7 @@ body {
 }
 
 .container {
-    /*max-width: 1200px;*/
+    max-width: 1170px;
     margin: 0 auto;
 }
 
@@ -175,36 +175,15 @@ strong { font-weight: normal; }
             .signin .notice h3 { margin: 0 0 5px 0; color: #189b97; font-size: 15px; }
             .signin .notice p { width: auto; color: #363636; font-size: 11px; line-height: 120%; color: #363636; }
 
-@media (max-width: 992px) {
-    .signin {
-        /*margin: -45px auto;*/
-        bottom: 45px; !important;
-    }
-}
-@media (max-width: 767px) {
-    .signin {
-        /*margin: -45px auto;*/
-        bottom: 10px; !important;
-    }
-    .signin .buttons { margin-top: 20px; text-align: center; }
-    .j-home .wrap-content {top: 16px;}
-}
 .steps .title { font-family: 'Gotham Pro Medium'; font-size: 15px; }
 .steps .title.highlight { color: #eb212e; }
 
 .steps p { text-align: center; font-size: 11px; }
 
-.step-1 { display: block; }
+.step-1 { display: none; }
 .step-2 { display: none; }
-.step-3 { display: none; }
+.step-3 { display: block; }
 .step-4 { display: none; }
-
-#confirmation { display: none; }
-#not_found { display: none; }
-#verify_phone { display: none; }
-#deferred { display: none; }
-#complete { display: none; }
-#sms_verification_code_sent { display: none; }
 
 .steps .correct { max-width: 900px; margin: 0 auto; padding: 12px 14px; background: #fff; color: #555; border: 2px solid #b3babf; border-radius: 7px; font-size: 15px; font-family: 'Gotham Pro Regular'; }
     .steps .correct strong { font-family: 'Gotham Pro Medium'; }

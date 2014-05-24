@@ -1,7 +1,8 @@
 $ ->
   promos = []
   heights = []
-  classes = ['j-home', 'j-signin']
+  classes = ['j-signin', 'j-home']
+  tops = ['115px', '70px']
   current = 0
 
   $('.promo').each ->
@@ -16,6 +17,8 @@ $ ->
     nextImageIndex = current + 1
     nextImageIndex = 0 if nextImageIndex >= promos.length
     $('.jumbotron').removeClass(classes[current]).addClass(classes[nextImageIndex])
+
+    $('.wrap-content').animate {top:tops[nextImageIndex]}, 400, 'linear'
 
     $(promos[current]).animate {height: 0}, 400, 'linear', ->
       $(promos[current]).hide()
