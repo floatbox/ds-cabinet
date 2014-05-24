@@ -18,3 +18,4 @@
 //= require ./recoveries
 //= require ./sessions
 //= require ./promo
+//= require ./contacts

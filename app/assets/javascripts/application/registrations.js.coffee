@@ -124,13 +124,13 @@ $ ->
     oldHeight = "#{$(next_form).outerHeight()}px"
     $(next_form).css(height:'0px')
 
-    $('.wrap-content').animate {top: '135px'}, 400, 'linear'
+    $('.main-wrapper').animate {top: '135px'}, 400, 'linear'
     $('.promo').addClass('disabled').animate {height:'0px'}, 400, 'linear', ->
       $(this).hide()
       $(next_form).show().css(opacity:'0')
       $(next_form).animate {height: oldHeight}, 200, 'linear', ->
         $(next_form).hide().css(opacity:'1').fadeIn()
-        $('.wrap-content').addClass('steps').removeClass('wrap-content')
+        $('.main-wrapper').addClass('steps').removeClass('wrap-content')
 
     $(pre_new_registration_form).fadeOut()
 
