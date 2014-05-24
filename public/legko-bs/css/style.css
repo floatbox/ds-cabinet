@@ -49,7 +49,7 @@ body {
 }
 
 .container {
-    max-width: 1170px;
+    /*max-width: 1200px;*/
     margin: 0 auto;
 }
 
@@ -175,6 +175,20 @@ strong { font-weight: normal; }
             .signin .notice h3 { margin: 0 0 5px 0; color: #189b97; font-size: 15px; }
             .signin .notice p { width: auto; color: #363636; font-size: 11px; line-height: 120%; color: #363636; }
 
+@media (max-width: 992px) {
+    .signin {
+        /*margin: -45px auto;*/
+        bottom: 45px; !important;
+    }
+}
+@media (max-width: 767px) {
+    .signin {
+        /*margin: -45px auto;*/
+        bottom: 10px; !important;
+    }
+    .signin .buttons { margin-top: 20px; text-align: center; }
+    .j-home .wrap-content {top: 16px;}
+}
 .steps .title { font-family: 'Gotham Pro Medium'; font-size: 15px; }
 .steps .title.highlight { color: #eb212e; }
 
