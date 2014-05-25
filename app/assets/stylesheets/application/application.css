@@ -36,3 +36,24 @@
   min-height: 510px;
   background: url('/legko-bs/images/crazy-bg.jpg') no-repeat -1920px 0;
 }
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #2a2e3a;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #2a2e3a;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #2a2e3a;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #2a2e3a;
+}
+
+pre_registration_input {
+   -moz-appearance:    textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
