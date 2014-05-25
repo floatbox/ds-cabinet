@@ -5,4 +5,7 @@ class PagesController < ApplicationController
       redirect_to redirect_url
     end
   end
+
+  def contacts
+  end
 end

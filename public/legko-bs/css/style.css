@@ -132,7 +132,7 @@ strong { font-weight: normal; }
 .signin { position: absolute; left: 0; bottom: 75px; width: 100%; text-align: center; }
     .signin .wrapper { max-width: 600px; margin: 0 auto; }
 
-    .signin p { max-width: 400px; margin: 0 auto; text-align: left; color: #fff; line-height: 200%; font-size: 11px; }
+    .signin p { max-width: 400px; margin: 0 auto; text-align: left; color: #2a2e3a; line-height: 200%; font-size: 11px; }
     .signin a { color: #fca23d; }
         .signin span { color: #189b97; }
 

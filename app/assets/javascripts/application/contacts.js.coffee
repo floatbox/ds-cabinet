@@ -1,5 +1,9 @@
 $ -> 
   $('body').on 'click', '#contacts', (event) ->
+    if $('.contacts').length == 0
+      location.replace('/contacts')
+      return false
+
     event.preventDefault()
 
     $('.registration_forms').fadeOut 400, ->
