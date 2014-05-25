@@ -17,14 +17,14 @@ $ ->
     return if $(promos[current]).hasClass('disabled')
     nextImageIndex = current + 1
     nextImageIndex = 0 if nextImageIndex >= promos.length
-    $('.jumbotron').animate { 'background-position':positions[nextImageIndex] }, 400
+    $('.jumbotron').animate { 'background-position':positions[nextImageIndex] }, 1000
 
-    $('.wrap-content').animate {top:tops[nextImageIndex]}, 400, 'linear'
+    $('.wrap-content').animate {top:tops[nextImageIndex]}, 1000, 'linear'
 
-    $(promos[current]).animate {height: 0}, 400, 'linear', ->
+    $(promos[current]).animate {height: 0}, 500, 'linear', ->
       $(promos[current]).removeClass('current').hide()
       current++
       current = 0 if current >= promos.length
       $(promos[current]).addClass('current').show()
-      $(promos[current]).animate {height: "#{heights[current]}px"}, 400, 'linear'
+      $(promos[current]).animate {height: "#{heights[current]}px"}, 500, 'linear'
   , 7000
