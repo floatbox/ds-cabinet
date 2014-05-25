@@ -19,3 +19,10 @@
 //= require ./sessions
 //= require ./promo
 //= require ./contacts
+//= require_self
+
+$( "#ogrn-tooltip" ).hover(
+  function() {
+    $(this).siblings(".notice").toggle();
+  }
+);
