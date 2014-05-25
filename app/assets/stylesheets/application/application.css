@@ -11,3 +11,22 @@
  *= require_self
  */
 .contacts { display: none; }
+
+.pre_registration_input {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  min-width: 175px;
+  padding: 10px 0;
+  margin: 0 5px;
+  font-family: 'Gotham Pro Medium';
+  color: #2a2e3a;
+  font-size: 16px;
+  text-decoration: none;
+  background: #fff;
+  background: rgba(255,255,255,.7);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: none;
+  text-align: center;
+}
