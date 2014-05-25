@@ -30,3 +30,9 @@
   border: none;
   text-align: center;
 }
+
+.j-signin {
+  position: relative;
+  min-height: 510px;
+  background: url('/legko-bs/images/crazy-bg.jpg') no-repeat -1920px 0;
+}

@@ -1,7 +1,7 @@
 $ ->
   promos = []
   heights = []
-  classes = ['j-signin', 'j-home']
+  positions = ['-1920px', '0px']
   tops = ['115px', '70px']
   current = 0
 
@@ -17,7 +17,7 @@ $ ->
     return if $(promos[current]).hasClass('disabled')
     nextImageIndex = current + 1
     nextImageIndex = 0 if nextImageIndex >= promos.length
-    $('.jumbotron').removeClass(classes[current]).addClass(classes[nextImageIndex])
+    $('.jumbotron').animate { 'background-position':positions[nextImageIndex] }, 400
 
     $('.wrap-content').animate {top:tops[nextImageIndex]}, 400, 'linear'
 
