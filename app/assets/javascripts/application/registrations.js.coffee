@@ -56,6 +56,7 @@ $ ->
   $("#{pre_new_registration_form} input#registration_ogrn").mask('9999999999999?99')
   $("#{registraton_form} input#registration_phone").mask('+7 (999) 999-99-99')
   $("#{registraton_form} input#registration_ogrn").mask('9999999999999?99')
+  $("#pre_registration_ogrn").mask('9999999999999?99')
 
   $('body').on 'keydown', "#{pre_new_registration_form} input#registration_phone, #{pre_new_registration_form} input#registration_ogrn", ->
     $('.promo').addClass('disabled')

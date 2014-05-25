@@ -6,8 +6,8 @@
 
   <%= form_tag registration_complete_path(:registration_id), method: :post, remote: true do %>
     <div class="step-form">
-      <%= text_field_tag :password, '', type: 'password', id: 'registration_password', class: 'form-control', placeholder: 'Введите пароль' %>
-      <%= text_field_tag :password_confirmation, '', type: 'password', id: 'registration_password_confirmation', class: 'form-control', placeholder: 'Повтор пароля' %>
+      <%= text_field_tag :password, '', id: 'registration_password', class: 'form-control', placeholder: 'Введите пароль' %>
+      <%= text_field_tag :password_confirmation, '', id: 'registration_password_confirmation', class: 'form-control', placeholder: 'Повтор пароля' %>
     </div>
 
     <div class="step-form">

@@ -65,3 +65,9 @@ pre_registration_input {
   left: -60px;
   font-size: 16px;
 }
+
+.signin .notice {
+  display: none;
+  left: 44%;
+  bottom: 40%;
+}

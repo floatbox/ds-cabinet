@@ -24,7 +24,7 @@
     <%= simple_form_for Registration.new, remote: true, authenticity_token: true do |f| %>
       <div class="buttons">
         <%= f.input_field :phone, as: :string, pattern: false, size: nil, placeholder: 'Телефон', class: 'pre_registration_input' %>
-        <%= f.input_field :ogrn, as: :string, pattern: false, size: nil, placeholder: 'ОГРН', class: 'pre_registration_input' %>
+        <%= f.input_field :ogrn, as: :string, pattern: false, size: nil, placeholder: 'ОГРН', id: 'pre_registration_ogrn', class: 'pre_registration_input' %>
         <span id='ogrn-tooltip'>?</span>
         <div class="notice">
           <h3>Основной государственный регистрационный номер (ОГРН)</h3>

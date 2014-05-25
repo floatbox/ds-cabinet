@@ -26,3 +26,13 @@ $( "#ogrn-tooltip" ).hover(
     $(this).siblings(".notice").toggle();
   }
 );
+
+$('#pre_registration_ogrn').focus(function(){
+  $('#ogrn-tooltip').hide();
+})
+
+$('#pre_registration_ogrn').focusout(function(){
+  if ($(this).val() === '_______________'){
+    $('#ogrn-tooltip').show();
+  };
+})
