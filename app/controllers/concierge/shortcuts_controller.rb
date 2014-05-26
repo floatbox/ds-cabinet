@@ -19,6 +19,17 @@ class Concierge::ShortcutsController < Concierge::ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @shortcut.update_attributes(shortcut_params)
+      redirect_to concierge_shortcuts_url
+    else
+      render 'edit'
+    end
+  end
+
 
   private
 
