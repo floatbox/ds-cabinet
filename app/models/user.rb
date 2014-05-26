@@ -58,6 +58,8 @@ class User < ActiveRecord::Base
     @sns_company ||= Ds::Sns.as siebel_id, 'siebel' do
       sns.companies.first
     end
+  rescue
+    nil
   end
 
   def siebel_company
