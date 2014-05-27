@@ -35,12 +35,15 @@ class UserObserver < ActiveRecord::Observer
     # Finds random concierge and assigns him to the newly created user
     def assign_random_concierge_to(user)
       concierge = User.concierges.order('RANDOM()').limit(1).first
-      user.concierge = concierge
-      user.save
+      if concierge
+        user.concierge_id = concierge.id
+        user.save
+      end
     end
 
     # Creates welcome topic from the concierge to the user
     def create_welcome_topic_for(user)
+      return unless user.concierge_id
       text = I18n.t('system_messages.welcome_topic')
       user.topics.create(text: text, author_id: user.concierge.id)
     end
