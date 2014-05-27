@@ -1,5 +1,5 @@
-var panel = $('#panel-notifications');
+var panel = $('#js-notifications');
 if (panel.data('count') != <%= @notifications.total_count %>) {
   panel.replaceWith('<%=j render partial: 'notifications/panel', object: @notifications, as: :notifications %>');
-  $('#panel-notifications').find('.badge').effect('highlight', 1500);
+  $('#js-notifications').find('.js-count').effect('highlight', 1500);
 }

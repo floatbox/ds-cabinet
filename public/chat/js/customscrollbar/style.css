@@ -1,0 +1,205 @@
+.customscroll { 
+    visibility: hidden;
+    position: absolute;
+    left: -10px; 
+    top: 45px;
+    z-index: 555;
+    width: 210px;
+    height: 300px;
+}
+.customscroll:before { content: ""; position: absolute; left: 20px; top: -10px; background: red; width: 12px; height: 12px; z-index: 666; background: url(x.png) no-repeat; }
+
+.customscroll .wrapper {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    overflow: hidden;
+    height: 100%;    
+    background: #fff;
+    border: 2px solid #1ea8a4;
+    border-color: rgba(30,168,164,.4);
+    border-radius: 5px;
+    text-align: left;
+}
+.customscroll .scroller {
+    height: 100%;
+    overflow-y: scroll;
+    /*-webkit-overflow-scrolling: touch;*/
+    /* uncomment to accelerate scrolling on iOs */
+}
+.customscroll .scroller::-webkit-scrollbar {
+    width: 0;
+}
+.customscroll .scroller__bar-wrapper {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 18px;
+    background: #fff;
+    pointer-events: none;
+}
+.customscroll .scroller__bar {
+    position: absolute;
+    z-index: 1;
+    width: 8px;
+    opacity: 0;
+    -webkit-transition: opacity .2s linear;
+    transition: opacity .2s linear;
+    pointer-events: auto;
+}
+.customscroll .scroller__bar:hover {
+    opacity: 1;
+}
+.customscroll .baron .scroller__bar {
+    opacity: 1;
+}
+.customscroll .baron_h .scroller__bar_h {
+    opacity: 1;
+    bottom: 30px;
+}
+
+.customscroll .header__title {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #ebe7e4;
+    background-color: rgba(200, 209, 250, 1);
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, .05);
+    color: #222;
+    font-size: 14px;
+    line-height: 20px; /* sync with .search-results__header-wrapper height */
+    opacity: 1;
+    -webkit-transition: background-color .2s;
+    transition: background-color .2s;
+    cursor: pointer;
+}
+.customscroll .header__title_state_fixed {
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(220, 209, 250, .95);
+    text-shadow: 0 0 5px #fff;
+}
+.customscroll .header__title_position_top {
+    background-color: rgba(200, 250, 200, .8);
+}
+.customscroll .header__title_position_top:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -30px;
+    width: 100%;
+    height: 30px;
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+}
+.customscroll .header__title_position_bottom {
+    background-color: rgba(250, 200, 200, .8);
+}
+.customscroll .header__title_position_bottom:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -30px;
+    width: 100%;
+    height: 30px;
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none;
+}
+
+.customscroll .wrapper_2 .text {
+    width: 800px;
+}
+.customscroll .wrapper_2 .header__title {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+}
+.customscroll .wrapper_2 .header__title_state_fixed {
+    position: static;
+}
+
+.customscroll .text {
+    overflow: hidden;
+    margin: 10px;
+    font-size: 12px;
+}
+
+.customscroll .wrapper_iphone .header__title_state_fixed {
+    position: relative;
+}
+.customscroll .wrapper_iphone .header__title_position_top {
+    position: absolute;
+    top: 0;
+}
+.wrapper_iphone .header__title_position_bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+.customscroll .load {
+    display: none;
+    background: yellow;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.customscroll .load__value {
+    background: green;
+    width: 0%;
+    height: 100%;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+
+/* CSS styles in this file are need for proper Baron work */
+.customscroll .wrapper {
+    position: relative;
+    overflow: hidden;
+}
+.customscroll .scroller {
+    height: 100%;
+    overflow-y: scroll;
+    border: 0;
+}
+.customscroll .scroller::-webkit-scrollbar { /* Preventing webkit bug of horizontal scrolling */
+    width: 0;
+}
+.customscroll .scroller__bar { /* The bar. You should define width, right and background */
+    position: absolute;    
+    z-index: 1;
+    right: 5px;
+    width: 8px;
+    background: #3ccac5;
+    background: -moz-linear-gradient(top,  #3ccac5 0%, #2dc7c2 2%, #2cc6c1 5%, #2bc3be 20%, #21b0ac 75%, #1eaaa6 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3ccac5), color-stop(2%,#2dc7c2), color-stop(5%,#2cc6c1), color-stop(20%,#2bc3be), color-stop(75%,#21b0ac), color-stop(100%,#1eaaa6));
+    background: -webkit-linear-gradient(top,  #3ccac5 0%,#2dc7c2 2%,#2cc6c1 5%,#2bc3be 20%,#21b0ac 75%,#1eaaa6 100%);
+    background: -o-linear-gradient(top,  #3ccac5 0%,#2dc7c2 2%,#2cc6c1 5%,#2bc3be 20%,#21b0ac 75%,#1eaaa6 100%);
+    background: -ms-linear-gradient(top,  #3ccac5 0%,#2dc7c2 2%,#2cc6c1 5%,#2bc3be 20%,#21b0ac 75%,#1eaaa6 100%);
+    background: linear-gradient(to bottom,  #3ccac5 0%,#2dc7c2 2%,#2cc6c1 5%,#2bc3be 20%,#21b0ac 75%,#1eaaa6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ccac5', endColorstr='#1eaaa6',GradientType=0 );
+    border-radius: 5px;
+}
+.customscroll .scroller__bar_h {
+    bottom: 2px;
+    height: 8px;
+}
+
+.customscroll .header__title {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; /* For padding and border, if exist */
+    background: #999;
+
+    /* pointer-events: none; /* IE9+ https://developer.mozilla.org/en-US/docs/CSS/pointer-events */
+}
+.customscroll .header__title_state_fixed {
+    position: absolute;
+    z-index: 1; /* Removing flicker effect */
+}

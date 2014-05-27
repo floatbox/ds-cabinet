@@ -1,0 +1,17 @@
+<div class="jumbotron j-messages">
+  <% if @user %>
+    <h2>Топики пользователя <%= @user.siebel.full_name %></h2>
+  <% else %>
+    <h2>Все топики</h2>
+  <% end %>
+
+  <% if params[:tag] %>
+    <h3>По тегу <%= params[:tag] %></h3>
+  <% end %>
+
+  <div id="js-topics">
+    <%= render partial: 'concierge/topics/topic', collection: @topics %>
+  </div>
+  <%= paginate @topics %>
+  <%= render 'update_topics' %>
+</div>

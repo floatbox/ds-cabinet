@@ -1,10 +1,10 @@
 var newMessages = [];
 <% @messages.each do |message| %>
-  if ($('#message-id-<%= message.id %>').length == 0) {
-    newMessages.push('#message-id-<%= message.id %>');
+  if ($('#js-message-id-<%= message.id %>').length == 0) {
+    newMessages.push('#js-message-id-<%= message.id %>');
   }
 <% end %>
-$('.comment-list .messages').html("<%=j render partial: 'messages/message', collection: @messages %>")
+$('.js-messages').html("<%=j render partial: 'messages/message', collection: @messages %>")
 newMessages.forEach(function(message) {
-  $(message).find('.media-body').hide().toggle('highlight', 2000);
+  $(message).hide().toggle('highlight', 2000);
 })

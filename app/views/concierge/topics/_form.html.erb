@@ -10,7 +10,7 @@
         <%= render 'errors', target: @topic %>
       <% end %>
       <% if @topic.new_record? || @topic.author_id == current_user.id %>
-        <%= f.input_field :text, placeholder: 'Постарайтесь сформулировать вопрос кратко и емко', maxlength: false, rows: 5, class: 'form-control submit_by_hotkey' %>
+        <%= f.input_field :text, placeholder: 'Постарайтесь сформулировать вопрос кратко и емко', maxlength: false, rows: 5, class: 'form-control js-submit-by-hotkey' %>
         <%= render 'length_validation' %>
       <% end %>
       <br />

@@ -1,47 +1,23 @@
-<article id="message-id-<%= message.id %>" class="comment-item media arrow arrow-left<%= ' collapsable' if defined?(message_counter) && defined?(total_size) && message_counter < total_size - 5 %>">
-  <a class="pull-left thumb-small avatar"><img src="/images/avatar_dummy.png" class="img-circle"></a>
-  <section class="media-body panel">
-    <header class="panel-heading clearfix">
-      <a href="#"><%= message.user.siebel.full_name %></a>
-      <% if message.user.concierge? %>
-        <label class="label bg-info m-l-mini">Консьерж</label>
-      <% end %>
-      <% unless message.created_at == message.updated_at %>
-        <label class="label bg-info m-l-mini">Отредактировано <%=l message.updated_at, format: :long %></label>
-      <% end %>
-      <span class="text-muted m-l-small pull-right">
-        <i class="icon-time"></i>
-        <% if message.created_at < 7.days.ago %>
-          <%= time_ago_in_words(message.created_at) %> назад
-        <% else %>
-          <%=l message.created_at, format: :long %>
-        <% end %>
-      </span>
-    </header>
-    <div class="panel-body">
-      <div>
-        <%= paragraphs message.text %>
+<div id="js-message-id-<%= message.id %>" class="item js-message<%= ' js-collapsable' if defined?(message_counter) && defined?(total_size) && message_counter < total_size - 5 %>">
+  <div class="view">
+    <img src="/chat/images/tmp/a2.png" height="45" width="45" alt="">
+  </div>
+
+  <div class="description">
+    <div class="date"><span class="name"><%= message.user.siebel.full_name %></span> <small><%=l message.created_at, format: :long %></small></div>
+
+    <div class="wrapper">
+      <div class="files">
         <% message.attachments.each do |attachment| %>
-          <span class="badge bg-warning">
-            <%= link_to attachment.attachment.url, target: '_blank', style: 'color:white;' do %>
-              <i class="icon-file-text"></i>
-              <%= attachment.attachment.file.filename %>
-            <% end %>
-          </span>
-        <% end %>
-      </div>
-      <div class="comment-action m-t-small">
-        <% if can? :edit, message %>
-          <%= link_to edit_message_path(message), class: 'show-modal-window btn btn-white btn-xs', data: { target: '#modal-window', toggle: 'modal' } do %>
-            <i class="icon-cog text-muted"></i>Редактировать
-          <% end %>
-        <% end %>
-        <% if can? :destroy, message %>
-          <%= link_to message, class: 'btn btn-white btn-xs', remote: true, method: :delete, confirm: 'Вы уверены, что хотите удалить сообщение?' do %>
-            <i class="icon-trash text-muted"></i>Удалить</a>
+          <%= link_to attachment.attachment.url, target: '_blank', style: 'color:white;' do %>
+            <img src="images/pdf.png" height="32" width="30" alt="">
+            <br />
+            <%= attachment.attachment.file.filename %>
           <% end %>
         <% end %>
       </div>
-    </div>
-  </section>
-</article>
+
+      <%= paragraphs message.text %>
+    </div>                
+  </div>
+</div>
