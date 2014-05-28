@@ -1,6 +1,7 @@
 class RegistrationsController < ApplicationController
   include WithSmsVerification
 
+  before_filter :check_registration_enabled
   before_filter :set_registration, only: [:confirm, :verify_phone, :complete, :regenerate_sms_verification_code]
 
   def new
@@ -75,6 +76,10 @@ class RegistrationsController < ApplicationController
   end
 
   private
+
+    def check_registration_enabled
+      render nothing: true unless ConfigItem['registration_enabled'] == 'true'
+    end
 
     def registration_params
       params.require(:registration).permit(:phone, :ogrn)

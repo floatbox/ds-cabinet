@@ -86,3 +86,4 @@ ru:
 
   config_items:
     search_banned_words: Запрещенные для поиска слова
+    registration_enabled: Регистрация включена

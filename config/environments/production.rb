@@ -82,12 +82,12 @@ DsCabinet::Application.configure do
   config.sms_gateway = 'https://api.sredda.ru:4444/SMSGateway/sms'
 
   # UAS settings
-  config.uas_url = 'https://pim.sredda.ru/authentication'
-  config.uas_sertificate = "#{Rails.root}/certs/ds_admin.pem"
-  config.uas_query_log = false
+  config.uas_url = 'https://ccdemopim.sredda.ru/authentication'
+  config.uas_sertificate = "#{Rails.root}/certs/ds_user.pem"
+  config.uas_query_log = true
 
   # Authentication settings
-  config.auth_domain = '.dasreda.ru'
+  config.auth_domain = 'legko.li'
 
   # Widgets settings
   config.widget_domain = 'legko.li'
