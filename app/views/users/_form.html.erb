@@ -1,90 +1,49 @@
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Ваш профиль</h4>
-      </div>
-      <%= simple_form_for @user, remote: true, html: { class: 'form-horizontal' } do |f| %>
-        <div class="modal-body">
-          <div class="alert alert-danger" style="display:none;">
-            <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
-            <i class="icon-ban-circle icon-large"></i><strong>Ошибка!</strong> Что-то пошло не так, попробуйте еще раз.
-          </div>
-          <section class="panel">
-            <div class="panel-body">
-                <div class="form-group">
-                  <label class="col-lg-3 control-label">Телефон</label>
-                  <div class="col-lg-8">
-                    <%= f.input_field :phone, class: 'form-control', disabled: true %>
-                  </div>
-                </div>
+<h3 class="popup-title">Ваш профиль</h3>
 
-                <div class="form-group">
-                  <label class="col-lg-3 control-label">Организация</label>
-                  <div class="col-lg-8">
-                    <input class="form-control" disabled="true" value="<%=j @user.siebel_company.try(:full_name) %>"/>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-lg-3 control-label">ИНН</label>
-                  <div class="col-lg-8">
-                    <input class="form-control" disabled="true" value="<%=j @user.siebel_company.try(:inn) %>"/>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-lg-3 control-label">ОГРН</label>
-                  <div class="col-lg-8">
-                    <input class="form-control" disabled="true" value="<%=j @user.siebel_company.try(:ogrn) %>"/>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-lg-3 control-label">Фамилия</label>
-                  <div class="col-lg-8">
-                    <%= f.input_field :last_name, class: 'form-control', disabled: @user.approved? %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-lg-3 control-label">Имя</label>
-                  <div class="col-lg-8">
-                    <%= f.input_field :first_name, class: 'form-control', disabled: @user.approved? %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-lg-3 control-label">Отчество</label>
-                  <div class="col-lg-8">
-                    <%= f.input_field :middle_name, class: 'form-control', disabled: @user.approved? %>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-lg-3 control-label">Налоговый режим</label>
-                  <div class="col-lg-8">
-                    <%= f.input_field :tax_treatment, class: 'form-control', disabled: true %>
-                  </div>
-                </div>
-
-                <% if @user.concierge? %>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">API токен</label>
-                    <div class="col-lg-8">
-                      <%= f.input_field :api_token, class: 'form-control', readonly: true %>
-                    </div>
-                  </div>
-                <% end %>
-                
-              </div>
-            </section>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
-          <% if can? :update, @user %>
-            <%= f.button :submit, 'Сохранить', class: 'btn btn-primary' %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+<%= simple_form_for @user, remote: true do |f| %>
+  <table>
+    <col width="35%">
+    <col width="65%">
+    <tr>
+      <td class="label"><label for="">Телефон</label></td>
+      <td class="value"><%= f.input_field :phone, class: 'popup-textbox', disabled: true %></td>
+    </tr>
+    <tr>
+      <td class="label"><label for="">Организация</label></td>
+      <td class="value"><input type="text" id="" disabled="true" value="<%=j @user.siebel_company.try(:full_name) %>" class="popup-textbox" placeholder=""></td>
+    </tr>
+    <tr>
+      <td class="label"><label for="">ИНН</label></td>
+      <td class="value"><input type="text" id="" disabled="true" value="<%=j @user.siebel_company.try(:inn) %>" class="popup-textbox" placeholder=""></td>
+    </tr>
+    <tr>
+      <td class="label"><label for="">ОГРН</label></td>
+      <td class="value"><input type="text" id="" disabled="true" value="<%=j @user.siebel_company.try(:ogrn) %>" class="popup-textbox" placeholder=""></td>
+    </tr>
+    <tr>
+      <td class="label"><label for="">Фамилия</label></td>
+      <td class="value"><%= f.input_field :last_name, class: 'popup-textbox', disabled: @user.approved? %></td>
+    </tr>
+    <tr>
+      <td class="label"><label for="">Имя</label></td>
+      <td class="value"><%= f.input_field :first_name, class: 'popup-textbox', disabled: @user.approved? %></td>
+    </tr>
+    <tr>
+      <td class="label"><label for="">Отчество</label></td>
+      <td class="value"><%= f.input_field :middle_name, class: 'popup-textbox', disabled: @user.approved? %></td>
+    </tr>
+    <tr>
+      <td class="label"><label for="">Налоговый режим</label></td>
+      <td class="value"><%= f.input_field :tax_treatment, class: 'popup-textbox', disabled: true %></td>
+    </tr>
+    <tr>
+      <td class="label">&nbsp;</td>
+      <td class="value submit">
+        <input type="button" id="" value="Отменить" class="default-button cancel js-close-modal">
+        <% if can? :update, @user %>
+          <%= f.button :submit, 'Сохранить', class: 'default-button-orange sa' %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+<% end %>

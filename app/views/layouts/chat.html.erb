@@ -43,7 +43,7 @@
             <%=l Date.today, format: :long %>, <span id="time"></span>
             <script type="text/javascript">startTime();</script>
           <% else %>
-            <a href="/"><%= current_user.siebel.full_name %></a>
+            <%= link_to current_user.siebel.full_name, edit_user_path(current_user), class: 'js-show-modal-window', data: { target: '#js-modal' } %>
           <% end %>
         </p>
       </div>
@@ -59,6 +59,8 @@
         </p>
       </div>
     </div>
+
+    <div id="js-modal" class="popup"></div>
 
     <!-- fancybox -->
     <link rel="stylesheet" href="/chat/js/fancybox/jquery.fancybox.css">
