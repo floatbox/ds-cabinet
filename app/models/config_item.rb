@@ -4,7 +4,7 @@ class ConfigItem < ActiveRecord::Base
   def self.[](key)
     c = ConfigItem.find_by(key: key)
     if c
-      c.value || c.default
+      c.value.present? ? c.value : c.default
     else
       raise ActiveRecord::RecordNotFound, "config item with key #{key} not found"
     end

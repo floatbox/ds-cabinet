@@ -4,6 +4,7 @@ namespace :bootstrap do
   desc 'Create config items'
   task config_items: :environment do
     ConfigItem.find_or_create_by(key: 'search_banned_words', default: '')
+    ConfigItem.find_or_create_by(key: 'registration_enabled', default: 'true')
   end
 
   desc 'Run all bootstrapping tasks to setup application'
