@@ -10,7 +10,7 @@
       <div class="files">
         <% message.attachments.each do |attachment| %>
           <%= link_to attachment.attachment.url, target: '_blank', style: 'color:white;' do %>
-            <img src="images/pdf.png" height="32" width="30" alt="">
+            <img src="/chat/images/pdf.png" height="32" width="30" alt="">
             <br />
             <%= attachment.attachment.file.filename %>
           <% end %>
