@@ -9,6 +9,12 @@ class Concierge::UsersController < Concierge::ApplicationController
     @users = @users.common.order('created_at DESC').page(params[:page]).per(10)
   end
 
+  # GET /concierge/users/concierges
+  def concierges
+    authorize! :toggle_concierge, User
+    @users = User.concierges.order('created_at DESC').page(params[:page]).per(10)
+  end
+
   # GET /concierge/users/:id
   def edit
   end
@@ -46,6 +52,16 @@ class Concierge::UsersController < Concierge::ApplicationController
   def disapprove
     @user.update_column(:approved, false)
     redirect_to concierge_users_url
+  end
+
+  # PATCH /concierge/users/:id/toggle_concierge
+  def toggle_concierge
+    @user.toggle(:concierge) unless @user.id == current_user.id
+    if @user.save
+      redirect_to concierges_concierge_users_url
+    else
+      redirect_to concierge_users_url
+    end
   end
 
   # GET /concierge/users/:id/new_widget

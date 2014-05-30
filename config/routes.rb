@@ -39,12 +39,14 @@ DsCabinet::Application.routes.draw do
     resources :users do
       resources :topics
       resources :search_queries, only: :index
+      get :concierges, on: :collection
       member do
         get :attach_concierge
         put :attach_concierge_update
         patch :attach_concierge_update
         put :approve
         put :disapprove
+        put :toggle_concierge
         get :new_widget
       end
     end

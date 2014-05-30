@@ -33,6 +33,10 @@ class Ability
       can :manage, Shortcut
       can :read, SearchQuery
     end
+
+    if user.is_super_concierge?
+      can :toggle_concierge, User
+    end
     #
     # The first argument to `can` is the action you are giving the user 
     # permission to do.
