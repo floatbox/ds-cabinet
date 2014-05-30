@@ -29,6 +29,8 @@ table.table
         => user.messages.count
         span.badge.bg-success=> user.messages.unread.count
       td
+        - if can?(:toggle_concierge, user) && user.id != current_user.id
+          => link_to 'Сделать консьержем', toggle_concierge_concierge_user_path(user), method: :put, class: 'btn btn-sm'
         - if can? :edit, user
           => link_to edit_concierge_user_path(user), class: 'btn btn-sm' do
             i.icon-edit

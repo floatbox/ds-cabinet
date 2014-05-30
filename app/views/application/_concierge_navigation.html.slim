@@ -1,4 +1,6 @@
 li= link_to 'Пользователи', concierge_users_path
+- if current_user.is_super_concierge?
+  li= link_to 'Консьержи', concierges_concierge_users_path
 li= link_to 'Справочник тегов', concierge_tags_path
 li= link_to 'Настройки', concierge_config_items_path
 li= link_to 'Shortcuts', concierge_shortcuts_path
