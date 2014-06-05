@@ -40,8 +40,7 @@
           <%= link_to 'Выйти', session_path('current_user'), method: :delete, class: 'logout' %>
           <br />
           <% if current_user.siebel.full_name == 'Не определено Не определено' %>
-            <%=l Date.today, format: :long %>, <span id="time"></span>
-            <script type="text/javascript">startTime();</script>
+            <%= link_to 'Профиль', edit_user_path(current_user), class: 'js-show-modal-window', data: { target: '#js-modal' } %>
           <% else %>
             <%= link_to current_user.siebel.full_name, edit_user_path(current_user), class: 'js-show-modal-window', data: { target: '#js-modal' } %>
           <% end %>
