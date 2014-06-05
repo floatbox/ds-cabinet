@@ -14,9 +14,9 @@ table.table
     tr
       td
         - if user.approved?
-          = link_to_if can?(:disapprove, user), '<i class="icon-lock"></i>'.html_safe, disapprove_concierge_user_path(user), method: :put
+          = link_to_if can?(:disapprove, user), '<i class="glyphicon glyphicon-ok"></i>'.html_safe, disapprove_concierge_user_path(user), method: :put
         - else
-          = link_to_if can?(:approve, user), '<i class="icon-unlock"></i>'.html_safe, approve_concierge_user_path(user), method: :put
+          = link_to_if can?(:approve, user), '<i class="glyphicon glyphicon-unchecked"></i>'.html_safe, approve_concierge_user_path(user), method: :put
       td= user.siebel.full_name
       td= user.siebel_company.try(:ogrn)
       td= user.siebel.phone
@@ -33,7 +33,7 @@ table.table
           => link_to 'Сделать консьержем', toggle_concierge_concierge_user_path(user), method: :put, class: 'btn btn-sm'
         - if can? :edit, user
           => link_to edit_concierge_user_path(user), class: 'btn btn-sm' do
-            i.icon-edit
+            i.glyphicon.glyphicon-pencil
         => link_to 'Топики', concierge_user_topics_path(user), class: 'btn btn-sm'
         => link_to 'Запросы', concierge_user_search_queries_path(user), class: 'btn btn-sm'
         => link_to 'Создать топик', new_concierge_user_topic_path(user), class: 'show-modal-window btn btn-sm', data: { target: '#modal-window', toggle: 'modal' }
