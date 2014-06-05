@@ -9,5 +9,5 @@ Ds::Siebel.configure :production do
   url 'https://siebel.dasreda.ru:443'
   login 'Club'
   password 'Xxrhvdlz'
-  wsdl_path "#{Rails.root}/data/wsdl"
+  wsdl_path "#{Rails.root}/data/wsdl_production"
 end
