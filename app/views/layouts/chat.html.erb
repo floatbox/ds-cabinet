@@ -15,7 +15,7 @@
     <script src="/js/ie/html5.js" cache="false"></script>
     <![endif]-->
     <%= javascript_include_tag "chat/application" %>
-    <script type="text/javascript" src="http://delo-widgets-dev.sredda.ru:8082/assets/lib/widget.js"></script>
+    <script type="text/javascript" src="<%= Rails.configuration.widget_script_url %>"></script>
     <%= csrf_meta_tags %>
   </head>
   <body>
