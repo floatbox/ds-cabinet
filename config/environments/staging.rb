@@ -90,6 +90,7 @@ DsCabinet::Application.configure do
   config.auth_domain = '.sredda.ru'
 
   # Widgets settings
+  config.widget_script_url = 'http://delo-widgets-dev.sredda.ru:8082/assets/lib/widget.js'
   config.widget_domain = 'delo-widgets-dev.sredda.ru:8082'
 
   config.middleware.use ExceptionNotification::Rack,

@@ -90,5 +90,6 @@ DsCabinet::Application.configure do
   config.auth_domain = 'legko.li'
 
   # Widgets settings
+  config.widget_script_url = 'http://widgets.legko.li/assets/lib/widget.js'
   config.widget_domain = 'legko.li'
 end
