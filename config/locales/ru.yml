@@ -87,3 +87,12 @@ ru:
   config_items:
     search_banned_words: Запрещенные для поиска слова
     registration_enabled: Регистрация включена
+
+  notifications:
+    sms:
+      message_created: '%{user} написал "%{message}" в топик "%{topic}"'
+      message_updated: '%{user} отредактировал сообщение "%{message}" в топике "%{topic}"'
+      topic_created: '%{user} создал топик %{topic}'
+      topic_updated: '%{user} отредактировал топик %{topic}'
+      user_created: 'Зарегистрировался новый пользователь %{user}'
+      user_attached: 'К вам привязан пользователь %{user}'

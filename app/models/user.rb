@@ -71,6 +71,19 @@ class User < ActiveRecord::Base
     update_column(:api_token, generate_api_token)
   end
 
+  def update_last_activity
+    time = Time.now
+    self.last_activity_at = time
+    update_column(:last_activity_at, time)
+  end
+
+  # @return [Boolean] whether this user is online
+  # @note It depends on last activity time
+  def online?
+    return false unless last_activity_at
+    Time.now <= 5.minutes.since(last_activity_at)
+  end
+
   private
 
     # @return [String] unique API token
