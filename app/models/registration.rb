@@ -135,8 +135,10 @@ class Registration < ActiveRecord::Base
       user = Uas::User.new
       user.login = phone
       user.password = password
-      user.first_name = 'Не определено'
-      user.last_name = 'Не определено'
+      user_info = retrieve_user_info_from_company
+      user.first_name = user_info[:first_name] || 'Не определено'
+      user.last_name = user_info[:last_name] || 'Не определено'
+      user.patronymic_name = user_info[:patronymic_name] || 'Не определено'
       user.phone = phone
       user.is_disabled = true
       user.create
@@ -194,6 +196,17 @@ class Registration < ActiveRecord::Base
     def create_sns_company(person, account)
       Ds::Sns.as person.id, 'siebel' do
         Company.new(id: account.id, name: account.full_name).save
+      end
+    end
+
+    # Retrives user info from Spark for individual entrepreneurs
+    # @return [Hash] first, last and patronymic names
+    def retrieve_user_info_from_company
+      if ogrn.to_s.length == 15
+        values = company_name.to_s.split(' ').select(&:present?).map(&:capitalize)
+        { first_name: values[1], last_name: values[0], patronymic_name: values[2] }
+      else
+        {}
       end
     end
 end
