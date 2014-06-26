@@ -87,7 +87,7 @@ class Registration < ActiveRecord::Base
   # Sends notification about this registration to admin
   def notify_admin
     return if admin_notified?
-    update_column(:admin_notified, true)
+    update_column(:admin_notified, true) if persisted?
     RegistrationMailer.admin_notification_email(self).deliver
   end
 
