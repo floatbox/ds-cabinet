@@ -1,4 +1,4 @@
-p= l @registration.created_at, format: :long
+p= l @registration.created_at || Time.now, format: :long
 
 h1 Регистрация клиента
 

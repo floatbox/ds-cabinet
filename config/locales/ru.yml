@@ -78,6 +78,7 @@ ru:
 
   registrations:
     workflow_states:
+      new: Некорректный ОГРН
       done: Успешная
       awaiting_confirmation: Не подтверждены данные о компании
       awaiting_verification: Не подтвержден телефон

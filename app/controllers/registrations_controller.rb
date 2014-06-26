@@ -19,6 +19,10 @@ class RegistrationsController < ApplicationController
 
       render json: @registration
     else
+      # Notify admins about invalid OGRN, but valid phone
+      @registration.notify_admin if @registration.errors.messages.keys == [:company]
+
+      # Render JSON with errors
       render json: @registration.errors, status: :unprocessable_entity
     end
   end
