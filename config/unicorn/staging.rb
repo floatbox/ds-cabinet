@@ -6,7 +6,7 @@ err_log    = "#{rails_root}/log/unicorn_error.log"
 old_pid    = pid_file + '.oldbin'
 
 timeout 30
-worker_processes 2
+worker_processes 1
 listen 8083, tcp_nopush: true
 pid pid_file
 stderr_path err_log
