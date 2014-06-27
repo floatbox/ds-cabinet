@@ -159,6 +159,7 @@ $ ->
       fill_verify_phone_dialog(data)
       fill_complete_dialog(data)
       setup_registration_steps(confirmation)
+      ga('send', 'pageview', '/virtual/step2')
 
   $('body').on 'ajax:error', pre_new_registration_form, (event, data) ->
     hidePreloader(pre_new_registration_form)
@@ -188,6 +189,7 @@ $ ->
       fill_verify_phone_dialog(data)
       fill_complete_dialog(data)
       $(confirmation).show()
+      ga('send', 'pageview', '/virtual/step2')
 
   $('body').on 'ajax:error', registraton_form, (event, data) ->
     hidePreloader(registraton_form)
@@ -221,6 +223,7 @@ $ ->
     hidePreloader(confirmation)
     $(confirmation).hide()
     $(verify_phone).show()
+    ga('send', 'pageview', '/virtual/step3')
 
   $("#{confirmation} a.confirm").on 'ajax:error', (event, data) ->
     hidePreloader(confirmation)
@@ -246,6 +249,7 @@ $ ->
     hidePreloader(verify_phone)
     $(verify_phone).hide()
     $(complete).show()
+    ga('send', 'pageview', '/virtual/step4')
 
   $("#{verify_phone} form").on 'ajax:error', (event, data) ->
     return unless event.target is this
@@ -276,6 +280,7 @@ $ ->
     clear_error_messages(complete)
 
   $("#{complete} form").on 'ajax:success', (event, data) ->
+    ga('send', 'pageview', '/virtual/step5')
     hidePreloader(complete)
     $(complete).hide()
     location.reload()
