@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
   has_many :notifications
   has_many :search_queries
 
-  scope :common, -> { where(concierge: false) }
-  scope :concierges, -> { where(concierge: true) }
+  scope :common, -> { where(is_concierge: false) }
+  scope :concierges, -> { where(is_concierge: true) }
 
   after_create :reset_api_token, unless: :api_token
   before_validation :set_siebel_id, unless: :siebel_id

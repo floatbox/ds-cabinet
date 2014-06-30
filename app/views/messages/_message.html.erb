@@ -3,7 +3,7 @@
   <section class="media-body panel">
     <header class="panel-heading clearfix">
       <a href="#"><%= message.user.siebel.full_name %></a>
-      <% if message.user.concierge? %>
+      <% if message.user.is_concierge? %>
         <label class="label bg-info m-l-mini">Консьерж</label>
       <% end %>
       <% unless message.created_at == message.updated_at %>

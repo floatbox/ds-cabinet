@@ -42,7 +42,7 @@ class TopicsController < ApplicationController
 
     # Do not allow to access these pages for concierge
     def filter_concierge
-      redirect_to url_for(controller: 'concierge/topics', action: params[:action]) if current_user.try(:concierge?)
+      redirect_to url_for(controller: 'concierge/topics', action: params[:action]) if current_user.try(:is_concierge?)
     end
 
 end

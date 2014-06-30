@@ -56,7 +56,7 @@ class Concierge::UsersController < Concierge::ApplicationController
 
   # PATCH /concierge/users/:id/toggle_concierge
   def toggle_concierge
-    @user.toggle(:concierge) unless @user.id == current_user.id
+    @user.toggle(:is_concierge) unless @user.id == current_user.id
     if @user.save
       redirect_to concierges_concierge_users_url
     else

@@ -20,7 +20,7 @@ class Ability
       can :manage, Notification, user_id: user.id
     end
 
-    if user.concierge?
+    if user.is_concierge?
       can :read, [User, Topic, Message]
       can [:read, :create, :destroy, :approve, :disapprove, :new_widget, :search], User
       can [:attach_concierge, :attach_concierge_update], User, concierge_id: [nil, user.id]
@@ -35,7 +35,7 @@ class Ability
     end
 
     if user.is_super_concierge?
-      can :toggle_concierge, User
+      can [:attach_concierge, :attach_concierge_update, :toggle_concierge], User
     end
     #
     # The first argument to `can` is the action you are giving the user 

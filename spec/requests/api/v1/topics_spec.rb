@@ -13,8 +13,8 @@ describe 'Topics API' do
   end
 
   before do
-    unless user_2.concierge?
-      user_2.toggle(:concierge)
+    unless user_2.is_concierge?
+      user_2.toggle(:is_concierge)
       user_2.save
     end
   end

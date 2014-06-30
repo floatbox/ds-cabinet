@@ -1,5 +1,5 @@
 - url = ''
-- if current_user.concierge?
+- if current_user.is_concierge?
   - if @user
     - url = concierge_user_topics_url(@user, page: params[:page], format: 'js')
   - else
