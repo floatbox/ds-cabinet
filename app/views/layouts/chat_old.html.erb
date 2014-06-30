@@ -52,17 +52,17 @@
         <li>
           <%= render partial: 'notifications/panel', object: current_user.notifications.unread.page(0).per(5), as: :notifications %>
         </li>
-        <% if current_user.concierge? %>
+        <% if current_user.is_concierge? %>
           <%= render partial: 'concierge_navigation' %>
         <% end %>
         <li>
           <div class="m-t-small">
-            <% unless current_user.concierge? %>
+            <% unless current_user.is_concierge? %>
               <%= render partial: 'user_navigation' %>
             <% end %>
           </div>
         </li>
-        <% if !current_user.concierge? || params[:user_id].present? %>
+        <% if !current_user.is_concierge? || params[:user_id].present? %>
           <%= render partial: 'search_bar' %>
         <% end %>
       </ul>
