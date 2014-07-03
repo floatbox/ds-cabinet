@@ -24,10 +24,10 @@ module Uas
       end
 
       if Rails.configuration.uas_query_log
-        puts "Request #{method} #{url}"
-        puts request.inspect
-        puts "Response code: #{client.response_code}"
-        puts client.body_str
+        Rails.logger.info "Request #{method} #{url}"
+        Rails.logger.info request.inspect
+        Rails.logger.info "Response code: #{client.response_code}"
+        Rails.logger.info client.body_str.mb_chars
       end
       
       { code: client.response_code,
