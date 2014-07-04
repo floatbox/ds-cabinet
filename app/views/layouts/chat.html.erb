@@ -49,10 +49,10 @@
         <p>
           <%= link_to 'Выйти', session_path('current_user'), method: :delete, class: 'logout' %>
           <br />
-          <% if current_user.siebel.full_name == 'Не определено Не определено' %>
-            <%= link_to 'Профиль', edit_user_path(current_user), class: 'js-show-modal-window', data: { target: '#js-modal' } %>
-          <% else %>
+          <% if current_user.siebel.full_name.present? %>
             <%= link_to current_user.siebel.full_name, edit_user_path(current_user), class: 'js-show-modal-window', data: { target: '#js-modal' } %>
+          <% else %>
+            <%= link_to 'Профиль', edit_user_path(current_user), class: 'js-show-modal-window', data: { target: '#js-modal' } %>
           <% end %>
         </p>
       </div>
