@@ -1,5 +1,5 @@
 <% if @topic.new_record? %>
-  $('#new_topic').closest('.modal-dialog').replaceWith('<%=j render 'form' %>');
+  $('#new_topic').closest('.js-new-topic').replaceWith('<%=j render partial: 'topics/form', object: @topic, as: :topic %>');
 <% else %>
   window.location.replace('<%= topic_url(@topic) %>')
 <% end %>

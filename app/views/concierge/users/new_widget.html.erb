@@ -1,16 +1,10 @@
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      <h4 class="modal-title">Создать топик-предложение</h4>
-    </div>
-    <div class="modal-body">
+<h4>Создать топик-предложение</h4>
 
 <div id="widget_<%= @user.id %>"></div>
 <script type="text/javascript">
   var widgetOptions = {
     id: <%= @user.id %>,
-    domain: 'delo-widgets-dev.sredda.ru:8082',
+    domain: '<%= Rails.configuration.widget_domain %>',
     path: '/purchases/new',
     params: {
       owner_id: <%= current_user.id %>,
@@ -21,7 +15,3 @@
   };
   createWidget('widget_<%= @user.id %>', widgetOptions);
 </script>
-
-    </div>
-  </div>
-</div>

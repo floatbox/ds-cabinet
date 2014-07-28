@@ -5,6 +5,13 @@ Ds::Siebel.configure :test, :development, :staging do
   wsdl_path "#{Rails.root}/data/wsdl"
 end
 
+Ds::Siebel.configure :dsstaging do
+  url 'https://sbldev.dasreda.ru'
+  login 'testuser01'
+  password '1234'
+  wsdl_path "#{Rails.root}/data/wsdl"
+end
+
 Ds::Siebel.configure :production do
   url 'https://siebel.dasreda.ru:443'
   login 'Club'

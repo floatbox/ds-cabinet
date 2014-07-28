@@ -1,29 +1,30 @@
-<div id="topic-id-<%= topic.id %>" class="row">
-  <div class="col-lg-2"></div>
-  <div class="col-lg-8">
-    <section class="panel text-center m-t">
-      <div class="panel-body topic-body">
-        <%= render partial: 'concierge/topics/topic_body', object: topic, as: :topic %>
+<div class="messages js-topic" id="js-topic-id-<%= topic.id %>">
+  <div class="item">
+    <div class="view">
+      <%= link_to concierge_topic_path(topic) do %>
+        <img src="/images/avatar_dummy.png" height="45" width="45" alt="">
+      <% end %>
+    </div>
+
+    <div class="description js-topic-body">
+      <%= render partial: 'concierge/topics/topic_body', object: topic, as: :topic %>
+    </div>
+
+    <% if defined?(topic_counter) && topic.messages.size > 5 %>
+      <div style="text-align:center;">
+        <a href="#" class="js-expand-messages">Показать все комментарии</a>
+        <a href="#" class="js-collapse-messages">Свернуть комментарии</a>
       </div>
-    </section>
+    <% end %>
 
-    <!-- .comment-list -->
-    <section class="comment-list block">
-      <section style="text-align:center;">
-        <% if defined?(topic_counter) && topic.messages.size > 5 %>
-          <a href="#" class="expand_messages">Показать все комментарии</a>
-          <a href="#" class="collapse_messages">Свернуть комментарии</a>
-        <% end %>
-      </section>
-
-      <div class='messages<%= ' collapsable' if defined?(topic_counter) && topic.messages.size > 5 %>'>
-        <%= render partial: 'messages/message', collection: topic.messages, locals: { total_size: topic.messages.size } %>
-      </div>
-
-      <%= render partial: 'messages/form', object: topic.messages.build, as: :message %>
-    </section>
-    <!-- / .comment-list -->
-
+    <!-- reply -->
+    <div class="reply js-messages<%= ' js-collapsable' if defined?(topic_counter) && topic.messages.size > 5 %>">
+      <%= render partial: 'messages/message', collection: topic.messages, locals: { total_size: topic.messages.size } %>
+    </div>
   </div>
-  <div class="col-lg-2"></div>
+
+  <!-- add comment -->
+  <div class="addcomment js-new-message">
+    <%= render partial: 'messages/form', object: topic.messages.build, as: :message %>
+  </div>
 </div>

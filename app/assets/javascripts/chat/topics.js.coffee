@@ -1,8 +1,8 @@
 $ ->
-  $('body').on 'click', '.expand_messages, .collapse_messages', (event) ->
+  $('body').on 'click', '.js-expand-messages, .js-collapse-messages', (event) ->
     event.preventDefault()
-    $topic = $(this).closest('.row')
-    $topic.find('.expand_messages').toggle()
-    $topic.find('.collapse_messages').toggle()
-    $topic.find('.comment-item.collapsable').toggle('wrap')
+    $topic = $(this).closest('.js-topic')
+    $topic.find('.js-expand-messages').toggle()
+    $topic.find('.js-collapse-messages').toggle()
+    $topic.find('.js-message.js-collapsable').toggle('wrap')
     false

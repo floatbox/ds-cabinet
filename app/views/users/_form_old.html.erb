@@ -1,0 +1,90 @@
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Ваш профиль</h4>
+      </div>
+      <%= simple_form_for @user, remote: true, html: { class: 'form-horizontal' } do |f| %>
+        <div class="modal-body">
+          <div class="alert alert-danger" style="display:none;">
+            <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+            <i class="icon-ban-circle icon-large"></i><strong>Ошибка!</strong> Что-то пошло не так, попробуйте еще раз.
+          </div>
+          <section class="panel">
+            <div class="panel-body">
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Телефон</label>
+                  <div class="col-lg-8">
+                    <%= f.input_field :phone, class: 'form-control', disabled: true %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Организация</label>
+                  <div class="col-lg-8">
+                    <input class="form-control" disabled="true" value="<%=j @user.siebel_company.try(:full_name) %>"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">ИНН</label>
+                  <div class="col-lg-8">
+                    <input class="form-control" disabled="true" value="<%=j @user.siebel_company.try(:inn) %>"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">ОГРН</label>
+                  <div class="col-lg-8">
+                    <input class="form-control" disabled="true" value="<%=j @user.siebel_company.try(:ogrn) %>"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Фамилия</label>
+                  <div class="col-lg-8">
+                    <%= f.input_field :last_name, class: 'form-control', disabled: @user.approved? %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Имя</label>
+                  <div class="col-lg-8">
+                    <%= f.input_field :first_name, class: 'form-control', disabled: @user.approved? %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Отчество</label>
+                  <div class="col-lg-8">
+                    <%= f.input_field :middle_name, class: 'form-control', disabled: @user.approved? %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Налоговый режим</label>
+                  <div class="col-lg-8">
+                    <%= f.input_field :tax_treatment, class: 'form-control', disabled: true %>
+                  </div>
+                </div>
+
+                <% if @user.is_concierge? %>
+                  <div class="form-group">
+                    <label class="col-lg-3 control-label">API токен</label>
+                    <div class="col-lg-8">
+                      <%= f.input_field :api_token, class: 'form-control', readonly: true %>
+                    </div>
+                  </div>
+                <% end %>
+                
+              </div>
+            </section>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
+          <% if can? :update, @user %>
+            <%= f.button :submit, 'Сохранить', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>

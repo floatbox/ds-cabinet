@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Делай дело</title>
+    <meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/font.css" cache="false">
+    <link rel="stylesheet" href="/css/style.css">
+    <%= stylesheet_link_tag "chat/application" %>
+    <!--[if lt IE 9]>
+    <script src="/js/ie/respond.min.js" cache="false"></script>
+    <script src="/js/ie/html5.js" cache="false"></script>
+    <![endif]-->
+    <%= javascript_include_tag "chat/application" %>
+    <script type="text/javascript" src="http://delo-widgets-dev.sredda.ru:8082/assets/lib/widget.js"></script>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <!-- header -->
+    <header id="header" class="navbar navbar-fixed-top">
+      <ul class="nav navbar-nav navbar-avatar pull-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">            
+          <span class="hidden-xs-only">
+            <% if current_user.siebel.full_name == 'Не определено Не определено' %>
+              <%=l Date.today, format: :long %>, <span id="time"></span>
+              <script type="text/javascript">startTime();</script>
+            <% else %>
+              <%= current_user.siebel.full_name %>
+            <% end %>
+          </span>
+          <span class="thumb-small avatar inline"><img src="/images/avatar_dummy.png" alt="" class="img-circle"></span>
+          <b class="caret hidden-xs-only"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Профиль', edit_user_path(current_user), class: 'show-modal-window', data: { target: '#modal-window', toggle: 'modal' } %></li>
+            <li class="divider"></li>
+            <li><%= link_to 'Выйти', session_path('current_user'), method: :delete %></li>
+          </ul>
+        </li>
+      </ul>
+      <%= link_to root_path, class: 'navbar-brand' do %>
+        <%= image_tag 'header-logo.png', height: '58', width: '75' %>
+      <% end %>
+      <button type="button" class="btn btn-link pull-left nav-toggle visible-xs" data-toggle="class:slide-nav slide-nav-left" data-target="body">
+      <i class="icon-reorder icon-xlarge text-default"></i>
+      </button>
+      <ul class="nav navbar-nav hidden-xs">
+        <li>
+          <%= render partial: 'notifications/panel', object: current_user.notifications.unread.page(0).per(5), as: :notifications %>
+        </li>
+        <% if current_user.is_concierge? %>
+          <%= render partial: 'concierge_navigation' %>
+        <% end %>
+        <li>
+          <div class="m-t-small">
+            <% unless current_user.is_concierge? %>
+              <%= render partial: 'user_navigation' %>
+            <% end %>
+          </div>
+        </li>
+        <% if !current_user.is_concierge? || params[:user_id].present? %>
+          <%= render partial: 'search_bar' %>
+        <% end %>
+      </ul>
+      <!--
+      <form class="navbar-form pull-left shift" action="" data-toggle="shift:appendTo" data-target=".nav-primary">
+        <i class="icon-search text-muted"></i>
+        <input type="text" class="input-sm form-control" placeholder="Поиск">
+      </form>
+      !-->
+    </header>
+    <!-- / header -->
+    <section id="content">
+      <section class="main padder">
+        <%= yield %>
+      </section>
+    </section>
+    <!-- footer -->
+    <footer id="footer">
+      <div class="text-center padder clearfix">
+        <p>
+          <small>&copy; Деловая среда 2014, Веб-сервис для предпринимателей, которые делают дело</small><br><br>
+          <a href="#" class="btn btn-xs btn-circle btn-twitter"><i class="icon-twitter"></i></a>
+          <a href="#" class="btn btn-xs btn-circle btn-facebook"><i class="icon-facebook"></i></a>
+          <a href="#" class="btn btn-xs btn-circle btn-gplus"><i class="icon-google-plus"></i></a>
+        </p>
+      </div>
+    </footer>
+    <!-- / footer -->
+    <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true"></div>
+    <!-- Bootstrap -->
+    <script src="/js/bootstrap.js"></script>
+    <%= render 'update_notifications' %>
+  </body>
+</html>

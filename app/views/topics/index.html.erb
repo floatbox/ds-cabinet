@@ -1,0 +1,11 @@
+<div class="jumbotron j-messages">
+  <div class="question js-new-topic">
+    <%= render partial: 'topics/form', object: current_user.topics.build, as: :topic %>
+  </div>
+
+  <div id="js-topics">
+    <%= render @topics %>
+  </div>
+  <%= paginate @topics %>
+  <%= render 'update_topics' %>
+</div>
