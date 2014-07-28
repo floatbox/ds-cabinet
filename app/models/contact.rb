@@ -25,7 +25,8 @@ class Contact < ActiveRecord::Base
   end
 
   def full_name
-    "#{first_name} #{last_name}"
+    result = "#{first_name} #{last_name}"
+    result == 'Не определено Не определено' ? '' : result
   end
 
   private

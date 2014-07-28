@@ -9,3 +9,4 @@ role :web, %w{w3dev-ds-cabinet@ono.rrv.ru:2223}
 role :db,  %w{w3dev-ds-cabinet@ono.rrv.ru:2223}
 
 set :deploy_to, '/www/dev-ds-cabinet.onomnenado.ru'
+set :branch, 'feature/redesign'

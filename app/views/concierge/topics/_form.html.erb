@@ -1,25 +1,17 @@
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      <h4 class="modal-title">Задайте вопрос службе консьержей. Это может быть вопрос о ведении бухгалтерии, юридических аспектах деятельности или предпринимательстве в целом.</h4>
-    </div>
-    <%= simple_form_for [:concierge, @topic.user, @topic], remote: true do |f| %>
-    <div class="modal-body">
-      <% if @topic.errors.any? %>
-        <%= render 'errors', target: @topic %>
-      <% end %>
-      <% if @topic.new_record? || @topic.author_id == current_user.id %>
-        <%= f.input_field :text, placeholder: 'Постарайтесь сформулировать вопрос кратко и емко', maxlength: false, rows: 5, class: 'form-control submit_by_hotkey' %>
-        <%= render 'length_validation' %>
-      <% end %>
-      <br />
-      <%= f.input_field :tag_list, placeholder: 'Теги (через запятую)', class: 'form-control' %>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
-      <%= f.button :submit, 'Отправить', class: 'btn btn-primary' %>
-    </div>
-    <% end %>
-  </div>
-</div>
+<h4>Задайте вопрос службе консьержей. Это может быть вопрос о ведении бухгалтерии, юридических аспектах деятельности или предпринимательстве в целом.</h4>
+<%= simple_form_for [:concierge, @topic.user, @topic], remote: true do |f| %>
+
+  <% if @topic.errors.any? %>
+    <%= render 'errors', target: @topic %>
+  <% end %>
+
+  <% if @topic.new_record? || @topic.author_id == current_user.id %>
+    <%= f.input_field :text, placeholder: 'Постарайтесь сформулировать вопрос кратко и емко', maxlength: false, rows: 5, class: 'form-control js-submit-by-hotkey' %>
+    <%= render 'length_validation' %>
+  <% end %>
+  <br />
+  <%= f.input_field :tag_list, placeholder: 'Теги (через запятую)', class: 'form-control' %>
+
+  <input type="button" id="" value="Отменить" class="default-button cancel js-close-modal">
+  <%= f.button :submit, 'Сохранить', class: 'default-button-orange sa' %>
+<% end %>

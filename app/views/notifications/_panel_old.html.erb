@@ -1,0 +1,17 @@
+<div class="m-t m-b-small" id="panel-notifications" data-count="<%= notifications.total_count %>">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <i class="icon-comment-alt icon-xlarge text-default"></i><% if notifications.total_count > 0 %><b class="badge badge-notes bg-danger count-n"><%= notifications.total_count %></b><% end %>
+  </a>
+  <section class="dropdown-menu m-l-small m-t-mini">
+    <section class="panel panel-large arrow arrow-top">
+      <header class="panel-heading bg-white"><span class="h5"><strong>У вас <span class="count-n"><%= notifications.total_count %></span> <%= Russian.p(notifications.total_count, 'уведомление', 'уведомления', 'уведомлений') %></strong></span></header>
+      <%= render partial: 'notifications/notification', collection: notifications %>
+      <footer class="panel-footer text-small">
+        <%= link_to notifications_path, class: 'pull-right' do %>
+          <i class="icon-cog"></i>
+        <% end %>
+        <%= link_to 'Полный список уведомлений', notifications_path %>
+      </footer>
+    </section>
+  </section>
+</div>

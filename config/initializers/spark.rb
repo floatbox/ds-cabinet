@@ -12,6 +12,13 @@ Ds::Spark.configure :staging do
   cookies_expiration_time 60 * 5
 end
 
+Ds::Spark.configure :dsstaging do
+  wsdl 'http://sparkgatetest.interfax.ru/IfaxWebService/ifaxwebservice.asmx?WSDL'
+  login 'ds_gate'
+  password 'Vz3JW9h'
+  cookies_expiration_time 60 * 5
+end
+
 # TODO: Change to production credentials
 Ds::Spark.configure :production do
   wsdl 'http://webservicefarm.interfax.ru/iFaxWebService/ifaxwebservice.asmx?WSDL'

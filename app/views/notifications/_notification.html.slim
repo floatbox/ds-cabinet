@@ -1,6 +1,0 @@
-.list-group
-  = link_to notification, class: 'media list-group-item' do
-    span.media-body.block.m-b-none
-      = render partial: "notifications/#{notification.name}", object: notification, as: :notification
-      br
-      small.text-muted=l notification.created_at.to_date, format: :long

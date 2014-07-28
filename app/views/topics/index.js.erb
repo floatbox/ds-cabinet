@@ -1,11 +1,11 @@
 <% @topics.each do |topic| %>
-  if ($('#topic-id-<%= topic.id %>').length == 0) {
+  if ($('#js-topic-id-<%= topic.id %>').length == 0) {
     var topic = $("<%=j render partial: 'topics/topic', object: topic, as: :topic %>");
-    $('#topics').prepend(topic);
-    $(topic).find('.panel-body').hide().toggle('highlight', 2000);
+    $('#js-topics').prepend(topic);
+    $(topic).hide().toggle('highlight', 2000);
   }
   else {
-    var topic = $('#topic-id-<%= topic.id %>');
-    topic.find('.topic-body').html("<%=j render partial: 'topics/topic_body', object: topic, as: :topic %>")
+    var topic = $('#js-topic-id-<%= topic.id %>');
+    topic.find('.js-topic-body').html("<%=j render partial: 'topics/topic_body', object: topic, as: :topic %>")
   }
 <% end %>

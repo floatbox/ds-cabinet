@@ -1,9 +1,9 @@
-.collapse_messages {
+.js-collapse-messages {
   display: none;
 }
 
-.messages.collapsable {
-  .comment-item.collapsable {
+.js-messages.js-collapsable {
+  .js-message.js-collapsable {
     display: none;
   }
 }
