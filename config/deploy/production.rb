@@ -10,7 +10,7 @@ role :db,  %w{ds-cabinet@10.1.251.154}
 
 set :application, 'ds-cabinet'
 set :deploy_to, '/var/www/ds-cabinet'
-set :branch, 'feature/redesign'
+set :branch, 'master'
 
 namespace :deploy do
   task :setup_pg do
