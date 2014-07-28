@@ -10,7 +10,7 @@ role :db,  %w{dsstore@10.1.241.236}
 
 set :application, 'legko'
 set :deploy_to, '/var/www/legko'
-set :branch, 'feature/redesign'
+set :branch, 'master'
 
 namespace :deploy do
   task :setup_pg do
