@@ -57,6 +57,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'timecop'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+  gem 'awesome_print'
 end
 
 # Use debugger
