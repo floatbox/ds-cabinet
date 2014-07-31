@@ -14,6 +14,11 @@ module Uas
 
       client = client(url)
 
+      if Rails.configuration.uas_query_log
+        Rails.logger.info "Request #{method} #{url}"
+        Rails.logger.info request.inspect
+      end
+      
       case method
       when :post
         client.post(request.to_json)
@@ -24,8 +29,6 @@ module Uas
       end
 
       if Rails.configuration.uas_query_log
-        Rails.logger.info "Request #{method} #{url}"
-        Rails.logger.info request.inspect
         Rails.logger.info "Response code: #{client.response_code}"
         Rails.logger.info client.body_str.mb_chars
       end
@@ -46,6 +49,7 @@ module Uas
           curl.cert = Rails.configuration.uas_sertificate
           curl.ssl_verify_peer = false
           curl.ssl_verify_host = false
+          curl.verbose = true
         end
       end
   end
