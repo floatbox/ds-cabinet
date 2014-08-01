@@ -49,7 +49,7 @@ module Uas
           curl.cert = Rails.configuration.uas_sertificate
           curl.ssl_verify_peer = false
           curl.ssl_verify_host = false
-          curl.verbose = true
+          #curl.verbose = true
         end
       end
   end
