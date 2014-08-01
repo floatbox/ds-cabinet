@@ -2,7 +2,7 @@ class RegistrationsController < ApplicationController
   include WithSmsVerification
 
   before_filter :check_registration_enabled
-  before_filter :set_registration, only: [:confirm, :verify_phone, :complete, :regenerate_sms_verification_code]
+  before_filter :set_registration, only: [:confirm, :verify_phone, :confirm_payment, :complete, :regenerate_sms_verification_code]
 
   def new
   end
@@ -41,7 +41,7 @@ class RegistrationsController < ApplicationController
     if with_sms_verification(@registration.phone)
       @registration.verify!
 
-      if @registration.awaiting_password?
+      if @registration.awaiting_payment?
         render json: { status: @registration.workflow_state }
       else
         @registration.errors.add(:base, :something_went_wrong)
@@ -50,6 +50,21 @@ class RegistrationsController < ApplicationController
 
     else
       render json: { sms_verification_code: ['неверный код подтверждения'] }, status: :unprocessable_entity
+    end
+  end
+
+  def confirm_payment
+    if params[:status] == "success"
+      @registration.confirm_payment!
+
+      if @registration.awaiting_password?
+        render json: { status: @registration.workflow_state }
+      else
+        @registration.errors.add(:base, :something_went_wrong)
+        render json: @registration.errors, status: :unprocessable_entity
+      end
+    else
+      render json: { base: ['Платеж не выполнен'] }, status: :unprocessable_entity
     end
   end
 

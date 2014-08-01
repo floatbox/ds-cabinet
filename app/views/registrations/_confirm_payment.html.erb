@@ -1,0 +1,18 @@
+<div class="step step-4" id="confirm_payment">
+  <h3 class="title">Выполните оплату</h3>
+  <h3 class="title highlight error_messages"></h3>
+
+  <%= form_tag registration_confirm_payment_path(:registration_id), method: :post, remote: true do %>
+    <p>
+      Тариф за год.
+      <%= link_to 'Оплатить  успешно', 
+        registration_confirm_payment_path(:registration_id, :status => :success), 
+        method: :post, remote: true, class: 'confirm_payment_link' 
+      %>
+      <%= link_to 'Оплатить с ошибкой платежа', 
+        registration_confirm_payment_path(:registration_id, :status => :fail), 
+        method: :post, remote: true, class: 'confirm_payment_link' 
+      %>
+    </p>
+  <% end %>
+</div>

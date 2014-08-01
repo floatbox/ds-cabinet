@@ -4,6 +4,7 @@
 #   * new                     Registration is just created and not even saved
 #   * awaiting_confirmation   It was saved to the database. Now it should be confirmed by user.
 #   * awaiting_verification   It was confirmed. User should enter SMS code to verify it.
+#   * awaiting_payment        The phone is verified. User should make payment.
 #   * awaiting_password       It was verified. User should enter password.
 #   * done                    Everything is done, data was sent to UAS, SNS and Siebel.
 #
@@ -32,7 +33,10 @@ class Registration < ActiveRecord::Base
       event :confirm, :transitions_to => :awaiting_verification
     end
     state :awaiting_verification do
-      event :verify, :transitions_to => :awaiting_password
+      event :verify, :transitions_to => :awaiting_payment
+    end
+    state :awaiting_payment do
+      event :confirm_payment, :transitions_to => :awaiting_password
     end
     state :awaiting_password do
       event :send_to_ds, :transitions_to => :done
