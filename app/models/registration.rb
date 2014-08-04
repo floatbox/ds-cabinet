@@ -8,6 +8,8 @@
 #   * awaiting_password       It was verified. User should enter password.
 #   * done                    Everything is done, data was sent to UAS, SNS and Siebel.
 #
+require 'phone'
+
 class Registration < ActiveRecord::Base
   include Workflow
 
@@ -16,7 +18,7 @@ class Registration < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
 
   validates_presence_of :phone, :ogrn
-  validates_format_of :phone, with: /\A(\+[0-9]{11})\Z/i
+  validates_format_of :phone, with: Phone::RegExp
   validates_format_of :ogrn, with: /\A([0-9]{13})([0-9]{2})?\Z/i
   validate :phone_uniqueness, if: :new_record?
   validate :company_exists, if: :new_record?
@@ -47,7 +49,7 @@ class Registration < ActiveRecord::Base
 
   # Remove symbols from the phone number
   def phone=(value)
-    write_attribute(:phone, value.gsub('(', '').gsub(')', '').gsub(' ', '').gsub('-', ''))
+    write_attribute(:phone, Phone.new(value).value)
   end
 
   def ogrn=(value)
