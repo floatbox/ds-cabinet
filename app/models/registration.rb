@@ -71,6 +71,10 @@ class Registration < ActiveRecord::Base
 
   def company
     @company ||= Ds::Spark::Company.find_by_ogrn_or_ogrnip(ogrn)
+    #<Ds::Spark::Company:0x007f2a0c362120 @spark_id="6324149", @inn="7723643863", 
+    #  @ogrn="1087746061523", @ogrnip=nil, 
+    #  @name="ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"РОГА И КОПЫТА\"", @region_code="45"
+    #>
   rescue => e
     logger.error "Can not find company in Spark. #{e.message}"
     nil
