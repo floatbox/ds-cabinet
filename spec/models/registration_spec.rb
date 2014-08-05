@@ -27,7 +27,7 @@ describe Registration do
   SAMPLE_3_OGRNIP = '311533223600062'
 
   describe '.new' do
-    context 'non-existent OGRN' do
+    context 'non-existent OGRN', vcr: true do
       let(:registration_params) { ActionController::Parameters.new( :registration => {
         ogrn: SAMPLE_1_OGRN, 
         phone: SAMPLE_1_PHONE
@@ -46,7 +46,7 @@ describe Registration do
       end
     end
 
-    context 'existent OGRN' do
+    context 'existent OGRN', vcr: true do
       let(:registration_params) { ActionController::Parameters.new( :registration => {
         ogrn: SAMPLE_2_OGRN, 
         phone: SAMPLE_2_PHONE

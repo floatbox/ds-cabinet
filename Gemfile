@@ -61,6 +61,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
   gem 'awesome_print'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 # Use debugger
