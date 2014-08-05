@@ -83,6 +83,7 @@ gem 'mini_magick'
 gem 'rails-observers'
 gem 'exception_notification'
 gem 'letter_opener', group: :development
+gem 'keepass-password-generator'
 
 # Localization
 gem 'russian'

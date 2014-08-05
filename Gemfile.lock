@@ -143,6 +143,7 @@ GEM
     kaminari (0.15.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    keepass-password-generator (0.1.1)
     kgio (2.9.2)
     launchy (2.4.2)
       addressable (~> 2.3)
@@ -319,6 +320,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   kaminari
+  keepass-password-generator
   letter_opener
   mini_magick
   pg
