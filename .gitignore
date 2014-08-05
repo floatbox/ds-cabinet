@@ -17,6 +17,7 @@
 /public/uploads
 
 config/database.yml
+config/password_generator.yml
 .DS_Store
 
 # my vim session config file
