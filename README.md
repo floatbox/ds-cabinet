@@ -1,5 +1,98 @@
 # Client Cabinet
 
+## Subsystems
+
+В этом разделе описаны *внешние* системы, с которыми работает приложение:
+
+* sns
+* uas
+* siebel
+* interfax (spark)
+
+### sns - Social Network System
+
+Атавизм. Планировалась как полноценная система социальной сети пользователей портала.
+
+В настоящее время используется для хранения какой-то информации о пользователе, щарегистрировавшемся на портале. Необходимо выпилить полностью.
+
+#### using
+
+Вся функциональность инкапсулирована в моделях Company и Person и в геме ds-sns
+
+#### servers
+
+  https://sns.dasreda.ru
+  https://sns.sredda.ru:4443
+
+#### configuration
+
+  config/initializers/sns.rb
+
+### uas - Unified Authentication System
+
+Используется при регистрации и логине.
+
+#### using
+
+Вся функциональность инкапсулирована в моделях User и Uas::User
+
+#### servers
+
+  https://pim.sredda.ru
+  https://pim.sredda.ru:4443
+  https://ccdemopim.sredda.ru
+
+#### configuration
+
+Конфигурируется при настройке среды Rails. Почему там, а не в инициализаторах, непонятно.
+
+  config/environments/test.rb
+  config/environments/staging.rb
+  config/environments/dsstaging.rb
+  config/environments/production.rb
+  config/environments/development.rb
+
+### siebel - CRM - customer relationship management system
+
+CRM система должна иметь данные о всех зарегистрированных пользователях с целью генерации лидов. Пользователи в CRM идентифицируются по номеру телефона (который хранится в атрибуте email таблицы системы CRM)
+
+Если в процессе регистрации окажется, что пользователь с указанным номером телефона уже имеется в таблице CRM, в регистрации будет отказано. 
+
+С этой системой приложение работает как при помощи подключения к базе данных через модель Account, так и при помощи API. Это было сделано для ускорения работы. Есть мнение, что надо переделать все взаимодействие с CRM с использованием API.
+
+#### using
+
+Вся функциональность инкапсулирована в моделях Account и Contact и в геме ds-siebel
+
+#### servers
+
+  Database 178.159.249.26  
+  API https://sbldev.dasreda.ru
+  API https://siebel.dasreda.ru:443
+  API https://sbldev.dasreda.ru:8443
+
+#### configuration
+
+  config/initializers/siebel.rb
+  config/database.yml
+
+### Interfax (spark)
+
+Предоставляет Soap API доступ к данным ФНС. Используем из этого пока только получение по ОГРН и ОГРНИП краткого отчета, из которого приложение забирает ИНН, назание компании и код региона, в котором зарегистрирована компания.
+
+#### using
+
+Вся функциональность по работе с системой инкапсулирована в гем ds-spark
+
+#### servers
+
+  http://sparkgatetest.interfax.ru
+  http://webservicefarm.interfax.ru   
+
+#### configuration
+
+  config/initializers/spark.rb
+
 ## Topics API
 
 ### Authentication
