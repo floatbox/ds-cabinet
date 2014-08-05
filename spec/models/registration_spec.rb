@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'savon_helper'
 
 describe Registration do
   # Registration: [
@@ -43,7 +42,6 @@ describe Registration do
         @registration.phone.should eql Phone.new(SAMPLE_1_PHONE).value
 
         @registration.save.should be false
-        binding.pry
         @registration.errors.messages.should eql({:company=>["компания с таким ОГРН не существует"]})
       end
     end
