@@ -31,4 +31,15 @@ describe PasswordGenerator do
     end
   end
 
+  it ".length" do
+    samples.each_pair do |pattern, regexp|
+      repetitions = 1000
+      (0..repetitions).each do
+        PasswordGenerator.pattern= pattern
+        password = PasswordGenerator.generate
+        password.length.should eql PasswordGenerator.length
+      end
+    end
+  end
+
 end

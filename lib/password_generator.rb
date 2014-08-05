@@ -13,6 +13,10 @@ class PasswordGenerator
     self.new(pattern).generate
   end
 
+  def self.length
+    self.generate.length
+  end
+
   def initialize pattern=nil
     @pattern = pattern || @@pattern
   end
