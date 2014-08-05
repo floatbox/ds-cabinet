@@ -2809,4 +2809,103 @@ http_interactions:
         b25zZT48L3NvYXA6Qm9keT48L3NvYXA6RW52ZWxvcGU+
     http_version: 
   recorded_at: Tue, 05 Aug 2014 08:55:09 GMT
+- request:
+    method: post
+    uri: https://pim.sredda.ru:4443/authentication/user/login/
+    body:
+      encoding: UTF-8
+      string: '{"login":"+74951111112","password":"00e98d7f8faf0ea76f4e351c41bb8a0b500445d51e371c739811e5100db69fcb"}'
+    headers: {}
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Length:
+      - '832'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Tue, 05 Aug 2014 09:06:32 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"__type":"DataObjectNotFoundFault","ErrorMessage":"Can''t find user
+        by login ''+74951111112''.","ServerStackTrace":"   at Dsrd.Uas.BusinessLogic.AuthenticationBll.User_Login(String
+        login, String password)\u000d\u000a   at SyncInvokeUser_Login(Object , Object[]
+        , Object[] )\u000d\u000a   at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object
+        instance, Object[] inputs, Object[]& outputs)\u000d\u000a   at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean
+        isOperationContextSet)","ObjectName":"User"}'
+    http_version: 
+  recorded_at: Tue, 05 Aug 2014 09:07:18 GMT
+- request:
+    method: post
+    uri: https://pim.sredda.ru:4443/authentication/user/login/
+    body:
+      encoding: UTF-8
+      string: '{"login":"+74951111112","password":"c1659aeaef7d77d214187002ec6fde926338dbf958a2de454618d81880d9d4b7"}'
+    headers: {}
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Length:
+      - '832'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Tue, 05 Aug 2014 09:07:47 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"__type":"DataObjectNotFoundFault","ErrorMessage":"Can''t find user
+        by login ''+74951111112''.","ServerStackTrace":"   at Dsrd.Uas.BusinessLogic.AuthenticationBll.User_Login(String
+        login, String password)\u000d\u000a   at SyncInvokeUser_Login(Object , Object[]
+        , Object[] )\u000d\u000a   at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object
+        instance, Object[] inputs, Object[]& outputs)\u000d\u000a   at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean
+        isOperationContextSet)","ObjectName":"User"}'
+    http_version: 
+  recorded_at: Tue, 05 Aug 2014 09:08:33 GMT
+- request:
+    method: post
+    uri: https://pim.sredda.ru:4443/authentication/user/login/
+    body:
+      encoding: UTF-8
+      string: '{"login":"+74951111112","password":"04021855d4894022315ba17b358ea4445a339662526840a1e973ba31be67b978"}'
+    headers: {}
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Length:
+      - '832'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Tue, 05 Aug 2014 09:08:12 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"__type":"DataObjectNotFoundFault","ErrorMessage":"Can''t find user
+        by login ''+74951111112''.","ServerStackTrace":"   at Dsrd.Uas.BusinessLogic.AuthenticationBll.User_Login(String
+        login, String password)\u000d\u000a   at SyncInvokeUser_Login(Object , Object[]
+        , Object[] )\u000d\u000a   at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object
+        instance, Object[] inputs, Object[]& outputs)\u000d\u000a   at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean
+        isOperationContextSet)","ObjectName":"User"}'
+    http_version: 
+  recorded_at: Tue, 05 Aug 2014 09:08:58 GMT
 recorded_with: VCR 2.9.2
