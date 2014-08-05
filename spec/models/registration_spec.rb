@@ -34,13 +34,17 @@ describe Registration do
         phone: SAMPLE_1_PHONE
       }).require(:registration).permit(:phone, :ogrn) }
 
-      it 'should not set SPARK_ATTRIBUTES' do
+      it 'should not set SPARK_ATTRIBUTES and not save' do
         @registration = Registration.new(registration_params)
         Registration::SPARK_ATTRIBUTES.each_key do |attr|
           @registration[attr].should be_nil
         end
         @registration.ogrn.should eql SAMPLE_1_OGRN
         @registration.phone.should eql Phone.new(SAMPLE_1_PHONE).value
+
+        @registration.save.should be false
+        binding.pry
+        @registration.errors.messages.should eql({:company=>["компания с таким ОГРН не существует"]})
       end
     end
 
@@ -50,7 +54,7 @@ describe Registration do
         phone: SAMPLE_2_PHONE
       }).require(:registration).permit(:phone, :ogrn) }
 
-      it 'should set SPARK_ATTRIBUTES' do
+      it 'should set SPARK_ATTRIBUTES and save' do
         @registration = Registration.new(registration_params)
         @registration.inn.should eql  "7714698320"
         @registration.name.should eql "Ликвидационная комиссия ООО \"Пример\" (промежуточный ликвидационный баланс)"
@@ -58,6 +62,9 @@ describe Registration do
 
         @registration.ogrn.should eql SAMPLE_2_OGRN
         @registration.phone.should eql Phone.new(SAMPLE_2_PHONE).value
+
+        @registration.save.should be true
+        @registration.errors.messages.should be_empty
       end
     end
   end
