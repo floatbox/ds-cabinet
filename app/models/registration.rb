@@ -9,6 +9,7 @@
 #   * done                    Everything is done, data was sent to UAS, SNS and Siebel.
 #
 require 'phone'
+require 'password_sms_notifier'
 
 class Registration < ActiveRecord::Base
   include Workflow
@@ -23,7 +24,7 @@ class Registration < ActiveRecord::Base
   validate :phone_uniqueness, if: :new_record?
   validate :company_exists, if: :new_record?
   validates_presence_of :password, :password_confirmation, if: :awaiting_password?
-  validates_length_of :password, minimum: 6, if: :awaiting_password?
+  validates_length_of :password, minimum: PasswordGenerator.length, if: :awaiting_password?
   validate :password_equals_to_confirmation, if: :awaiting_password?
 
   workflow do
@@ -99,6 +100,13 @@ class Registration < ActiveRecord::Base
     return if admin_notified?
     update_column(:admin_notified, true) if persisted?
     RegistrationMailer.admin_notification_email(self).deliver
+  end
+
+  def send_password_sms_notification
+    # sms notification as well as admin email notification should be external tasks
+    unless PasswordSmsNotifier.new(phone, password).send
+      RegistrationMailer.admin_password_sms_notifier_failed_email(self).deliver
+    end
   end
 
   # @return [Boolean] whether the company with specified OGRN is alredy exists in Siebel

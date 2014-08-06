@@ -8,6 +8,7 @@ class RegistrationsController < ApplicationController
   end
 
   def create
+    # external systems are called here by implicit call company and ogrn
     @registration = Registration.new(registration_params)
     if @registration.save
 
@@ -58,31 +59,31 @@ class RegistrationsController < ApplicationController
       @registration.confirm_payment!
 
       if @registration.awaiting_password?
-        render json: { status: @registration.workflow_state }
+
+        @registration.password = PasswordGenerator.generate
+        @registration.password_confirmation = @registration.password
+
+        if @registration.valid?
+          @registration.send_to_ds!
+          if @registration.done?
+            @registration.send_password_sms_notification
+            @registration.notify_admin
+            log_in_as @registration
+            head :no_content
+          else
+            @registration.errors.add(:base, :something_went_wrong)
+            render json: @registration.errors, status: :unprocessable_entity
+          end
+        else
+          render json: @registration.errors, status: :unprocessable_entity
+        end
+        #render json: { status: @registration.workflow_state }
       else
         @registration.errors.add(:base, :something_went_wrong)
         render json: @registration.errors, status: :unprocessable_entity
       end
     else
       render json: { base: ['Платеж не выполнен'] }, status: :unprocessable_entity
-    end
-  end
-
-  def complete
-    @registration.password = params[:password]
-    @registration.password_confirmation = params[:password_confirmation]
-    if @registration.valid?
-      @registration.send_to_ds!
-      if @registration.done?
-        @registration.notify_admin
-        log_in_as @registration
-        head :no_content
-      else
-        @registration.errors.add(:base, :something_went_wrong)
-        render json: @registration.errors, status: :unprocessable_entity
-      end
-    else
-      render json: @registration.errors, status: :unprocessable_entity
     end
   end
 
