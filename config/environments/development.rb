@@ -37,7 +37,7 @@ DsCabinet::Application.configure do
   config.uas_query_log = true
 
   # Authentication settings
-  config.auth_domain = '.sredda.ru'
+  config.auth_domain = nil # domain for auth_token cookie not applicable to localhost
 
   # Widgets settings
   config.widget_script_url = 'http://delo-widgets-dev.sredda.ru:8082/assets/lib/widget.js'
