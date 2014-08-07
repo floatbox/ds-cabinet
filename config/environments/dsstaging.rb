@@ -83,7 +83,8 @@ DsCabinet::Application.configure do
 
   # UAS settings
   config.uas_url = 'https://pim.sredda.ru/authentication'
-  config.uas_sertificate = "#{Rails.root}/certs/ds_admin.pem"
+  #config.uas_sertificate = "#{Rails.root}/certs/ds_admin.pem"
+  config.uas_sertificate = "#{Rails.root}/certs/ds_user.pem"
   config.uas_query_log = false
 
   # Authentication settings
@@ -93,10 +94,10 @@ DsCabinet::Application.configure do
   config.widget_script_url = 'http://delo-widgets-dev.sredda.ru/assets/lib/widget.js'
   config.widget_domain = 'delo-widgets-dev.sredda.ru'
 
-  config.middleware.use ExceptionNotification::Rack,
-  email: {
-    email_prefix: "[sredda-legko] ",
-    sender_address: %{"Legko Sredda Notifier" <stage-notifier@legko.li},
-    exception_recipients: %w{dev-ds-cabinet-notifications@whoindie.com}
-  }
+  #config.middleware.use ExceptionNotification::Rack,
+  #email: {
+  #  email_prefix: "[sredda-legko] ",
+  #  sender_address: %{"Legko Sredda Notifier" <stage-notifier@legko.li},
+  #  exception_recipients: %w{dev-ds-cabinet-notifications@whoindie.com}
+  #}
 end
