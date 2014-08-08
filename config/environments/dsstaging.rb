@@ -93,10 +93,10 @@ DsCabinet::Application.configure do
   config.widget_script_url = 'http://delo-widgets-dev.sredda.ru/assets/lib/widget.js'
   config.widget_domain = 'delo-widgets-dev.sredda.ru'
 
-  config.middleware.use ExceptionNotification::Rack,
-  email: {
-    email_prefix: "[sredda-legko] ",
-    sender_address: %{"Legko Sredda Notifier" <stage-notifier@legko.li},
-    exception_recipients: %w{dev-ds-cabinet-notifications@whoindie.com}
-  }
+  #config.middleware.use ExceptionNotification::Rack,
+  #email: {
+  #  email_prefix: "[sredda-legko] ",
+  #  sender_address: %{"Legko Sredda Notifier" <stage-notifier@legko.li},
+  #  exception_recipients: %w{dev-ds-cabinet-notifications@whoindie.com}
+  #}
 end
