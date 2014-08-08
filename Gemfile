@@ -66,6 +66,9 @@ end
 group :test do
   gem 'webmock'
   gem 'vcr'
+  gem 'capybara-webkit'
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
 end
 
 # Use debugger
