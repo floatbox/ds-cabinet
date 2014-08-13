@@ -185,7 +185,7 @@ class Registration < ActiveRecord::Base
       account.full_name = company_name
       account.inn = inn
       account.ogrn = ogrn
-      account.save
+      account.save!
       account = Account.find_by_integration_id(account.siebel_integration_id) # Reload to get correct id
     end
 
