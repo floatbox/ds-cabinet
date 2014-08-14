@@ -63,7 +63,7 @@ DsCabinet::Application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.raise_delivery_errors = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
@@ -82,37 +82,30 @@ DsCabinet::Application.configure do
   config.sms_gateway = 'https://api.sredda.ru:4444/SMSGateway/sms'
 
   # UAS settings
-  config.uas_url = 'https://pim.sredda.ru:4443/authentication'
-  config.uas_sertificate = "#{Rails.root}/certs/ds_admin.pem"
-  config.uas_query_log = false
+  config.uas_url = 'https://ccdemopim.sredda.ru/authentication'
+  config.uas_sertificate = "#{Rails.root}/certs/ds_user.pem"
+  config.uas_query_log = true
 
   # PIM settings
-  config.pim_url = 'https://pim.sredda.ru'
-  config.pim_sertificate = "#{Rails.root}/certs/ds_admin.pem"
-  config.pim_product_offerings = ['5336743']
+  config.pim_url = 'https://ccdemopim.sredda.ru'
+  config.pim_sertificate = "#{Rails.root}/certs/ds_user.pem"
+  config.pim_product_offerings = ['3000319']
   config.pim_product_url = 'http://dsstore.dasreda.ru/'
   config.pim_query_log = true
   config.pim_curl_verbose = true
 
   # CART settings
-  config.cart_url = 'http://cart.sredda.ru'
+  config.cart_url = 'https://cart-delo.sredda.ru'
   config.cart_sertificate = "#{Rails.root}/certs/ds_admin.pem"
-  config.cart_merchant_id = '100004'
-  config.cart_merchant_password = 'password4'
+  config.cart_merchant_id = '400004'
+  config.cart_merchant_password = 'cArt123QWE123'
   config.cart_query_log = true
   config.cart_curl_verbose = true
 
   # Authentication settings
-  config.auth_domain = '.sredda.ru'
+  config.auth_domain = 'legko.li'
 
   # Widgets settings
-  config.widget_script_url = 'http://delo-widgets-dev.sredda.ru:8082/assets/lib/widget.js'
-  config.widget_domain = 'delo-widgets-dev.sredda.ru:8082'
-
-  config.middleware.use ExceptionNotification::Rack,
-  email: {
-    email_prefix: "[dev-ds-cabinet] ",
-    sender_address: %{"Cabinet Dev Notifier" <dev-notifier@dev-delo.ru},
-    exception_recipients: %w{dev-ds-cabinet-notifications@whoindie.com}
-  }
+  config.widget_script_url = 'http://widgets.legko.li/assets/lib/widget.js'
+  config.widget_domain = 'widgets.legko.li'
 end
