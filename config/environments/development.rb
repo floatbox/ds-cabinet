@@ -53,7 +53,7 @@ DsCabinet::Application.configure do
 #  config.cart_curl_verbose = true
 
   # UAS settings
-  config.uas_url = 'https://ccdemopim.sredda.ru/authentication'
+  config.uas_url = 'https://ccdemopim.sredda.ru:5443/authentication'
   config.uas_sertificate = "#{Rails.root}/certs/ds_user.pem"
   config.uas_query_log = true
 
