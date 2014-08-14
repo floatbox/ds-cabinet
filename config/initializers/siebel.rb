@@ -7,8 +7,8 @@ end
 
 Ds::Siebel.configure :staging do
   url 'https://siebel.dasreda.ru'
-  login 'testuser01'
-  password '1234'
+  login 'Club'
+  password 'Xxrhvdlz'
   wsdl_path "#{Rails.root}/data/wsdl_production"
 end
 
