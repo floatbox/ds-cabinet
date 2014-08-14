@@ -190,6 +190,7 @@ class Registration < ActiveRecord::Base
     def find_siebel_company(ogrn)
       _company = Account.where(x_sbt_ogrn: ogrn).first
       logger.info "find_siebel_company('#{ogrn}') returns #{_company.inspect}"
+      _company
     end
 
     # @return [Account] new Siebel company
@@ -202,6 +203,7 @@ class Registration < ActiveRecord::Base
       logger.info "create_siebel_company account after save: #{account.inspect}"
       account = Account.find_by_integration_id(account.siebel_integration_id) # Reload to get correct id
       logger.info "create_siebel_company account after find_by_integration_id('#{account.siebel_integration_id}'): #{account.inspect}"
+      account
     end
 
     # @param person [Person] SNS user that should be the admin of the company
