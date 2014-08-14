@@ -12,6 +12,7 @@ require 'phone'
 require 'password_sms_notifier'
 
 class Registration < ActiveRecord::Base
+
   include Workflow
 
   SPARK_ATTRIBUTES = { inn: :inn, company_name: :name, region_code: :region_code }
@@ -133,10 +134,21 @@ class Registration < ActiveRecord::Base
     # Callback on transition from awaiting_password to done state.
     def send_to_ds
       uas_user = create_uas_user
+      #<Uas::User:0x00000007f02858 @login="+74441111112", @first_name="Не определено", @last_name="Не определено", @is_disabled=true, @user_id="UAS100114", @user_sys_name="siebel">
       contact = Contact.find_by_integration_id(uas_user.user_id)
       person = create_sns_user(contact)
+      #<Person:0x0000000805a750 @id="1-184GAK", @name="Не определено", @validation_context=nil, @errors=#<ActiveModel::Errors:0x00000008062cc0 @base=#<Person:0x0000000805a750 ...>, @messages={}>, @persisted=true, @content=nil, @is_vip=false, @vip_text="", @categories=[]>]
       account = find_siebel_company(ogrn) || create_siebel_company
+      #<Account:0x007f023d5a5280> {
+      #  :row_id => "1-26XUSB",
+      #  :accnt_type_cd => "Клиент",
+      #  :integration_id => "DC1408004250171",
+      #  :x_sbt_inn => "1101085066",
+      #  :x_sbt_name => "Общество с ограниченной ответственностью \"САМАНТА\"",
+      #  :x_sbt_ogrn => "1111101000702"
+      #}
       company = find_sns_company(person, account) || create_sns_company(person, account)
+      #<Company:0x00000008068a58 @id="1-26XUSB", @name="Общество с ограниченной ответственностью \"САМАНТА\"", @persisted=true, @number_of_likes=0, @created_at=2014-08-14 08:19:32 +0000, @updated_at=2014-08-14 08:19:32 +0000>
       User.create(siebel_id: contact.id, integration_id: contact.integration_id)
       uas_user.is_disabled = false
       uas_user.save
@@ -176,7 +188,8 @@ class Registration < ActiveRecord::Base
     # @return [Account] Siebel company with specified OGRN
     # @return [nil] if nothing found
     def find_siebel_company(ogrn)
-      Account.where(x_sbt_ogrn: ogrn).first
+      _company = Account.where(x_sbt_ogrn: ogrn).first
+      logger.info "find_siebel_company('#{ogrn}') returns #{_company.inspect}"
     end
 
     # @return [Account] new Siebel company
@@ -186,7 +199,9 @@ class Registration < ActiveRecord::Base
       account.inn = inn
       account.ogrn = ogrn
       account.save!
+      logger.info "create_siebel_company account after save: #{account.inspect}"
       account = Account.find_by_integration_id(account.siebel_integration_id) # Reload to get correct id
+      logger.info "create_siebel_company account after find_by_integration_id('#{account.siebel_integration_id}'): #{account.inspect}"
     end
 
     # @param person [Person] SNS user that should be the admin of the company
