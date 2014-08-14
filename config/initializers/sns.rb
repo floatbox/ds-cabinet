@@ -10,7 +10,7 @@ Ds::Sns.configure :development, :test do
   super_user '1-4DFE', 'siebel'
 end
 
-Ds::Sns.configure :staging,do
+Ds::Sns.configure :staging do
   certificate "#{Rails.root}/certs/ds_admin.pem"
   service :social_network, 'https://sns.sredda.ru/socialNetwork2'
   service :authorization, 'https://sns.sredda.ru/authorization'
