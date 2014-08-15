@@ -103,7 +103,7 @@ DsCabinet::Application.configure do
   config.cart_curl_verbose = true
 
   # Authentication settings
-  config.auth_domain = 'legko.li'
+  config.auth_domain = 'legko.sredda.ru'
 
   # Widgets settings
   config.widget_script_url = 'http://widgets.legko.li/assets/lib/widget.js'
