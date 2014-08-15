@@ -4,7 +4,7 @@ module SimpleSerializer
   # Serialization to store object in Registration#uas_user attribute
 
   def dump obj
-    return nil.to_yaml if obj.nil?
+    return nil if obj.nil?
 
     unless obj.is_a?(self)
       raise ::ActiveRecord::SerializationTypeMismatch,
