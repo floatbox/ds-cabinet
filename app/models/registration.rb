@@ -18,7 +18,7 @@ class Registration < ActiveRecord::Base
   SPARK_ATTRIBUTES = { inn: :inn, company_name: :name, region_code: :region_code }
   UNKNOWN_NAME = 'Не определено'
 
-  attr_accessor :password, :password_confirmation
+  attr_accessor :password_confirmation
 
   serialize :uas_user, Uas::User
 
