@@ -16,6 +16,7 @@ class Registration < ActiveRecord::Base
   include Workflow
 
   SPARK_ATTRIBUTES = { inn: :inn, company_name: :name, region_code: :region_code }
+  UNKNOWN_NAME = 'Не определено'
 
   attr_accessor :password, :password_confirmation
 
@@ -162,23 +163,24 @@ class Registration < ActiveRecord::Base
     # @return [Uas::User] new UAS user
     # @note It automatically creates Siebel user
     def create_uas_user
-      user = Uas::User.new
-      user.login = phone
-      user.password = password
-      user_info = retrieve_user_info_from_company
-      user.first_name = user_info[:first_name] || 'Не определено'
-      user.last_name = user_info[:last_name] || 'Не определено'
-      user.patronymic_name = user_info[:patronymic_name] || 'Не определено'
-      user.phone = phone
-      user.is_disabled = true
-      user.create
+      Uas::User.new.tap do |user|
+        user.is_disabled = true
+        user.login       = phone
+        user.phone       = phone
+        user.password    = password
+        fio_from_company_name.tap do |fio|
+          user.first_name      = fio[:first_name]
+          user.last_name       = fio[:last_name]
+          user.patronymic_name = fio[:patronymic_name]
+        end
+      end.create
     end
 
     # @param contact [Contact] Siebel representation of the user
     # @return [Person] new SNS user
     def create_sns_user(contact)
       Ds::Sns.su do
-        person = Person.new(id: contact.id, name: 'Не определено')
+        person = Person.new(id: contact.id, name: UNKNOWN_NAME)
         person.save
         person
       end
@@ -236,12 +238,16 @@ class Registration < ActiveRecord::Base
 
     # Retrives user info from Spark for individual entrepreneurs
     # @return [Hash] first, last and patronymic names
-    def retrieve_user_info_from_company
+    def fio_from_company_name
       if ogrn.to_s.length == 15
         values = company_name.to_s.split(' ').select(&:present?).map(&:capitalize)
-        { first_name: values[1], last_name: values[0], patronymic_name: values[2] }
+        { first_name:      values[1], 
+          last_name:       values[0], 
+          patronymic_name: values[2] }
       else
-        {}
+        { first_name:      UNKNOWN_NAME, 
+          last_name:       UNKNOWN_NAME, 
+          patronymic_name: UNKNOWN_NAME  }
       end
     end
 end
