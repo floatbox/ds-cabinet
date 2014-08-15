@@ -62,6 +62,9 @@ class RegistrationsController < ApplicationController
 
         @registration.password = PasswordGenerator.generate
         @registration.password_confirmation = @registration.password
+        logger.info([
+          "REGISTRATION LOGIN=='#{@registration.phone}'", 
+          " PASSWORD=='#{@registration.password}'"].join) unless Rails.env.production?
 
         if @registration.valid?
           @registration.send_to_ds!
