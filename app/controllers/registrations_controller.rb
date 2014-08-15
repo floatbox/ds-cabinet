@@ -59,22 +59,20 @@ class RegistrationsController < ApplicationController
       @registration.confirm_payment!
 
       if @registration.awaiting_password?
-
         @registration.password = PasswordGenerator.generate
         @registration.password_confirmation = @registration.password
-        @registration.save!
-
         logger.info([
           "REGISTRATION LOGIN=='#{@registration.phone}'", 
           " PASSWORD=='#{@registration.password}'"].join) unless Rails.env.production?
 
         if @registration.valid?
+          @registration.update_column(:password, @registration.password) unless 
+            Rails.env.production?
           @registration.send_to_ds!
           if @registration.done?
             @registration.send_password_sms_notification
             @registration.notify_admin
             log_in_as @registration
-            @registration.update_attribute(:password, nil) if Rails.env.production?
             head :no_content
           else
             @registration.errors.add(:base, :something_went_wrong)
