@@ -20,6 +20,8 @@ class Registration < ActiveRecord::Base
 
   attr_accessor :password, :password_confirmation
 
+  serialize :uas_user, Uas::User
+
   validates_presence_of :phone, :ogrn
   validates_format_of :phone, with: Phone::RegExp
   validates_format_of :ogrn, with: /\A([0-9]{13})([0-9]{2})?\Z/i
@@ -134,25 +136,15 @@ class Registration < ActiveRecord::Base
 
     # Callback on transition from awaiting_password to done state.
     def send_to_ds
-      uas_user = create_uas_user
-      #<Uas::User:0x00000007f02858 @login="+74441111112", @first_name="Не определено", @last_name="Не определено", @is_disabled=true, @user_id="UAS100114", @user_sys_name="siebel">
-      contact = Contact.find_by_integration_id(uas_user.user_id)
+      uas_user_obj = uas_user || create_uas_user
+      contact = Contact.find_by_integration_id(uas_user_obj.user_id)
       person = create_sns_user(contact)
-      #<Person:0x0000000805a750 @id="1-184GAK", @name="Не определено", @validation_context=nil, @errors=#<ActiveModel::Errors:0x00000008062cc0 @base=#<Person:0x0000000805a750 ...>, @messages={}>, @persisted=true, @content=nil, @is_vip=false, @vip_text="", @categories=[]>]
       account = find_siebel_company(ogrn) || create_siebel_company
-      #<Account:0x007f023d5a5280> {
-      #  :row_id => "1-26XUSB",
-      #  :accnt_type_cd => "Клиент",
-      #  :integration_id => "DC1408004250171",
-      #  :x_sbt_inn => "1101085066",
-      #  :x_sbt_name => "Общество с ограниченной ответственностью \"САМАНТА\"",
-      #  :x_sbt_ogrn => "1111101000702"
-      #}
       company = find_sns_company(person, account) || create_sns_company(person, account)
-      #<Company:0x00000008068a58 @id="1-26XUSB", @name="Общество с ограниченной ответственностью \"САМАНТА\"", @persisted=true, @number_of_likes=0, @created_at=2014-08-14 08:19:32 +0000, @updated_at=2014-08-14 08:19:32 +0000>
       User.create(siebel_id: contact.id, integration_id: contact.integration_id)
-      uas_user.is_disabled = false
-      uas_user.save
+      uas_user_obj.is_disabled = false
+      uas_user_obj.save
+      uas_user = uas_user_obj # to serialize
     rescue => e
       ExceptionNotifier.notify_exception(e, env: Rails.env, data: { message: 'Can not send data to DS' })
       logger.error "Can not send data to DS. #{e.message}"
