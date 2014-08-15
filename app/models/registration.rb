@@ -144,7 +144,7 @@ class Registration < ActiveRecord::Base
       User.create(siebel_id: contact.id, integration_id: contact.integration_id)
       uas_user_obj.is_disabled = false
       uas_user_obj.save
-      uas_user = uas_user_obj # to serialize
+      self.update_column :uas_user, uas_user_obj # to serialize
     rescue => e
       ExceptionNotifier.notify_exception(e, env: Rails.env, data: { message: 'Can not send data to DS' })
       logger.error "Can not send data to DS. #{e.message}"
