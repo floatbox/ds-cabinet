@@ -145,7 +145,12 @@ class Registration < ActiveRecord::Base
         self.update_column :contact_id, contact.id # "1-189X9O"
       end
       
-      person = create_sns_user(contact_id)
+      if person_id.nil?
+        person = create_sns_user(contact_id)
+        self.update_column :person_id, person.id # == contact_id
+      else
+        person = find_sns_user(person_id)
+      end
 
       account = find_siebel_company(ogrn) || create_siebel_company
       company = find_sns_company(person, account) || create_sns_company(person, account)
@@ -176,6 +181,12 @@ class Registration < ActiveRecord::Base
           user.patronymic_name = fio[:patronymic_name]
         end
       end.create
+    end
+
+    # @param contact [String] contact_id - Id of user representation in Siebel
+    # @return [Ds::Sns::Person] existing SNS user
+    def find_sns_user(contact_id)
+      Ds::Sns::Person.find(contact_id)
     end
 
     # @param contact [Contact] Siebel representation of the user
