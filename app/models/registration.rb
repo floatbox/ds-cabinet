@@ -136,7 +136,6 @@ class Registration < ActiveRecord::Base
 
     # Callback on transition from awaiting_password to done state.
     def send_to_ds
-      binding.pry
       uas_user_obj = uas_user || create_uas_user
       integration_id = uas_user_obj.user_id # "UAS100127"
       
@@ -155,11 +154,13 @@ class Registration < ActiveRecord::Base
       account = find_siebel_company(ogrn) || create_siebel_company
       company = find_sns_company(person, account) || create_sns_company(person, account)
       
-      User.create(siebel_id: contact_id, integration_id: integration_id)
-      
-      uas_user_obj.is_disabled = false
-      uas_user_obj.save
-      self.update_column :uas_user, uas_user_obj # to serialize
+      User.find_or_create_by(siebel_id: contact_id, integration_id: integration_id)
+
+      if uas_user_obj.is_disabled
+        uas_user_obj.is_disabled = false
+        uas_user_obj.save
+        self.update_column :uas_user, uas_user_obj # to serialize
+      end
     rescue => e
       ExceptionNotifier.notify_exception(e, env: Rails.env, data: { message: 'Can not send data to DS' })
       logger.error "Can not send data to DS. #{e.message}"
