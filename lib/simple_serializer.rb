@@ -19,10 +19,6 @@ module SimpleSerializer
   end
 
   def load string
-    string.nil? ? nil : self.new.tap do |user|
-      (YAML.load(string) || {}).each do |key, value|
-        user.instance_variable_set(key, value)
-      end
-    end
+    string.nil? ? nil : YAML.load(string)
   end
 end
