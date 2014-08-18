@@ -136,12 +136,22 @@ class Registration < ActiveRecord::Base
 
     # Callback on transition from awaiting_password to done state.
     def send_to_ds
+      binding.pry
       uas_user_obj = uas_user || create_uas_user
-      contact = Contact.find_by_integration_id(uas_user_obj.user_id)
-      person = create_sns_user(contact)
+      integration_id = uas_user_obj.user_id # "UAS100127"
+      
+      if contact_id.nil?
+        contact    = Contact.find_by_integration_id(integration_id)
+        self.update_column :contact_id, contact.id # "1-189X9O"
+      end
+      
+      person = create_sns_user(contact_id)
+
       account = find_siebel_company(ogrn) || create_siebel_company
       company = find_sns_company(person, account) || create_sns_company(person, account)
-      User.create(siebel_id: contact.id, integration_id: contact.integration_id)
+      
+      User.create(siebel_id: contact_id, integration_id: integration_id)
+      
       uas_user_obj.is_disabled = false
       uas_user_obj.save
       self.update_column :uas_user, uas_user_obj # to serialize
@@ -170,9 +180,9 @@ class Registration < ActiveRecord::Base
 
     # @param contact [Contact] Siebel representation of the user
     # @return [Person] new SNS user
-    def create_sns_user(contact)
+    def create_sns_user(contact_id)
       Ds::Sns.su do
-        person = Person.new(id: contact.id, name: UNKNOWN_NAME)
+        person = Person.new(id: contact_id, name: UNKNOWN_NAME)
         person.save
         person
       end
