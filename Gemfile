@@ -55,8 +55,20 @@ end
 # Use RSpec for testing
 group :development, :test do
   gem 'rspec-rails'
+  gem 'rspec-mocks'
   gem 'factory_girl_rails'
   gem 'timecop'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+  gem 'awesome_print'
+end
+
+group :test do
+  gem 'webmock'
+  gem 'vcr'
+  gem 'capybara-webkit'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
 end
 
 # Use debugger
@@ -77,6 +89,7 @@ gem 'mini_magick'
 gem 'rails-observers'
 gem 'exception_notification'
 gem 'letter_opener', group: :development
+gem 'keepass-password-generator'
 
 # Localization
 gem 'russian'
