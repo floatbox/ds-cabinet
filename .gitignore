@@ -17,4 +17,12 @@
 /public/uploads
 
 config/database.yml
+config/password_generator.yml
 .DS_Store
+features/screenshots
+
+# my vim session config file
+Session.vim
+
+# Development vagrant box definition
+vbox
