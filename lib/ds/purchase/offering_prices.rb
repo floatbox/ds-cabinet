@@ -1,7 +1,7 @@
 require 'ds/pim'
 
 module Ds
-  module Pim
+  module Purchase
     class InvalidPrice< RuntimeError; end
 
     class Price
@@ -50,7 +50,7 @@ module Ds
       end
     end
 
-    class RegistrationPrices
+    class OfferingPrices
       attr_reader :offering_id, :raw_prices
 
       # @param[String] offering_id - product id in Pim subsystem, e.g. '5336743' 
@@ -81,7 +81,7 @@ module Ds
 
       # Gets raw prices for offering id
       def request_raw_prices
-        Api.get_product_offering_prices @offering_id # Array
+        Ds::Pim::Api.get_product_offering_prices @offering_id # Array
       end
 
       # Parses prices info, returns distilled price information
@@ -133,8 +133,8 @@ module Ds
 end
 
 if __FILE__ == $0
-  require 'ds/pim/registration_prices.rb'
-  rp = Ds::Pim::RegistrationPrices.new '3000319'
+  require 'ds/purchase/offering_prices.rb'
+  rp = Ds::Purchase::OfferingPrices.new '3000319'
   pp rp.prices
   #pp rp.raw_prices
 end
