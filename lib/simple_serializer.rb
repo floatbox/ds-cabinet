@@ -19,6 +19,10 @@ module SimpleSerializer
   end
 
   def load string
-    string.nil? ? nil : YAML.load(string)
+    string.nil? ? nil : self.new.tap do |obj|
+      YAML.load(string).each do |key, value|
+        obj.instance_variable_set(key, value)
+      end
+    end
   end
 end
