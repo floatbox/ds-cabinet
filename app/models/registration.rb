@@ -13,6 +13,9 @@ require 'password_sms_notifier'
 
 class Registration < ActiveRecord::Base
 
+  has_one :access_purchase
+  belongs_to :user
+
   include Workflow
 
   SPARK_ATTRIBUTES = { inn: :inn, company_name: :name, region_code: :region_code }
@@ -33,20 +36,14 @@ class Registration < ActiveRecord::Base
 
   workflow do
     state :new do
-      event :register, :transitions_to => :awaiting_confirmation
-      event :defer, :transitions_to => :deferred
+      event :start,    :transitions_to => :awaiting_confirmation
+      event :defer,    :transitions_to => :deferred
     end
     state :awaiting_confirmation do
-      event :confirm, :transitions_to => :awaiting_verification
-    end
-    state :awaiting_verification do
-      event :verify, :transitions_to => :awaiting_payment
+      event :confirm,  :transitions_to => :awaiting_payment
     end
     state :awaiting_payment do
-      event :confirm_payment, :transitions_to => :awaiting_password
-    end
-    state :awaiting_password do
-      event :send_to_ds, :transitions_to => :done
+      event :confirm_payment, :transitions_to => :done
     end
     state :deferred
     state :done
@@ -154,7 +151,8 @@ class Registration < ActiveRecord::Base
       account = find_siebel_company(ogrn) || create_siebel_company
       company = find_sns_company(person, account) || create_sns_company(person, account)
       
-      User.find_or_create_by(siebel_id: contact_id, integration_id: integration_id)
+      user_id = User.find_or_create_by(siebel_id: contact_id, integration_id: integration_id).id
+      self.update_column :user_id, user_id
 
       if uas_user_obj.is_disabled
         uas_user_obj.is_disabled = false
