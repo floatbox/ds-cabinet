@@ -5,12 +5,19 @@
   <div class="correct">
     Вы регистрируете компанию <span class="name"></span>, <strong>ИНН <span class="inn"></span>, ОГРН <span class="ogrn"></span></strong>
   </div>
-
-  <div class="step-form">
-    <form action="">
-      <%= link_to 'Все верно, продолжить', registration_confirm_path(:registration_id), method: :post, remote: true, class: 'button confirm', style: 'text-decoration:none;' %>
-    </form>
-  </div>
-
   <p>Нет, это не моя компания. <%= link_to 'Ввести ОГРН еще раз', '#', class: 'cancel' %></p>
+  <div class="step-form">
+    <%= form_tag registration_confirm_path(:registration_id), method: :post, remote: true do %>
+      <div class="step-form code">
+        <%= text_field_tag :password, '', placeholder: 'Введите пароль', class: 'form-control' %>
+      </div>
+      <div class="step-form">
+        <%= submit_tag 'Все верно, продолжить', class: 'button confirm' %>
+      </div>
+    <% end %>
+    <p>Если смс сообщение с паролем не пришло, вы сможете отправить его повторно через 
+      <span class="sms_timeout">60</span> секунд
+      <%= link_to 'Отправить еще раз', registration_regenerate_password_path(:registration_id), method: :post, remote: true, class: 'regenerate_password' %>
+    </p>
+  </div>
 </div>
