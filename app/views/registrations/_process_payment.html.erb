@@ -1,0 +1,14 @@
+<div class="step step-4" id="process_payment">
+  <h3 class="title">Перейти к оплате</h3>
+  <h3 class="title highlight error_messages"></h3>
+  <form action="<%= process_payment_link %>" method="post">
+    <input type="hidden" name="PaymentType" value="acquiring">
+    <input type="hidden" name="Receipt.FIO" value="<%= user_first_name %> <%= user_last_name %>">
+    <input type="hidden" name="Receipt.Address" value="">
+    <p><span class="process_payment_desc">Тут описание выбранного прлатежа</span></p>
+    <button type="submit" class="default-button-orange"> Оплатить </button>
+  </form>
+  <p>
+     Чтобы вернуться к выбору платежа, перейдите по ссылке <%= link_to("Отмена", "#", class: 'cancel') %>
+  </p>
+</div>
