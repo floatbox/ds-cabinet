@@ -4,20 +4,20 @@ $ ->
   registraton_form = '#new_registration_form'
   confirmation = '#confirmation'
   not_found = '#not_found'
-  verify_phone = '#verify_phone'
-  confirm_payment = '#confirm_payment'
+  select_payment = '#select_payment'
+  process_payment = '#process_payment'
   deferred = '#deferred'
-  sms_verification_code_sent = '#sms_verification_code_sent'
+  password_sent = '#password_sent'
 
   # Hide all but the first form
   $(pre_new_registration_form).show()
   $(registraton_form).hide()
   $(confirmation).hide()
   $(not_found).hide()
-  $(verify_phone).hide()
-  $(confirm_payment).hide()
+  $(select_payment).hide()
+  $(process_payment).hide()
   $(deferred).hide()
-  $(sms_verification_code_sent).hide()
+  $(password_sent).hide()
 
   # Hide error messages blocks
   $('.error_messages').hide()
@@ -26,9 +26,8 @@ $ ->
     base: 'Ошибка'
     phone: 'Телефон'
     ogrn: 'ОГРН'
-    sms_verification_code: 'Код подтверждения'
     password: 'Пароль'
-    password_confirmation: 'Подтверждение пароля'
+    offering: 'Тарифный план'
 
   showPreloader = (form) ->
     form = $(form)
@@ -104,21 +103,25 @@ $ ->
   # Fills confirmation dialog
   # @param data [JSON] registration object as JSON
   fill_confirmation_dialog = (data) ->
-    replace_id($(confirmation).find('a.confirm'), 'href', data.id)
+    replace_id($(confirmation).find('form'), 'action', data.id)
+    replace_id($('a.regenerate_password'), 'href', data.id)
     for key, value of data
       $(confirmation).find("span.#{key}").text(value)
 
-  # Fills phone verification dialog
-  # @param data [JSON] registration object as JSON
-  fill_verify_phone_dialog = (data) ->
-    replace_id($(verify_phone).find('form'), 'action', data.id)
-    replace_id($(verify_phone).find('a.regenerate_sms_verification_code'), 'href', data.id)
-
   # Fills payment confirmation dialog
   # @param data [JSON] registration object as JSON
-  fill_confirm_payment_dialog = (data) ->
-    replace_id($(confirm_payment).find('form'), 'action', data.id)
-    replace_id($(confirm_payment).find('a.confirm_payment_link'), 'href', data.id)
+  fill_select_payment_dialog = (data) ->
+    replace_id($(select_payment).find('a.select_payment_link'), 'href', data.id)
+
+  # Fills payment confirmation dialog
+  # @param data [JSON] hash object as JSON:
+  # { 
+  #   :process_payment_link => 'http://paymentgate/uuid'
+  #   :process_payment_desc => 'Описание и цена выбранного тарифного плана'
+  # }
+  fill_process_payment_dialog = (data) ->
+    replace_id($(process_payment).find('form'), 'action', data.process_payment_link)
+    $("#{process_payment} span.process_payment_desc").text(data.process_payment_desc)
 
   # Removed promo blocks, their styles, shows next form with animation
   setup_registration_steps = (next_form) ->
@@ -135,6 +138,7 @@ $ ->
 
     $(pre_new_registration_form).fadeOut()
 
+
   #
   # General callbacks
   #
@@ -142,10 +146,12 @@ $ ->
     event.preventDefault()
     $(registraton_form).show()
 
+
   #
   # Pre registration form callbacks
   #
   $('body').on 'ajax:before', pre_new_registration_form, (event, data) ->
+    $('.promo').addClass('disabled')
     return false if $(pre_new_registration_form).hasClass('submit-disabled')
     showPreloader(pre_new_registration_form)
 
@@ -156,9 +162,8 @@ $ ->
       setup_registration_steps(deferred)
     else
       fill_confirmation_dialog(data)
-      fill_verify_phone_dialog(data)
-      fill_confirm_payment_dialog(data)
-      setup_registration_steps(confirmation)
+      fill_select_payment_dialog(data)
+      setup_registration_steps(password_sent)
       ga('send', 'pageview', '/virtual/step2')
 
   $('body').on 'ajax:error', pre_new_registration_form, (event, data) ->
@@ -186,9 +191,8 @@ $ ->
       $(deferred).show()
     else
       fill_confirmation_dialog(data)
-      fill_verify_phone_dialog(data)
-      fill_confirm_payment_dialog(data)
-      $(confirmation).show()
+      fill_select_payment_dialog(data)
+      $(password_sent).show()
       ga('send', 'pageview', '/virtual/step2')
 
   $('body').on 'ajax:error', registraton_form, (event, data) ->
@@ -204,7 +208,6 @@ $ ->
   #
   # Not found callbacks
   #
-
   $('body').on 'click', "#{not_found} a.back", (event) ->
     event.preventDefault()
     $(not_found).hide()
@@ -214,76 +217,76 @@ $ ->
   #
   # Confirmation callbacks
   #
-
-  $("#{confirmation} a.confirm").on 'ajax:before', (event, data) ->
+  $("#{confirmation} form").on 'ajax:before', (event, data) ->
     return false if $(confirmation).hasClass('submit-disabled')
+    return unless event.target is this
     showPreloader(confirmation)
+    clear_error_messages(confirmation)
 
-  $("#{confirmation} a.confirm").on 'ajax:success', (event, data) ->
+  $("#{confirmation} form").on 'ajax:success', (event, data) ->
     hidePreloader(confirmation)
     $(confirmation).hide()
-    $(verify_phone).show()
+    $(select_payment).show()
     ga('send', 'pageview', '/virtual/step3')
 
-  $("#{confirmation} a.confirm").on 'ajax:error', (event, data) ->
+  $("#{confirmation} form").on 'ajax:error', (event, data) ->
     hidePreloader(confirmation)
     show_error_messages(confirmation, data.responseJSON)
 
+  $("#{confirmation} a.regenerate_password").on 'ajax:before', (event, data) ->
+    showPreloader(confirmation)
+    clear_error_messages(confirmation)
+
+  $("#{confirmation} a.regenerate_password").on 'ajax:success', (event, data) ->
+    hidePreloader(confirmation)
+    $(confirmation).hide()
+    clear_error_messages(confirmation)
+    $(password_sent).show()
+    ga('send', 'pageview', '/virtual/step4')
+
   $('body').on 'click', "#{confirmation} a.cancel", (event) ->
     event.preventDefault()
+    clear_error_messages(confirmation)
     $(confirmation).hide()
     $(registraton_form).show()
 
-  #
-  # Verify phone callbacks
-  #
-
-  $("#{verify_phone} form").on 'ajax:before', (event, data) ->
-    return false if $(verify_phone).hasClass('submit-disabled')
-    return unless event.target is this
-    showPreloader(verify_phone)
-    clear_error_messages(verify_phone)
-
-  $("#{verify_phone} form").on 'ajax:success', (event, data) ->
-    return unless event.target is this
-    hidePreloader(verify_phone)
-    $(verify_phone).hide()
-    $(confirm_payment).show()
-    ga('send', 'pageview', '/virtual/step4')
-
-  $("#{verify_phone} form").on 'ajax:error', (event, data) ->
-    return unless event.target is this
-    hidePreloader(verify_phone)
-    show_error_messages(verify_phone, data.responseJSON)
-
-  $("#{verify_phone} a.regenerate_sms_verification_code").on 'ajax:success', (event, data) ->
-    hidePreloader(verify_phone)
-    $(verify_phone).hide()
-    $(sms_verification_code_sent).show()
 
   #
-  # SMS verification code sent callbacks
+  # Password sent callbacks
   #
-
-  $('body').on 'click', "#{sms_verification_code_sent} a.ok", (event) ->
+  $('body').on 'click', "#{password_sent} a.ok", (event) ->
     event.preventDefault()
-    $(sms_verification_code_sent).hide()
-    $(verify_phone).show()
+    $(password_sent).hide()
+    $(confirmation).show()
+
 
   #
-  # Confirm payment callbacks
+  # Select payment callbacks
   #
+  $("#{select_payment} a.select_payment_link").on 'ajax:before', (event, data) ->
+    showPreloader(select_payment)
+    clear_error_messages(select_payment)
 
-  $("#{confirm_payment} a.confirm_payment_link").on 'ajax:before', (event, data) ->
-    showPreloader(confirm_payment)
-    clear_error_messages(confirm_payment)
+  $("#{select_payment} a.select_payment_link").on 'ajax:success', (event, data) ->
+    hidePreloader(select_payment)
+    fill_process_payment_dialog(data)
+    $(select_payment).hide()
+    $(process_payment).show()
 
-  $("#{confirm_payment} a.confirm_payment_link").on 'ajax:success', (event, data) ->
-    hidePreloader(confirm_payment)
-    $(confirm_payment).hide()
-    location.reload()
-
-  $("#{confirm_payment} a.confirm_payment_link").on 'ajax:error', (event, data) ->
+  $("#{select_payment} a.select_payment_link").on 'ajax:error', (event, data) ->
     return unless event.target is this
-    hidePreloader(confirm_payment)
-    show_error_messages(confirm_payment, data.responseJSON)
+    hidePreloader(select_payment)
+    show_error_messages(select_payment, data.responseJSON)
+
+
+  #
+  # Process payment callbacks
+  #
+  $("#{process_payment} form button").on 'click', (event) ->
+    showPreloader(process_payment)
+    clear_error_messages(process_payment)
+ 
+  $('body').on 'click', "#{process_payment} a.cancel", (event) ->
+    event.preventDefault()
+    $(process_payment).hide()
+    $(select_payment).show()
