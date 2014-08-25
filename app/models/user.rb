@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :notifications
   has_many :search_queries
+  has_many :access_purchases
 
   scope :common, -> { where(is_concierge: false) }
   scope :concierges, -> { where(is_concierge: true) }
@@ -82,6 +83,10 @@ class User < ActiveRecord::Base
   def online?
     return false unless last_activity_at
     Time.now <= 5.minutes.since(last_activity_at)
+  end
+
+  def has_paid_access?
+    !!( access_purchases && (ap = access_purchases.last) && ap.paid_and_not_expired? )
   end
 
   private

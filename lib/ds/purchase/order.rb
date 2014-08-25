@@ -25,6 +25,10 @@ module Ds
         Ds::Cart::Base.order_statuses
       end
 
+      def paid?
+        @status == 7
+      end
+
       # @param[String] client_integration_id - A string id of user in UAS, like 'UAS100452'
       # @param[Array] offerings_arr - an array of arrays like
       #   [[offering1_id, offering1_price_id, offering1_url],...,[offeringN_id, offeringN_price_id, offeringN_url]]
