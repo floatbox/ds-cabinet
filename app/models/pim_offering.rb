@@ -3,12 +3,12 @@ require 'digest/sha2'
 # Cached Pim offerings with prices
 class PimOffering < ActiveRecord::Base
   OFFERING_ATTRIBUTES = [
-    :offering_id, 
-    :price_text, 
-    :price_id, 
-    :price_amount, 
-    :price_unit, 
-    :price_unit_qty 
+    :offering_id,
+    :offering_price_id,
+    :text,     
+    :unit,     # пока одно значение - "Month"
+    :unit_qty, # кол-во периодов, например, 3
+    :amount    # стоимость в рублях за кол-во периодов
   ]
 
   def attributes_hash 
@@ -28,6 +28,10 @@ class PimOffering < ActiveRecord::Base
 
   # generates ugly code from price_id to use it instead of id in urls
   def code_from_string string='lorem ipsum'
-    price_id.crypt string
+    offering_price_id.crypt string
+  end
+
+  def offering_url
+    'http://market.yandex.ru/model-spec.xml?modelid=10890865&hid=6427100'
   end
 end
