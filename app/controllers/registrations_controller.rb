@@ -2,20 +2,17 @@ class RegistrationsController < ApplicationController
   include WithSmsVerification
 
   before_filter :check_registration_enabled
-  before_filter :set_registration, only: [:confirm, :verify_phone, :confirm_payment, :complete, :regenerate_sms_verification_code]
-
-  def new
-  end
+  before_filter :set_registration, only: [:confirm, :regenerate_password]
 
   def create
     # external systems are called here by implicit call company and ogrn
     @registration = Registration.new(registration_params)
     if @registration.save
-
       if @registration.siebel_company_exists?
         @registration.defer!
       else
-        @registration.register!
+        generate_send_password
+        @registration.start!
       end
 
       render json: @registration
@@ -28,78 +25,38 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  # That confirms OGRN, company_name, phone and password
   def confirm
-    if generate_sms_verification_code(@registration.phone)
-      @registration.confirm!
+    if @registration.password == params[:password]
+      @registration.send_to_ds!
+      @registration.confirm! if @registration.workflow_state == :awaiting_confirmation
+      @registration.notify_admin
+      log_in_as @registration
       head :no_content
     else
-      @registration.errors.add(:base, :something_went_wrong)
+      @registration.errors.add(:password, :wrong_value)
       render json: @registration.errors, status: :unprocessable_entity
     end
   end
 
-  def verify_phone
-    if with_sms_verification(@registration.phone)
-      @registration.verify!
-
-      if @registration.awaiting_payment?
-        render json: { status: @registration.workflow_state }
-      else
-        @registration.errors.add(:base, :something_went_wrong)
-        render json: @registration.errors, status: :unprocessable_entity
-      end
-
-    else
-      render json: { sms_verification_code: ['неверный код подтверждения'] }, status: :unprocessable_entity
-    end
-  end
-
-  def confirm_payment
-    if params[:status] == "success"
-      @registration.confirm_payment!
-
-      if @registration.awaiting_password?
-        @registration.password = PasswordGenerator.generate
-        @registration.password_confirmation = @registration.password
-        logger.info([
-          "REGISTRATION LOGIN=='#{@registration.phone}'", 
-          " PASSWORD=='#{@registration.password}'"].join) unless Rails.env.production?
-
-        if @registration.valid?
-          @registration.update_column(:password, @registration.password) unless 
-            Rails.env.production?
-          @registration.send_to_ds!
-          if @registration.done?
-            @registration.send_password_sms_notification
-            @registration.notify_admin
-            log_in_as @registration
-            head :no_content
-          else
-            @registration.errors.add(:base, :something_went_wrong)
-            render json: @registration.errors, status: :unprocessable_entity
-          end
-        else
-          render json: @registration.errors, status: :unprocessable_entity
-        end
-        #render json: { status: @registration.workflow_state }
-      else
-        @registration.errors.add(:base, :something_went_wrong)
-        render json: @registration.errors, status: :unprocessable_entity
-      end
-    else
-      render json: { base: ['Платеж не выполнен'] }, status: :unprocessable_entity
-    end
-  end
-
-  def regenerate_sms_verification_code
-    if generate_sms_verification_code(@registration.phone)
-      head :no_content
-    else
-      head :unprocessable_entity
-    end
+  def regenerate_password
+    generate_send_password
+    head :no_content
   end
 
   private
+    def generate_send_password
+      @registration.password = PasswordGenerator.generate
+      @registration.password_confirmation = @registration.password
+      logger.info([
+        "REGISTRATION LOGIN=='#{@registration.phone}'", 
+        " PASSWORD=='#{@registration.password}'"].join) unless Rails.env.production?
+
+      @registration.update_column(:password, @registration.password) unless 
+        Rails.env.production?
+
+      @registration.send_password_sms_notification
+    end
 
     def check_registration_enabled
       render nothing: true unless ConfigItem['registration_enabled'] == 'true'
@@ -119,5 +76,4 @@ class RegistrationsController < ApplicationController
     rescue Uas::Error
       nil
     end
-
 end
