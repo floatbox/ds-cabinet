@@ -24,12 +24,12 @@ class RegistrationOffering< AccessPurchase
   end
 
   def self.as_hash # to use in controllers, views and partials
-    self.order('price_amount ASC').all.
+    self.order('amount ASC').all.
       map{ |e| { 
-                 price_id:     e.price_id, 
-                 price_text:   e.price_text, 
-                 price_amount: e.price_amount,
-                 code:         e.code
+                 offering_price_id: e.offering_price_id, 
+                 text:   e.text, 
+                 amount: e.amount,
+                 code:   e.code
                }
          }
   end

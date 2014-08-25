@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   has_many :notifications
   has_many :search_queries
   has_many :access_purchases
+  has_one  :registration
 
   scope :common, -> { where(is_concierge: false) }
   scope :concierges, -> { where(is_concierge: true) }
