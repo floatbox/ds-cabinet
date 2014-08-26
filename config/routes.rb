@@ -7,7 +7,7 @@ DsCabinet::Application.routes.draw do
     post 'regenerate_password'
   end
 
-  resources :purchases, only: [:create] do
+  resources :access_purchases, only: [:create, :index] do
     post 'success'
     post 'error'
   end
