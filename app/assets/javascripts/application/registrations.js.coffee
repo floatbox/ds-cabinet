@@ -9,9 +9,6 @@ $ ->
   deferred = '#deferred'
   password_sent = '#password_sent'
 
-  # Hide error messages blocks
-  $('.error_messages').hide()
-
   window.LOCALE =
     base: 'Ошибка'
     phone: 'Телефон'
