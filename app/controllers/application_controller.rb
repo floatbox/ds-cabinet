@@ -18,6 +18,13 @@ protected
   end
   helper_method :current_user
 
+  def has_paid_access
+    current_user
+    if @current_user && (!@current_user.is_concierge?) && (!@current_user.has_paid_access?)
+      redirect_to controller: :access_purchases, action: :index
+    end
+  end
+
   # Add this method to before_action to authenticate access with redirect.
   # @example before_action :authenticate, only: [:show]
   def authenticate
