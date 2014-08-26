@@ -3,8 +3,8 @@
   <h3 class="title highlight error_messages"></h3>
   <% RegistrationOffering.as_hash.each do |e| -%>
     <p><%= "#{e[:amount]} руб."%> 
-       <%= link_to(e[:price_text], 
-           purchases_path(code: e[:code]),
+       <%= link_to(e[:text], 
+           access_purchases_path(code: e[:code]),
            {
              method: :post, remote: true, class: 'btn btn-warning select_payment_link' 
            }
