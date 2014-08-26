@@ -17,16 +17,19 @@ require 'simple_serializer'
 module Ds
   module Purchase
     class Order
+
+      PAID=3
+      
       extend SimpleSerializer
 
-      attr_reader :order_id, :url, :status
+      attr_reader :order_id, :url, :status, :last_edited_time
 
       def self.statuses
         Ds::Cart::Base.order_statuses
       end
 
       def paid?
-        @status == 7
+        @status == PAID
       end
 
       # @param[String] client_integration_id - A string id of user in UAS, like 'UAS100452'
@@ -61,6 +64,7 @@ module Ds
         #  "UserId"=>"UAS100452"
         #}
 
+        @last_edited_time = order_info["LastEditedDate"]
         @status = order_info["OrderStatus"]
       end
 
