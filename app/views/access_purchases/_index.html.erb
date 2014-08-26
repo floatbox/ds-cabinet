@@ -1,7 +1,9 @@
 <div class="step step-4" id="select_payment"<%= visible ? "" : " style=display:none;" %>>
   <h3 class="title">Выберите вариант подписки</h3>
   <h3 class="title highlight error_messages">
-    <%= @error_message ? "<span>#{@error_message}</span>" : "" %>
+    <% if @error_message -%>
+      <span><%= @error_message %></span>
+    <% end -%>
   </h3>
   <% RegistrationOffering.as_hash.each do |e| -%>
     <p><%= "#{e[:amount]} руб."%> 
