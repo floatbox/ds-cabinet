@@ -18,13 +18,14 @@ class Order< ActiveRecord::Base
                       error_url)
     self.save
   end
-  
-  def paid! date
-    update_column :payment_date, date
+
+  def paid? 
+    !!payment_date
   end
   
-  def paid?
-    payment_date ? true : (cart_order.paid? ? (update_column :payment_date, date) : false)
+  def update_status
+    cart_order.update_status
+    update_column(:payment_date, cart_order.last_edited_time) if cart_order.paid?
   end
 
   protected
