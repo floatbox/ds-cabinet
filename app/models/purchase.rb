@@ -3,9 +3,22 @@ require 'ds/purchase/order'
 class Purchase< PimOffering
   belongs_to :user
   has_one :order, as: :orderable
+  delegate :update_status, :post, to: :order
+
+  def self.not_paid offering_id= '*', offering_price_id= '*'
+    Purchase.joins(:order).where(
+      'orders.payment_date'             => nil, 
+      'pim_offerings.offering_id'       => offering_id,
+      'pim_offerings.offering_price_id' => offering_price_id)
+  end
 
   def paid?
     order && order.paid?
+  end
+
+  def post success_url, error_url
+    create_order
+    order.post success_url, error_url
   end
 
   # Checks if access is not expired by given date
@@ -30,25 +43,12 @@ class Purchase< PimOffering
   # @return[Time|nil] дата истечения
   #
   def expires from_date
-    case price_unit
+    case unit
     when "Month"
-      from_date + price_unit_qty.months
+      from_date + unit_qty.months
     else
       nil
     end
-  end
-
-  def create_order 
-    @po = Ds::Purchase::Order.new(user.integration_id) # 'UAS100452'
-  end
-
-  def post
-    opts = po.order_options([
-      offering_id, 
-      offering_price_id, 
-      'http://market.yandex.ru/model-spec.xml?modelid=10890865&hid=6427100'
-    ])
-    @po.add_order opts    
   end
 end
 
