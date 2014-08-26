@@ -8,8 +8,7 @@ DsCabinet::Application.routes.draw do
   end
 
   resources :access_purchases, only: [:create, :index] do
-    get 'success'
-    get 'error'
+    get 'processed'
   end
 
   resources :recoveries, only: [:new, :create] do
