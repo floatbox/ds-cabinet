@@ -13,7 +13,6 @@ require 'password_sms_notifier'
 
 class Registration < ActiveRecord::Base
 
-  has_one :access_purchase
   belongs_to :user
 
   include Workflow
