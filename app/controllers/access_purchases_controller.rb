@@ -6,7 +6,6 @@ class AccessPurchasesController < ApplicationController
   end
 
   def create
-    binding.pry
     if params[:code].nil? || (ro = RegistrationOffering.find_by_code params[:code]).nil?
       render json: { base: ['Продукт не найден'] }, status: :unprocessable_entity
     else
