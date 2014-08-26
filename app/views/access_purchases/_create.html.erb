@@ -1,4 +1,4 @@
-<div class="step step-4" id="process_payment">
+<div class="step step-4" id="process_payment"<%= visible ? "" : " style=display:none;" %>>
   <h3 class="title">Перейти к оплате</h3>
   <h3 class="title highlight error_messages"></h3>
   <form action="<%= :process_payment_link %>" method="post">
