@@ -5,23 +5,32 @@ class RegistrationsController < ApplicationController
   before_filter :set_registration, only: [:confirm, :regenerate_password]
 
   def create
-    # external systems are called here by implicit call company and ogrn
-    @registration = Registration.new(registration_params)
-    if @registration.save
-      if @registration.siebel_company_exists?
-        @registration.defer!
-      else
-        generate_send_password
-        @registration.start!
-      end
-
+    # check if registration exists
+    phone= params[:registration][:phone]
+    ogrn=  params[:registration][:ogrn]
+    @registration = Registration.find_by_phone_ogrn phone, ogrn
+    if @registration
+      @registration.send_password_sms_notification
       render json: @registration
     else
-      # Notify admins about invalid OGRN, but valid phone
-      @registration.notify_admin if @registration.errors.messages.keys == [:company]
+      # external systems are called here by implicit call company and ogrn
+      @registration = Registration.new(registration_params) 
+      if @registration.save
+        if @registration.siebel_company_exists?
+          @registration.defer!
+        else
+          generate_send_password
+          @registration.start!
+        end
 
-      # Render JSON with errors
-      render json: @registration.errors, status: :unprocessable_entity
+        render json: @registration
+      else
+        # Notify admins about invalid OGRN, but valid phone
+        @registration.notify_admin if @registration.errors.messages.keys == [:company]
+
+        # Render JSON with errors
+        render json: @registration.errors, status: :unprocessable_entity
+      end
     end
   end
 
@@ -29,7 +38,7 @@ class RegistrationsController < ApplicationController
   def confirm
     if @registration.password == params[:password]
       @registration.send_to_ds!
-      @registration.confirm! if @registration.workflow_state == :awaiting_confirmation
+      @registration.confirm! if @registration.workflow_state == "awaiting_confirmation"
       @registration.notify_admin
       log_in_as @registration
       head :no_content
