@@ -7,13 +7,13 @@
 
   <% if @registration_enabled %>
     <div class='registration_forms'>
-      <%= render partial: 'registrations/new_registration_form' %>
-      <%= render partial: 'registrations/confirmation' %>
-      <%= render partial: 'registrations/not_found' %>
-      <%= render partial: 'registrations/deferred' %>
-      <%= render partial: 'registrations/password_sent' %>
-      <%= render partial: 'access_purchases/index' %>
-      <%= render partial: 'access_purchases/create' %>
+      <%= render partial: 'registrations/new_registration_form', locals: {visible: false}   %>
+      <%= render partial: 'registrations/confirmation',          locals: {visible: false}  %>
+      <%= render partial: 'registrations/not_found',             locals: {visible: false}  %>
+      <%= render partial: 'registrations/deferred',              locals: {visible: false}  %>
+      <%= render partial: 'registrations/password_sent',         locals: {visible: false}  %>
+      <%= render partial: 'access_purchases/index',              locals: {visible: false}  %>
+      <%= render partial: 'access_purchases/create',             locals: {visible: false}  %>
     </div>
   <% end %>
 </div>

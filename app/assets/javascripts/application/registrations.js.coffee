@@ -9,16 +9,6 @@ $ ->
   deferred = '#deferred'
   password_sent = '#password_sent'
 
-  # Hide all but the first form
-  $(pre_new_registration_form).show()
-  $(registraton_form).hide()
-  $(confirmation).hide()
-  $(not_found).hide()
-  $(select_payment).hide()
-  $(process_payment).hide()
-  $(deferred).hide()
-  $(password_sent).hide()
-
   # Hide error messages blocks
   $('.error_messages').hide()
 
@@ -116,11 +106,11 @@ $ ->
   # Fills payment confirmation dialog
   # @param data [JSON] hash object as JSON:
   # { 
-  #   :process_payment_link => 'http://paymentgate/uuid'
-  #   :process_payment_desc => 'Описание и цена выбранного тарифного плана'
+  #   process_payment_link: 'http://payment-delo.sredda.ru:8081/Payment/Credentials?PaymentID=688e29a5-41b6-4452-8d60-c3d498d9dac5'
+  #   process_payment_desc: '3 месяца'
   # }
   fill_process_payment_dialog = (data) ->
-    replace_id($(process_payment).find('form'), 'action', data.process_payment_link)
+    $(process_payment).find('form').attr('action', data.process_payment_link)
     $("#{process_payment} span.process_payment_desc").text(data.process_payment_desc)
 
   # Removed promo blocks, their styles, shows next form with animation
