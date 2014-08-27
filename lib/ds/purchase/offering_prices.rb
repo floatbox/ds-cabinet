@@ -1,17 +1,17 @@
 require 'ds/pim'
 
 module Ds
-  module Pim
+  module Purchase
     class InvalidPrice< RuntimeError; end
 
     class Price
       OPTIONS = [
         :offering_id,
-        :price_id,
-        :price_text,     
-        :price_unit,     # пока одно значение - "Month"
-        :price_unit_qty, # кол-во периодов, например, 3
-        :price_amount    # стоимость в рублях за кол-во периодов
+        :offering_price_id,
+        :text,     
+        :unit,     # пока одно значение - "Month"
+        :unit_qty, # кол-во периодов, например, 3
+        :amount    # стоимость в рублях за кол-во периодов
       ]
 
       attr_reader *OPTIONS 
@@ -50,7 +50,7 @@ module Ds
       end
     end
 
-    class RegistrationPrices
+    class OfferingPrices
       attr_reader :offering_id, :raw_prices
 
       # @param[String] offering_id - product id in Pim subsystem, e.g. '5336743' 
@@ -81,7 +81,7 @@ module Ds
 
       # Gets raw prices for offering id
       def request_raw_prices
-        Api.get_product_offering_prices @offering_id # Array
+        Ds::Pim::Api.get_product_offering_prices @offering_id # Array
       end
 
       # Parses prices info, returns distilled price information
@@ -102,28 +102,28 @@ module Ds
           
           ids_texts = price["ChargeClasses"].map do |e| 
             period = e["Period"] || {}
-            {
-              id:              e["Id"], 
-              offering_id:     offering_id,
-              price_text:      period["Name"],
-              price_unit:      period["UnitOfMeasure"],
-              price_unit_qty:  period["Value"],
-              price_id:        price_id
+            { 
+              id:                e["Id"], 
+              offering_id:       offering_id,
+              offering_price_id: price_id,
+              text:              period["Name"],
+              unit:              period["UnitOfMeasure"],
+              unit_qty:          period["Value"]
             }
           end
           
           ids_amounts = price["PriceRules"].map{|e| e["ChargePrices"]}.flatten.select{|e| \
-            e["Price"]>0.0}.map{|e| {id: e["ChargeClassId"], price_amount: e["Price"]}}
+            e["Price"]>0.0}.map{|e| {id: e["ChargeClassId"], amount: e["Price"]}}
           # [{:id=>5336757, :amount=>2400.0}]
           
           # set amount in ids_texts
           ids_amounts.each do |id_amount|
             # {:id=>5336757, :price=>2400.0}
             id     = id_amount[:id]
-            amount = id_amount[:price_amount]
-            ids_texts.each{|id_text| id_text[:price_amount] = amount if id_text[:id] == id}
+            amount = id_amount[:amount]
+            ids_texts.each{|id_text| id_text[:amount] = amount if id_text[:id] == id}
           end
-          result << ids_texts.select{|e| e.has_key? :price_amount }
+          result << ids_texts.select{|e| e.has_key? :amount }
         end
 
         result.flatten.map{|e| e.delete(:id); e}
@@ -133,8 +133,8 @@ module Ds
 end
 
 if __FILE__ == $0
-  require 'ds/pim/registration_prices.rb'
-  rp = Ds::Pim::RegistrationPrices.new '3000319'
+  require 'ds/purchase/offering_prices.rb'
+  rp = Ds::Purchase::OfferingPrices.new '3000319'
   pp rp.prices
   #pp rp.raw_prices
 end

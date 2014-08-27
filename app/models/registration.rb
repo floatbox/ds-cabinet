@@ -13,6 +13,8 @@ require 'password_sms_notifier'
 
 class Registration < ActiveRecord::Base
 
+  belongs_to :user
+
   include Workflow
 
   SPARK_ATTRIBUTES = { inn: :inn, company_name: :name, region_code: :region_code }
@@ -27,26 +29,20 @@ class Registration < ActiveRecord::Base
   validates_format_of :ogrn, with: /\A([0-9]{13})([0-9]{2})?\Z/i
   validate :phone_uniqueness, if: :new_record?
   validate :company_exists, if: :new_record?
-  validates_presence_of :password, :password_confirmation, if: :awaiting_password?
-  validates_length_of :password, minimum: PasswordGenerator.length, if: :awaiting_password?
-  validate :password_equals_to_confirmation, if: :awaiting_password?
+  validates_presence_of :password, :password_confirmation, if: :awaiting_confirmation?
+  validates_length_of :password, minimum: PasswordGenerator.length, if: :awaiting_confirmation?
+  validate :password_equals_to_confirmation, if: :awaiting_confirmation?
 
   workflow do
     state :new do
-      event :register, :transitions_to => :awaiting_confirmation
-      event :defer, :transitions_to => :deferred
+      event :start,    :transitions_to => :awaiting_confirmation
+      event :defer,    :transitions_to => :deferred
     end
     state :awaiting_confirmation do
-      event :confirm, :transitions_to => :awaiting_verification
-    end
-    state :awaiting_verification do
-      event :verify, :transitions_to => :awaiting_payment
+      event :confirm,  :transitions_to => :awaiting_payment
     end
     state :awaiting_payment do
-      event :confirm_payment, :transitions_to => :awaiting_password
-    end
-    state :awaiting_password do
-      event :send_to_ds, :transitions_to => :done
+      event :confirm_payment, :transitions_to => :done
     end
     state :deferred
     state :done
@@ -118,6 +114,45 @@ class Registration < ActiveRecord::Base
     find_siebel_company(ogrn) ? true : false
   end
 
+  def self.find_by_phone_ogrn phone, ogrn
+    self.where(phone: Phone.new(phone).value, ogrn: ogrn).last
+  end
+
+  # Callback on transition from awaiting_password to done state.
+  def send_to_ds!
+    uas_user_obj = uas_user || create_uas_user
+    integration_id = uas_user_obj.user_id # "UAS100127"
+    
+    if contact_id.nil?
+      contact    = Contact.find_by_integration_id(integration_id)
+      self.update_column :contact_id, contact.id # "1-189X9O"
+    end
+    
+    if person_id.nil?
+      person = create_sns_user(contact_id)
+      self.update_column :person_id, person.id # == contact_id
+    else
+      person = find_sns_user(person_id)
+    end
+
+    account = find_siebel_company(ogrn) || create_siebel_company
+    company = find_sns_company(person, account) || create_sns_company(person, account)
+    
+    user_id = User.find_or_create_by(siebel_id: contact_id, integration_id: integration_id).id
+    self.update_column :user_id, user_id
+
+    if uas_user_obj.is_disabled
+      uas_user_obj.is_disabled = false
+      uas_user_obj.save
+      self.update_column :uas_user, uas_user_obj # to serialize
+    end
+  rescue => e
+    ExceptionNotifier.notify_exception(e, env: Rails.env, data: { message: 'Can not send data to DS' })
+    logger.error "Can not send data to DS. #{e.message}"
+    e.backtrace.each { |line| logger.error line }
+    halt
+  end
+
   private
 
     def phone_uniqueness
@@ -132,40 +167,6 @@ class Registration < ActiveRecord::Base
       if password.present? && password_confirmation.present?
         errors.add(:password, :wrong_confirmation) unless password == password_confirmation
       end
-    end
-
-    # Callback on transition from awaiting_password to done state.
-    def send_to_ds
-      uas_user_obj = uas_user || create_uas_user
-      integration_id = uas_user_obj.user_id # "UAS100127"
-      
-      if contact_id.nil?
-        contact    = Contact.find_by_integration_id(integration_id)
-        self.update_column :contact_id, contact.id # "1-189X9O"
-      end
-      
-      if person_id.nil?
-        person = create_sns_user(contact_id)
-        self.update_column :person_id, person.id # == contact_id
-      else
-        person = find_sns_user(person_id)
-      end
-
-      account = find_siebel_company(ogrn) || create_siebel_company
-      company = find_sns_company(person, account) || create_sns_company(person, account)
-      
-      User.find_or_create_by(siebel_id: contact_id, integration_id: integration_id)
-
-      if uas_user_obj.is_disabled
-        uas_user_obj.is_disabled = false
-        uas_user_obj.save
-        self.update_column :uas_user, uas_user_obj # to serialize
-      end
-    rescue => e
-      ExceptionNotifier.notify_exception(e, env: Rails.env, data: { message: 'Can not send data to DS' })
-      logger.error "Can not send data to DS. #{e.message}"
-      e.backtrace.each { |line| logger.error line }
-      halt
     end
 
     # @return [Uas::User] new UAS user

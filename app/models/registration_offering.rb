@@ -1,26 +1,11 @@
-require 'ds/pim'
+require 'ds/purchase/offering_prices'
 
-class RegistrationOffering< PimOffering
+class RegistrationOffering< AccessPurchase
   after_initialize :init
-
-  # Возвращает дату истечения продукта относительно даты from_date.
-  #   Рассчитывается из даты from_date, периода и кол-ва периодов
-  # @param[Time] from_date дата, от которой отсчитывается дата истечения,
-  #   по умолчанию, Time.zone.now
-  # @return[Time|nil] дата истечения
-  #
-  def expires from_date
-    case price_unit
-    when "Month"
-      from_date + price_unit_qty.months
-    else
-      nil
-    end
-  end
 
   def self.reload_from_pim offering_id
     self.destroy_all
-    rp = Ds::Pim::RegistrationPrices.new offering_id
+    rp = Ds::Purchase::OfferingPrices.new offering_id
     self.transaction do
       rp.prices.each do |price|
         attributes = price.to_h
@@ -39,12 +24,12 @@ class RegistrationOffering< PimOffering
   end
 
   def self.as_hash # to use in controllers, views and partials
-    self.order('price_amount ASC').all.
+    self.order('amount ASC').all.
       map{ |e| { 
-                 price_id:     e.price_id, 
-                 price_text:   e.price_text, 
-                 price_amount: e.price_amount,
-                 code:         e.code
+                 offering_price_id: e.offering_price_id, 
+                 text:   e.text, 
+                 amount: e.amount,
+                 code:   e.code
                }
          }
   end
