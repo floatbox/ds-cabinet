@@ -86,6 +86,22 @@ DsCabinet::Application.configure do
   config.uas_sertificate = "#{Rails.root}/certs/ds_user.pem"
   config.uas_query_log = true
 
+  # PIM settings
+  config.pim_url = 'https://ccdemopim.sredda.ru'
+  config.pim_sertificate = "#{Rails.root}/certs/ds_user.pem"
+  config.pim_product_offerings = ['3000319']
+  config.pim_product_url = 'http://dsstore.dasreda.ru/'
+  config.pim_query_log = true
+  config.pim_curl_verbose = true
+
+  # CART settings
+  config.cart_url = 'https://cart-delo.sredda.ru'
+  config.cart_sertificate = "#{Rails.root}/certs/ds_admin.pem"
+  config.cart_merchant_id = '400004'
+  config.cart_merchant_password = 'cArt123QWE123'
+  config.cart_query_log = true
+  config.cart_curl_verbose = true
+
   # Authentication settings
   config.auth_domain = 'legko.li'
 

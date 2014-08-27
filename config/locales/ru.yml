@@ -43,6 +43,7 @@ ru:
               does_not_exist: компания с таким ОГРН не существует
             password:
               wrong_confirmation: не совпадает с подтверждением
+              wrong_value: неправильный
         recovery:
           invalid_sms_verification_code: Неверный код подтверждения
           something_went_wrong: "Не удалось восстановить пароль. Обратитесь, пожалуйста, в службу поддержки."
