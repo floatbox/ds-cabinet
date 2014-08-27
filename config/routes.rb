@@ -4,10 +4,11 @@ DsCabinet::Application.routes.draw do
 
   resources :registrations, only: [:create] do
     post 'confirm'
-    post 'verify_phone'
-    post 'confirm_payment'
-    post 'complete'
-    post 'regenerate_sms_verification_code'
+    post 'regenerate_password'
+  end
+
+  resources :access_purchases, only: [:create, :index] do
+    get 'processed'
   end
 
   resources :recoveries, only: [:new, :create] do
