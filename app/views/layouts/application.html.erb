@@ -1,66 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Делай дело</title>
+<html>
+  <head>
+    <title>Legko.li</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="/legko-bs/images/ico/favicon.ico" />
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400&subset=latin,cyrillic" />
+    <!-- Bootstrap -->
+    <link href="/legko-bs/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/legko-bs/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="/legko-bs/css/media-queries.css" rel="stylesheet" type="text/css" />
 
-  <!-- Bootstrap -->
-  <link href="/legko-bs/css/bootstrap.css" rel="stylesheet">
-  <link href="/legko-bs/css/style.css" rel="stylesheet">
-  <%= stylesheet_link_tag "application/application" %>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
+      <script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
+      <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+  </head>
+<body class="main">
+	<article class="page">
+		<header class="page-header">		
+			<div class="globalwidth">
+				<a class="logo" href="index.html"></a>
+				<nav class="tm">
+					<ul>
+						<li><a href="#">Как это работает</a></li>
+						<li><a href="#">Тариф</a></li>
+						<li><a href="#">Контакты</a></li>
+						<li><a href="#">Регистрация</a></li>
+						<li><a href="#">Войти</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<section class="page-body">
+			<section class="case-intro">
+				<div class="globalwidth">
+					<div class="container" style="background-image:url(/legko-bs/images/intro1_bg1.jpg);">
+						<div class="info">
+							<h2>Мы станем вашим личным бухгалтером!</h2>
+							<div class="ttl active" data-fl="regi_fl">Регистрация</div>
+							<div class="ttl last" data-fl="enter_fl">Вход</div>
+							<div class="forms">
+								<form method="post" action="">
+									<table width="270" id="sw_fields">
+										<tr class="regi_fl">
+											<td>
+												<div class="border">
+													<table width="100%">
+														<tr>
+															<td class="pl20"><label id="switch_status">Я являюсь ИП</label></td>
+															<td width="66">
+																<div class="switcher js__switcher">
+																	<a href="#" class="s_checkbox js__s_checkbox js__s_left">
+																		<span id="switch_btn1" class="js__s_active"></span>
+																		<span id="switch_btn2" class="js__s_noactive"></span>
+																	</a>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</td>
+										</tr>
+										
+										<tr class="enter_fl">
+											<td>
+												<div class="field"><input type="text" placeholder="Введите логин" /></div>
+											</td>
+										</tr>
+										<tr class="enter_fl">
+											<td>
+												<div class="field"><input type="password" placeholder="Введите пароль" /></div>
+											</td>
+										</tr>
+										<tr class="enter_fl">
+											<td class="right">
+												<div class="btn-group">
+													<button class="btn-grn btn-right btn125" type="submit">Войти</button>
+												</div>
+												<div class="link-group legal-link">
+													<a href="#">Напомнить пароль</a>
+												</div>
+											</td>
+										</tr>
+										
+										<tr id="switch_field" class="regi_fl">
+											<td>
+												<div class="field"><input type="text" placeholder="Введите ОГРН" /></div>
+											</td>
+										</tr>
+										<tr class="regi_fl">
+											<td>
+												<div class="field"><input type="text" placeholder="Введите телефон" /></div>
+											</td>
+										</tr>
+										<tr class="regi_fl">
+											<td>
+												<div class="btn-group">
+													<!--a class="btn-orn btn-left btn135" href="#">Регистрация</a-->
+													<button class="btn-grn btn-right btn125" type="submit">Зарегистрироваться</button>
+												</div>
+												<div class="link-group legal-link">
+													Регистрируясь, вы соглашаетесь с <a href="#">Условиями использования</a> и <a href="#">Политикой конфиденциальности</a>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="case-lead">
+				<div class="globalwidth">
+					<div class="container">
+						<div class="board">
+							<div class="info">
+								<ul>
+									<li>подготовим налоговую отчетность,</li>
+									<li>предоставим информацию по приходу и расходу</li>
+									<li>осуществим операции по р/с и платежи.</li>
+								</ul>
+							</div>
+						</div>
+						<div class="movie">
+							<div class="crop">
+								<iframe width="320" height="180" src="http://youtube.com/embed/YAasgDBM6Es" frameborder="0" allowfullscreen></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div class="region1">
+				<section class="case-guide">
+					<div class="globalwidth">
+						<div class="content">
+							<h2>Как это работает?</h2>
+							<div class="step step-lt step1">
+								<div class="info">
+									<h3>Пользователь регистрируется на сайте</h3>
+									<div class="descript">Воспользуйтесь формой регистрации - после заполнения форм вы получите ссылку для подтверждения на указанную почту.</div>
+								</div>
+							</div>
+							<div class="step step-rt step2">
+								<div class="info">
+									<h3>Оплачивает бухгалтерское обслуживание на 3 или 12 месяцев</h3>
+									<div class="descript">Оплата производится бла бла бла плата производится бла бла бла Оплата производится бла бла бла Оплата производится бла бла бла</div>
+								</div>
+							</div>
+							<div class="step step-lt step3">
+								<div class="info">
+									<h3>Загружает необходимые документы</h3>
+									<div class="descript">Перечень необходимых документов можно найти там-то, документы должны быть предоставлены в таком-то виде. Требования к документам.</div>
+								</div>
+							</div>
+							<div class="step step-rt step4">
+								<div class="info">
+									<h3>Получает смс о статусе отчетности в ФНС</h3>
+									<div class="descript">Услуга СМС бесплатна для всех оплативших. Услуга СМС бесплатна для всех оплативших. Услуга СМС бесплатна для всех оплативших. Услуга СМС бесплатна для всех оплативших.</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<section class="case-tariff">
+				<div class="globalwidth">
+					<div class="content">
+						<h2>Доступные тарифы</h2>
+						<div class="items">
+							<div class="item item1">
+								<h3>Тариф Квартал</h3>
+								<div class="info">
+									<div class="graph">
+										<div class="circle">
+											<div class="cost">
+												<p class="price">2400р.</p>
+												<p class="period">за 3 месяца</p>
+											</div>
+										</div>
+										<div class="per"><b>*800р.</b> в месяц</div>
+									</div>
+									<div class="descript">
+										<p>Тариф включает в себя бухгалтерское обслуживание, в том числе подготовку и сдачу отчетности, в течение одного квартала для ИП на ЕНВД, УСН или Патентной системе налогооблажения.</p>
+<p>Для ИП на режиме УСН 6% в тариф включается обработка (создание) не более 5 документов в месяц. В случае обработки (создания) свыше 5 (пяти) документов в течение календарного месяца каждый последующий документ оплачивается дополнительно в соответствии с Договором.</p>
+									</div>
+								</div>
+							</div>
+							<div class="item item2">
+								<h3>Тариф Год</h3>
+								<div class="info">
+									<div class="graph">
+										<div class="circle">
+											<div class="cost">
+												<p class="price">7200р.</p>
+												<p class="period">всего за год</p>
+											</div>
+										</div>
+										<div class="per"><b>*600р.</b> в месяц</div>
+									</div>
+									<div class="descript">
+										<p>Тариф включает в себя бухгалтерское обслуживание, в том числе подготовку и сдачу отчетности,  в течение года для ИП на ЕНВД, УСН или Патентной системе налогооблажения.</p>
+<p>Для ИП на режиме УСН 6% в тариф включается обработка (создание) не более 5 документов в месяц. В случае обработки (создания) свыше 5 (пяти) документов в течение календарного месяца каждый последующий документ оплачивается дополнительно в соответствии с Договором.</p>
+										<div class="econom"><b>Ваша экономия</b> — 25%</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div class="region2">
+				<section class="case-regin">
+					<div class="globalwidth">
+						<div class="content">
+							<h3>Чтобы приобрести тариф, пройдите регистрацию.</h3>
+							<div class="btn-group">
+								<a class="btn-orn btn-left btn135 reg">Регистрация</a>
+								<a class="btn-grn btn-right btn125 enter">Войти</a>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="case-callback">
+					<div class="globalwidth">
+						<div class="content">
+							<div class="board">
+								<h3>Обратная связь</h3>
+								<div class="info">
+									<div class="forms">
+										<form method="post" action="">
+											<table width="100%">
+												<tr>
+													<td width="270">
+														<div class="field"><input type="text" placeholder="Имя" /></div>
+													</td>
+													<td>&nbsp;</td>
+													<td rowspan="2" width="270">
+														<div class="field"><textarea cols="" rows="" placeholder="Сообщение"></textarea></div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="field"><input type="text" placeholder="Номер телефона*" /></div>
+													</td>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="field"><input type="text" placeholder="E-mail" /></div>
+													</td>
+													<td>&nbsp;</td>
+													<td>
+														<div class="btn-group">
+															<button class="btn-orn btn-right btn155" type="submit">Отправить запрос</button>
+														</div>
+													</td>
+												</tr>
+											</table>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</section>
+		<footer class="page-footer">
+			<div class="globalwidth">
+				<div class="content">
+					<div class="info">
+						<div class="cols">
+							<div class="col1">
+								<a class="logo" href="index.html"></a>
+								<div class="copyright">© 2014 ЗАО «Деловая среда»</div>
+							</div>
+							<div class="col2">
+								<div class="contact">
+									<p>+7-800-100-90-80</p>
+									<p>support@dasreda.ru</p>
+								</div>
+							</div>
+							<div class="col3">
+								<nav class="bm">
+									<ul>
+										<li><a href="#">О проекте</a></li>
+										<li><a href="#">Помощь</a></li>
+										<li><a href="#">Регистрация</a></li>
+										<li><a href="#">База знаний</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</article>
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
 
-  <%= csrf_meta_tags %>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-51418540-1', 'legko.li');
-    ga('send', 'pageview');
-  </script>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <a href="/"><img src="/legko-bs/images/header-logo.png" height="58" width="75" alt="" class="header-logo pull-left"></a>
-
-      <ul class="nav nav-pills pull-right">
-        <li><a href="#" id="contacts">Контакты</a></li>
-        <li class="active">
-          <% if current_user %>
-            Вы вошли как <%= current_user.login %>
-            <%= link_to 'Выйти', session_path('current_user'), method: :delete, class: 'btn btn-info' %>
-          <% else %>
-            <a id='sign_in' class="btn btn-info" href="<%= new_session_path %>">Войти</a>
-          <% end %>
-        </li>
-      </ul>
-    </div>
-
-    <div class="jumbotron j-signin">
-      <%= yield %>
-    </div>
-
-    <div class="footer">
-      <p class="footer-copy pull-left"> © 2014 ЗАО «<a href="http://www.dasreda.ru">Деловая среда</a>»</p>
-      <p class="footer-contacts pull-right">
-        +7-800-100-90-80<br>
-        <a href="mailto:support@dasreda.ru">support@dasreda.ru</a>
-      </p>
-    </div>
-  </div>
-
-  <%= javascript_include_tag "application/application" %>
-  <script src="/legko-bs/js/bootstrap.min.js"></script>
-</body>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/legko-bs/js/bootstrap.min.js"></script>
+    <script src="/legko-bs/js/jquery.switcher.js"></script>
+    <script src="/legko-bs/js/main.js"></script>
+  </body>
 </html>

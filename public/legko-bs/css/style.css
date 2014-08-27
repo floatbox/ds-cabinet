@@ -1,0 +1,693 @@
+@font-face {
+  font-family: "sansationregular";
+  src: url('fonts/ssn/ssn_400.eot') format('embedded-opentype'), url('fonts/ssn/ssn_400.woff') format('woff'), url('fonts/ssn/ssn_400.ttf') format('truetype'), url('fonts/ssn/ssn_400.svg') format('svg');
+}
+
+@font-face {
+  font-family: "sansationbold";
+  src: url('fonts/ssn/ssn_800.eot') format('embedded-opentype'), url('fonts/ssn/ssn_800.woff') format('woff'), url('fonts/ssn/ssn_800.ttf') format('truetype'), url('fonts/ssn/ssn_800.svg') format('svg');
+}
+
+.sansatr, .input, .forms .field textarea, .forms .field input, .forms td, .btn, .btn-orn, .btn-grn, .page-header .tm li, .case-guide h2, .case-guide h3, .case-tariff h2, .case-tariff .item .info .per, .case-tariff .item .circle .cost .period, .case-tariff .item .econom, .case-callback .board h3 {
+  font-family: 'sansationregular', Arial, Helvetica, serif;
+}
+
+.sansatb, h1, h2, h3, h4, h5, h6, .case-tariff .item .info .per b, .case-tariff .item .circle .cost .price, .case-tariff .item .econom b {
+  font-family: 'sansationbold', Arial, Helvetica, serif;
+}
+
+.sans, .page-footer .info {
+  font-family: 'PT Sans', Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: #2378a5;
+  outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.75em;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: #000;
+  font-size: 16px;
+  font-family: Arial, Helvetica, serif;
+}
+
+ul {
+  list-style: none;
+}
+
+.right {
+	text-align: right;
+}
+
+.page {
+  min-height: 100%;
+  min-width: 1000px;
+  overflow: hidden;
+}
+
+.globalwidth {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.region1 {
+  background: url('/legko-bs/images/bg/region1_bg.jpg') no-repeat 50% 100%;
+}
+
+.region2 {
+  background: url('/legko-bs/images/bg/region2_bg.jpg') no-repeat 50% 0;
+}
+
+.text {
+  line-height: 1.5;
+}
+
+.input, .forms .field textarea, .forms .field input {
+  width: 100%;
+  padding: 12px 30px 12px 20px;
+  color: #999;
+  font-size: 14px;
+  border: 0;
+  background: #fff;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.forms td {
+  padding: 0 0 10px 0;
+  font-size: 14px;
+}
+.forms td td {
+  padding: 0;
+}
+.forms td.pl20 {
+  padding-left: 20px;
+}
+.forms td.pl25 {
+  padding-left: 25px;
+}
+.forms .field {
+  position: relative;
+}
+.enter_fl {
+  display: none;
+}
+
+.case-callback .forms .field textarea {
+  height: 94px;
+}
+.forms .field input {
+  height: 42px;
+  vertical-align: middle;
+}
+.forms .field-valid:after {
+  display: block;
+  content: '';
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  background: url('/legko-bs/images/icon_valid.png?1407537147') no-repeat 0 0;
+  z-index: 10;
+}
+
+.btn, .btn-orn, .btn-grn {
+  display: block;
+  height: 42px;
+  padding: 0;
+  color: white !important;
+  font-size: 14px;
+  line-height: 42px;
+  text-align: center;
+  text-decoration: none;
+  border-width: 0 0 3px 0;
+  border-style: solid;
+  border-radius: 5px;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+
+.btn-group {
+  overflow: hidden;
+}
+.btn-group .btn-left {
+  float: left;
+}
+.btn-group .btn-right {
+  float: right;
+}
+
+.btn-orn {
+  border-color: #dc6d11;
+  background: #ff7e14;
+}
+
+.btn-grn {
+  border-color: #1a9c98;
+  background: #188a86;
+}
+
+.btn125 {
+  width: auto;
+  padding: 0 34px;
+  cursor: pointer;
+}
+
+.btn135 {
+  width: 135px;
+  cursor: pointer;
+}
+
+.btn155 {
+  width: 155px;
+}
+
+.enter_fl .btn125 {
+  padding: 0 45px;
+}
+
+.link-group {
+	margin-top: 8px;
+}
+
+.legal-link {
+	font-family: Arial, Helvetica, serif;
+	font-size: 85%;
+}
+.legal-link a {
+	text-decoration: underline;
+}
+
+	.page-header {
+	border: 0;
+	margin: 0;
+	height: 94px;
+	background: #189b97;
+	overflow: hidden;
+}
+.page-header .globalwidth {
+  position: relative;
+}
+.page-header .globalwidth:after {
+  display: block;
+  content: '';
+  width: 9999px;
+  height: 94px;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: #fff;
+}
+.page-header .logo {
+  display: block;
+  width: 196px;
+  height: 94px;
+  float: right;
+  text-decoration: none;
+  background: white url('/legko-bs/images/logo.png') no-repeat 50% 50%;
+}
+.page-header .tm ul {
+  height: 94px;
+  overflow: hidden;
+}
+.page-header .tm li {
+  height: 94px;
+  margin-right: 50px;
+  float: left;
+  font-size: 18px;
+  line-height: 94px;
+}
+.page-header .tm li a {
+  padding-right: 16px;
+  color: #fff;
+  text-decoration: none;
+  background: url('/legko-bs/images/ico/tm_arr.png') no-repeat 100% 50%;
+}
+
+.page-footer .content {
+  padding-bottom: 999px;
+  margin-bottom: -999px;
+  background: #1c384d;
+}
+.page-footer .info {
+  padding: 45px 20px;
+  color: #fff;
+  overflow: hidden;
+}
+.page-footer .cols .col1 {
+  width: 240px;
+  float: left;
+}
+.page-footer .cols .col2 {
+  width: 200px;
+  float: left;
+}
+.page-footer .cols .col3 {
+  width: 520px;
+  float: left;
+}
+.page-footer .logo {
+  display: block;
+  width: 75px;
+  height: 58px;
+  margin-bottom: 20px;
+  background: url('/legko-bs/images/logo.png') no-repeat 0 0;
+}
+.page-footer .copyright {
+  font-size: 14px;
+}
+.page-footer .contact {
+  font-size: 18px;
+  line-height: 1.2;
+}
+.page-footer .contact p {
+  margin: 0;
+}
+.page-footer .bm {
+  padding-top: 21px;
+}
+.page-footer .bm li {
+  margin-right: 40px;
+  float: left;
+}
+.page-footer .bm li a {
+  color: #999;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.case-intro .container {
+  height: 558px;
+  padding-left: 80px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  overflow: hidden;
+}
+.case-intro .info {
+  width: 580px;
+  padding-top: 70px;
+}
+.case-intro .info .border {
+  border: 2px dotted #fff;
+  border-radius: 5px;
+}
+.main .case-intro {
+  color: #fff;
+  background: #96aab8;
+}
+.main .case-intro h2 {
+  margin: 0 0 20px;
+  font-size: 44px;
+}
+.main .case-intro .ttl {
+  color: #d8dfe5;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-size: 14px;
+  display: inline-block;
+  padding: 7px 17px 0;
+  border-top: 2px solid #b1c1cd;
+  border-left: 2px solid #b1c1cd;
+  border-right: 2px solid #b1c1cd;
+  border-radius: 5px 5px 0 0;
+}
+.main .case-intro .ttl.active {
+  color: white;
+}
+.main .case-intro .ttl.last {
+  margin-left: 10px;
+}
+
+.main .case-intro .lb {
+  display: inline-block;
+  line-height: 42px;
+  overflow: hidden;
+}
+.main .case-intro .note {
+  font-size: 13px;
+  line-height: 1.2;
+}
+.main .case-intro a {
+  color: #fff;
+}
+.approve .case-intro {
+  background: #f1f0f1;
+}
+.approve .case-intro h2 {
+  margin-bottom: 30px;
+  font-size: 39px;
+  line-height: 42px;
+}
+.approve .case-intro .note {
+  padding-top: 5px;
+  font-size: 12px;
+}
+.approve .case-intro a {
+  color: #666;
+}
+
+.case-lead .container {
+  position: relative;
+}
+.main .case-lead .container {
+  height: 90px;
+}
+.approve .case-lead .container {
+  height: 60px;
+}
+.case-lead .board {
+  width: 640px;
+  position: absolute;
+  left: 0;
+  color: #fff;
+  background: #ff7e14;
+}
+.case-lead .board .info {
+  min-height: 70px;
+  padding: 30px 145px 30px 45px;
+  position: relative;
+}
+.case-lead .board .info li {
+  padding-left: 11px;
+  position: relative;
+  font-size: 18px;
+  line-height: 1.35;
+}
+.case-lead .board .info li:before {
+  display: block;
+  content: '\2022';
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.case-lead .board .info .play {
+  display: block;
+  width: 83px;
+  height: 83px;
+  margin-top: -42px;
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  background: url('/legko-bs/images/btn/btn_play_s.png') no-repeat 0 0;
+}
+.case-lead .board:after {
+  display: block;
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: -30px;
+  right: 66px;
+  border-top: 30px solid #ff7e14;
+  border-left: 30px solid transparent;
+  z-index: 10;
+}
+.main .case-lead .board {
+  top: -40px;
+}
+.approve .case-lead .board {
+  bottom: 0;
+}
+.case-lead .social {
+  height: 47px;
+  padding: 13px 3px 13px 13px;
+  position: absolute;
+  left: 640px;
+  bottom: 0;
+  background: #011c22;
+}
+.case-lead .social ul {
+  height: 47px;
+  overflow: hidden;
+}
+.case-lead .social li {
+  width: 48px;
+  height: 47px;
+  margin-right: 10px;
+  float: left;
+}
+.case-lead .movie {
+  width: 360px;
+  padding: 15px 0;
+  position: absolute;
+  top: 0;
+  left: 640px;
+  background: #000;
+}
+.case-lead .movie .crop {
+  width: 320px;
+  min-height: 180px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+.case-lead .movie .crop img {
+  max-width: 100%;
+}
+.case-lead .movie .crop .play {
+  display: block;
+  width: 113px;
+  height: 111px;
+  margin: -55px 0 0 -56px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: url('/legko-bs/images/btn_play.png?1407498735') no-repeat 0 0;
+}
+
+.case-guide .content {
+  padding: 60px 0 0 80px;
+}
+.case-guide h2 {
+  font-size: 36px;
+}
+.case-guide h3 {
+  margin-bottom: 36px;
+  font-size: 27px;
+}
+.case-guide {
+  color: #044251;
+}
+
+.case-guide .step {
+  min-height: 290px;
+  padding-top: 60px;
+}
+.case-guide .step .descript {
+  position: relative;
+  font-size: 18px;
+  line-height: 29px;
+}
+.case-guide .step .descript:before {
+  display: block;
+  content: '';
+  width: 17px;
+  height: 12px;
+  position: absolute;
+  top: 8px;
+  left: -32px;
+  background: url('/legko-bs/images/ico/stp_arr.png') no-repeat 0 0;
+}
+.case-guide .step-lt {
+  padding-right: 360px;
+}
+.case-guide .step-rt {
+  padding-left: 420px;
+}
+.case-guide .step1 {
+  background: url('/legko-bs/images/step1_bg.png?1407528570') no-repeat 100% 60px;
+}
+.case-guide .step1 .descript {
+  width: 360px;
+}
+.case-guide .step2 {
+  background: url('/legko-bs/images/step2_bg.png?1407528636') no-repeat 0 60px;
+}
+.case-guide .step3 {
+  background: url('/legko-bs/images/step3_bg.png?1407528700') no-repeat 100% 0;
+}
+.case-guide .step4 {
+  background: url('/legko-bs/images/step4_bg.png?1407528748') no-repeat 0 50px;
+}
+
+.case-tariff .content {
+  padding: 60px 0;
+}
+.case-tariff h2 {
+  margin: 0;
+  font-size: 30px;
+}
+.case-tariff h3 {
+  margin-bottom: 5px;
+  font-size: 22px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.case-tariff .item {
+  display: inline-block;
+  width: 49%;
+  padding-top: 50px;
+  vertical-align: top;
+}
+.case-tariff .item .info {
+  padding-left: 80px;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+.case-tariff .item .info .graph {
+  width: 221px;
+  margin: 0 auto;
+}
+.case-tariff .item .info .per {
+  font-size: 22px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.case-tariff .item .circle {
+  width: 221px;
+  height: 221px;
+  margin-bottom: 15px;
+}
+.case-tariff .item .circle .cost {
+  padding-top: 80px;
+  text-align: center;
+}
+.case-tariff .item .circle .cost .price {
+  margin-bottom: 0;
+  font-size: 38px;
+}
+.case-tariff .item .circle .cost .period {
+  font-size: 22px;
+}
+.case-tariff .item .descript {
+  overflow: hidden;
+}
+.case-tariff .item .descript li {
+  padding-left: 20px;
+  margin-bottom: 18px;
+  position: relative;
+  line-height: 1.2;
+}
+.case-tariff .item .descript li:before {
+  display: block;
+  content: '\2022';
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 24px;
+  line-height: 16px;
+}
+.case-tariff .item .econom {
+  font-size: 22px;
+}
+.case-tariff .item1 .circle {
+  background: url('/legko-bs/images/circle1.png?1407523496') no-repeat 0 0;
+}
+.case-tariff .item2 .circle {
+  background: url('/legko-bs/images/circle2.png?1407523437') no-repeat 0 0;
+}
+
+.case-regin .content {
+  padding: 30px 0;
+}
+.case-regin h3 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.case-regin .btn-group {
+  width: 270px;
+  margin: 0 auto;
+  display: block;
+}
+
+.case-callback .content {
+  height: 245px;
+  position: relative;
+}
+.case-callback .board {
+  width: 755px;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #999;
+}
+.case-callback .board h3 {
+  padding-left: 35px;
+  color: #fff;
+}
+.case-callback .board .info {
+  padding: 0 115px 0 80px;
+}
+.case-callback .board:after {
+  display: block;
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: -30px;
+  right: 0;
+  border-top: 30px solid #999;
+  border-left: 30px solid transparent;
+  z-index: 10;
+}
+.case-callback .forms .inp textarea {
+  height: 94px;
+}
+
+.switcher {
+  float: right;
+  padding: 5px 0;
+  margin: 0 8px;
+}
+.switcher .s_checkbox {
+  display: block;
+  width: 50px;
+  height: 28px;
+  background-image: url('/legko-bs/images/ico/switch.png');
+  background-repeat: no-repeat;
+}
+.switcher .s_checkbox span {
+  float: left;
+  width: 50%;
+  height: 28px;
+}
+
+.js__s_left {
+  background-position: 0 0;
+}
+
+.js__s_right {
+  background-position: 0 100%;
+}
+
+.js__s_active {
+  cursor: default;
+}
