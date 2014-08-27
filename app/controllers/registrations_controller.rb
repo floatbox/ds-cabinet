@@ -2,84 +2,70 @@ class RegistrationsController < ApplicationController
   include WithSmsVerification
 
   before_filter :check_registration_enabled
-  before_filter :set_registration, only: [:confirm, :verify_phone, :complete, :regenerate_sms_verification_code]
-
-  def new
-  end
+  before_filter :set_registration, only: [:confirm, :regenerate_password]
 
   def create
-    @registration = Registration.new(registration_params)
-    if @registration.save
-
-      if @registration.siebel_company_exists?
-        @registration.defer!
-      else
-        @registration.register!
-      end
-
+    # check if registration exists
+    phone= params[:registration][:phone]
+    ogrn=  params[:registration][:ogrn]
+    @registration = Registration.find_by_phone_ogrn phone, ogrn
+    if @registration
+      @registration.send_password_sms_notification
       render json: @registration
     else
-      # Notify admins about invalid OGRN, but valid phone
-      @registration.notify_admin if @registration.errors.messages.keys == [:company]
+      # external systems are called here by implicit call company and ogrn
+      @registration = Registration.new(registration_params) 
+      if @registration.save
+        if @registration.siebel_company_exists?
+          @registration.defer!
+        else
+          generate_send_password
+          @registration.start!
+        end
 
-      # Render JSON with errors
-      render json: @registration.errors, status: :unprocessable_entity
+        render json: @registration
+      else
+        # Notify admins about invalid OGRN, but valid phone
+        @registration.notify_admin if @registration.errors.messages.keys == [:company]
+
+        # Render JSON with errors
+        render json: @registration.errors, status: :unprocessable_entity
+      end
     end
   end
 
+  # That confirms OGRN, company_name, phone and password
   def confirm
-    if generate_sms_verification_code(@registration.phone)
-      @registration.confirm!
-      head :no_content
-    else
-      @registration.errors.add(:base, :something_went_wrong)
-      render json: @registration.errors, status: :unprocessable_entity
-    end
-  end
-
-  def verify_phone
-    if with_sms_verification(@registration.phone)
-      @registration.verify!
-
-      if @registration.awaiting_password?
-        render json: { status: @registration.workflow_state }
-      else
-        @registration.errors.add(:base, :something_went_wrong)
-        render json: @registration.errors, status: :unprocessable_entity
-      end
-
-    else
-      render json: { sms_verification_code: ['неверный код подтверждения'] }, status: :unprocessable_entity
-    end
-  end
-
-  def complete
-    @registration.password = params[:password]
-    @registration.password_confirmation = params[:password_confirmation]
-    if @registration.valid?
+    if @registration.password == params[:password]
       @registration.send_to_ds!
-      if @registration.done?
-        @registration.notify_admin
-        log_in_as @registration
-        head :no_content
-      else
-        @registration.errors.add(:base, :something_went_wrong)
-        render json: @registration.errors, status: :unprocessable_entity
-      end
+      @registration.confirm! if @registration.workflow_state == "awaiting_confirmation"
+      @registration.notify_admin
+      log_in_as @registration
+      head :no_content
     else
+      @registration.errors.add(:password, :wrong_value)
       render json: @registration.errors, status: :unprocessable_entity
     end
   end
 
-  def regenerate_sms_verification_code
-    if generate_sms_verification_code(@registration.phone)
-      head :no_content
-    else
-      head :unprocessable_entity
-    end
+  def regenerate_password
+    generate_send_password
+    head :no_content
   end
 
   private
+    def generate_send_password
+      @registration.password = PasswordGenerator.generate
+      @registration.password_confirmation = @registration.password
+      logger.info([
+        "REGISTRATION LOGIN=='#{@registration.phone}'", 
+        " PASSWORD=='#{@registration.password}'"].join) unless Rails.env.production?
+
+      @registration.update_column(:password, @registration.password) unless 
+        Rails.env.production?
+
+      @registration.send_password_sms_notification
+    end
 
     def check_registration_enabled
       render nothing: true unless ConfigItem['registration_enabled'] == 'true'
@@ -99,5 +85,4 @@ class RegistrationsController < ApplicationController
     rescue Uas::Error
       nil
     end
-
 end

@@ -1,7 +1,14 @@
+require 'simple_serializer'
+
 module Uas
 
   # User representation in UAS service.
   class User < Uas::Base
+    extend SimpleSerializer
+
+    # for Registration#to_json
+    def each 
+    end
 
     uas_attr :user_id, :user_sys_name, :login, :first_name, :last_name, :is_disabled
     attr_accessor :password, :patronymic_name, :country, :phone

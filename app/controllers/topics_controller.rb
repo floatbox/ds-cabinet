@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
   before_action :authenticate, only: [:index, :show, :create, :update]
   before_action :authenticate_with_response, only: [:new, :edit]
   before_action :filter_concierge
+  before_action :has_paid_access
   authorize_resource
 
   def index
