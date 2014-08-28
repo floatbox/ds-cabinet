@@ -22,8 +22,7 @@
     <article class="page <%= article_css_class || :index %>">
       <%= render partial: "application_header" %>
       <section class="page-body">
-        <%= render partial: "registrations/form" %>
-        <%= true ? '' : (render partial: "registrations/cases") %>
+        <%= yield %>
       </section>
       <%= render partial: "application_footer" %>
     </article>
