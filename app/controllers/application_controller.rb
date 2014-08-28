@@ -27,7 +27,10 @@ protected
   # Add this method to before_action to authenticate access with redirect.
   # @example before_action :authenticate, only: [:show]
   def authenticate
-    redirect_to root_url if current_user.nil?
+    respond_to do |format|
+      format.js   { render nothing: true, status: 401 if current_user.nil? }
+      format.html { redirect_to root_url if current_user.nil? }
+    end
   end
 
   # Add this method to before_action to authenticate access with 401 response code
