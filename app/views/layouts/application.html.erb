@@ -19,7 +19,7 @@
 	<![endif]-->
   </head>
 <body class="main">
-	<article class="page">
+	<article class="page index">
 		<header class="page-header">		
 			<div class="globalwidth">
 				<a class="logo" href="index.html"></a>
@@ -42,9 +42,11 @@
 							<h2>Мы станем вашим личным бухгалтером!</h2>
 							<div class="ttl active" data-fl="regi_fl">Регистрация</div>
 							<div class="ttl last" data-fl="enter_fl">Вход</div>
+							
+							<!-- Регистраци здесь -->
 							<div class="forms">
 								<form method="post" action="">
-									<table width="270" id="sw_fields">
+									<table width="270" class="tb_fields">
 										<tr class="regi_fl">
 											<td>
 												<div class="border">
@@ -65,6 +67,34 @@
 											</td>
 										</tr>
 										
+										<tr id="switch_field" class="regi_fl">
+											<td>
+												<div class="field"><input type="text" placeholder="Введите ОГРН" /></div>
+											</td>
+										</tr>
+										<tr class="regi_fl">
+											<td>
+												<div class="field"><input type="text" placeholder="Введите телефон" /></div>
+											</td>
+										</tr>
+										<tr class="regi_fl">
+											<td>
+												<div class="btn-group">
+													<button class="btn-grn btn-right btn125" type="submit">Зарегистрироваться</button>
+												</div>
+												<div class="link-group legal-link">
+													Регистрируясь, вы соглашаетесь с <a href="#">Условиями использования</a> и <a href="#">Политикой конфиденциальности</a>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</form>
+								
+								
+								
+								<!-- Вход здесь -->
+								<form method="post" action="">
+									<table width="270" class="tb_fields">
 										<tr class="enter_fl">
 											<td>
 												<div class="field"><input type="text" placeholder="Введите логин" /></div>
@@ -85,30 +115,8 @@
 												</div>
 											</td>
 										</tr>
-										
-										<tr id="switch_field" class="regi_fl">
-											<td>
-												<div class="field"><input type="text" placeholder="Введите ОГРН" /></div>
-											</td>
-										</tr>
-										<tr class="regi_fl">
-											<td>
-												<div class="field"><input type="text" placeholder="Введите телефон" /></div>
-											</td>
-										</tr>
-										<tr class="regi_fl">
-											<td>
-												<div class="btn-group">
-													<!--a class="btn-orn btn-left btn135" href="#">Регистрация</a-->
-													<button class="btn-grn btn-right btn125" type="submit">Зарегистрироваться</button>
-												</div>
-												<div class="link-group legal-link">
-													Регистрируясь, вы соглашаетесь с <a href="#">Условиями использования</a> и <a href="#">Политикой конфиденциальности</a>
-												</div>
-											</td>
-										</tr>
 									</table>
-								</form>
+									</form>
 							</div>
 						</div>
 					</div>
@@ -116,7 +124,7 @@
 			</section>
 			<section class="case-lead">
 				<div class="globalwidth">
-					<div class="container">
+					<div class="content">
 						<div class="board">
 							<div class="info">
 								<ul>
@@ -310,7 +318,5 @@
     <script src="/legko-bs/js/bootstrap.min.js"></script>
     <script src="/legko-bs/js/jquery.switcher.js"></script>
     <script src="/legko-bs/js/main.js"></script>
-
-    <%= javascript_include_tag "application/application" %>
   </body>
 </html>

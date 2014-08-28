@@ -22,7 +22,7 @@
 
 a {
   color: #2378a5;
-  outline: none;
+  text-decoration: underline;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -115,6 +115,9 @@ ul {
 .enter_fl {
   display: none;
 }
+.send-status {
+  margin-top: 10px;
+}
 
 .case-callback .forms .field textarea {
   height: 94px;
@@ -133,6 +136,13 @@ ul {
   right: 10px;
   background: url('/legko-bs/images/icon_valid.png?1407537147') no-repeat 0 0;
   z-index: 10;
+}
+
+.modal-dialog {
+  width: 400px;
+}
+.modal-header {
+  border: 0;
 }
 
 .btn, .btn-orn, .btn-grn {
@@ -160,7 +170,10 @@ ul {
 .btn-group .btn-right {
   float: right;
 }
-
+.approve button {
+  padding: 0 30px;
+  margin-right: 10px
+}
 .btn-orn {
   border-color: #dc6d11;
   background: #ff7e14;
@@ -231,6 +244,7 @@ ul {
   background: white url('/legko-bs/images/logo.png') no-repeat 50% 50%;
 }
 .page-header .tm ul {
+  padding: 0;
   height: 94px;
   overflow: hidden;
 }
@@ -257,6 +271,9 @@ ul {
   padding: 45px 20px;
   color: #fff;
   overflow: hidden;
+}
+.approve .page-footer .info {
+  padding: 65px 20px 45px;
 }
 .page-footer .cols .col1 {
   width: 240px;
@@ -300,16 +317,23 @@ ul {
   text-decoration: none;
 }
 
-.case-intro .container {
+.case-intro .content {
   height: 558px;
   padding-left: 80px;
   background-repeat: no-repeat;
   background-position: 0 0;
   overflow: hidden;
 }
+.tariffs .case-intro .content {
+  height: 448px;
+}
 .case-intro .info {
   width: 580px;
-  padding-top: 70px;
+  padding-top: 30px;
+}
+.main .case-intro .info {
+  height: 513px;
+  padding-left: 30px;
 }
 .case-intro .info .border {
   border: 2px dotted #fff;
@@ -318,6 +342,14 @@ ul {
 .main .case-intro {
   color: #fff;
   background: #96aab8;
+}
+.approve .case-intro {
+  color: black;
+}
+.approve .border {
+  display: inline-block;
+  padding: 20px 50px 10px 0;
+  margin-bottom: 10px;
 }
 .main .case-intro h2 {
   margin: 0 0 20px;
@@ -358,26 +390,28 @@ ul {
   background: #f1f0f1;
 }
 .approve .case-intro h2 {
+  color: black;
   margin-bottom: 30px;
   font-size: 39px;
   line-height: 42px;
 }
 .approve .case-intro .note {
-  padding-top: 5px;
+  margin-bottom: 15px;
   font-size: 12px;
 }
 .approve .case-intro a {
   color: #666;
 }
 
-.case-lead .container {
+.case-lead .content {
   position: relative;
 }
-.main .case-lead .container {
+.main .case-lead .content {
   height: 90px;
 }
-.approve .case-lead .container {
-  height: 60px;
+.approve .case-lead .content {
+  height: 50px;
+  position: absolute;
 }
 .case-lead .board {
   width: 640px;
@@ -388,7 +422,7 @@ ul {
 }
 .case-lead .board .info {
   min-height: 70px;
-  padding: 30px 145px 30px 45px;
+  padding: 30px 145px 30px 0;
   position: relative;
 }
 .case-lead .board .info li {
@@ -430,7 +464,9 @@ ul {
   top: -40px;
 }
 .approve .case-lead .board {
+  top: auto;
   bottom: 0;
+  background: #ff7e14;
 }
 .case-lead .social {
   height: 47px;
