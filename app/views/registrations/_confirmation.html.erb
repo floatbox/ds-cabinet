@@ -1,23 +1,145 @@
-<div class="step step-2" id="confirmation"<%= visible ? "" : " style=display:none;" %>>
-  <h3 class="title">Подтвердите правильность данных о компании</h3>
-  <h3 class="title highlight error_messages"></h3>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Legko.li</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="/legko-bs/images/ico/favicon.ico" />
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400&subset=latin,cyrillic" />
+    <!-- Bootstrap -->
+    <link href="/legko-bs/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/legko-bs/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="/legko-bs/css/media-queries.css" rel="stylesheet" type="text/css" />
 
-  <div class="correct">
-    Вы регистрируете компанию <span class="name"></span>, <strong>ИНН <span class="inn"></span>, ОГРН <span class="ogrn"></span></strong>
-  </div>
-  <p>Нет, это не моя компания. <%= link_to 'Ввести ОГРН еще раз', '#', class: 'cancel' %></p>
-  <div class="step-form">
-    <%= form_tag registration_confirm_path(:registration_id), method: :post, remote: true do %>
-      <div class="step-form code">
-        <%= text_field_tag :password, '', placeholder: 'Введите пароль', class: 'form-control' %>
-      </div>
-      <div class="step-form">
-        <%= submit_tag 'Все верно, продолжить', class: 'button confirm' %>
-      </div>
-    <% end %>
-    <p>Если смс сообщение с паролем не пришло, вы сможете отправить его повторно через 
-      <span class="sms_timeout">60</span> секунд
-      <%= link_to 'Отправить еще раз', registration_regenerate_password_path(:registration_id), method: :post, remote: true, class: 'regenerate_password' %>
-    </p>
-  </div>
-</div>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
+      <script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
+      <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+  </head>
+<body class="main">
+	<article class="page approve">
+		<header class="page-header">		
+			<div class="globalwidth">
+				<a class="logo" href="index.html"></a>
+				<nav class="tm">
+					<ul>
+						<li><a href="#">Как это работает</a></li>
+						<li><a href="#">Тариф</a></li>
+						<li><a href="#">Контакты</a></li>
+						<li><a href="#">Регистрация</a></li>
+						<li><a href="#">Войти</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<section class="page-body">
+			<section class="case-intro">
+				<div class="globalwidth">
+					<div class="content" style="background-image:url(/legko-bs/images/intro2_bg.jpg);">
+						<div class="info">
+							<h2>Подтвердите правильность ваших данных</h2>
+							<div class="forms">
+								<form method="post" action="">
+									<div class="border">
+										<table>
+										<tr>
+												<td class="pl25" width="112">ОГРН</td>
+												<td>354277987918273912</td>
+											</tr>
+											<tr>
+												<td class="pl25">Имя</td>
+												<td>Константин</td>
+											</tr>
+											<tr>
+												<td class="pl25">Фамилия</td>
+												<td>Мизельник-Штанько</td>
+											</tr>
+											<tr>
+												<td class="pl25">Телефон</td>
+												<td>+7965 7802621</td>
+											</tr>
+										</table>
+									</div>
+									<table>
+										<tr>
+											<td><label>Смс код для подтверждения</label><div class="note"><a href="#">Отправить еще раз через 60 сек</a></div></td>
+											<td width="105"><div class="field field-valid"><input type="text" value="7802621" /></div></td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<div class="btn-group">
+													<button class="btn-grn btn-left " type="submit">Отправить данные еще раз</button>
+													<a class="btn-orn btn-right btn125" href="#">Дальше</a>
+												</div>
+												<div class="send-status">
+													Данные отправлены
+												</div>
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="case-lead">
+				<div class="globalwidth">
+					<div class="content">
+						<div class="board">
+							<div class="info">
+								<ul>
+									<li>подготовим налоговую отчетность,</li>
+									<li>предоставим информацию по приходу и расходу</li>
+									<li>осуществим операции по р/с и платежи.</li>
+								</ul>
+								<a class="play" href="#"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</section>
+		<footer class="page-footer">
+			<div class="globalwidth">
+				<div class="content">
+					<div class="info">
+						<div class="cols">
+							<div class="col1">
+								<a class="logo" href="index.html"></a>
+								<div class="copyright">© 2014 ЗАО «Деловая среда»</div>
+							</div>
+							<div class="col2">
+								<div class="contact">
+									<p>+7-800-100-90-80</p>
+									<p>support@dasreda.ru</p>
+								</div>
+							</div>
+							<div class="col3">
+								<nav class="bm">
+									<ul>
+										<li><a href="#">О проекте</a></li>
+										<li><a href="#">Помощь</a></li>
+										<li><a href="#">Регистрация</a></li>
+										<li><a href="#">База знаний</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</article>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/legko-bs/js/bootstrap.min.js"></script>
+    <script src="/legko-bs/js/jquery.switcher.js"></script>
+    <script src="/legko-bs/js/main.js"></script>
+  </body>
+</html>

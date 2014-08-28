@@ -38,13 +38,10 @@ $ ->
     $('img#preloader').hide()
 
   # Set masks on inputs
-  $("#{pre_new_registration_form} input#registration_phone").mask('+7 (999) 999-99-99')
-  $("#{pre_new_registration_form} input#registration_ogrn").mask('9999999999999?99')
-  $("#{registraton_form} input#registration_phone").mask('+7 (999) 999-99-99')
-  $("#{registraton_form} input#registration_ogrn").mask('9999999999999?99')
-  $("#pre_registration_ogrn").mask('9999999999999?99')
+  $("input.phone").mask('+7 (999) 999-99-99')
+  $("input.ogrn").mask('9999999999999?99')
 
-  $('body').on 'keydown', "#{pre_new_registration_form} input#registration_phone, #{pre_new_registration_form} input#registration_ogrn", ->
+  $('body').on 'keydown', "input.phone, input.ogrn", ->
     $('.promo').addClass('disabled')
 
   #
