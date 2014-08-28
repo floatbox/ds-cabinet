@@ -5,6 +5,7 @@ class RegistrationsController < ApplicationController
   before_filter :set_registration, only: [:confirm, :regenerate_password]
 
   def create
+    binding.pry
     # check if registration exists
     phone= params[:registration][:phone]
     ogrn=  params[:registration][:ogrn]

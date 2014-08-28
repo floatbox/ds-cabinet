@@ -8,7 +8,8 @@
         
         <!-- Регистраци здесь -->
         <div class="forms">
-          <form method="post" action="">
+          <%= simple_form_for Registration.new, 
+            id: :registration_form, remote: true, authenticity_token: true do |f| %>
             <table width="270" class="tb_fields">
               <tr class="regi_fl">
                 <td>
@@ -32,12 +33,16 @@
               
               <tr id="switch_field" class="regi_fl">
                 <td>
-                  <div class="field"><input class="ogrn" type="text" placeholder="Введите ОГРН" /></div>
+                  <div class="field">
+                    <%= f.input_field :ogrn, as: :string, placeholder: 'Введите ОГРН', class: :ogrn %>
+                  </div>
                 </td>
               </tr>
               <tr class="regi_fl">
                 <td>
-                  <div class="field"><input class="phone" type="text" placeholder="Введите телефон" /></div>
+                  <div class="field">
+                    <%= f.input_field :phone, as: :string, placeholder: 'Введите телефон', class: :phone %>
+                  </div>
                 </td>
               </tr>
               <tr class="regi_fl">
@@ -51,7 +56,7 @@
                 </td>
               </tr>
             </table>
-          </form>
+          <% end -%>
           
           <!-- Вход здесь -->
           <form method="post" action="">

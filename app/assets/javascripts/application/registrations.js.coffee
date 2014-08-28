@@ -1,7 +1,7 @@
 $ ->
   # Define forms IDs
   pre_new_registration_form = '#pre_new_registration_form'
-  registraton_form = '#new_registration_form'
+  registraton_form = '#registration_form'
   confirmation = '#confirmation'
   not_found = '#not_found'
   select_payment = '#select_payment'
