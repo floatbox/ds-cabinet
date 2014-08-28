@@ -8,4 +8,11 @@ module ApplicationHelper
     paragraphs.map{|p| "<p>#{p}</p>"}.join("\r\n").html_safe
   end
 
+  def phone_input f
+    f.input_field :phone, as: :string, placeholder: 'Введите телефон', class: :phone
+  end
+
+  def ogrn_input f
+    f.input_field :ogrn, as: :string, placeholder: 'Введите ОГРН', class: :ogrn
+  end
 end
