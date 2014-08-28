@@ -4,19 +4,21 @@
     <title>Legko.li</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
     <link rel="shortcut icon" type="image/x-icon" href="/legko-bs/images/ico/favicon.ico" />
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400&subset=latin,cyrillic" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400&subset=latin,cyrillic" />
     <!-- Bootstrap -->
     <link href="/legko-bs/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="/legko-bs/css/style.css" rel="stylesheet" type="text/css" />
-	<link href="/legko-bs/css/media-queries.css" rel="stylesheet" type="text/css" />
+    <link href="/legko-bs/css/media-queries.css" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
       <script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
       <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-	<![endif]-->
+    <![endif]-->
+    <%= csrf_meta_tags %>
   </head>
   <body class="main">
     <article class="page <%= article_css_class || :index %>">
