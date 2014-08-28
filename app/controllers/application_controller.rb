@@ -19,8 +19,7 @@ protected
   helper_method :current_user
 
   def has_paid_access
-    current_user
-    if @current_user && (!@current_user.is_concierge?) && (!@current_user.has_paid_access?)
+    if current_user && (!@current_user.is_concierge?) && (!@current_user.has_paid_access?)
       redirect_to controller: :access_purchases, action: :index
     end
   end
