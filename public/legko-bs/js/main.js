@@ -24,7 +24,7 @@ $(function(){
 		var class_fl = $(this).attr('data-fl');
 		$('.case-intro .ttl').removeClass('active');
 		$(this).addClass('active');
-		$('#sw_fields > tbody > tr').hide();
+		$('.tb_fields > tbody > tr').hide();
 		$('.'+class_fl).show();
 	});
 	
