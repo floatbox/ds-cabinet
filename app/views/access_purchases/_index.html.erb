@@ -33,46 +33,16 @@
       <div class="content">
         <h2>Выберите тариф</h2>
         <div class="items">
-          <div class="item item1">
-            <h3>Тариф Квартал</h3>
-            <div class="info">
-              <div class="graph">
-                <div class="circle">
-                  <div class="cost">
-                    <p class="price">2400р.</p>
-                    <p class="period">за 3 месяца</p>
-                  </div>
-                </div>
-                <div class="per"><b>*800р.</b> в месяц</div>
-              </div>
-              <div class="descript">
-                <p>Тариф включает в себя бухгалтерское обслуживание, в том числе подготовку и сдачу отчетности, в течение одного квартала для ИП на ЕНВД, УСН или Патентной системе налогооблажения.</p>
-<p>Для ИП на режиме УСН 6% в тариф включается обработка (создание) не более 5 документов в месяц. В случае обработки (создания) свыше 5 (пяти) документов в течение календарного месяца каждый последующий документ оплачивается дополнительно в соответствии с Договором.</p>
-              </div>
-              <button class="btn-grn btn-right btn125" type="submit">Выбрать</button>
-            </div>
-          </div>
-          <div class="item item2">
-            <h3>Тариф Год</h3>
-            <div class="info">
-              <div class="graph">
-                <div class="circle">
-                  <div class="cost">
-                    <p class="price">7200р.</p>
-                    <p class="period">всего за год</p>
-                  </div>
-                </div>
-                <div class="per"><b>*600р.</b> в месяц</div>
-              </div>
-              <div class="descript">
-                <p>Тариф включает в себя бухгалтерское обслуживание, в том числе подготовку и сдачу отчетности,  в течение года для ИП на ЕНВД, УСН или Патентной системе налогооблажения.</p>
-<p>Для ИП на режиме УСН 6% в тариф включается обработка (создание) не более 5 документов в месяц. В случае обработки (создания) свыше 5 (пяти) документов в течение календарного месяца каждый последующий документ оплачивается дополнительно в соответствии с Договором.</p>
-                <div class="econom"><b>Ваша экономия</b> — 25%</div>
-              </div>
-              <button class="btn-grn btn-right btn125" type="submit">Выбрать</button>
-            </div>
-            
-          </div>
+          <% RegistrationOffering.all.each do |offering| -%>
+            <% partial_name = "offerings/price_id_#{offering.offering_price_id}" -%>
+            <%= 
+              begin
+                render partial: partial_name, locals: {offering: offering}
+              rescue Exception => e
+                ""
+              end 
+            %>
+          <% end -%>
         </div>
       </div>
     </div>
