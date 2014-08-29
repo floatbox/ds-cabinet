@@ -21,7 +21,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="main">
-    <article class="page <%= article_css_class || :index %>">
+    <article class="page <%= @article_css_class || :index %>">
       <%= render partial: "application_header" %>
       <section class="page-body">
         <%= yield %>

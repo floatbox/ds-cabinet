@@ -1,7 +1,1 @@
-<div class="main-wrapper wrap-content"><!-- steps !-->
-  <%= image_tag 'preloader.gif', id: 'preloader', style: 'display: none; position: absolute;' %>
-  <div class='registration_forms'>
-    <%= render partial: 'access_purchases/index',  locals: {visible: true}  %>
-    <%= render partial: 'access_purchases/create', locals: {visible: false} %>
-  </div>
-</div>
+<%= render partial: 'access_purchases/index',  locals: {visible: true}  %>
