@@ -8,8 +8,7 @@
         
         <!-- Регистраци здесь -->
         <div class="forms">
-          <%= simple_form_for Registration.new, 
-            id: :registration_form, remote: true, authenticity_token: true do |f| %>
+          <%= simple_form_for Registration.new, remote: true, authenticity_token: true do |f| %>
             <table width="270" class="tb_fields">
               <tr class="regi_fl">
                 <td>
