@@ -1,7 +1,7 @@
 $ ->
   # Define forms IDs
   pre_new_registration_form = '#pre_new_registration_form'
-  registraton_form = '#registration_form'
+  registraton_form = '#new_registration'
   confirmation = '#confirmation'
   not_found = '#not_found'
   select_payment = '#select_payment'
@@ -36,6 +36,12 @@ $ ->
     form.removeClass('submit-disabled')
     form.stop(true).fadeTo('fast', 1.0)
     $('img#preloader').hide()
+
+  disableForm = (form) ->
+    $(form).find('input, button').attr("disabled", "disabled")
+
+  enableForm = (form) ->
+    $(form).find('input, button').removeAttr("disabled")
 
   # Set masks on inputs
   $("input.phone").mask('+7 (999) 999-99-99')
@@ -167,12 +173,16 @@ $ ->
     showPreloader(registraton_form)
     clear_error_messages(registraton_form)
 
+  $('body').on 'ajax:complete', registraton_form, (event, data) ->
+    disableForm(registraton_form)
+
   $('body').on 'ajax:success', registraton_form, (event, data) ->
     hidePreloader(registraton_form)
     $(registraton_form).hide()
 
     if data.workflow_state is 'deferred'
       $(deferred).show()
+      enableForm(registraton_form)
     else
       fill_confirmation_dialog(data)
       fill_select_payment_dialog(data)
@@ -182,6 +192,7 @@ $ ->
   $('body').on 'ajax:error', registraton_form, (event, data) ->
     hidePreloader(registraton_form)
     errors = data.responseJSON
+    enableForm(registraton_form)
     if errors.company
       $(registraton_form).hide()
       $(not_found).show()
@@ -196,6 +207,7 @@ $ ->
     event.preventDefault()
     $(not_found).hide()
     $(registraton_form).show()
+    enableForm(registraton_form)
 
 
   #
