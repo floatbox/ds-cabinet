@@ -16,6 +16,9 @@
 //= require jquery.maskedinput.min
 //= require jquery.switcher.js
 //= require bootstrap.js
+//
+// Require project files
+//= require main.js
 //= require ./registrations
 //= require ./recoveries
 //= require ./sessions
