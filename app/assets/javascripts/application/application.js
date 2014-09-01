@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.effect.all
+//= require jquery.maskedinput.min
+//= require jquery.switcher.js
+//= require bootstrap.js
 //= require ./registrations
 //= require ./recoveries
 //= require ./sessions
