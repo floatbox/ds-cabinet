@@ -1,6 +1,5 @@
 $ ->
   # Define forms IDs
-  pre_new_registration_form = '#pre_new_registration_form'
   registraton_form = '#new_registration'
   confirmation = '#confirmation'
   not_found = '#not_found'
@@ -126,8 +125,6 @@ $ ->
         $(next_form).hide().css(opacity:'1').fadeIn()
         $('.main-wrapper').addClass('steps').removeClass('wrap-content')
 
-    $(pre_new_registration_form).fadeOut()
-
 
   #
   # General callbacks
@@ -135,35 +132,6 @@ $ ->
   $('body').on 'click', 'a.new_registration', (event) ->
     event.preventDefault()
     $(registraton_form).show()
-
-
-  #
-  # Pre registration form callbacks
-  #
-  $('body').on 'ajax:before', pre_new_registration_form, (event, data) ->
-    $('.promo').addClass('disabled')
-    return false if $(pre_new_registration_form).hasClass('submit-disabled')
-    showPreloader(pre_new_registration_form)
-
-  $('body').on 'ajax:success', pre_new_registration_form, (event, data) ->
-    hidePreloader(pre_new_registration_form)
-
-    if data.workflow_state is 'deferred'
-      setup_registration_steps(deferred)
-    else
-      fill_confirmation_dialog(data)
-      fill_select_payment_dialog(data)
-      setup_registration_steps(password_sent)
-      ga('send', 'pageview', '/virtual/step2')
-
-  $('body').on 'ajax:error', pre_new_registration_form, (event, data) ->
-    hidePreloader(pre_new_registration_form)
-    errors = data.responseJSON
-    if errors.company
-      setup_registration_steps(not_found)
-    else
-      setup_registration_steps(registraton_form)
-      show_error_messages(registraton_form, errors)
 
   #
   # Registration form callbacks
