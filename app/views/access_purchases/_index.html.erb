@@ -38,7 +38,7 @@
             <%= 
               begin
                 render partial: partial_name, locals: {offering: offering}
-              rescue Exception => e
+              rescue ActionView::MissingTemplate => e
                 ""
               end 
             %>

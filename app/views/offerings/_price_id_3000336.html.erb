@@ -4,18 +4,19 @@
     <div class="graph">
       <div class="circle">
         <div class="cost">
-          <p class="price">7200р.</p>
+          <p class="price"><%= offering.amount.to_i-1 %>р.</p>
           <p class="period">всего за год</p>
         </div>
       </div>
-      <div class="per"><b>*600р.</b> в месяц</div>
+      <div class="per"><b>*<%= (offering.amount/offering.unit_qty).to_i %>р.</b> в месяц</div>
     </div>
     <div class="descript">
       <p>Тариф включает в себя бухгалтерское обслуживание, в том числе подготовку и сдачу отчетности,  в течение года для ИП на ЕНВД, УСН или Патентной системе налогооблажения.</p>
 <p>Для ИП на режиме УСН 6% в тариф включается обработка (создание) не более 5 документов в месяц. В случае обработки (создания) свыше 5 (пяти) документов в течение календарного месяца каждый последующий документ оплачивается дополнительно в соответствии с Договором.</p>
       <div class="econom"><b>Ваша экономия</b> — 25%</div>
     </div>
-    <button class="btn-grn btn-right btn125" type="submit">Выбрать</button>
+    <%= form_tag access_purchases_path offering.code, remote: true do -%>  
+      <%= submit_tag "Выбрать", class: "btn-grn btn-right btn125" %>
+    <% end -%>
   </div>
-  
 </div>
