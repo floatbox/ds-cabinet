@@ -1,6 +1,4 @@
-<% @article_css_class = :tariffs -%> <!-- to set article style in apllication.html.erb -->
-
-<section class="page-body">
+<div class="tariff_select_fragment" <%= (defined?(visible) && visible) ? "" : " style=display:none;" %>>
   <section class="case-intro">
     <div class="globalwidth">
       <div class="content" style="background-image:url(/legko-bs/images/intro3_bg.jpg);">
@@ -47,17 +45,4 @@
       </div>
     </div>
   </section>
-</section>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Закрыть</span></button>
-      </div>
-      12345566777
-      <button class="btn-grn btn-right btn125" data-dismiss="modal">Закрыть</button>
-    </div>
-  </div>
 </div>
