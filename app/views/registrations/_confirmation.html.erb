@@ -1,50 +1,52 @@
-<section class="case-intro confirmation" <%= (defined?(visible) && visible) ? "" : " style=display:none;" %>>
-  <div class="globalwidth">
-    <div class="content" style="background-image:url(/legko-bs/images/intro2_bg.jpg);">
-      <div class="info">
-        <h2>Подтвердите правильность ваших данных</h2>
-        <div class="forms">
-          <form method="post" action="">
-            <div class="border">
+<div class="registration_confirm_fragment" <%= (defined?(visible) && visible) ? "" : " style=display:none;" %>>
+  <section class="case-intro approve">
+    <div class="globalwidth">
+      <div class="content" style="background-image:url(/legko-bs/images/intro2_bg.jpg);">
+        <div class="info">
+          <h2>Подтвердите правильность ваших данных</h2>
+          <div class="forms">
+            <form method="post" action="">
+              <div class="border">
+                <table>
+                <tr>
+                    <td class="pl25" width="112">ОГРН</td>
+                    <td>354277987918273912</td>
+                  </tr>
+                  <tr>
+                    <td class="pl25">Имя</td>
+                    <td>Константин</td>
+                  </tr>
+                  <tr>
+                    <td class="pl25">Фамилия</td>
+                    <td>Мизельник-Штанько</td>
+                  </tr>
+                  <tr>
+                    <td class="pl25">Телефон</td>
+                    <td>+7965 7802621</td>
+                  </tr>
+                </table>
+              </div>
               <table>
-              <tr>
-                  <td class="pl25" width="112">ОГРН</td>
-                  <td>354277987918273912</td>
+                <tr>
+                  <td><label>Смс код для подтверждения</label><div class="note"><a href="#">Отправить еще раз через 60 сек</a></div></td>
+                  <td width="105"><div class="field field-valid"><input type="text" value="7802621" /></div></td>
                 </tr>
                 <tr>
-                  <td class="pl25">Имя</td>
-                  <td>Константин</td>
-                </tr>
-                <tr>
-                  <td class="pl25">Фамилия</td>
-                  <td>Мизельник-Штанько</td>
-                </tr>
-                <tr>
-                  <td class="pl25">Телефон</td>
-                  <td>+7965 7802621</td>
+                  <td colspan="2">
+                    <div class="btn-group">
+                      <button class="btn-grn btn-left " type="submit">Отправить данные еще раз</button>
+                      <a class="btn-orn btn-right btn125" href="#">Дальше</a>
+                    </div>
+                    <div class="send-status">
+                      Данные отправлены
+                    </div>
+                  </td>
                 </tr>
               </table>
-            </div>
-            <table>
-              <tr>
-                <td><label>Смс код для подтверждения</label><div class="note"><a href="#">Отправить еще раз через 60 сек</a></div></td>
-                <td width="105"><div class="field field-valid"><input type="text" value="7802621" /></div></td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <div class="btn-group">
-                    <button class="btn-grn btn-left " type="submit">Отправить данные еще раз</button>
-                    <a class="btn-orn btn-right btn125" href="#">Дальше</a>
-                  </div>
-                  <div class="send-status">
-                    Данные отправлены
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>

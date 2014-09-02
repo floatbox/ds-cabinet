@@ -1,2 +1,4 @@
-<%= render partial: "registrations/form" %>
-<%= true ? '' : (render partial: "registrations/cases") %>
+<%= render partial: "registrations/form",         locals: {visible: true} %>
+<%= render partial: "registrations/confirmation", locals: {visible: false} %>
+<%= render partial: "access_purchases/index",     locals: {visible: false} %>
+<%= render partial: "access_purchases/confirm",   locals: {visible: false} %>
