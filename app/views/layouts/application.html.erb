@@ -18,25 +18,16 @@
       <script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
       <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
+    <%= javascript_include_tag "application/application" %>
     <%= csrf_meta_tags %>
   </head>
   <body class="main">
-    <article class="page <%= @article_css_class || :index %>">
+    <article class="page">
+      <%= render partial: "development_panel" %>
       <%= render partial: "application_header" %>
-      <section class="page-body">
-        <%= yield %>
-      </section>
+      <%= render partial: "message_dialog" %>
+      <section class="page-body"><%= yield %></section>
       <%= render partial: "application_footer" %>
     </article>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="//code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/legko-bs/js/bootstrap.min.js"></script>
-    <script src="/legko-bs/js/jquery.switcher.js"></script>
-    <script src="/legko-bs/js/jquery.maskedinput.min.js"</script>
-    <script src="/legko-bs/js/main.js"></script>
-
-    <%= javascript_include_tag "application/application" %>
   </body>
 </html>
