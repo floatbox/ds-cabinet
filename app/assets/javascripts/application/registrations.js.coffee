@@ -1,4 +1,102 @@
 $ ->
+  Object::delegates = (methods, to) ->
+    methods.forEach (method) =>
+      this::[method] = (args...) ->
+        @[to][method].apply(this, args)
+
+  moduleKeywords = ['extended', 'included']
+  class Module
+    @extend: (obj) ->
+      for key, value of obj when key not in moduleKeywords
+        @[key] = value
+        
+      obj.extended?.apply(@)
+      this
+          
+    @include: (obj) ->
+      for key, value of obj when key not in moduleKeywords
+        # Assign properties to the prototype
+        @::[key] = value
+    
+      obj.included?.apply(@)
+      this
+
+  ChainableObject = 
+    set_next_prev: (@next, @prev) ->
+    switch_next: () ->
+      switch_to(@next) if @next
+    switch_prev: () ->
+      switch_to(@prev) if @prev
+    switch_to: (other) ->
+      this.disableForm()
+      this.hide()
+      other.show()
+      other.enableForm()
+
+  class PageFragment extends Module
+    @include ChainableObject
+    constructor: (@fragment_selector, @on_success, @on_error) ->
+      form = $(@fragment_selector).find(".simple_form")
+      form.on 'ajax:error', (event, data) ->
+        debugger
+        this.show_errors(data.responseJSON)
+        this.enableForm()
+        @on_error.call() if @on_error
+      form.on 'ajax:complete', (event, data) ->
+        debugger
+        this.disableForm()
+      form.on 'ajax:success', (event, data) ->
+        debugger
+        @on_success.call() if @on_success
+        this.enableForm()
+    hide: ->
+      $(@fragment_selector).hide()
+    show: ->
+      $(@fragment_selector).show()
+    clear_errors: ->
+      $(@fragment_selector).find('.errors').empty()
+    show_errors: ->
+      $(@fragment_selector).find('.errors').empty()
+    disableForm: ->
+      $(@fragment_selector).find('form').find('input').attr("disabled", "disabled")
+    enableForm: ->
+      $(@fragment_selector).find('form').find('input').removeAttr("disabled")
+    @set_registration_id: (id) ->
+      attribute = "action"
+      element = $('form')
+      value = element.attr(attribute)
+      element.attr(attribute, value.replace('registration_id', id))
+      
+  
+  class RegistrationStep
+    on_error: () ->
+      debugger
+    on_success: (event, data) ->
+      debugger
+      PageFragment.set_registration_id(data.id) if data.id
+      @rs.switch_next()
+    constructor: (fragment_selector)->
+      @rs = new PageFragment(fragment_selector, this.on_success, this.on_error)
+  RegistrationStep.delegates(['set_next_prev', 'switch_prev', 'switch_next', 'switch_to'], 'rs')
+
+
+  regStep1 = new RegistrationStep('.registration_input_fragment')
+  regStep2 = new RegistrationStep('.registration_confirm_fragment')
+  regStep3 = new RegistrationStep('.tariff_select_fragment')
+  regStep4 = new RegistrationStep('.tariff_confirm_fragment')
+
+  regStep1.set_next_prev(null,     regStep2)
+  regStep2.set_next_prev(regStep3, regStep1)
+  regStep3.set_next_prev(regStep4, regStep3)
+  regStep4.set_next_prev(regStep3, null)
+
+
+  # Define messages IDs
+  ogrn_not_found_msg  = 'ogrn_not_found_msg' # ОГРН в базе ФНС не найден
+  ogrn_in_use_msg     = 'ogrn_in_use_msg'    # ОГРН уже использовался при регистрации
+  phone_in_use_msg    = 'phone_in_use_msg'   # Телефон уже использовался для регистрации
+  password_sent_msg   = 'password_sent_msg'  # Пароль отослан в смс
+
   # Define forms IDs
   registraton_form = '#new_registration'
   confirmation = '#confirmation'
@@ -48,7 +146,7 @@ $ ->
 
   $('body').on 'keydown', "input.phone, input.ogrn", ->
     $('.promo').addClass('disabled')
-
+###
   #
   # Helpers
   #
@@ -154,7 +252,7 @@ $ ->
     else
       fill_confirmation_dialog(data)
       fill_select_payment_dialog(data)
-      $(password_sent).show()
+   $(password_sent).show()
       ga('send', 'pageview', '/virtual/step2')
 
   $('body').on 'ajax:error', registraton_form, (event, data) ->
@@ -254,3 +352,4 @@ $ ->
     event.preventDefault()
     $(process_payment).hide()
     $(select_payment).show()
+###

@@ -1,6 +1,6 @@
 class AccessPurchasesController < ApplicationController
 
-  before_action :authenticate, except: [:processed]
+  before_action :authenticate, except: [:processed, :index]
 
   def index
   end
