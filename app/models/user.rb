@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
   # @return [ActiveRecord::Relation<Topic>] topics that were created by this user
   has_many :authored_topics, class_name: 'Topic', foreign_key: :author_id
+  has_many :authored_messages, class_name: 'Message', foreign_key: :author_id
 
   has_many :messages
   has_many :notifications
