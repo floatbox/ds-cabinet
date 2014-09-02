@@ -6,7 +6,7 @@ class Notification < ActiveRecord::Base
   default_scope { order('created_at DESC') }
   scope :unread, -> { where(read_at: nil) }
 
-  after_create :send_sms
+  # after_create :send_sms
 
   private
 
