@@ -153,6 +153,14 @@ class Registration < ActiveRecord::Base
     halt
   end
 
+  def first_name
+    company_name.split[1..2].join(' ')
+  end
+
+  def last_name
+    company_name.split.first
+  end
+
   private
 
     def phone_uniqueness
