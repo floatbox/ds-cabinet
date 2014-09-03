@@ -88,8 +88,8 @@ ul {
 .input, .forms .field textarea, .forms .field input {
   width: 100%;
   padding: 12px 30px 12px 20px;
-  color: #444;     /* #999 */
-  font-size: 25px; /* 14px */
+  color: #999;
+  font-size: 14px;
   border: 0;
   background: #fff;
   border-radius: 5px;
@@ -118,7 +118,13 @@ ul {
 .send-status {
   margin-top: 10px;
 }
-
+.modal-content {
+  padding: 20px;
+  border-radius: 0;
+  text-align: center;
+  background-color: #eae7e7;
+  font-family: 'sansationregular', Arial, Helvetica, serif;
+}
 .case-callback .forms .field textarea {
   height: 94px;
 }
@@ -169,6 +175,13 @@ ul {
 }
 .btn-group .btn-right {
   float: right;
+}
+.modal { overflow-y: hidden;}
+.modal-open {
+  overflow: hidden;
+}
+.modal .btn-group .btn-left {
+  margin-right: 11px;
 }
 .approve button {
   padding: 0 30px;
