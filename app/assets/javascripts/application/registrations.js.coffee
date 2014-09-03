@@ -53,12 +53,12 @@ $ ->
       $(@fragment_selector).find('form').find('input').attr("disabled", "disabled")
     enableForm: ->
       $(@fragment_selector).find('form').find('input').removeAttr("disabled")
-    @set_registration_id: (id) ->
-      attribute = "action"
-      element = $('form')
-      value = element.attr(attribute)
-      element.attr(attribute, value.replace('registration_id', id))
-      
+    @set_registration_data: (registration) ->
+      debugger
+      for key, value of registration
+        span_class_name = "js-registration_"+key
+        selector = 'span.'+span_class_name
+        $(selector).text(value)
   
   Delegator =
     delegates: (methods, to) ->
@@ -71,7 +71,7 @@ $ ->
     on_error: () ->
       debugger
     on_success: (event, data, textStatus) ->
-      PageFragment.set_registration_id(data.id) if data.id
+      PageFragment.set_registration_data(data.registration) if data.registration
       @rs.switch_next()
     constructor: (fragment_selector)->
       @rs = new PageFragment(fragment_selector, this, this.on_success, this.on_error)
