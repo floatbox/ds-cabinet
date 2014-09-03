@@ -1,9 +1,4 @@
 $ ->
-  Object::delegates = (methods, to) ->
-    methods.forEach (method) =>
-      this::[method] = (args...) ->
-        @[to][method].apply(this, args)
-
   moduleKeywords = ['extended', 'included']
   class Module
     @extend: (obj) ->
@@ -68,7 +63,14 @@ $ ->
       element.attr(attribute, value.replace('registration_id', id))
       
   
-  class RegistrationStep
+  Delegator =
+    delegates: (methods, to) ->
+      methods.forEach (method) =>
+        @[method] = (args...) ->
+          @[to][method].apply(this, args)
+
+  class RegistrationStep extends Module
+    @include Delegator
     on_error: () ->
       debugger
     on_success: (event, data) ->
@@ -77,7 +79,7 @@ $ ->
       @rs.switch_next()
     constructor: (fragment_selector)->
       @rs = new PageFragment(fragment_selector, this.on_success, this.on_error)
-  RegistrationStep.delegates(['set_next_prev', 'switch_prev', 'switch_next', 'switch_to'], 'rs')
+      @delegates(['set_next_prev', 'switch_prev', 'switch_next', 'switch_to'], 'rs')
 
 
   regStep1 = new RegistrationStep('.registration_input_fragment')
