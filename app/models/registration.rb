@@ -90,6 +90,7 @@ class Registration < ActiveRecord::Base
   end
 
   def as_json(options = {})
+    self.class.include_root_in_json = true
     super((options || {}).merge({
       methods: [:inn, :name, :workflow_state, :first_name, :last_name]
     }))
