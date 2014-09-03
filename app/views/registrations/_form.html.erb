@@ -59,16 +59,20 @@
             <% end -%>
             
             <!-- Вход здесь -->
-            <form method="post" action="">
+            <%= form_tag sessions_path, remote: true do %>
               <table width="270" class="tb_fields">
                 <tr class="enter_fl">
                   <td>
-                    <div class="field"><input class="phone" type="text" placeholder="Введите телефон" /></div>
+                    <div class="field">
+                      <%= text_field_tag :phone, params[:phone], class: 'phone', placeholder: 'Введите телефон' %>
+                    </div>
                   </td>
                 </tr>
                 <tr class="enter_fl">
                   <td>
-                    <div class="field"><input type="password" placeholder="Введите пароль" /></div>
+                    <div class="field">
+                      <%= password_field_tag :password, params[:password], placeholder: 'Пароль' %>
+                    </div>
                   </td>
                 </tr>
                 <tr class="enter_fl">
@@ -82,7 +86,7 @@
                   </td>
                 </tr>
               </table>
-              </form>
+            <% end -%>
           </div>
         </div>
       </div>
