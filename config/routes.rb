@@ -54,6 +54,7 @@ DsCabinet::Application.routes.draw do
         put :disapprove
         put :toggle_concierge
         get :new_widget
+        get :chat
       end
     end
     resources :topics do
