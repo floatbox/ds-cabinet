@@ -45,6 +45,8 @@ $ ->
       $(@fragment_selector).hide()
     show: ->
       $(@fragment_selector).show()
+    show_modal_success_dialog: ->
+      $(@fragment_selector).find('#js-modal_success_dialog').modal("show")
     clear_errors: ->
       $(@fragment_selector).find('.errors').empty()
     show_errors: ->
@@ -60,7 +62,6 @@ $ ->
         $(selector).text(value)
       # set registration id for confiration form
       pairs = { action: 'form.js-confirmation_form', href: 'a.js-regenerate_password_link' }
-      debugger
       for attribute, selector of pairs
         element = $(selector)
         value = element.attr(attribute)
@@ -81,6 +82,7 @@ $ ->
     on_success: (event, data, textStatus) ->
       PageFragment.set_registration_data(data.registration) if data && data.registration
       @rs.switch_next()
+      @rs.show_modal_success_dialog()
     constructor: (fragment_selector)->
       @rs = new PageFragment(fragment_selector, this, this.on_success, this.on_error)
       @delegates(['set_next_prev', 'switch_prev', 'switch_next', 'switch_to', 'show', 'hide', 'enableForm', 'disableForm'], 'rs')
@@ -89,12 +91,10 @@ $ ->
   regStep1 = new RegistrationStep('.registration_input_fragment')
   regStep2 = new RegistrationStep('.registration_confirm_fragment')
   regStep3 = new RegistrationStep('.tariff_select_fragment')
-  regStep4 = new RegistrationStep('.tariff_confirm_fragment')
 
   regStep1.set_next_prev(regStep2, null)
   regStep2.set_next_prev(regStep3, regStep1)
-  regStep3.set_next_prev(regStep4, regStep2)
-  regStep4.set_next_prev(null,     regStep3)
+  regStep3.set_next_prev(null,     regStep2)
 
 
   # Define messages IDs
