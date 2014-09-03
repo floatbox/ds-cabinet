@@ -19,31 +19,28 @@ $ ->
   ChainableObject = 
     set_next_prev: (@next, @prev) ->
     switch_next: () ->
-      switch_to(@next) if @next
+      @switch_to(@next) if @next
     switch_prev: () ->
-      switch_to(@prev) if @prev
+      @switch_to(@prev) if @prev
     switch_to: (other) ->
-      this.disableForm()
-      this.hide()
+      @disableForm()
+      @hide()
       other.show()
       other.enableForm()
 
   class PageFragment extends Module
     @include ChainableObject
-    constructor: (@fragment_selector, @on_success, @on_error) ->
+    constructor: (@fragment_selector, @receiver, @on_success, @on_error) ->
       form = $(@fragment_selector).find(".simple_form")
-      form.on 'ajax:error', (event, data) ->
-        debugger
-        this.show_errors(data.responseJSON)
-        this.enableForm()
-        @on_error.call() if @on_error
-      form.on 'ajax:complete', (event, data) ->
-        debugger
-        this.disableForm()
-      form.on 'ajax:success', (event, data) ->
-        debugger
-        @on_success.call() if @on_success
-        this.enableForm()
+      form.on 'ajax:error', (event, data, textStatus) =>
+        @show_errors(data.responseJSON)
+        @enableForm()
+        @on_error.call(@receiver, event, data, textStatus) if @on_error
+      form.on 'ajax:success', (event, data, textStatus) =>
+        @on_success.call(@receiver, event, data, textStatus) if @on_success
+        @enableForm()
+      back_link = $(@fragment_selector).find(".js-back")
+      back_link.click( => @switch_prev())
     hide: ->
       $(@fragment_selector).hide()
     show: ->
@@ -67,19 +64,18 @@ $ ->
     delegates: (methods, to) ->
       methods.forEach (method) =>
         @[method] = (args...) ->
-          @[to][method].apply(this, args)
+          @[to][method].apply(@[to], args)
 
   class RegistrationStep extends Module
     @include Delegator
     on_error: () ->
       debugger
-    on_success: (event, data) ->
-      debugger
+    on_success: (event, data, textStatus) ->
       PageFragment.set_registration_id(data.id) if data.id
       @rs.switch_next()
     constructor: (fragment_selector)->
-      @rs = new PageFragment(fragment_selector, this.on_success, this.on_error)
-      @delegates(['set_next_prev', 'switch_prev', 'switch_next', 'switch_to'], 'rs')
+      @rs = new PageFragment(fragment_selector, this, this.on_success, this.on_error)
+      @delegates(['set_next_prev', 'switch_prev', 'switch_next', 'switch_to', 'show', 'hide', 'enableForm', 'disableForm'], 'rs')
 
 
   regStep1 = new RegistrationStep('.registration_input_fragment')
@@ -87,10 +83,10 @@ $ ->
   regStep3 = new RegistrationStep('.tariff_select_fragment')
   regStep4 = new RegistrationStep('.tariff_confirm_fragment')
 
-  regStep1.set_next_prev(null,     regStep2)
+  regStep1.set_next_prev(regStep2, null)
   regStep2.set_next_prev(regStep3, regStep1)
-  regStep3.set_next_prev(regStep4, regStep3)
-  regStep4.set_next_prev(regStep3, null)
+  regStep3.set_next_prev(regStep4, regStep2)
+  regStep4.set_next_prev(null,     regStep3)
 
 
   # Define messages IDs
