@@ -54,11 +54,19 @@ $ ->
     enableForm: ->
       $(@fragment_selector).find('form').find('input').removeAttr("disabled")
     @set_registration_data: (registration) ->
-      debugger
       for key, value of registration
         span_class_name = "js-registration_"+key
         selector = 'span.'+span_class_name
         $(selector).text(value)
+      # set registration id for confiration form
+      pairs = { action: 'form.js-confirmation_form', href: 'a.js-regenerate_password_link' }
+      debugger
+      for attribute, selector of pairs
+        element = $(selector)
+        value = element.attr(attribute)
+        element.attr(attribute, value.replace('registration_id', registration.id))
+      false
+
   
   Delegator =
     delegates: (methods, to) ->
@@ -71,7 +79,7 @@ $ ->
     on_error: () ->
       debugger
     on_success: (event, data, textStatus) ->
-      PageFragment.set_registration_data(data.registration) if data.registration
+      PageFragment.set_registration_data(data.registration) if data && data.registration
       @rs.switch_next()
     constructor: (fragment_selector)->
       @rs = new PageFragment(fragment_selector, this, this.on_success, this.on_error)
