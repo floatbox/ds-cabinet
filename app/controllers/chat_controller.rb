@@ -7,12 +7,12 @@ class ChatController < ApplicationController
   before_action :build_message, only: [:create]
   # load_and_authorize_resource
 
-  # GET /topic/:topic_id/messages
+  # GET /chat
   def index
     @messages = current_user.messages.published
-    @new_message = current_user.messages.build
+    @new_message = current_user.authored_messages.build
+    @new_message.user = current_user
   end
-
 
   private
 

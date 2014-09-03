@@ -15,8 +15,7 @@ class MessagesController < ApplicationController
 
   # POST /topic/:topic_id/messages
   def create
-    @message = current_user.messages.build(message_params)
-    # @message.author = current_user
+    @message = current_user.authored_messages.build(message_params)
     @message.save
   end
 
@@ -51,7 +50,7 @@ class MessagesController < ApplicationController
 
     def message_params
       fix_attachment_ids
-      params.require(:message).permit(:text, attachment_ids: [])
+      params.require(:message).permit(:text, :user_id, attachment_ids: [])
     end
 
     def fix_attachment_ids
