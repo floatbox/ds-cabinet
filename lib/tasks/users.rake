@@ -19,6 +19,7 @@ namespace :users do
     Topic.destroy_all
     Notification.delete_all
     Attachment.delete_all
+    Message.where(author_id: nil).each  {|m| m.update_column(:author_id, m.user_id)}
   end
 
 end
