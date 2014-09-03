@@ -22,8 +22,8 @@ class MessageObserver < ActiveRecord::Observer
     # Sends notification to concierge of user that has topic with new message
     # @param message [Message] created/updated message
     def notify_concierge(message)
-      if message.user.concierge
-        create_notification(message, message.user.concierge)
+      if message.author.concierge
+        create_notification(message, message.author.concierge)
       end
     end
 
