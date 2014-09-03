@@ -14,7 +14,7 @@ class AccessPurchasesController < ApplicationController
       ap.post(access_purchase_processed_url(ap.id), 
               access_purchase_processed_url(ap.id))
 
-      render json: { process_payment_link: ap.order.url, process_payment_desc: ap.text }, :content_type => 'application/json'
+      render json: { payment: { process_payment_link: ap.order.url, process_payment_desc: ap.text }}, :content_type => 'application/json'
     end
   end
 

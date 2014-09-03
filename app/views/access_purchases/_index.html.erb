@@ -45,4 +45,18 @@
       </div>
     </div>
   </section>
+  <div class="modal fade" id="js-modal_success_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="<%= :process_payment_link %>" method="post" class="js-process_payment_form">
+          <input type="hidden" name="PaymentType" value="acquiring">
+          <input type="hidden" name="Receipt.FIO" value="<%= :user_first_name %> <%= :user_last_name %>">
+          <input type="hidden" name="Receipt.Address" value="">
+          <p><span class="js-process_payment_desc">Тут описание выбранного прлатежа</span></p>
+          <button class="btn-grn btn-left btn125" data-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn-orn btn-right btn125"> Оплатить </button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
