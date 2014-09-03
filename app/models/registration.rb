@@ -91,7 +91,7 @@ class Registration < ActiveRecord::Base
 
   def as_json(options = {})
     super((options || {}).merge({
-      methods: [:inn, :name, :workflow_state]
+      methods: [:inn, :name, :workflow_state, :first_name, :last_name]
     }))
   end
 
