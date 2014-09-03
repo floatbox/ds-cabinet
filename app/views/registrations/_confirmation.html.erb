@@ -5,7 +5,7 @@
         <div class="info">
           <h2>Подтвердите правильность ваших данных</h2>
           <div class="forms">
-            <form method="post" action="">
+            <%= form_tag registration_confirm_path(:registration_id), remote: true, class: "simple_form js-confirmation_form" do %>
               <div class="border">
                 <table>
                 <tr>
@@ -28,14 +28,22 @@
               </div>
               <table>
                 <tr>
-                  <td><label>Смс код для подтверждения</label><div class="note"><a href="#">Отправить еще раз через 60 сек</a></div></td>
-                  <td width="105"><div class="field field-valid"><input type="text" value="7802621" /></div></td>
+                  <td><label>Смс код для подтверждения</label>
+                    <div class="note">
+                      <%= link_to "Отправить еще раз через 60 сек", registration_regenerate_password_path(:registration_id), class: 'js-regenerate_password_link', remote: true, method: :post %>
+                    </div>
+                  </td>
+                  <td width="105">
+                    <div class="field field-valid">
+                      <%= text_field_tag :password, params[:password] %>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <td colspan="2">
                     <div class="btn-group">
                       <a class="btn-grn btn-left js-back" href='#'>Отправить данные еще раз</a>
-                      <a class="btn-orn btn-right btn125" href="#">Дальше</a>
+                      <button class="btn-grn btn-right btn125" type="submit">Дальше</button>
                     </div>
                     <div class="send-status">
                       Данные отправлены
@@ -43,7 +51,7 @@
                   </td>
                 </tr>
               </table>
-            </form>
+            <% end -%>
           </div>
         </div>
       </div>
