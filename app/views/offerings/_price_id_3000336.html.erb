@@ -15,7 +15,7 @@
 <p>Для ИП на режиме УСН 6% в тариф включается обработка (создание) не более 5 документов в месяц. В случае обработки (создания) свыше 5 (пяти) документов в течение календарного месяца каждый последующий документ оплачивается дополнительно в соответствии с Договором.</p>
       <div class="econom"><b>Ваша экономия</b> — 25%</div>
     </div>
-    <%= form_tag access_purchases_path offering.code, remote: true do -%>  
+    <%= form_tag access_purchases_path(code: offering.code), remote: true, class: 'simple_form' do -%>  
       <%= submit_tag "Выбрать", class: "btn-grn btn-right btn125" %>
     <% end -%>
   </div>
