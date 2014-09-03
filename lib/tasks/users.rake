@@ -14,4 +14,11 @@ namespace :users do
     end
   end
 
+  desc 'Clear topics and messages for all the users'
+  task clear_topics: :environment do
+    Topic.destroy_all
+    Notification.delete_all
+    Attachment.delete_all
+  end
+
 end
