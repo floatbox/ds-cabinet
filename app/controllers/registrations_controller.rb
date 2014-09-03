@@ -11,7 +11,7 @@ class RegistrationsController < ApplicationController
     @registration = Registration.find_by_phone_ogrn phone, ogrn
     if @registration
       @registration.send_password_sms_notification
-      render json: @registration.as_json(only: [:ogrn, :phone])
+      render json: @registration.as_json(only: [:id, :ogrn, :phone])
     else
       # external systems are called here by implicit call company and ogrn
       @registration = Registration.new(registration_params) 
@@ -23,7 +23,7 @@ class RegistrationsController < ApplicationController
           @registration.start!
         end
 
-        render json: @registration.as_json(only: [:ogrn, :phone])
+        render json: @registration.as_json(only: [:id, :ogrn, :phone])
       else
         # Notify admins about invalid OGRN, but valid phone
         @registration.notify_admin if @registration.errors.messages.keys == [:company]
