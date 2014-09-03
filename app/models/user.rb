@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
 
   # @return [Contact] Siebel representation of user
   def siebel
-    # return Contact.new
+    return Contact.new if Rails.env == 'development'
     @siebel ||= if siebel_id
       Contact.find(siebel_id)
     else
