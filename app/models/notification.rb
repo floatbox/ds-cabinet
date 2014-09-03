@@ -6,7 +6,7 @@ class Notification < ActiveRecord::Base
   default_scope { order('created_at DESC') }
   scope :unread, -> { where(read_at: nil) }
 
-  # after_create :send_sms
+  after_create :send_sms
 
   private
 
@@ -24,9 +24,8 @@ class Notification < ActiveRecord::Base
     def options_for_sms_text
       case name
       when 'message_created', 'message_updated'
-        { user: object.user.siebel.full_name,
-          message: object.text.truncate(17, separator: ' '),
-          topic: object.topic.text.truncate(10, separator: ' ') }
+        { user: object.author.siebel.full_name,
+          message: object.text.truncate(17, separator: ' ')}
       when 'topic_created', 'topic_updated'
         { user: object.author.siebel.full_name,
           topic: object.text.truncate(17, separator: ' ') }
