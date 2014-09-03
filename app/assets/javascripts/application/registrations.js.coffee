@@ -55,6 +55,9 @@ $ ->
       $(@fragment_selector).find('form').find('input').attr("disabled", "disabled")
     enableForm: ->
       $(@fragment_selector).find('form').find('input').removeAttr("disabled")
+    set_payment_data: (payment) ->
+      $(@fragment_selector).find('span.js-process_payment_desc').text(payment.process_payment_desc)
+      $(@fragment_selector).find('form.js-process_payment_form').attr('action', payment.process_payment_link)
     @set_registration_data: (registration) ->
       for key, value of registration
         span_class_name = "js-registration_"+key
@@ -82,6 +85,7 @@ $ ->
     on_success: (event, data, textStatus) ->
       PageFragment.set_registration_data(data.registration) if data && data.registration
       @rs.switch_next()
+      @rs.set_payment_data(data.payment) if data && data.payment
       @rs.show_modal_success_dialog()
     constructor: (fragment_selector)->
       @rs = new PageFragment(fragment_selector, this, this.on_success, this.on_error)
