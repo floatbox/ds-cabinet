@@ -5,12 +5,12 @@
     <div class="messages js-topic" >
 
       <div class="addcomment js-new-message">
-        <%= render partial: 'form', object: @new_message, as: :new_message %>
+        <%= render partial: 'chat/form', object: @new_message, as: :new_message %>
       </div>
 
       <div class="item">
         <div class="reply js-messages">
-          <%= render partial: 'message', collection: @messages, locals: { total_size: @messages.size } %>
+          <%= render partial: 'chat/message', collection: @messages, locals: { total_size: @messages.size } %>
         </div>
       </div>
 
