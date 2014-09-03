@@ -9,6 +9,7 @@
     <div class="wrapper">
       <%= f.input_field :text, as: :text, placeholder: 'Ваш комментарий', class: 'js-submit-by-hotkey', autocomplete: 'off' %>
       <%= f.button :submit, 'Ответить', class: 'default-button-orange send' %>
+      <%= f.input :user_id, as: :hidden  %>
       <%= f.input :attachment_ids, as: :hidden %>
     </div>
   <% end %>
