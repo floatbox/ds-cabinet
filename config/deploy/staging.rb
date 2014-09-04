@@ -9,7 +9,7 @@ role :web, %w{dsstore@10.1.241.236}
 role :db,  %w{dsstore@10.1.241.236}
 
 set :application, 'legko'
-set :deploy_to, '/var/www/legko'
+set :deploy_to, '/var/www/flatchat'
 set :branch, 'flat_chat'
 
 namespace :deploy do
