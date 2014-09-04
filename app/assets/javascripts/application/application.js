@@ -19,6 +19,7 @@
 //
 // Require project files
 //= require main.js
+//= require ./dialog
 //= require ./registrations
 //= require ./recoveries
 //= require ./sessions
