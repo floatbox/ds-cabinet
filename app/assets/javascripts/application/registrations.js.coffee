@@ -49,8 +49,12 @@ $ ->
       $(@fragment_selector).find('#js-modal_success_dialog').modal("show")
     clear_errors: ->
       $(@fragment_selector).find('.errors').empty()
-    show_errors: ->
-      $(@fragment_selector).find('.errors').empty()
+    show_errors: (errors)->
+      debugger
+      err_arr = []
+      for attribute, messages of errors
+        err_arr.push "#{LOCALE[attribute]}: #{messages.join(', ')}"
+      Dialog.error_text(err_arr)
     disableForm: ->
       $(@fragment_selector).find('form').find('input').attr("disabled", "disabled")
     enableForm: ->
@@ -122,6 +126,7 @@ $ ->
     ogrn: 'ОГРН'
     password: 'Пароль'
     offering: 'Тарифный план'
+    company: 'ОГРН'
 
   showPreloader = (form) ->
     form = $(form)
