@@ -4,89 +4,93 @@
       <div class="container" style="background-image:url(/legko-bs/images/intro1_bg1.jpg);">
         <div class="info">
           <h2>Мы станем вашим личным бухгалтером!</h2>
-          <div class="ttl active" data-fl="regi_fl">Регистрация</div>
-          <div class="ttl last" data-fl="enter_fl">Вход</div>
-          
-          <!-- Регистраци здесь -->
-          <div class="forms">
-            <%= simple_form_for Registration.new, remote: true, authenticity_token: true do |f| %>
-              <table width="270" class="tb_fields">
-                <tr class="regi_fl">
-                  <td>
-                    <div class="border">
-                      <table width="100%">
-                        <tr>
-                          <td class="pl20"><label id="switch_status">Я являюсь ИП</label></td>
-                          <td width="66">
-                            <div class="switcher js__switcher">
-                              <a href="#" class="s_checkbox js__s_checkbox js__s_left">
-                                <span id="switch_btn1" class="js__s_active"></span>
-                                <span id="switch_btn2" class="js__s_noactive"></span>
-                              </a>
-                            </div>
-                          </td>
-                        </tr>
-                      </table>
-                    </div>
-                  </td>
-                </tr>
-                
-                <tr id="switch_field" class="regi_fl">
-                  <td>
-                    <div class="field">
-                      <%= ogrn_input f %>
-                    </div>
-                  </td>
-                </tr>
-                <tr class="regi_fl">
-                  <td>
-                    <div class="field">
-                      <%= phone_input f %>
-                    </div>
-                  </td>
-                </tr>
-                <tr class="regi_fl">
-                  <td>
-                    <div class="btn-group">
-                      <button class="btn-grn btn-right btn125" type="submit">Зарегистрироваться</button>
-                    </div>
-                    <div class="link-group legal-link">
-                      Регистрируясь, вы соглашаетесь с <a href="#">Условиями использования</a> и <a href="#">Политикой конфиденциальности</a>
-                    </div>
-                  </td>
-                </tr>
-              </table>
-            <% end -%>
+          <div class='js-forms_container'>
+            <div class="ttl active" data-fl="regi_fl">Регистрация</div>
+            <div class="ttl last" data-fl="enter_fl">Вход</div>
             
-            <!-- Вход здесь -->
-            <%= form_tag sessions_path, remote: true do %>
-              <table width="270" class="tb_fields">
-                <tr class="enter_fl">
-                  <td>
-                    <div class="field">
-                      <%= text_field_tag :phone, params[:phone], class: 'phone', placeholder: 'Введите телефон' %>
-                    </div>
-                  </td>
-                </tr>
-                <tr class="enter_fl">
-                  <td>
-                    <div class="field">
-                      <%= password_field_tag :password, params[:password], placeholder: 'Пароль' %>
-                    </div>
-                  </td>
-                </tr>
-                <tr class="enter_fl">
-                  <td class="right">
-                    <div class="btn-group">
-                      <button class="btn-grn btn-right btn125" type="submit">Войти</button>
-                    </div>
-                    <div class="link-group legal-link">
-                      <a href="#">Напомнить пароль</a>
-                    </div>
-                  </td>
-                </tr>
-              </table>
-            <% end -%>
+            <!-- Регистраци здесь -->
+            <div class="forms">
+              <%= simple_form_for Registration.new, remote: true, authenticity_token: true do |f| %>
+                <table width="270" class="tb_fields">
+                  <tr class="regi_fl">
+                    <td>
+                      <div class="border">
+                        <table width="100%">
+                          <tr>
+                            <td class="pl20"><label id="switch_status">Я являюсь ИП</label></td>
+                            <td width="66">
+                              <div class="switcher js__switcher">
+                                <a href="#" class="s_checkbox js__s_checkbox js__s_left">
+                                  <span id="switch_btn1" class="js__s_active"></span>
+                                  <span id="switch_btn2" class="js__s_noactive"></span>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                  
+                  <tr id="switch_field" class="regi_fl">
+                    <td>
+                      <div class="field">
+                        <%= ogrn_input f %>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="regi_fl">
+                    <td>
+                      <div class="field">
+                        <%= phone_input f %>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="regi_fl">
+                    <td>
+                      <div class="btn-group">
+                        <button class="btn-grn btn-right btn125" type="submit">Зарегистрироваться</button>
+                      </div>
+                      <div class="link-group legal-link">
+                        Регистрируясь, вы соглашаетесь с <a href="#">Условиями использования</a> и <a href="#">Политикой конфиденциальности</a>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              <% end -%>
+              
+              <!-- Вход здесь -->
+              <div class="js-new_session">
+                <%= form_tag sessions_path, remote: true do %>
+                  <table width="270" class="tb_fields">
+                    <tr class="enter_fl">
+                      <td>
+                        <div class="field">
+                          <%= text_field_tag :phone, params[:phone], class: 'phone', placeholder: 'Введите телефон' %>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="enter_fl">
+                      <td>
+                        <div class="field">
+                          <%= password_field_tag :password, params[:password], placeholder: 'Пароль' %>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="enter_fl">
+                      <td class="right">
+                        <div class="btn-group">
+                          <button class="btn-grn btn-right btn125" type="submit">Войти</button>
+                        </div>
+                        <div class="link-group legal-link">
+                          <a href="#">Напомнить пароль</a>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                <% end -%>
+              </div>
+            </div>
           </div>
         </div>
       </div>
