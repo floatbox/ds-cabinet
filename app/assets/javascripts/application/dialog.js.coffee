@@ -1,5 +1,5 @@
 $ ->
-  class Dialog 
+  class window.Dialog 
     @put_text: (text_arr, is_error) ->
       content_div_html = text_arr.map (e) -> "<p>#{e}</p>"
       @put_html(content_div_html, is_error)
