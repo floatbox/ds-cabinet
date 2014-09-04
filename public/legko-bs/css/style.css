@@ -140,7 +140,7 @@ ul {
   position: absolute;
   top: 12px;
   right: 10px;
-  background: url('/legko-bs/images/icon_valid.png?1407537147') no-repeat 0 0;
+  background: url('/legko-bs/images/ico/icon_valid.png') no-repeat 0 0;
   z-index: 10;
 }
 
