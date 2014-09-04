@@ -50,7 +50,6 @@ $ ->
     clear_errors: ->
       $(@fragment_selector).find('.errors').empty()
     show_errors: (errors)->
-      debugger
       err_arr = []
       for attribute, messages of errors
         err_arr.push "#{LOCALE[attribute]}: #{messages.join(', ')}"
@@ -85,7 +84,6 @@ $ ->
   class RegistrationStep extends Module
     @include Delegator
     on_error: () ->
-      debugger
     on_success: (event, data, textStatus) ->
       PageFragment.set_registration_data(data.registration) if data && data.registration
       @rs.switch_next()
