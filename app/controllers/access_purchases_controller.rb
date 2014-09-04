@@ -1,6 +1,6 @@
 class AccessPurchasesController < ApplicationController
 
-  before_action :authenticate, except: [:processed, :index]
+  before_action :authenticate, except: (Rails.env.development? ? [:processed, :index] : [:processed])
 
   def index
   end
