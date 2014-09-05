@@ -21,6 +21,7 @@
 //= require main.js
 //= require ./dialog
 //= require ./preloader
+//= require ./header
 //= require ./registrations
 //= require ./recoveries
 //= require ./sessions
