@@ -32,13 +32,21 @@ $ ->
     @include ChainableObject
     constructor: (@fragment_selector, @receiver, @on_success, @on_error) ->
       form = $(@fragment_selector).find(".simple_form")
+      form.on 'ajax:before', (event, data, textStatus) =>
+        @disableForm()
+        Preloader.show($(event.currentTarget).find('button:submit'))
+        true
       form.on 'ajax:error', (event, data, textStatus) =>
         @show_errors(data.responseJSON)
         @enableForm()
         @on_error.call(@receiver, event, data, textStatus) if @on_error
+        Preloader.hide()
+        true
       form.on 'ajax:success', (event, data, textStatus) =>
         @on_success.call(@receiver, event, data, textStatus) if @on_success
         @enableForm()
+        Preloader.hide()
+        true
       back_link = $(@fragment_selector).find(".js-back")
       back_link.click( => @switch_prev())
     hide: ->
@@ -47,17 +55,15 @@ $ ->
       $(@fragment_selector).show()
     show_modal_success_dialog: ->
       $(@fragment_selector).find('#js-modal_success_dialog').modal("show")
-    clear_errors: ->
-      $(@fragment_selector).find('.errors').empty()
     show_errors: (errors)->
       err_arr = []
       for attribute, messages of errors
         err_arr.push "#{LOCALE[attribute]}: #{messages.join(', ')}"
       Dialog.error_text(err_arr)
     disableForm: ->
-      $(@fragment_selector).find('form').find('input').attr("disabled", "disabled")
+      $(@fragment_selector).find('button:submit').attr("disabled", "disabled")
     enableForm: ->
-      $(@fragment_selector).find('form').find('input').removeAttr("disabled")
+      $(@fragment_selector).find('button:submit').removeAttr("disabled")
     set_payment_data: (payment) ->
       $(@fragment_selector).find('span.js-process_payment_desc').text(payment.process_payment_desc)
       $(@fragment_selector).find('form.js-process_payment_form').attr('action', payment.process_payment_link)
@@ -125,27 +131,6 @@ $ ->
     password: 'Пароль'
     offering: 'Тарифный план'
     company: 'ОГРН'
-
-  showPreloader = (form) ->
-    form = $(form)
-    form.addClass('submit-disabled')
-    formLeft = form.position().left
-    formTop = form.position().top
-    formWidth = form.outerWidth()
-    formHeight = form.outerHeight()
-    preloader = $('img#preloader')
-    width = preloader.outerWidth()
-    height = preloader.outerHeight()
-    preloader.css('left', "#{(formLeft + formWidth) / 2}px")
-    preloader.css('top', "#{(formTop + formHeight) / 2}px")
-    preloader.show()
-    form.fadeTo('fast', 0.5)
-
-  hidePreloader = (form) ->
-    form = $(form)
-    form.removeClass('submit-disabled')
-    form.stop(true).fadeTo('fast', 1.0)
-    $('img#preloader').hide()
 
   disableForm = (form) ->
     $(form).find('input, button').attr("disabled", "disabled")
