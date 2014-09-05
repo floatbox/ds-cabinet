@@ -7,7 +7,13 @@
         <li><a href="#">Тариф</a></li>
         <li><a href="#">Контакты</a></li>
         <li><a href="#">Регистрация</a></li>
-        <li><a href="#">Войти</a></li>
+        <li><%= 
+          if @current_user.nil? 
+            link_to "Войти", '#', class: "js-gotoLoginForm"
+          else
+            link_to "Выйти", session_path('current_user'), method: :delete 
+          end %>
+        </li>
       </ul>
     </nav>
   </div>
