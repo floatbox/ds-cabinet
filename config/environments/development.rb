@@ -27,6 +27,7 @@ DsCabinet::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  config.assets.precompile += %w( *.js )
 
   # Project-specific options
   config.sms_gateway = 'https://api.sredda.ru:4444/SMSGateway/sms'
