@@ -27,6 +27,8 @@
       <%= render partial: "message_dialog" %>
       <section class="page-body"><%= yield %></section>
       <%= render partial: "application_footer" %>
+      <%= image_tag 'preloader.gif', id: 'preloader', style: 'display: none; position: absolute;',
+          width: 16, height: 16 %>
     </article>
   </body>
 </html>
