@@ -14,25 +14,17 @@
 //= require jquery_ujs
 //= require jquery.ui.effect.all
 //= require jquery.maskedinput.min
+//= require jquery.switcher.js
+//= require bootstrap.js
+//
+// Require project files
+//= require main.js
+//= require ./dialog
+//= require ./preloader
+//= require ./header
 //= require ./registrations
 //= require ./recoveries
 //= require ./sessions
 //= require ./promo
 //= require ./contacts
 //= require_self
-
-$( "#ogrn-tooltip" ).hover(
-  function() {
-    $(this).siblings(".notice").toggle();
-  }
-);
-
-$('#pre_registration_ogrn').focus(function(){
-  $('#ogrn-tooltip').hide();
-})
-
-$('#pre_registration_ogrn').focusout(function(){
-  if ($(this).val() === '_______________'){
-    $('#ogrn-tooltip').show();
-  };
-})

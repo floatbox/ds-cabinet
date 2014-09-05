@@ -90,8 +90,9 @@ class Registration < ActiveRecord::Base
   end
 
   def as_json(options = {})
+    self.class.include_root_in_json = true
     super((options || {}).merge({
-      methods: [:inn, :name, :workflow_state]
+      methods: [:inn, :name, :workflow_state, :first_name, :last_name]
     }))
   end
 
@@ -151,6 +152,14 @@ class Registration < ActiveRecord::Base
     logger.error "Can not send data to DS. #{e.message}"
     e.backtrace.each { |line| logger.error line }
     halt
+  end
+
+  def first_name
+    company_name.split[1..2].join(' ')
+  end
+
+  def last_name
+    company_name.split.first
   end
 
   private

@@ -1,23 +1,60 @@
-<div class="step step-2" id="confirmation"<%= visible ? "" : " style=display:none;" %>>
-  <h3 class="title">Подтвердите правильность данных о компании</h3>
-  <h3 class="title highlight error_messages"></h3>
-
-  <div class="correct">
-    Вы регистрируете компанию <span class="name"></span>, <strong>ИНН <span class="inn"></span>, ОГРН <span class="ogrn"></span></strong>
-  </div>
-  <p>Нет, это не моя компания. <%= link_to 'Ввести ОГРН еще раз', '#', class: 'cancel' %></p>
-  <div class="step-form">
-    <%= form_tag registration_confirm_path(:registration_id), method: :post, remote: true do %>
-      <div class="step-form code">
-        <%= text_field_tag :password, '', placeholder: 'Введите пароль', class: 'form-control' %>
+<div class="registration_confirm_fragment" <%= (defined?(visible) && visible) ? "" : " style=display:none;" %>>
+  <section class="case-intro approve">
+    <div class="globalwidth">
+      <div class="content" style="background-image:url(/legko-bs/images/intro2_bg.jpg);">
+        <div class="info">
+          <h2>Подтвердите правильность ваших данных</h2>
+          <div class="forms">
+            <%= form_tag registration_confirm_path(:registration_id), remote: true, class: "simple_form js-confirmation_form" do %>
+              <div class="border">
+                <table>
+                <tr>
+                    <td class="pl25" width="112">ОГРН</td>
+                    <td><span class="js-registration_ogrn">354277987918273912</span></td>
+                  </tr>
+                  <tr>
+                    <td class="pl25">Имя</td>
+                    <td><span class="js-registration_first_name">Константин</span></td>
+                  </tr>
+                  <tr>
+                    <td class="pl25">Фамилия</td>
+                    <td><span class="js-registration_last_name">Мизельник-Штанько</span></td>
+                  </tr>
+                  <tr>
+                    <td class="pl25">Телефон</td>
+                    <td><span class="js-registration_phone">+7965 7802621</span></td>
+                  </tr>
+                </table>
+              </div>
+              <table>
+                <tr>
+                  <td><label>Смс код для подтверждения</label>
+                    <div class="note">
+                      <%= link_to "Отправить еще раз через 60 сек", registration_regenerate_password_path(:registration_id), class: 'js-regenerate_password_link', remote: true, method: :post %>
+                    </div>
+                  </td>
+                  <td width="105">
+                    <div class="field field-valid">
+                      <%= text_field_tag :password, params[:password] %>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <div class="btn-group">
+                      <a class="btn-grn btn-left js-back" href='#'>Отправить данные еще раз</a>
+                      <button class="btn-grn btn-right btn125" type="submit">Дальше</button>
+                    </div>
+                    <div class="send-status">
+                      Данные отправлены
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            <% end -%>
+          </div>
+        </div>
       </div>
-      <div class="step-form">
-        <%= submit_tag 'Все верно, продолжить', class: 'button confirm' %>
-      </div>
-    <% end %>
-    <p>Если смс сообщение с паролем не пришло, вы сможете отправить его повторно через 
-      <span class="sms_timeout">60</span> секунд
-      <%= link_to 'Отправить еще раз', registration_regenerate_password_path(:registration_id), method: :post, remote: true, class: 'regenerate_password' %>
-    </p>
-  </div>
+    </div>
+  </section>
 </div>

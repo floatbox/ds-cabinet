@@ -1,3 +1,6 @@
+require 'phone'
+require 'ogrn'
+
 class RegistrationsController < ApplicationController
   include WithSmsVerification
 
@@ -5,38 +8,55 @@ class RegistrationsController < ApplicationController
   before_filter :set_registration, only: [:confirm, :regenerate_password]
 
   def create
-    # check if registration exists
-    phone= params[:registration][:phone]
-    ogrn=  params[:registration][:ogrn]
-    @registration = Registration.find_by_phone_ogrn phone, ogrn
-    if @registration
-      @registration.send_password_sms_notification
-      render json: @registration
+    phone= params[:registration].try :[], :phone
+    ogrn=  params[:registration].try :[], :ogrn
+
+    errors = Registration.new.errors
+    if ogrn.nil? || ogrn.empty?  
+      errors.add(:ogrn, :blank)
+    elsif !Ogrn.new(ogrn).valid? 
+      errors.add(:ogrn, :wrong_value)
+    end
+    
+    if phone.nil? || phone.empty?
+      errors.add(:phone, :blank)
+    elsif !Phone.new(phone).valid? 
+      errors.add(:phone, :wrong_value)
+    end
+
+    unless errors.empty?
+      render json: errors, status: :unprocessable_entity
     else
-      # external systems are called here by implicit call company and ogrn
-      @registration = Registration.new(registration_params) 
-      if @registration.save
-        if @registration.siebel_company_exists?
-          @registration.defer!
-        else
-          generate_send_password
-          @registration.start!
-        end
-
-        render json: @registration
+      @registration = Registration.find_by_phone_ogrn phone, ogrn
+      if @registration
+        @registration.send_password_sms_notification
+        render json: @registration.as_json(only: [:id, :ogrn, :phone])
       else
-        # Notify admins about invalid OGRN, but valid phone
-        @registration.notify_admin if @registration.errors.messages.keys == [:company]
+        # external systems are called here by implicit call company and ogrn
+        @registration = Registration.new(registration_params) 
+        if @registration.save
+          if @registration.siebel_company_exists?
+            @registration.defer!
+          else
+            generate_send_password
+            @registration.start!
+          end
 
-        # Render JSON with errors
-        render json: @registration.errors, status: :unprocessable_entity
+          render json: @registration.as_json(only: [:id, :ogrn, :phone])
+        else
+          # Notify admins about invalid OGRN, but valid phone
+          @registration.notify_admin if @registration.errors.messages.keys == [:company]
+
+          # Render JSON with errors
+          render json: @registration.errors, status: :unprocessable_entity
+        end
       end
     end
   end
 
   # That confirms OGRN, company_name, phone and password
   def confirm
-    if @registration.password == params[:password]
+    if @registration.password == params[:password]]
       @registration.send_to_ds!
       @registration.confirm! if @registration.workflow_state == "awaiting_confirmation"
       @registration.notify_admin
