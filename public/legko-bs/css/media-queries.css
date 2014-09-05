@@ -1,0 +1,72 @@
+@media screen and (max-width: 980px) {
+ .page_margins {
+	min-width: inherit;
+	max-width: inherit;
+ }
+}
+@media screen and (max-width: 800px) {
+ body {
+ 	padding: 0;
+ }
+ .page {
+ 	padding-top: 0;
+ 	padding-left: 0;
+ 	padding-right: 0;
+ }
+ .hlist {
+ 	padding: 9px 0;
+ }
+ #col1 {
+	width: auto;
+	float: none;
+ }
+ #logotip {
+ 	display: block;
+ }
+ #logo, #login-section {
+ 	display: none;
+ }
+ #logo-text {
+ 	height: auto;
+ 	padding: 0;
+ }
+ #date-time {
+ 	margin-top: 5px;
+ }
+ #login-block {
+ 	height: auto;
+ }
+ ul.arrows li {
+ 	font-size: 110%;
+ }
+ #col3 {
+ 	float: none;
+ 	width: auto;
+	margin-bottom: 20px;
+	border-radius: inherit;
+ }
+ #col1, #col3_content, #footer {
+ 	margin: 0 3% 0;
+ }
+ .note {
+ 	display: none;
+ }
+}
+
+@media screen and (max-width: 480px) {
+   html {
+      -webkit-text-size-adjust: none;
+   }
+   blockquote, cite, q {
+   	  margin: 0 20px;
+   }
+   #col3_content .float_left {
+   	  width: 100%;
+   	  float: none;
+	  display: block;
+   }
+   #col3_content .icaption img {
+   	  width: 100%;
+   	  height: auto;
+   }
+}

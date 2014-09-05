@@ -32,18 +32,23 @@ ru:
         wrong_size: "некорректный размер (должен быть %{file_size})"
         size_too_small: "слишком маленький (должен быть не меньше чем %{file_size})"
         size_too_big: "слишком большой (должен быть не больше чем %{file_size})"
+        empty: "не может быть пустым"
+        blank: "не может быть пустым"
+        wrong_value: неправильный
       models:
         registration:
           attributes:
             base:
               something_went_wrong: "Не удалось зарегистрироваться. Обратитесь, пожалуйста, в службу поддержки."
             phone:
-              already_exist: уже существует
+              already_exist: уже зарегистрирован
             company:
               does_not_exist: компания с таким ОГРН не существует
             password:
               wrong_confirmation: не совпадает с подтверждением
               wrong_value: неправильный
+            ogrn:
+              wrong_value: неправильной длины, должен состоять из 15 цифр для ИП или 13 цифр для ЮЛ 
         recovery:
           invalid_sms_verification_code: Неверный код подтверждения
           something_went_wrong: "Не удалось восстановить пароль. Обратитесь, пожалуйста, в службу поддержки."

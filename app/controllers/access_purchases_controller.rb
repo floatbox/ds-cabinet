@@ -1,6 +1,6 @@
 class AccessPurchasesController < ApplicationController
 
-  before_action :authenticate, except: [:processed]
+  before_action :authenticate, except: (Rails.env.development? ? [:processed, :index] : [:processed])
 
   def index
   end
@@ -14,7 +14,7 @@ class AccessPurchasesController < ApplicationController
       ap.post(access_purchase_processed_url(ap.id), 
               access_purchase_processed_url(ap.id))
 
-      render json: { process_payment_link: ap.order.url, process_payment_desc: ap.text }
+      render json: { payment: { process_payment_link: ap.order.url, process_payment_desc: ap.text }}, :content_type => 'application/json'
     end
   end
 

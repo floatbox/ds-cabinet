@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-
+  
   after_action :update_last_activity
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -19,8 +19,7 @@ protected
   helper_method :current_user
 
   def has_paid_access
-    current_user
-    if @current_user && (!@current_user.is_concierge?) && (!@current_user.has_paid_access?)
+    if current_user && (!@current_user.is_concierge?) && (!@current_user.has_paid_access?)
       redirect_to controller: :access_purchases, action: :index
     end
   end
@@ -28,7 +27,10 @@ protected
   # Add this method to before_action to authenticate access with redirect.
   # @example before_action :authenticate, only: [:show]
   def authenticate
-    redirect_to root_url if current_user.nil?
+    respond_to do |format|
+      format.js   { render nothing: true, status: 401 if current_user.nil? }
+      format.html { redirect_to root_url if current_user.nil? }
+    end
   end
 
   # Add this method to before_action to authenticate access with 401 response code
