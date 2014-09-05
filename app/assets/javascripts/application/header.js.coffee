@@ -9,7 +9,6 @@ $ ->
         Session.shakeLoginForm()
       else
         window.location.replace('/')
-      form.preventDefault()
 
   $('a.js-gotoLoginForm').click ->
     Session.gotoLoginForm()
