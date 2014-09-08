@@ -15,15 +15,15 @@ class MessageObserver < ActiveRecord::Observer
     # Notify user about new messages in his topic
     # @param message [Message] created/updated message
     def notify_user(message)
-      user = message.topic.user
-      create_notification(message, user) unless message.user_id == user.id
+      user = message.user
+      create_notification(message, user) unless message.author_id == user.id
     end
 
     # Sends notification to concierge of user that has topic with new message
     # @param message [Message] created/updated message
     def notify_concierge(message)
-      if message.user.concierge
-        create_notification(message, message.user.concierge)
+      if message.author.concierge
+        create_notification(message, message.author.concierge)
       end
     end
 
