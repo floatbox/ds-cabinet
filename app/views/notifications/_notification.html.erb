@@ -1,6 +1,4 @@
 <div class="scroll-item">
-  <%= link_to notification, class: 'title' do %>
     <%= render partial: "notifications/#{notification.name}", object: notification, as: :notification %>
-  <% end %>
   <div class="date"><%=l notification.created_at.to_date, format: :long %></div>
 </div>
