@@ -19,6 +19,15 @@ class Concierge::UsersController < Concierge::ApplicationController
   def edit
   end
 
+  # GET /concierge/users/:id/chat
+  def chat
+    @messages = @user.messages.published
+    @new_message = current_user.authored_messages.build
+    @new_message.user = @user
+    render 'chat/index', layout: 'chat'
+  end
+
+
   # PATCH /concierge/users/:id
   def update
     @user.assign_attributes(user_params)

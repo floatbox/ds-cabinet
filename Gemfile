@@ -41,8 +41,14 @@ end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
+gem 'quiet_assets'
+
 # Use unicorn as the app server
 gem 'unicorn'
+
+group :development do
+  gem 'thin'
+end
 
 # Use Capistrano for deployment
 group :development do

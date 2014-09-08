@@ -1,0 +1,23 @@
+<div id="js-message-id-<%= message.id %>" class="item js-message">
+  <div class="view">
+    <img src="/images/avatar_dummy.png" height="45" width="45" alt="">
+  </div>
+
+  <div class="description">
+    <div class="date"><span class="name"><%= message.author.siebel.full_name %></span> <small><%=l message.created_at, format: :long %></small></div>
+
+    <div class="wrapper">
+      <div class="files">
+        <% message.attachments.each do |attachment| %>
+          <%= link_to attachment.attachment.url, target: '_blank' do %>
+            <img src="/chat/images/pdf.png" height="32" width="30" alt="">
+            <br />
+            <%= attachment.attachment.file.filename %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%= paragraphs message.text %>
+    </div>
+  </div>
+</div>
