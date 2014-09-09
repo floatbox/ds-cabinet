@@ -6,17 +6,20 @@ $(function(){
 		
 		var a='switch_status',
 			b='switch_field',
+			c='switch_field_on',
 			s1='Я являюсь ИП',
 			s2='Я не являюсь ИП';
 		
 		$('#switch_btn1').click(function(){
 			$('#'+a).html(s1);
-			$('#'+b).show();
+			$('.'+b).removeClass('lock').show();
+			$('.'+c).addClass('hide');
 			});
 			
 		$('#switch_btn2').click(function(){
 			$('#'+a).html(s2);
-			$('#'+b).hide();
+			$('.'+b).addClass('lock').hide();
+			$('.'+c).removeClass('hide');
 			});
 	};
 	
@@ -25,7 +28,7 @@ $(function(){
 		$('.case-intro .ttl').removeClass('active');
 		$(this).addClass('active');
 		$('.tb_fields > tbody > tr').hide();
-		$('.'+class_fl).show();
+		$('.'+class_fl+':not(.lock)').show();
 	});
 	
 	$('.case-regin .reg').click(function(){
