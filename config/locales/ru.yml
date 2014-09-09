@@ -27,6 +27,9 @@ ru:
       shortcut:
         question: Вопрос
         answer: Ответ
+      attempt/registration_password_notification:
+        limit: Кол-во попыток
+        timeout: Таймаут
     errors:
       messages:
         wrong_size: "некорректный размер (должен быть %{file_size})"
@@ -57,6 +60,12 @@ ru:
               does_not_exist: не зарегистрирован в системе
             password:
               wrong_confirmation: не совпадает с подтверждением
+        attempt/registration_password_notification:
+          attributes:
+            limit:
+              exausted: исчерпано, обратитесь в службу поддержки
+            timeout:
+              not_expired: еще не истек
 
   views:
     pagination:

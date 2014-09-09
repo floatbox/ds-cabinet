@@ -12,3 +12,8 @@ $ ->
     @error_text: (text_arr) -> @put_text(text_arr, true)
     @info_html: (html) -> @put_html(html, false)
     @error_html: (html) -> @put_html(html, true)
+    @show_errors_json: (errors)->
+      err_arr = []
+      for attribute, messages of errors
+        err_arr.push "#{LOCALE[attribute]}: #{messages.join(', ')}"
+      @error_text(err_arr)
