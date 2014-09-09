@@ -56,7 +56,7 @@ class RegistrationsController < ApplicationController
 
   # That confirms OGRN, company_name, phone and password
   def confirm
-    if @registration.password == params[:password]]
+    if @registration.password == params[:password]
       @registration.send_to_ds!
       @registration.confirm! if @registration.workflow_state == "awaiting_confirmation"
       @registration.notify_admin

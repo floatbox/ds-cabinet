@@ -41,8 +41,14 @@ end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
+gem 'quiet_assets'
+
 # Use unicorn as the app server
 gem 'unicorn'
+
+group :development do
+  gem 'thin'
+end
 
 # Use Capistrano for deployment
 group :development do
@@ -75,9 +81,9 @@ end
 # gem 'debugger', group: [:development, :test]
 
 # Use DS gems
-gem 'ds-sns', git: 'git@github.com:SuperbCoders/ds-sns-gem.git', branch: 'sns2'
-gem 'ds-siebel', git: 'git@github.com:SuperbCoders/ds-siebel-gem.git'
-gem 'ds-spark', git: 'git@github.com:SuperbCoders/DS-Spark-gem.git'
+gem 'ds-sns', git: 'git@github.com:BusinessEnvironment/ds-sns-gem.git', branch: 'sns2'
+gem 'ds-siebel', git: 'git@github.com:BusinessEnvironment/ds-siebel-gem.git'
+gem 'ds-spark', git: 'git@github.com:BusinessEnvironment/DS-Spark-gem.git'
 
 # Helpers
 gem 'simple_form'
