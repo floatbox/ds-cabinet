@@ -17,14 +17,6 @@ class Attempt::Base < ActiveRecord::Base
     timeout.seconds
   end
 
-  def exausted?
-    count > limit
-  end
-
-  def timeout?
-    @updated_at && (@updated_at + timeout > Time.zone.now)
-  end
-
   def reset
     update_column :count, 0
     self.errors.clear
@@ -38,5 +30,13 @@ class Attempt::Base < ActiveRecord::Base
 
   def validate_timeout
     errors.add(:timeout, :not_expired) if timeout?
+  end
+
+  def exausted?
+    count > limit
+  end
+
+  def timeout?
+    @updated_at && (@updated_at + timeout > Time.zone.now)
   end
 end
