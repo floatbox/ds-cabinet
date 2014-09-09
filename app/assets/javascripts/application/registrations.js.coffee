@@ -68,7 +68,7 @@ $ ->
         selector = 'span.'+span_class_name
         $(selector).text(value)
       # set registration id for confiration form
-      pairs = { action: 'form.js-confirmation_form', href: 'a.js-regenerate_password_link' }
+      pairs = { action: 'form.js-confirmation_form', action: 'form.js-regenerate_password_form' }
       for attribute, selector of pairs
         element = $(selector)
         value = element.attr(attribute)
