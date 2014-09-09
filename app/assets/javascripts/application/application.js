@@ -22,6 +22,7 @@
 //= require ./dialog
 //= require ./preloader
 //= require ./header
+//= require ./regenerate_password
 //= require ./registrations
 //= require ./recoveries
 //= require ./sessions

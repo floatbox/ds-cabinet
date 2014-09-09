@@ -14,6 +14,7 @@ require 'password_sms_notifier'
 class Registration < ActiveRecord::Base
 
   belongs_to :user
+  has_one :password_notification_attempts, as: :attemptable, class_name: Attempt::RegistrationPasswordNotification
 
   include Workflow
 
