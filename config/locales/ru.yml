@@ -106,8 +106,8 @@ ru:
 
   notifications:
     sms:
-      message_created: '%{user} написал "%{message}" в топик "%{topic}"'
-      message_updated: '%{user} отредактировал сообщение "%{message}" в топике "%{topic}"'
+      message_created: '%{user} написал "%{message}"'
+      message_updated: '%{user} отредактировал сообщение "%{message}"'
       topic_created: '%{user} создал топик %{topic}'
       topic_updated: '%{user} отредактировал топик %{topic}'
       user_created: 'Зарегистрировался новый пользователь %{user}'
