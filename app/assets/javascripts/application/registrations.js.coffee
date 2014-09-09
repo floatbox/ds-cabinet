@@ -37,7 +37,7 @@ $ ->
         Preloader.show($(event.currentTarget).find('button:submit'))
         true
       form.on 'ajax:error', (event, data, textStatus) =>
-        @show_errors(data.responseJSON)
+        Dialog.show_errors_json(data.responseJSON)
         @enableForm()
         @on_error.call(@receiver, event, data, textStatus) if @on_error
         Preloader.hide()
@@ -55,11 +55,6 @@ $ ->
       $(@fragment_selector).show()
     show_modal_success_dialog: ->
       $(@fragment_selector).find('#js-modal_success_dialog').modal("show")
-    show_errors: (errors)->
-      err_arr = []
-      for attribute, messages of errors
-        err_arr.push "#{LOCALE[attribute]}: #{messages.join(', ')}"
-      Dialog.error_text(err_arr)
     disableForm: ->
       $(@fragment_selector).find('button:submit').attr("disabled", "disabled")
     enableForm: ->
@@ -131,6 +126,8 @@ $ ->
     password: 'Пароль'
     offering: 'Тарифный план'
     company: 'ОГРН'
+    timeout: 'Таймаут'
+    limit: 'Кол-во попыток'
 
   disableForm = (form) ->
     $(form).find('input, button').attr("disabled", "disabled")
