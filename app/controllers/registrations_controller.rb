@@ -71,12 +71,18 @@ class RegistrationsController < ApplicationController
   def regenerate_password
     generate_send_password
     head :no_content
+  rescue ActiveRecord::RecordInvalid => e
+    render json: e.record.errors, status: :unprocessable_entity
   end
 
   private
     def generate_send_password
       @registration.password = PasswordGenerator.generate
       @registration.password_confirmation = @registration.password
+
+      pna = @registration.password_notification_attempts
+      pna.nil? ? @registration.create_password_notification_attempts : pna.inc!
+      
       logger.info([
         "REGISTRATION LOGIN=='#{@registration.phone}'", 
         " PASSWORD=='#{@registration.password}'"].join) unless Rails.env.production?
