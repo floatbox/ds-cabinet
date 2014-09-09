@@ -2,6 +2,7 @@ $ ->
   form = $('.js-regenerate_password_form')
   link = $('.js-regenerate_password_link')
   link_click = ()-> 
+    event.preventDefault()
     form.submit()
   link.click -> link_click()
   form.on 'ajax:success', (event, data) ->
