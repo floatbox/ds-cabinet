@@ -18,7 +18,7 @@ class Attempt::Base < ActiveRecord::Base
   end
 
   def exausted?
-    count >= limit
+    count > limit
   end
 
   def timeout?
