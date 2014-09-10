@@ -110,47 +110,5 @@
       </div>
     </div>
   </section>
-  <section class="case-callback">
-    <div class="globalwidth">
-      <div class="content">
-        <div class="board">
-          <h3>Обратная связь</h3>
-          <div class="info">
-            <div class="forms">
-              <form method="post" action="">
-                <table width="100%">
-                  <tr>
-                    <td width="270">
-                      <div class="field"><input type="text" placeholder="Имя" /></div>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td rowspan="2" width="270">
-                      <div class="field"><textarea cols="" rows="" placeholder="Сообщение"></textarea></div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="field"><input class="phone" type="text" placeholder="Номер телефона*" /></div>
-                    </td>
-                    <td>&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="field"><input type="text" placeholder="E-mail" /></div>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>
-                      <div class="btn-group">
-                        <button class="btn-orn btn-right btn155" type="submit">Отправить запрос</button>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <%= render partial: "feedback/form" %>
 </div>
