@@ -5,7 +5,8 @@
         <h3>Обратная связь</h3>
         <div class="info">
           <div class="forms">
-            <%= form_tag feedback_path, remote: true, class: "simple_form js-feedback_form" do %>
+            <%= form_tag feedback_path, remote: true, class: "js-feedback_form",
+              authenticity_token: true do %>
               <table width="100%">
                 <tr>
                   <td width="270">
