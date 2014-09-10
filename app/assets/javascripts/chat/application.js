@@ -19,3 +19,4 @@
 //= require ./modal_window
 //= require ./length_validation
 //= require ./time
+//= require ./textarea
