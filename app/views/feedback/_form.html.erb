@@ -10,19 +10,19 @@
               <table width="100%">
                 <tr>
                   <td width="270">
-                    <div class="field"><%= text_field_tag :name, params[:name], placeholder: "Имя" %></div>
+                    <div class="field"><%= text_field_tag :name, params[:name], placeholder: "Имя", required: true %></div>
                   </td>
                   <td>&nbsp;</td>
                   <td rowspan="2" width="270">
                     <div class="field">
-                      <%= text_area_tag :message, params[:message], placeholder: "Сообщение", cols: "", rows: "" %>
+                      <%= text_area_tag :message, params[:message], placeholder: "Сообщение", cols: "", rows: "", required: true %>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <div class="field"><%= text_field_tag :phone, params[:phone], 
-                      class: "phone", placeholder: "Номер телефона" %></div>
+                      class: "phone", placeholder: "Номер телефона", required: true %></div>
                   </td>
                   <td>&nbsp;</td>
                 </tr>
