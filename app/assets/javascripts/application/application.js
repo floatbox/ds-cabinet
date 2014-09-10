@@ -23,6 +23,7 @@
 //= require ./preloader
 //= require ./header
 //= require ./regenerate_password
+//= require ./feedback
 //= require ./registrations
 //= require ./recoveries
 //= require ./sessions
