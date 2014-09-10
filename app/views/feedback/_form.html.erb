@@ -1,0 +1,48 @@
+<section class="case-callback">
+  <div class="globalwidth">
+    <div class="content">
+      <div class="board">
+        <h3>Обратная связь</h3>
+        <div class="info">
+          <div class="forms">
+            <%= form_tag feedback_path, remote: true, class: "js-feedback_form",
+              authenticity_token: true do %>
+              <table width="100%">
+                <tr>
+                  <td width="270">
+                    <div class="field"><%= text_field_tag :name, params[:name], placeholder: "Имя", required: true %></div>
+                  </td>
+                  <td>&nbsp;</td>
+                  <td rowspan="2" width="270">
+                    <div class="field">
+                      <%= text_area_tag :message, params[:message], placeholder: "Сообщение", cols: "", rows: "", required: true %>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="field"><%= text_field_tag :phone, params[:phone], 
+                      class: "phone", placeholder: "Номер телефона", required: true %></div>
+                  </td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="field"><%= text_field_tag :email, params[:email], 
+                      class: "email", placeholder: "E-mail" %></div>
+                  </td>
+                  <td>&nbsp;</td>
+                  <td>
+                    <div class="btn-group">
+                      <button class="btn-orn btn-right btn155" type="submit">Отправить запрос</button>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            <% end -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
