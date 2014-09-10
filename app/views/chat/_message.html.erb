@@ -1,6 +1,6 @@
-<div id="js-message-id-<%= message.id %>" class="item js-message">
+<div id="js-message-id-<%= message.id %>" class="item js-message<% if message.author == message.user %> item-author<% end %>">
   <div class="view">
-    <img src="/chat/images/avatar_dummy.png" height="45" width="45" alt="">
+    <% if message.author.is_concierge %><img src="/chat/images/avatar_dummy.png" height="45" width="45" alt=""><% end %>
   </div>
 
   <div class="description">
