@@ -1,0 +1,12 @@
+h1 Сообщение через форму обратной связи
+
+p Data: #{l Time.zone.now, format: :long}
+p email: #{@email}
+p Имя: #{@name}
+p Телефон: #{@phone}
+
+h2 Текст сообщения
+
+- @message.split("\n").each do |line|
+  p
+   = line
