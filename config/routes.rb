@@ -1,6 +1,7 @@
 DsCabinet::Application.routes.draw do
   root to: 'pages#index'
   get 'contacts' => 'pages#contacts'
+  post 'feedback' => 'feedback#create'
 
   resources :registrations, only: [:create] do
     post 'confirm'
