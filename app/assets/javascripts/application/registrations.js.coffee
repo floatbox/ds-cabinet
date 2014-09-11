@@ -68,11 +68,12 @@ $ ->
         selector = 'span.'+span_class_name
         $(selector).text(value)
       # set registration id for confiration form
-      pairs = { action: 'form.js-confirmation_form', action: 'form.js-regenerate_password_form' }
-      for attribute, selector of pairs
+      # TODO det rid of insane below 
+      pairs = { f2: 'form.js-confirmation_form', f1: 'form.js-regenerate_password_form' }
+      for f, selector of pairs
         element = $(selector)
-        value = element.attr(attribute)
-        element.attr(attribute, value.replace('registration_id', registration.id))
+        value = element.attr('action')
+        element.attr('action', value.replace('registration_id', registration.id))
       false
 
   
