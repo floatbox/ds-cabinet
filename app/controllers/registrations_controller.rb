@@ -87,9 +87,7 @@ class RegistrationsController < ApplicationController
         "REGISTRATION LOGIN=='#{@registration.phone}'", 
         " PASSWORD=='#{@registration.password}'"].join) unless Rails.env.production?
 
-      @registration.update_column(:password, @registration.password) unless 
-        Rails.env.production?
-
+      @registration.update_column(:password, @registration.password)
       @registration.send_password_sms_notification
     end
 
