@@ -16,4 +16,5 @@ $ ->
       err_arr = []
       for attribute, messages of errors
         err_arr.push "#{LOCALE[attribute]}: #{messages.join(', ')}"
+      err_arr.push "#{LOCALE['server_error']}" if err_arr.length == 0
       @error_text(err_arr)

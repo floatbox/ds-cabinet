@@ -129,6 +129,7 @@ $ ->
     company: 'ОГРН'
     timeout: 'Таймаут'
     limit: 'Кол-во попыток'
+    server_error: 'На сервере произошла ошибка, попробуйте позже'
 
   disableForm = (form) ->
     $(form).find('input, button').attr("disabled", "disabled")
