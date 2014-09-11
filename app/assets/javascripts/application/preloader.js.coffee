@@ -1,5 +1,6 @@
 $ ->
   class window.Preloader
+    @preloader = $('img#preloader')
     @show: (e) ->
       e = $(e)
       if e.length
@@ -7,17 +8,13 @@ $ ->
         eTop = e.offset().top
         eWidth = e.outerWidth(true)
         eHeight = e.outerHeight(true)
-        preloader = $('img#preloader')
-        width = preloader.width()
-        height = preloader.height()
+        width = @preloader.width()
+        height = @preloader.height()
         eLeft += (parseInt(e.css('padding-left')) - width)/2
-        preloader.css('left', "#{eLeft}px")
-        preloader.css('left', "#{eLeft}px")
-        preloader.css('top',  "#{eTop  + (eHeight - height)/2 }px")
-        e.fadeTo('fast', 0.5)
-        preloader.show()
+        @preloader.css('left', "#{eLeft}px")
+        @preloader.css('left', "#{eLeft}px")
+        @preloader.css('top',  "#{eTop  + (eHeight - height)/2 }px")
+        @preloader.show()
 
-    @hide: (form) ->
-      form = $(form)
-      form.stop(true).fadeTo('fast', 1.0)
-      $('img#preloader').hide()
+    @hide: () ->
+      @preloader.hide()
