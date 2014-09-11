@@ -2,6 +2,7 @@ $ ->
   form = $('.js-feedback_form')
   form.on 'ajax:success', (event, data) ->
     form.find('button').removeAttr('disabled')
+    form.find('button').removeAttr('style')
     Preloader.hide()
     Dialog.info_text([data.message])
   form.on 'ajax:error', (event, data, textStatus) =>

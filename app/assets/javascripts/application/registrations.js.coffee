@@ -58,7 +58,9 @@ $ ->
     disableForm: ->
       $(@fragment_selector).find('button:submit').attr("disabled", "disabled")
     enableForm: ->
-      $(@fragment_selector).find('button:submit').removeAttr("disabled")
+      button=$(@fragment_selector).find('button:submit')
+      button.removeAttr("disabled")
+      button.removeAttr("style")
     set_payment_data: (payment) ->
       $(@fragment_selector).find('span.js-process_payment_desc').text(payment.process_payment_desc)
       $(@fragment_selector).find('form.js-process_payment_form').attr('action', payment.process_payment_link)
