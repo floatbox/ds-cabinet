@@ -1,18 +1,26 @@
 $ ->
-  form = $('.js-regenerate_password_form')
-  link = $('.js-regenerate_password_link')
-  link_click = ()-> 
-    event.preventDefault()
-    form.submit()
-  link.click -> link_click()
-  form.on 'ajax:success', (event, data) ->
-    Preloader.hide()
-    link.click -> link_click()
-    Dialog.info_text(["Пароль успешно отправлен на телефон, проверьте смс"])
-  form.on 'ajax:error', (event, data, textStatus) =>
-    Dialog.show_errors_json(data.responseJSON)
-    Preloader.hide()
-    link.click -> link_click()
-  form.on 'ajax:before', (event, data) ->
-    Preloader.show(link)
-    link.unbind('click')
+  class RegeneratePasswordForm
+
+    constructor: ->
+      @default_success = @default_error = true
+      @default_before = false
+      @link_disabled = false
+      @form = new RemoteForm('.js-regenerate_password_form', this)
+      @link = $('.js-regenerate_password_link')
+      @link.click =>
+        event.preventDefault()
+        @form.form.submit() unless @link_disabled
+
+    success: (event, data) =>
+      @link_disabled = false
+      Dialog.info_text(["Пароль успешно отправлен на телефон, проверьте смс"])
+
+    error: (event, data, textStatus) =>
+      Dialog.show_errors_json(data.responseJSON)
+      @link_disabled = false 
+
+    before: (event, data) =>
+      @link_disabled = true 
+      Preloader.show(@link)
+
+  new RegeneratePasswordForm()
