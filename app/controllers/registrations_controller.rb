@@ -77,7 +77,7 @@ class RegistrationsController < ApplicationController
 
   private
     def generate_send_password
-      @registration.password = PasswordGenerator.generate
+      @registration.password ||= PasswordGenerator.generate
       @registration.password_confirmation = @registration.password
 
       pna = @registration.password_notification_attempts
