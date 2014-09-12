@@ -1,109 +1,49 @@
 $ ->
-  moduleKeywords = ['extended', 'included']
-  class Module
-    @extend: (obj) ->
-      for key, value of obj when key not in moduleKeywords
-        @[key] = value
-        
-      obj.extended?.apply(@)
-      this
-          
-    @include: (obj) ->
-      for key, value of obj when key not in moduleKeywords
-        # Assign properties to the prototype
-        @::[key] = value
-    
-      obj.included?.apply(@)
-      this
-
-  ChainableObject = 
-    set_next_prev: (@next, @prev) ->
-    switch_next: () ->
-      @switch_to(@next) if @next
-    switch_prev: () ->
-      @switch_to(@prev) if @prev
-    switch_to: (other) ->
-      @disableForm()
-      @hide()
-      other.show()
-      other.enableForm()
-
   class PageFragment extends Module
-    @include ChainableObject
-    constructor: (@fragment_selector, @receiver, @on_success, @on_error) ->
-      form = $(@fragment_selector).find(".simple_form")
-      form.on 'ajax:before', (event, data, textStatus) =>
-        @disableForm()
-        Preloader.show($(event.currentTarget).find('button:submit'))
-        true
-      form.on 'ajax:error', (event, data, textStatus) =>
-        Dialog.show_errors_json(data.responseJSON)
-        @enableForm()
-        @on_error.call(@receiver, event, data, textStatus) if @on_error
-        Preloader.hide()
-        true
-      form.on 'ajax:success', (event, data, textStatus) =>
-        @on_success.call(@receiver, event, data, textStatus) if @on_success
-        @enableForm()
-        Preloader.hide()
-        true
-      back_link = $(@fragment_selector).find(".js-back")
-      back_link.click( => @switch_prev())
-    hide: ->
-      $(@fragment_selector).hide()
-    show: ->
-      $(@fragment_selector).show()
-    show_modal_success_dialog: ->
-      $(@fragment_selector).find('#js-modal_success_dialog').modal("show")
-    disableForm: ->
-      button = $(@fragment_selector).find('button:submit')
-      button.attr("disabled", "disabled")
-      button.fadeTo('fast', 0.5)
-    enableForm: ->
-      button=$(@fragment_selector).find('button:submit')
-      button.removeAttr("disabled")
-      button.fadeTo('fast', 1.0)
-    set_payment_data: (payment) ->
-      $(@fragment_selector).find('span.js-process_payment_desc').text(payment.process_payment_desc)
-      $(@fragment_selector).find('form.js-process_payment_form').attr('action', payment.process_payment_link)
+    @include Chainable
+
     @set_registration_data: (registration) ->
+      # set registration attributes for confiration form
       for key, value of registration
         span_class_name = "js-registration_"+key
-        selector = 'span.'+span_class_name
+        selector = "span.#{span_class_name}"
         $(selector).text(value)
+
       # set registration id for confiration form
-      # TODO det rid of insane below 
-      pairs = { f2: 'form.js-confirmation_form', f1: 'form.js-regenerate_password_form' }
-      for f, selector of pairs
+      arr = ['form.js-confirmation_form', 'form.js-regenerate_password_form']
+      for selector in arr
         element = $(selector)
         value = element.attr('action')
         element.attr('action', value.replace('registration_id', registration.id))
-      false
 
+    constructor: (@selector) ->
+      @default_success = @default_error = @default_before = true
+      @form = new RemoteForm($(@selector).find(".simple_form"), this)
+      back_link = $(@selector).find(".js-back")
+      back_link.click( => 
+        @switch_prev()
+        event.preventDefault()
+      )
+
+    hide: -> $(@selector).hide()
+    show: -> $(@selector).show()
+
+    error: (event, data, textStatus) => 
+      Dialog.show_errors_json(data.responseJSON)
+
+    success: (event, data) =>
+      if data
+        PageFragment.set_registration_data(data.registration) if data.registration
+        @rs.set_payment_data(data.payment) if data.payment
+      @switch_next()
+
+    set_payment_data: (payment) ->
+      $(@selector).find('span.js-process_payment_desc').text(payment.process_payment_desc)
+      $(@selector).find('form.js-process_payment_form').attr('action', payment.process_payment_link)
   
-  Delegator =
-    delegates: (methods, to) ->
-      methods.forEach (method) =>
-        @[method] = (args...) ->
-          @[to][method].apply(@[to], args)
-
-  class RegistrationStep extends Module
-    @include Delegator
-    on_error: () ->
-    on_success: (event, data, textStatus) ->
-      PageFragment.set_registration_data(data.registration) if data && data.registration
-      @rs.switch_next()
-      @rs.set_payment_data(data.payment) if data && data.payment
-      @rs.show_modal_success_dialog()
-    constructor: (fragment_selector)->
-      @rs = new PageFragment(fragment_selector, this, this.on_success, this.on_error)
-      @delegates(['set_next_prev', 'switch_prev', 'switch_next', 'switch_to', 'show', 'hide', 'enableForm', 'disableForm'], 'rs')
-
-
-  regStep1 = new RegistrationStep('.registration_input_fragment')
-  regStep2 = new RegistrationStep('.registration_confirm_fragment')
-  regStep3 = new RegistrationStep('.tariff_select_fragment')
-
+  regStep1 = new PageFragment('.registration_input_fragment')
+  regStep2 = new PageFragment('.registration_confirm_fragment')
+  regStep3 = new PageFragment('.tariff_select_fragment')
   regStep1.set_next_prev(regStep2, null)
   regStep2.set_next_prev(regStep3, regStep1)
   regStep3.set_next_prev(null,     regStep2)
@@ -124,26 +64,6 @@ $ ->
   deferred = '#deferred'
   password_sent = '#password_sent'
 
-  window.LOCALE =
-    base: 'Ошибка'
-    phone: 'Телефон'
-    ogrn: 'ОГРН'
-    password: 'Пароль'
-    offering: 'Тарифный план'
-    company: 'ОГРН'
-    timeout: 'Таймаут'
-    limit: 'Кол-во попыток'
-    server_error: 'На сервере произошла ошибка, попробуйте позже'
-
-  disableForm = (form) ->
-    $(form).find('input, button').attr("disabled", "disabled")
-
-  enableForm = (form) ->
-    $(form).find('input, button').removeAttr("disabled")
-
-  # Set masks on inputs
-  $("input.phone").mask('+7 (999) 999-99-99')
-  $("input.ogrn").mask('9999999999999?99')
 
   $('body').on 'keydown', "input.phone, input.ogrn", ->
     $('.promo').addClass('disabled')
