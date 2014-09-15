@@ -199,7 +199,7 @@ strong { font-weight: normal; }
 .container .jumbotron { margin: 15px 0 0 0; padding: 0; border-radius: 0; }
 .j-home { position: relative; min-height: 510px; background: url(../images/wrap-home.jpg) no-repeat 50% 0; }
 .j-signin { position: relative; min-height: 510px; background: url(../images/wrap-signin.jpg) no-repeat 50% 0; }
-.container .j-messages { position: relative; padding-top: 15px; padding-bottom: 55px; background: url(../images/wrap-messages.jpg) no-repeat 50% 0 fixed; }
+.container .j-messages { position: relative; padding-top: 45px; padding-bottom: 55px; background: url(../images/wrap-messages.jpg) no-repeat 50% 0 fixed; }
 
 .jumbotron p { font-weight: normal; }
 
