@@ -1,0 +1,10 @@
+var newMessages = [];
+<% @messages.each do |message| %>
+  if ($('#js-message-id-<%= message.id %>').length == 0) {
+    newMessages.push('#js-message-id-<%= message.id %>');
+  }
+<% end %>
+$('.js-messages').html("<%=j render partial: 'chat/message', collection: @messages %>")
+newMessages.forEach(function(message) {
+  $(message).hide().toggle('highlight', 2000);
+})
