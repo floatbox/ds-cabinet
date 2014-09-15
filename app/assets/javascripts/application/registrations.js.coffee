@@ -16,7 +16,7 @@ $ ->
         value = element.attr('action')
         element.attr('action', value.replace('registration_id', registration.id))
 
-    constructor: (@selector) ->
+    constructor: (@selector, @ga_url) ->
       @default_success = @default_error = @default_before = true
       @form = new RemoteForm($(@selector).find(".simple_form"), this)
       back_link = $(@selector).find(".js-back")
@@ -32,6 +32,7 @@ $ ->
       Dialog.show_errors_json(data.responseJSON)
 
     success: (event, data) =>
+      ga('send', 'pageview', @ga_url) if @ga_url
       if data
         PageFragment.set_registration_data(data.registration) if data.registration
         @rs.set_payment_data(data.payment) if data.payment
@@ -41,9 +42,9 @@ $ ->
       $(@selector).find('span.js-process_payment_desc').text(payment.process_payment_desc)
       $(@selector).find('form.js-process_payment_form').attr('action', payment.process_payment_link)
   
-  regStep1 = new PageFragment('.registration_input_fragment')
-  regStep2 = new PageFragment('.registration_confirm_fragment')
-  regStep3 = new PageFragment('.tariff_select_fragment')
+  regStep1 = new PageFragment('.registration_input_fragment',   '/virtual/step1')
+  regStep2 = new PageFragment('.registration_confirm_fragment', '/virtual/step2')
+  regStep3 = new PageFragment('.tariff_select_fragment',        '/virtual/step3')
   regStep1.set_next_prev(regStep2, null)
   regStep2.set_next_prev(regStep3, regStep1)
   regStep3.set_next_prev(null,     regStep2)
