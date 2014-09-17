@@ -1,17 +1,13 @@
 $ ->
-  form = $('.js-feedback_form')
-  button = form.find('button')
-  form.on 'ajax:success', (event, data) ->
-    button.removeAttr('disabled')
-    button.fadeTo('fast', 1.0)
-    Preloader.hide()
-    Dialog.info_text([data.message])
-  form.on 'ajax:error', (event, data, textStatus) =>
-    button.removeAttr('disabled')
-    button.fadeTo('fast', 1.0)
-    Preloader.hide()
-    Dialog.show_errors_json(data.responseJSON)
-  form.on 'ajax:before', (event, data) ->
-    button.attr('disabled', 'disabled')
-    button.fadeTo('fast', 0.5)
-    Preloader.show(button)
+  class FeedbackForm
+    constructor: ->
+      @form = new RemoteForm('.js-feedback_form', this)
+      @default_success = @default_error = @default_before = true
+
+    success: (event, data) =>
+      Dialog.info_text([data.message])
+
+    error: (event, data, textStatus) =>
+      Dialog.show_errors_json(data.responseJSON)
+
+  new FeedbackForm()

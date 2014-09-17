@@ -19,6 +19,7 @@
 //
 // Require project files
 //= require main.js
+//= require_tree ./global
 //= require ./dialog
 //= require ./preloader
 //= require ./header
