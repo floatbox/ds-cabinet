@@ -30,7 +30,10 @@
                 <tr>
                   <td><label>Пароль (отправлен в смс)</label>
                     <div class="note">
-                      <%= link_to "Отправить еще раз через 60 сек", '#', class: 'js-regenerate_password_link' %>
+                      <%= link_to(
+                        "Отправить еще раз<span class='counter_text'></span>".html_safe, 
+                        '#', class: 'js-regenerate_password_link'
+                      ) %>
                     </div>
                   </td>
                   <td width="105">
