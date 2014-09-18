@@ -1,8 +1,8 @@
 Ds::Siebel.configure :test, :development do
-  url 'https://sbldev.dasreda.ru:8443'
-  login 'testuser01'
-  password '1234'
-  wsdl_path "#{Rails.root}/data/wsdl"
+  url 'https://siebel.dasreda.ru:9443'
+  login 'Club'
+  password 'Xxrhvdlz'
+  wsdl_path "#{Rails.root}/data/wsdl_development"
 end
 
 Ds::Siebel.configure :staging do
