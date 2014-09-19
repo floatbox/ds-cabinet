@@ -1,14 +1,12 @@
 module SelectorsHelpers
   def area_to_selector(name)
     case name
-    when /шапк(?:а|е)/
-      'header.page-header'
-    when /контент(?:е)/
-      'section.page-body'
-    when /подвал(?:е)/
-      'footer.page-footer'
+    when /шапк(?:а|е)/                     then 'header.page-header'
+    when /контент(?:е)/                    then 'section.page-body'
+    when /подвал(?:е)/                     then 'footer.page-footer'
+    when /форм(?:а|е) регистрации и входа/ then '.js-forms_container'
     else
-      raise "Unknown area: #{name}, should be either шапк(а|е), контент(е), подвал(е)"
+      raise "Unknown area: #{name}, should be either шапк(а|е), контент(е), подвал(е) или форм(а|е) регистрации и входа"
     end
   end
 
