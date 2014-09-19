@@ -23,6 +23,7 @@ config/password_generator.yml
 .DS_Store
 *.todo
 features/screenshots
+features/screenshots/*
 
 # my vim session config file
 Session.vim
