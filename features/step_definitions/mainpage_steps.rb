@@ -13,7 +13,7 @@ end
 # @param[String] name - текст ссылки или кнопки
 # @param[String] area - шапка|контент|подвал
 Если(/^пользователь кликает (.*?) "(.*?)" в (.*?)$/) do |element, name, area|
-  within(selector_to_area area) do
+  within(area_to_selector area) do
     case element
     when /кнопк(?:а|у|е)/
       click_button name

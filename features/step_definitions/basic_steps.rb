@@ -26,7 +26,7 @@ end
 # @param[String] name - текст ссылки или кнопки, или значение placeholder для поля ввода
 #
 То(/^в (.*?) (имеется|отсутствует?) (.*?) "(.*?)"$/) do |area, existence, element, name|
-  x = find(selector_to_area area)
+  x = find(area_to_selector area)
   
   should_exist = case existence
   when 'имеется'
@@ -58,7 +58,7 @@ end
 # @param[String] name - текст ссылки или кнопки
 # @param[String] area - шапка|контент|подвал
 Если(/^пользователь кликает (.*?) "(.*?)" в (.*?)$/) do |element, name, area|
-  within(selector_to_area area) do
+  within(area_to_selector area) do
     case element
     when "кнопку"
       click_button name

@@ -1,5 +1,5 @@
 module SelectorsHelpers
-  def selector_to_area(name)
+  def area_to_selector(name)
     case name
     when /шапк(?:а|е)/
       'header.page-header'
