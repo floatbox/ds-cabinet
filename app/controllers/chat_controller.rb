@@ -5,6 +5,7 @@ class ChatController < ApplicationController
   # Override Cancan resource loading
   # before_action :set_messages, only: [:index]
   before_action :build_message, only: [:create]
+  before_action :has_paid_access
   # load_and_authorize_resource
 
   # GET /chat
