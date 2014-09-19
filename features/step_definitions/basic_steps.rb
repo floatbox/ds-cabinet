@@ -39,22 +39,17 @@ end
 
   case element
   when /кнопка/ 
-    if should_exist
-      begin
-        x.should have_selector(:button, name)
-      rescue Capybara::ElementNotFound
-        x.should have_selector(:link, name) # ссылка может выглядеть как кнопка
-      end
-    else
-      ( x.should have_not_selector :button, name ) && 
-      ( x.should have_not_selector :link,   name )
-    end
+    should_exist ? ( x.should have_selector     :button, name ) :
+                   ( x.should_not have_selector :button, name )
   when /ссылка/
     should_exist ? ( x.should have_selector     :link, name ) : 
-                   ( x.should have_not_selector :link, name )
+                   ( x.should_not have_selector :link, name )
   when /поле ввода/
-    should_exist ? ( x.should have_xpath    %Q(//input[@placeholder='#{name}']) ) : 
-                   ( x.should have_no_xpath %Q(//input[@placeholder='#{name}']) )
+    should_exist ? ( x.should have_xpath     %Q(//input[@placeholder='#{name}']) ) : 
+                   ( x.should_not have_xpath %Q(//input[@placeholder='#{name}']) )
+  when /переключатель/
+    should_exist ? ( x.should have_selector("label.cuc-switcher_label", text:name ) ) :
+                   ( x.should_not have_selector("label.cuc-switcher_label", text:name ) )
   end
 end
 
@@ -65,14 +60,15 @@ end
 Если(/^пользователь кликает (.*?) "(.*?)" в (.*?)$/) do |element, name, area|
   within(selector_to_area area) do
     case element
-    when /кнопк(?:а|у|е)/
-      begin
-        click_button name
-      rescue Capybara::ElementNotFound
-        click_link name # возможно, это ссылка, стилизованная под кнопку
-      end
-    when /ссылк(?:а|у|е)/
+    when "кнопку"
+      click_button name
+    when "ссылку"
       click_link name
+    when "переключатель"
+      should have_selector("label.cuc-switcher_label", text:name )
+      find("label.cuc-switcher_label", text:name ).click
+    else
+      raise "Unknown option: #{existence}, should be either кнопку, ссылку, переключатель"
     end
   end
 end

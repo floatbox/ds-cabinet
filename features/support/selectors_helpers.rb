@@ -2,22 +2,26 @@ module SelectorsHelpers
   def selector_to_area(name)
     case name
     when /шапк(?:а|е)/
-       '.header'
+      'header.page-header'
     when /контент(?:е)/
-       '.jumbotron'
+      'section.page-body'
     when /подвал(?:е)/
-       '.footer'
+      'footer.page-footer'
+    else
+      raise "Unknown area: #{name}, should be either шапк(а|е), контент(е), подвал(е)"
     end
   end
 
   def selector_to_element(type, name)
-    case name
+    case type
     when /кнопк(?:а|е)/
-       %Q/input[value="#{name}"]/
+      %Q/input[value="#{name}"]/
     when /поле ввода/
-       %Q/input[name="#{name}"]/
+      %Q/input[name="#{name}"]/
     when /ссылк(?:а|е)/
-       %Q/a[name="#{name}"]/
+      %Q/a[name="#{name}"]/
+    else
+      raise "Unknown element: #{type}, should be either кнопк(а|е), ссылк(а|е), поле ввода"
     end
   end
 end

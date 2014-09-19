@@ -58,4 +58,5 @@ end
 Cucumber::Rails::Database.javascript_strategy = :transaction
 Capybara.javascript_driver = :webkit
 Capybara.default_driver = :webkit
+Capybara.ignore_hidden_elements = true
 WebMock.disable_net_connect!(:allow_localhost => true)
