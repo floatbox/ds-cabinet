@@ -1,20 +1,10 @@
 # Проверяет наличие формы регистрации и входа
 # @param[String] existence - имеется|отсутствует
 Если(/^(имеется|отсутствует?) форма регистрации и входа$/) do |existence|
-  tabs_selector = '.js-forms_container'
-  area = "контент"
-
-  x = find(area_to_selector area)
+  x = find(area_to_selector "контент")
   x.should be
-  
-  should_exist = case existence
-    when 'имеется'     then true
-    when 'отсутствует' then false
-    else raise "Unknown option: #{existence}, should be either имеется or отсутствует"
-  end
-
-  should_exist ? ( x.should     have_selector(tabs_selector) ) :
-                 ( x.should_not have_selector(tabs_selector) )
+  existence == "имеется" ? ( x.should     have_selector('.js-forms_container') ) :
+                           ( x.should_not have_selector('.js-forms_container') )
 end
 
 Если(/^пользователь кликает на вкладке "(Вход|Регистрация?)" формы регистрации и входа$/) do |name|

@@ -27,15 +27,7 @@ end
 #
 То(/^в (.*?) (имеется|отсутствует?) (.*?) "(.*?)"$/) do |area, existence, element, name|
   x = find(area_to_selector area)
-  
-  should_exist = case existence
-  when 'имеется'
-    true
-  when 'отсутствует'
-    false
-  else
-    raise "Unknown option: #{existence}, should be either имеется or отсутствует"
-  end
+  should_exist = existence == 'имеется' ? true : false
 
   case element
   when /кнопка/ 
@@ -57,18 +49,12 @@ end
 # @param[String] element - кнопка|кнопку|кнопке|ссылка|ссылку|ссылке
 # @param[String] name - текст ссылки или кнопки
 # @param[String] area - шапка|контент|подвал
-Если(/^пользователь кликает (.*?) "(.*?)" в (.*?)$/) do |element, name, area|
+Если(/^пользователь кликает (кнопку|ссылку|переключатель?) "(.*?)" в (.*?)$/) do |element, name, area|
   within(area_to_selector area) do
     case element
-    when "кнопку"
-      click_button name
-    when "ссылку"
-      click_link name
-    when "переключатель"
-      should have_selector("label.cuc-switcher_label", text:name )
-      find("label.cuc-switcher_label", text:name ).click
-    else
-      raise "Unknown option: #{existence}, should be either кнопку, ссылку, переключатель"
+      when "кнопку"        then click_button name
+      when "ссылку"        then click_link name
+      when "переключатель" then find("label.cuc-switcher_label", text:name ).click
     end
   end
 end
