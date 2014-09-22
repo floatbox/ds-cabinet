@@ -50,6 +50,7 @@ end
 # @param[String] name - текст ссылки или кнопки
 # @param[String] area - шапка|контент|подвал
 Если(/^пользователь кликает (кнопку|ссылку|переключатель?) "(.*?)" в (.*?)$/) do |element, name, area|
+  @windows_handles = page.driver.browser.window_handles
   within(area_to_selector area) do
     case element
       when "кнопку"        then click_button name
@@ -58,3 +59,15 @@ end
     end
   end
 end
+
+То(/^открывается новое окно$/) do
+  @windows_handles - page.driver.browser.window_handles == -1
+end
+
+То(/^открывшееся окно имеет заголовок "(.*?)"$/) do |text|
+  new_window = page.driver.browser.window_handles.last 
+  page.within_window new_window do
+    should have_selector('h1', text: text)
+  end
+end
+
