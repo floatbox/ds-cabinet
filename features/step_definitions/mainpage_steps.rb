@@ -1,3 +1,12 @@
+# Проверяет наличие формы обратной связи
+# @param[String] existence - имеется|отсутствует
+Если(/^(имеется|отсутствует?) форма обратной связи$/) do |existence|
+  x = find(area_to_selector "контент")
+  x.should be
+  existence == "имеется" ? ( x.should     have_selector('.js-feedback_form') ) :
+                           ( x.should_not have_selector('.js-feedback_form') )
+end
+
 # Проверяет наличие формы регистрации и входа
 # @param[String] existence - имеется|отсутствует
 Если(/^(имеется|отсутствует?) форма регистрации и входа$/) do |existence|
