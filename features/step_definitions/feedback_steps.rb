@@ -1,5 +1,5 @@
 То(/^в поддержку должно прийти письмо обратной связи:$/) do |table|
-  sleep 0.1
+  sleep 1.0
   unread_emails_for('Legko_support@dasreda.ru').select do |m| 
     table.raw.each do |key, val|
       case key
