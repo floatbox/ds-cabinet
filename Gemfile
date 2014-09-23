@@ -75,6 +75,7 @@ group :test do
   gem 'capybara-webkit'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'email_spec'
 end
 
 # Use debugger

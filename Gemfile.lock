@@ -134,6 +134,9 @@ GEM
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
+    email_spec (1.6.0)
+      launchy (~> 2.1)
+      mail (~> 2.2)
     erubis (2.7.0)
     eventmachine (1.0.3)
     exception_notification (4.0.1)
@@ -351,6 +354,7 @@ DEPENDENCIES
   ds-siebel!
   ds-sns!
   ds-spark!
+  email_spec
   exception_notification
   factory_girl_rails
   jbuilder (~> 1.2)
