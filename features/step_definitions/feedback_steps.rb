@@ -1,8 +1,7 @@
 То(/^в поддержку должно прийти письмо обратной связи:$/) do |table|
   sleep 0.1
   unread_emails_for('Legko_support@dasreda.ru').select do |m| 
-    table.raw.each do |raw|
-      key, val = *raw
+    table.raw.each do |key, val|
       case key
         when 'с адресом'   then m.from.first.should == val
         when 'с телефоном' then m.body.to_s.should include("Телефон: #{val}")
