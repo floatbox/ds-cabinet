@@ -90,3 +90,7 @@ end
 То(/^Ajax запрос (|не ?)выполняется$/) do |negation|
   page.evaluate_script('jQuery.active == 0').should == (negation == 'не ' ? true : false)
 end
+
+То(/^появляется сообщение "(.*?)"$/) do |message|
+  should have_selector('#myModal', text:message)
+end
