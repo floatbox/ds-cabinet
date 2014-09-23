@@ -1,5 +1,12 @@
 То(/^в поддержку должно прийти письмо обратной связи:$/) do |table|
-  sleep 1.0
+  # wait up to 50 * 0.1 = 5 seconds for the email
+  (0...50).each do
+    break if unread_emails_for('Legko_support@dasreda.ru').size != 0
+    puts "waiting for email"
+    sleep 0.1
+  end
+
+  # go on to check the email
   unread_emails_for('Legko_support@dasreda.ru').select do |m| 
     table.raw.each do |key, val|
       case key
