@@ -30,17 +30,20 @@ end
   should_exist = existence == 'имеется' ? true : false
 
   case element
-  when /кнопка/ 
-    should_exist ? ( x.should have_selector     :button, name ) :
+  when "кнопка" 
+    should_exist ? ( x.should     have_selector     :button, name ) :
                    ( x.should_not have_selector :button, name )
-  when /ссылка/
-    should_exist ? ( x.should have_selector     :link, name ) : 
+  when "ссылка"
+    should_exist ? ( x.should     have_selector :link, name ) : 
                    ( x.should_not have_selector :link, name )
-  when /поле ввода/
-    should_exist ? ( x.should have_xpath     %Q(//input[@placeholder='#{name}']) ) : 
-                   ( x.should_not have_xpath %Q(//input[@placeholder='#{name}']) )
-  when /переключатель/
-    should_exist ? ( x.should have_selector("label.cuc-switcher_label", text:name ) ) :
+  when "поле ввода"
+    should_exist ? ( x.should     have_xpath "//input[@placeholder='#{name}']" ) : 
+                   ( x.should_not have_xpath "//input[@placeholder='#{name}']" )
+  when "моногострочное поле ввода"
+    should_exist ? ( x.should     have_xpath "//textarea[@placeholder='#{name}']" ) : 
+                   ( x.should_not have_xpath "//textarea[@placeholder='#{name}']" )
+  when "переключатель"
+    should_exist ? ( x.should     have_selector("label.cuc-switcher_label", text:name ) ) :
                    ( x.should_not have_selector("label.cuc-switcher_label", text:name ) )
   end
 end
