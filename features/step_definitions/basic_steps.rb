@@ -91,6 +91,10 @@ end
   page.evaluate_script('jQuery.active == 0').should == (negation == 'не ' ? true : false)
 end
 
+То(/^появляется сообщение об ошибке "(.*?)"$/) do |message|
+  should have_selector('#myModal', text:message)
+end
+
 То(/^появляется сообщение "(.*?)"$/) do |message|
   should have_selector('#myModal', text:message)
 end
