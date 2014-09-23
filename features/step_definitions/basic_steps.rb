@@ -62,6 +62,15 @@ end
     end
   end
 end
+ 
+Если(/^пользователь заполняет (многострочное поле ввода|поле ввода?) "(.*?)" в (.*?) значением "(.*?)"$/) do |element, name, area, value|
+  x = find(area_to_selector area)
+  case element
+    when "поле ввода"                then e = x.find(:xpath, "//input[@placeholder='#{name}']" )
+    when "многострочное поле ввода" then e = x.find(:xpath, "//textarea[@placeholder='#{name}']" )
+  end
+  e.set value
+end
 
 То(/^открывается новое окно$/) do
   @windows_handles - page.driver.browser.window_handles == -1
@@ -74,3 +83,10 @@ end
   end
 end
 
+То(/^задержка (.*?) сек$/) do |delay_sec|
+  sleep delay_sec.to_f/1.0
+end
+
+То(/^Ajax запрос (|не ?)выполняется$/) do |negation|
+  page.evaluate_script('jQuery.active == 0').should == (negation == 'не ' ? true : false)
+end
