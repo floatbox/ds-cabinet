@@ -1,9 +1,8 @@
 То(/^в поддержку должно прийти письмо обратной связи:$/) do |table|
   # wait up to 50 * 0.1 = 5 seconds for the email
-  (0...50).each do
-    break if unread_emails_for('Legko_support@dasreda.ru').size != 0
+  wait_up_to 5.seconds do
     puts "waiting for email"
-    sleep 0.1
+    unread_emails_for('Legko_support@dasreda.ru').size != 0
   end
 
   # go on to check the email
