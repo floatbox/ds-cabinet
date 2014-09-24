@@ -38,7 +38,9 @@ module Uas
     # @return [Boolean] whether user exists
     def self.exist?(login)
       url = "user/login/?"
-      request = { login: login, password: SecureRandom.hex(32) }
+      #request = { login: login, password: SecureRandom.hex(32) }
+      # changed it to prevent VCR from saving requests for random passwords
+      request = { login: login, password: 'fake password to test if login exists' }
       response = Uas::Query.execute(url, request: request, method: :post)
       if response[:code] == 400
         json = JSON::parse(response[:body])
