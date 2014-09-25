@@ -104,3 +104,9 @@ end
 То(/^появляется сообщение "(.*?)"$/) do |message|
   should have_selector('#myModal', text:message)
 end
+
+То(/^закрывает сообщение$/) do
+  within(area_to_selector("сообщение")) do
+    click_button "Ок"
+  end
+end
