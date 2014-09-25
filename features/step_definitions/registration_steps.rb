@@ -36,7 +36,13 @@ end
   end
 end
 
+Если(/^компании в Siebel не существует$/) do
+  #allow(Registration.any_instance).to receive(:siebel_company_exists?).and_return(false)
+  allow(Account).to receive(:where).and_return([])
+end
+
 Если(/^правильно заполняет ОГРН и телефон и переходит к следующему шагу$/) do
+  step("компании в Siebel не существует")
   step("указывает телефон, прежде не использовавшийся для регистрации")
   step("указывает существующий ОГРН, прежде не использовавшийся для регистрации")
   step("начинает регистрацию")
