@@ -2878,4 +2878,229 @@ http_interactions:
       string: '105065'
     http_version: 
   recorded_at: Wed, 24 Sep 2014 15:12:30 GMT
+- request:
+    method: post
+    uri: https://ccdemopim.sredda.ru:5443/authentication/user/
+    body:
+      encoding: UTF-8
+      string: '{"Login":"+77441111111","Password":"180","FirstName":"Ольга","LastName":"Батурина","PatronymicName":"Анатольевна","Country":null,"Phone":"+77441111111","IsDisabled":true}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '167'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Thu, 25 Sep 2014 12:11:46 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJGaXJzdE5hbWUiOiLQntC70YzQs9CwIiwiSXNEaXNhYmxlZCI6dHJ1ZSwi
+        TGFzdE5hbWUiOiLQkdCw0YLRg9GA0LjQvdCwIiwiTG9naW4iOiIrNzc0NDEx
+        MTExMTEiLCJVc2VySWQiOiJVQVMxMDAxNzMiLCJVc2VyTmF0aXZlSWQiOiIx
+        LTFXTVlVMCIsIlVzZXJTeXNOYW1lIjoic2llYmVsIn0=
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:12:14 GMT
+- request:
+    method: post
+    uri: https://sns.sredda.ru:4443/socialNetwork2/entity
+    body:
+      encoding: UTF-8
+      string: '{"__type":"Person.SaveData","ComplexId":{"EntityType":"Person","SystemId":"1-1WMYU0","SystemName":"siebel"},"Content":null,"Name":"Не
+        определено","IsVip":false,"VipText":"","Categories":[]}'
+    headers:
+      User-Id:
+      - 1-4DFE
+      User-Sysname:
+      - siebel
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '0'
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Thu, 25 Sep 2014 12:12:09 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:12:31 GMT
+- request:
+    method: post
+    uri: https://siebel.dasreda.ru:9443/eai_anon_rus/start.swe?SWEExtCmd=Execute&SWEExtSource=SecureWebService
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://siebel.com/CustomUI" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ins0="http://www.siebel.com/xml/SBT%20Account"><env:Header><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/07/secext">
+                    <wsse:UsernameToken xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility">
+                      <wsse:Username>Club</wsse:Username>
+                      <wsse:Password Type="wsse:PasswordText">Xxrhvdlz</wsse:Password>
+                    </wsse:UsernameToken>
+                  </wsse:Security></env:Header><env:Body><tns:AccountSync_Input><tns:ListOfSbtAccount><tns:Account><tns:IntegrationId>DC1411647154221</tns:IntegrationId><tns:Type>Юридическое лицо</tns:Type><tns:SBTName>Батурина Ольга Анатольевна</tns:SBTName><tns:SBTINN>771607534337</tns:SBTINN><tns:SBTOGRN>306770000348481</tns:SBTOGRN></tns:Account></tns:ListOfSbtAccount></tns:AccountSync_Input></env:Body></env:Envelope>
+    headers:
+      Accept-Encoding:
+      - gzip
+      Soapaction:
+      - '"document/http://siebel.com/CustomUI:AccountSync"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1093'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '455'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Server:
+      - Microsoft-IIS/7.5
+      -Charset:
+      - UTF-8
+      Date:
+      - Thu, 25 Sep 2014 12:12:40 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: <?xml version="1.0" encoding="UTF-8"?><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><SOAP-ENV:Body><ns:AccountSync_Output
+        xmlns:ns="http://siebel.com/CustomUI"><ns:Error_spcCode></ns:Error_spcCode><ns:Error_spcMessage></ns:Error_spcMessage><ns:Result>1</ns:Result></ns:AccountSync_Output></SOAP-ENV:Body></SOAP-ENV:Envelope>
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:12:42 GMT
+- request:
+    method: get
+    uri: https://sns.sredda.ru:4443/socialNetwork2/entity/?systemId=1-1WMYUL&systemName=siebel&type=Company
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Id:
+      - 1-1WMYU0
+      User-Sysname:
+      - siebel
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Length:
+      - '830'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Thu, 25 Sep 2014 12:12:25 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"__type":"DataObjectNotFoundFault","ErrorMessage":"Data object not
+        found.","ServerStackTrace":"   at Dsrd.Sns.SocialNetwork.Service.Entity_Get(String
+        entityType, String systemName, String systemId)\u000d\u000a   at SyncInvokeEntity_Get(Object
+        , Object[] , Object[] )\u000d\u000a   at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object
+        instance, Object[] inputs, Object[]& outputs)\u000d\u000a   at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean
+        isOperationContextSet)","ObjectName":"Entity"}'
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:12:47 GMT
+- request:
+    method: post
+    uri: https://sns.sredda.ru:4443/socialNetwork2/entity
+    body:
+      encoding: UTF-8
+      string: '{"__type":"Company.SaveData","ComplexId":{"EntityType":"Company","SystemId":"1-1WMYUL","SystemName":"siebel"},"Name":"Батурина
+        Ольга Анатольевна"}'
+    headers:
+      User-Id:
+      - 1-1WMYU0
+      User-Sysname:
+      - siebel
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '0'
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Thu, 25 Sep 2014 12:12:31 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:12:52 GMT
+- request:
+    method: put
+    uri: https://ccdemopim.sredda.ru:5443/authentication/user/siebel/UAS100173/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '0'
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Thu, 25 Sep 2014 12:12:29 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:12:57 GMT
+- request:
+    method: post
+    uri: https://ccdemopim.sredda.ru:5443/authentication/user/login/
+    body:
+      encoding: UTF-8
+      string: '{"login":"+77441111111","password":"180"}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '346'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Thu, 25 Sep 2014 12:12:35 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJUb2tlbiI6ImErMkZaeU5TSWJmNExtXC9QYkljam5hYUxDc2tuampHSUo3
+        S2V1RWx1SmE0ME1DNXdkcFwvZXhscHNSWDN0UkVVeVcwVUJSWStDaTk4YitS
+        S1hkOHNtV3pGQkdZMnpCZW5kRjhJXC9Ibldzak5TdGN2Z2JwWVwvRWNWRzBQ
+        VzlzZWZcL0FNc1F1QjF4SU5KMkdmaEJpQjlIeGNRPT18MjAxNC0wOS0yNVQx
+        NDoxMjozNSIsIlVzZXIiOnsiRmlyc3ROYW1lIjoi0J7Qu9GM0LPQsCIsIkxh
+        c3ROYW1lIjoi0JHQsNGC0YPRgNC40L3QsCIsIkxvZ2luIjoiKzc3NDQxMTEx
+        MTExIiwiVXNlcklkIjoiVUFTMTAwMTczIiwiVXNlck5hdGl2ZUlkIjoiMS0x
+        V01ZVTAiLCJVc2VyU3lzTmFtZSI6InNpZWJlbCJ9fQ==
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:13:03 GMT
 recorded_with: VCR 2.9.2
