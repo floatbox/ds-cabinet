@@ -4,6 +4,8 @@ OGRN_VALID  = '306770000348481'
 OGRN_VALID_FIRST_NAME = 'Ольга Анатольевна'
 OGRN_VALID_LAST_NAME  = 'Батурина'
 OGRN_VALID_PASSWORD = "180"
+INTEGRATION_ID = "UAS100173"
+CONTACT_ID = "1-1WMYU0"
 
 Если(/^отсутствует объект модели регистрации$/) do
   Registration.find_by_ogrn(OGRN_VALID).should_not be
@@ -46,6 +48,18 @@ end
     Account.unstub(:where)
   else
     allow(Account).to receive(:where).and_return([])
+  end
+end
+
+Если(/^(|отмена ?)контакт в Siebel существует$/) do |negation|
+  if negation == "отмена "
+    Contact.unstub(:find_by_integration_id)
+  else
+    Contact.stub :find_by_integration_id do
+      Object.new.tap.define_singleton_method :id do
+        CONTACT_ID
+      end
+    end
   end
 end
 
@@ -95,6 +109,7 @@ end
 end
 
 Если(/^проверяет свои ОГРН, телефон и имя, вводит пароль и переходит к следующему шагу$/) do
+  step "контакт в Siebel существует"
   #step("отмена компании в Siebel не существует")
   step %Q(скриншот "registration - confirmation start")
   step "видит правильные регистрационные данные"
@@ -116,5 +131,6 @@ end
   step %Q(скриншот "registration - confirmation finish")
   step "вводит правильный пароль"
   step "подтверждает регистрацию"
+  step "отмена контакт в Siebel существует"
   step %Q(скриншот "registration - payment start")
 end
