@@ -1,3 +1,5 @@
+<script src="https://www.youtube.com/iframe_api"></script>
+
 <section class="case-lead">
   <div class="globalwidth">
     <div class="content">
@@ -12,7 +14,7 @@
       </div>
       <div class="movie">
         <div class="crop">
-          <iframe width="320" height="180" src="http://youtube.com/embed/YAasgDBM6Es" frameborder="0" allowfullscreen></iframe>
+          <div id="playVideo"></div>
         </div>
       </div>
     </div>
@@ -116,4 +118,12 @@
     </div>
   </section>
   <%= render partial: "feedback/form" %>
+</div>
+
+<div class="modal fade" id="showVideo" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" style="width:1000px">
+    <div class="modal-content" style="padding:0; border:0;background-color: transparent;box-shadow:none;-webkit-box-shadow:none">
+    	<iframe id="video_embed" class="youtube-player" type="text/html" width="1000" height="563" src="https://www.youtube.com/embed/Edl_4nkHqvA?rel=0&amp;hd=1&amp;vq=hd720&amp;enablejsapi=1" frameborder="0" allowfullscreen=""></iframe>
+    </div>
+  </div>
 </div>
