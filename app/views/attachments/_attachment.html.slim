@@ -1,3 +1,3 @@
-div
-  i.icon-paperclip
-  = link_to @attachment.attachment.file.filename, @attachment.attachment.url, target: '_blank'
+div.file_item
+  = link_to @attachment.attachment.file.filename, @attachment.attachment.url, target: '_blank', class: 'ico'
+  span.delete

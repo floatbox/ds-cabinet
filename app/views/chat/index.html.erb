@@ -1,18 +1,8 @@
-<div class="jumbotron j-messages">
+<h2>Сообщения</h2>
+<div class="messages" id="js-messages">
+  <%= render partial: 'chat/form', object: @new_message, as: :new_message %>
 
-  <div id="js-topic">
+  <%= render partial: 'chat/message', collection: @messages, locals: { total_size: @messages.size } %>
 
-    <div class="messages js-topic" >
-
-        <div class="addcomment js-new-message">
-          <%= render partial: 'chat/form', object: @new_message, as: :new_message %>
-        </div>
-
-        <div class="reply js-messages">
-          <%= render partial: 'chat/message', collection: @messages, locals: { total_size: @messages.size } %>
-        </div>
-
-    </div>
-  </div>
-    <%= render 'update_messages' %>
+  <%= render 'update_messages' %>
 </div>

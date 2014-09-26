@@ -1,85 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Деловой Ассистент</title>
+<html lang="ru">
+  <head>
+    <title>Чат - Legko.li</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-  <!-- Bootstrap -->
-  <link href="/chat/css/bootstrap.css" rel="stylesheet">
-  <link href="/chat/css/style.css" rel="stylesheet">
-  <%= stylesheet_link_tag "chat/application" %>
+    <link rel="shortcut icon" type="image/x-icon" href="http://demo.legko.li/legko-bs/images/ico/favicon.ico" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400&subset=latin,cyrillic" />
+    <!-- Bootstrap -->
+    <link href="/legko-bs/css/bootstrap.min.css" rel="stylesheet" media="screen">
 
-  <%= javascript_include_tag "chat/application" %>
+    <link href="/legko-bs/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/legko-bs/css/chat.css" rel="stylesheet" type="text/css" />
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
+    <%= stylesheet_link_tag "chat/application" %>
 
-  <%= csrf_meta_tags %>
+    <%= javascript_include_tag "chat/application" %>
 
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
+      <script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
+      <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
 
-    ga('create', 'UA-51418540-1', 'legko.li');
-    ga('send', 'pageview');
-  </script>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <a href="/"><img src="/chat/images/header-logo.png" height="58" width="75" alt="" class="header-logo pull-left"></a>
+    <%= csrf_meta_tags %>
 
-      <%= render partial: 'notifications/panel', object: current_user.notifications.unread.page(0).per(5), as: :notifications %>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      <% if false && (!current_user.is_concierge? || params[:user_id].present?) %>
-        <%= render partial: 'search_bar' %>
-      <% end %>
+      ga('create', 'UA-51418540-1', 'legko.li');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body class="main">
+    <article class="page">
+  <header class="page-header">
+    <div class="globalwidth">
+      <a class="logo" href="/"></a>
+      <nav class="tm">
+        <ul>
+          <li><a class="js-gotoRegistrationForm" href="#">Войти</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-      <div class="header-logged">
-        <img src="/chat/images/avatar_dummy.png" height="32" width="32" alt="" class="ava">
-        <p>
-          <%= link_to 'Выйти', session_path('current_user'), method: :delete, class: 'logout' %>
-          <br />
-          <% if current_user.siebel.full_name.present? %>
-            <%= link_to current_user.siebel.full_name, edit_user_path(current_user), class: 'js-show-modal-window', data: { target: '#js-modal' } %>
-          <% else %>
-            <%= link_to 'Профиль', edit_user_path(current_user), class: 'js-show-modal-window', data: { target: '#js-modal' } %>
-          <% end %>
-        </p>
+  <section class="page-body">
+  <div class="registration_input_fragment" >
+     <section class="case-intro index">
+      <div class="globalwidth">
+        <div class="container" style="background:url(legko-bs/images/bg/bg_chat.jpg) no-repeat 0 0;">
+          <div class="info">
+            <h2>Личный кабинет</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-messages">
+    <div class="globalwidth">
+      <div class="content">
+
+        <%= yield %>
+<!--
+        <div class="messages_pager">
+          <a href="#">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">4</a>
+          <a href="#">5</a>
+          <a href="#">&gt;&gt;</a>
+        </div>
+ -->
+      </div>
+
+      <div class="content_right profile forms">
+        <h2>Профиль</h2>
+        <form>
+        <div class="profile_form">
+
+          <div class="user_data">
+            <div class="full_name">
+              <div class="first_name">Сергей</div>
+              <div class="first_name2">Александрович</div>
+              <div class="last_name">Пушкин</div>
+            </div>
+            <div id="act_logout" class="act">выход</div>
+            <div id="act_profile_edit" class="act">редактировать</div>
+          </div>
+
+          <table class="tb_fields" id="profile_edit" style="display: none">
+            <tr class="fl">
+              <td>
+                <div class="field"><input type="text" id="form_fisrt_name1" value="Сергей" placeholder="Фамилия" required="required"></div>
+              </td>
+            </tr>
+            <tr class="fl">
+              <td>
+                <div class="field"><input type="text" id="form_fisrt_name2" value="Александрович" placeholder="Имя" required="required"></div>
+              </td>
+            </tr>
+            <tr class="fl">
+              <td>
+                <div class="field"><input type="text" id="form_last_name" value="Пушкин" placeholder="Отчество" required="required"></div>
+              </td>
+            </tr>
+          </table>
+          <img src="legko-bs/images/avatar.png" width="36" height="36" class="profile_ava" />
+        </div>
+
+        <div class="profile_data">
+          <div class="type">Телефон</div>
+          <div class="data">+7 (495) 123-88-77</div>
+        </div>
+        <div class="profile_data">
+          <div class="type">Организация</div>
+          <div class="data">ИП "Мелафонов И.А."</div>
+        </div>
+        <div class="profile_data">
+          <div class="type">ОГРН</div>
+          <div class="data">487539490934723748</div>
+        </div>
+        <div class="profile_data">
+          <div class="type">ИНН</div>
+          <div class="data">2343723623652</div>
+        </div>
+        <div class="profile_data">
+          <div class="type">Налоговый режим</div>
+          <div class="data">ЕНВД</div>
+        </div>
+
+        <div id="podpiska">
+          <span>До окончания подписки осталось: 30 дней<br />
+          К оплате: 1860 р.</span>
+            <button class="btn-grn btn-left btn125">Оплатить</button>
+        </div>
+
+        <div id="profile_save" class="btn-group" style="display: none">
+            <button id="data_cancel" class="btn-grn btn-left btn125">Отменить</button>
+            <button id="data_save" class="btn-orn btn-right btn125">Сохранить</button>
+          </div>
+
+          </form>
       </div>
     </div>
+    </section>
 
-    <%= yield %>
 
-    <div class="footer">
-        <p class="footer-copy pull-left"> © 2014 ЗАО «Деловая среда»</p>
-        <p class="footer-contacts pull-right">
-          +7-800-100-90-80<br>
-          <a href="mailto:support@dasreda.ru">support@dasreda.ru</a>
-        </p>
+
+  </div>
+  </section>
+
+
+  <footer class="page-footer">
+  <div class="globalwidth">
+      <div class="content">
+        <div class="info">
+          <div class="cols">
+            <div class="col1">
+              <a class="logo" href="/"></a>
+            </div>
+            <div class="col2">
+              <div class="copyright">© 2014 АО «Деловая среда»</div>
+            </div>
+            <div class="col3">
+              <p>+7-800-100-90-80 support@dasreda.ru</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+  </div>
+  </footer>
 
-    <div id="js-modal" class="popup"></div>
+    </article>
 
-    <!-- fancybox -->
-    <link rel="stylesheet" href="/chat/js/fancybox/jquery.fancybox.css">
-    <script src="/chat/js/fancybox/jquery.fancybox.pack.js"></script>
-    <!-- custom scrollbar -->
-    <link rel="stylesheet" href="/chat/js/customscrollbar/style.css">
-    <script src="/chat/js/customscrollbar/baron.full.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/chat/js/bootstrap.min.js"></script>
-    <script src="/chat/js/call.js"></script>
+    <script>
+      $(function(){
+        $('#act_profile_edit').click(function(){
+        $('.user_data, #podpiska').hide();
+        $('#profile_edit, #profile_save').show();
+      });
+      $('#data_cancel').click(function(){
+        event.preventDefault();
+        hideForm();
+      });
+      $('#data_save').click(function(){
+        event.preventDefault();
+        $('.first_name').text($('#form_fisrt_name1').val());
+        $('.first_name2').text($('#form_fisrt_name2').val());
+        $('.last_name').text($('#form_last_name').val());
+        hideForm();
+      });
+      function hideForm() {
+        $('.user_data, #podpiska').show();
+        $('#profile_edit, #profile_save').hide();
+      }
+      });
+    </script>
 
-    <%= render 'update_notifications' %>
-  </body>
-  </html>
+</body>
+</html>
