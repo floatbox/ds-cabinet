@@ -1,23 +1,16 @@
-<div id="js-message-id-<%= message.id %>" class="item js-message<% if message.author == message.user %> item-author<% end %>">
-  <div class="view">
-    <% if message.author.is_concierge %><img src="/chat/images/avatar_dummy.png" height="45" width="45" alt=""><% end %>
-  </div>
+<div id="js-message-id-<%= message.id %>" class="message avatar<% if message.author != message.user %> talker<% end %>">
+  <div class="message_head"><%= message.author.siebel.full_name %> <span class="message_time"><%=l message.created_at, format: :long %></span></div>
+  <div class="message_body">
+    <%= paragraphs message.text %>
+    <div class="message_files">
 
-  <div class="description">
-    <div class="date"><span class="name"><%= message.author.siebel.full_name %></span> <small><%=l message.created_at, format: :long %></small></div>
-
-    <div class="wrapper">
-      <div class="files">
-        <% message.attachments.each do |attachment| %>
-          <%= link_to attachment.attachment.url, target: '_blank' do %>
-            <img src="/chat/images/pdf.png" height="32" width="30" alt="">
-            <br />
-            <%= attachment.attachment.file.filename %>
-          <% end %>
-        <% end %>
+    <% message.attachments.each do |attachment| %>
+      <div class="message_file">
+        <%= link_to attachment.attachment.file.filename, attachment.attachment.url, target: '_blank' %>
       </div>
-
-      <%= paragraphs message.text %>
+    <% end %>
     </div>
   </div>
+  <img src="legko-bs/images/avatar.png" width="36" height="36" class="message_ava" />
+  <div class="message_ico"></div>
 </div>

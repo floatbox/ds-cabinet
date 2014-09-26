@@ -1,18 +1,20 @@
-<div class="description">
-  <h6><%= current_user.siebel.full_name %></h6>
-
+<div class="message formbody forms js-new-message">
   <%= simple_form_for [new_message], remote: true do |f| %>
-    <div class="wrapper">
-      <%= f.input_field :text, as: :text, placeholder: 'Ваш комментарий', class: 'js-submit-by-hotkey', autocomplete: 'off' %>
-      <%= f.button :submit, 'Отправить', class: 'default-button-orange send' %>
-      <%= f.input :user_id, as: :hidden  %>
-      <%= f.input :attachment_ids, as: :hidden %>
-    </div>
+    <%= f.input :user_id, as: :hidden  %>
+    <%= f.input :attachment_ids, as: :hidden %>
+  <div class="field">
+    <%= f.input_field :text, as: :text, placeholder: 'Введите сообщение', class: 'js-submit-by-hotkey', autocomplete: 'off' %>
+  </div>
+  <div class="btn-group">
+      <%= f.button :submit, 'Отправить', class: 'btn-grn btn-left btn125 send' %>
+  </div>
   <% end %>
+  <div class="add_files js-attachments">
+  </div>
   <%= form_for Attachment.new, html: { class: 'js-fileupload', multipart: true } do |f| %>
-    <div class="js-dropfile">
+  <div class="add_file js-dropfile">
       <%= f.file_field :attachment %>
-    </div>
+  </div>
   <% end %>
-  <div class="js-attachments"></div>
 </div>
+

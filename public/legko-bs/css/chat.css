@@ -156,7 +156,7 @@
 				cursor: pointer;
 				background: url('../../legko-bs/images/ico/message_icons.png') no-repeat 0px 0px;
 			}
-		
+
 	.case-messages .messages_pager {
 		text-align: right;
 		margin-top: 20px;
@@ -169,6 +169,10 @@
 	.case-messages .message.yellow {
 		background-color: #fffcd7;
 	}
+
+	.case-messages .message.talker{
+  		background-color: #fbfbfb;
+ 	}
 	.case-messages .message.system {
 		background-color: #e5f1f0;
 	}

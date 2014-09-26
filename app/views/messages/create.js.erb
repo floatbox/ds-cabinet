@@ -1,9 +1,9 @@
 <% if @message.new_record? %>
-  $('#js-topic').find('#new_message').effect('shake');
+  $('#js-messages').find('#new_message').effect('shake');
 <% else %>
-  $('#js-topic').find('.js-messages').prepend('<%=j render partial: "chat/message", object: @message %>');
-  // $('#js-topic').find('.js-messages').show();
-  var form = $('#js-topic').find('.js-new-message');
+  $('#js-messages').find('.js-new-message').after('<%=j render partial: "chat/message", object: @message %>');
+  $('#js-messages').find('.js-new-message').show();
+  var form = $('#js-messages').find('.js-new-message');
   form.find('#message_text').val('');
   form.find('#message_attachment_ids').val('');
   form.find('.js-attachments').html('');
