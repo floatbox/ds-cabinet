@@ -85,9 +85,9 @@
 
           <div class="user_data">
             <div class="full_name">
-              <div class="first_name">Сергей</div>
-              <div class="first_name2">Александрович</div>
-              <div class="last_name">Пушкин</div>
+              <div class="first_name"><%= @current_user.first_name %></div>
+              <div class="first_name2"><%= @current_user.middle_name %></div>
+              <div class="last_name"><%= @current_user.last_name %></div>
             </div>
             <div id="act_logout" class="act">выход</div>
             <div id="act_profile_edit" class="act">редактировать</div>
@@ -96,42 +96,42 @@
           <table class="tb_fields" id="profile_edit" style="display: none">
             <tr class="fl">
               <td>
-                <div class="field"><input type="text" id="form_fisrt_name1" value="Сергей" placeholder="Фамилия" required="required"></div>
+                <div class="field"><input type="text" id="form_fisrt_name1" value="<%= @current_user.first_name %>" placeholder="Фамилия" required="required"></div>
               </td>
             </tr>
             <tr class="fl">
               <td>
-                <div class="field"><input type="text" id="form_fisrt_name2" value="Александрович" placeholder="Имя" required="required"></div>
+                <div class="field"><input type="text" id="form_fisrt_name2" value="<%= @current_user.middle_name %>" placeholder="Имя" required="required"></div>
               </td>
             </tr>
             <tr class="fl">
               <td>
-                <div class="field"><input type="text" id="form_last_name" value="Пушкин" placeholder="Отчество" required="required"></div>
+                <div class="field"><input type="text" id="form_last_name" value="<%= @current_user.last_name %>" placeholder="Отчество" required="required"></div>
               </td>
             </tr>
           </table>
-          <img src="legko-bs/images/avatar.png" width="36" height="36" class="profile_ava" />
+          <img src="/legko-bs/images/avatar.png" width="36" height="36" class="profile_ava" />
         </div>
 
         <div class="profile_data">
           <div class="type">Телефон</div>
-          <div class="data">+7 (495) 123-88-77</div>
+          <div class="data"><%= @current_user.phone %></div>
         </div>
         <div class="profile_data">
           <div class="type">Организация</div>
-          <div class="data">ИП "Мелафонов И.А."</div>
+          <div class="data"><%=j @current_user.siebel_company.try(:full_name) %></div>
         </div>
         <div class="profile_data">
           <div class="type">ОГРН</div>
-          <div class="data">487539490934723748</div>
+          <div class="data"><%=j @current_user.siebel_company.try(:ogrn) %></div>
         </div>
         <div class="profile_data">
           <div class="type">ИНН</div>
-          <div class="data">2343723623652</div>
+          <div class="data"><%=j @current_user.siebel_company.try(:inn) %></div>
         </div>
         <div class="profile_data">
           <div class="type">Налоговый режим</div>
-          <div class="data">ЕНВД</div>
+          <div class="data"><%= @current_user.tax_treatment %></div>
         </div>
 
         <div id="podpiska">
