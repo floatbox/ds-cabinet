@@ -6,23 +6,15 @@ module SimpleSerializer
   def dump obj
     return nil if obj.nil?
 
-    unless obj.is_a?(self)
+    if obj.is_a?(self)
+      obj.to_yaml
+    else
       raise ::ActiveRecord::SerializationTypeMismatch,
         "Attribute was supposed to be a #{self}, but was a #{obj.class}. -- #{obj.inspect}"
     end
-    
-    {}.tap do |hash|
-      obj.instance_variables.each do |var|
-        hash[var] = obj.instance_variable_get(var)
-      end
-    end.to_yaml
   end
 
   def load string
-    string.nil? ? nil : self.new.tap do |obj|
-      YAML.load(string).each do |key, value|
-        obj.instance_variable_set(key, value)
-      end
-    end
+    string.nil? ? nil : YAML.load(string) 
   end
 end

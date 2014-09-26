@@ -1,39 +1,80 @@
-PHONE_VALID = '7441111111'
-PHONE_VALID_CONFIRMATION = '+77441111111'
-OGRN_VALID  = '306770000348481'
-OGRN_VALID_FIRST_NAME = 'Ольга Анатольевна'
-OGRN_VALID_LAST_NAME  = 'Батурина'
-OGRN_VALID_PASSWORD = "180"
+class Presets
+  REGISTRATION_PRESETS = { 
+    # Набор данных для успешного прохождения регистрации от начала и до конца
+    "Батурина" => { 
+      ogrn:               '306770000348481',
+      phone:                '7441111111',
+      phone_confirmation: '+77441111111',
+      first_name:         'Ольга Анатольевна',
+      last_name:          'Батурина',
+      password:           '180',
+      integration_id:     'UAS100173',
+      contact_id:         '1-1WMYU0',
+      siebel_id:          '1-1WMYU0',
+      inn:                '771607534337',
+      workflow_state:     'awaiting_payment',
+      region_code:        '45'
+    }
+  }
+ 
+  def self.cassette
+    "%s-%s"%[self.current[:phone], self.current[:ogrn]]
+  end
 
-Если(/^отсутствует объект модели регистрации$/) do
-  Registration.find_by_ogrn(OGRN_VALID).should_not be
+  def self.current= key
+    @@current = key
+  end
+
+  def self.current
+    REGISTRATION_PRESETS[@@current]
+  end
 end
 
-Если(/^имеется объект модели регистрации$/) do
-#  r = nil
-#  wait_up_to 120.seconds do
-#    puts "waiting for registration object creation"
-#    r = Registration.find_by_ogrn(OGRN_VALID)
-#  end
-
-  r = Registration.find_by_ogrn(OGRN_VALID)
-  r.should be
-  r.password.should_not be_empty
-  r.inn.should_not be_empty
+Если(/^используется пресет "(.*?)"$/) do |preset|
+  Presets.current = preset
+  Presets.current.should be
 end
 
-Если(/^указывает телефон, прежде не использовавшийся для регистрации$/) do
-  @phone = PHONE_VALID
-  step %Q(пользователь заполняет поле ввода "Введите телефон" в форме регистрации и входа значением "#{@phone}")
-end
+Если(/^(отсутствует|имеется|заполнен) объект модели регистрации$/) do |state|
+  case state
+  when "отсутствует"
+    Registration.find_by_ogrn(Presets.current[:ogrn]).should_not be
+  when "имеется"
+    r = Registration.find_by_ogrn(Presets.current[:ogrn])
+    r.should be
+    r.password.should_not be_empty
+    r.inn.should_not be_empty
+  when "заполнен"
+    r = Registration.find_by_ogrn(Presets.current[:ogrn])
+    r.should be
+    r.phone.should          == Presets.current[:phone_confirmation]
+    r.password.should       == Presets.current[:password]
+    r.inn.should            == Presets.current[:inn]
+    r.contact_id            == Presets.current[:contact_id] 
+    r.person_id             == Presets.current[:person_id]
+    r.region_code.should    == Presets.current[:region_code]
+    r.workflow_state.should == Presets.current[:workflow_state]
+    r.admin_notified.should == true
+    r.user_id.should be
 
-Если(/^указывает существующий ОГРН, прежде не использовавшийся для регистрации$/) do
-  @ogrn = OGRN_VALID
-  step %Q(пользователь заполняет поле ввода "Введите ОГРН" в форме регистрации и входа значением "#{@ogrn}")
+    User.exists?(r.user_id).should be true
+    u = User.find(r.user_id)
+    u.api_token.should_not be_empty
+    u.integration_id.should == Presets.current[:integration_id]
+    u.is_concierge.should be false
+    u.approved.should be false
+    u.siebel_id.should == Presets.current[:siebel_id]
+    u.is_super_concierge.should be false
+    u.last_activity_at.should be nil
+
+    r.uas_user.class.should == Uas::User
+    r.uas_user.user_id.should == Presets.current[:integration_id]
+    r.uas_user.is_disabled.should be false
+  end
 end
 
 Если(/^начинает регистрацию$/) do
-  VCR.use_cassette("#{@phone}-#{@ogrn}") do
+  VCR.use_cassette(Presets.cassette) do
     step %Q(пользователь кликает кнопку "Зарегистрироваться" в форме регистрации и входа)
     step "Ajax запрос выполняется"
     step "ждать завершения всех Ajax запросов"
@@ -49,19 +90,31 @@ end
   end
 end
 
+Если(/^(|отмена ?)контакт в Siebel существует$/) do |negation|
+  if negation == "отмена "
+    Contact.unstub(:find_by_integration_id)
+  else
+    Contact.stub :find_by_integration_id do
+      Object.new.tap.define_singleton_method :id do
+        Presets.current[:contact_id]
+      end
+    end
+  end
+end
+
 Если(/^правильно заполняет ОГРН и телефон и переходит к следующему шагу$/) do
-  step("указывает телефон, прежде не использовавшийся для регистрации")
-  step("указывает существующий ОГРН, прежде не использовавшийся для регистрации")
-  step("начинает регистрацию")
-  step("имеется объект модели регистрации")
+  step %Q(пользователь заполняет поле ввода "Введите телефон" в форме регистрации и входа значением "#{Presets.current[:phone]}")
+  step %Q(пользователь заполняет поле ввода "Введите ОГРН" в форме регистрации и входа значением "#{Presets.current[:ogrn]}")
+  step "начинает регистрацию"
+  step "имеется объект модели регистрации"
 end
 
 То(/^видит правильные регистрационные данные$/) do
   within(area_to_selector("форма подтверждения регистрации")) do
-    find('.js-registration_ogrn'      ).text.should eq(OGRN_VALID)
-    find('.js-registration_first_name').text.should eq(OGRN_VALID_FIRST_NAME)
-    find('.js-registration_last_name' ).text.should eq(OGRN_VALID_LAST_NAME)
-    find('.js-registration_phone'     ).text.should eq(PHONE_VALID_CONFIRMATION)
+    find('.js-registration_ogrn'      ).text.should eq(Presets.current[:ogrn])
+    find('.js-registration_first_name').text.should eq(Presets.current[:first_name])
+    find('.js-registration_last_name' ).text.should eq(Presets.current[:last_name])
+    find('.js-registration_phone'     ).text.should eq(Presets.current[:phone_confirmation])
   end
 end
 
@@ -77,9 +130,11 @@ end
 end
 
 То(/^подтверждает регистрацию(| неудачно?)$/) do |effect|
-  VCR.use_cassette("#{@phone}-#{@ogrn}") do
+  VCR.use_cassette(Presets.cassette) do
     step %Q(пользователь кликает кнопку "Дальше" в форме подтверждения регистрации)
-    unless effect == " неудачно"
+    if effect == " неудачно"
+      step "Ajax запрос не выполняется"
+    else
       step "Ajax запрос выполняется"
       step "ждать завершения всех Ajax запросов"
     end
@@ -91,16 +146,15 @@ end
 end
 
 То(/^генератор паролей возвращает правильный пароль/) do
-  step %Q(генератор паролей возвращает пароль "#{OGRN_VALID_PASSWORD}")
+  step %Q(генератор паролей возвращает пароль "#{Presets.current[:password]}")
 end
 
 Если(/^проверяет свои ОГРН, телефон и имя, вводит пароль и переходит к следующему шагу$/) do
-  #step("отмена компании в Siebel не существует")
+  step "контакт в Siebel существует"
   step %Q(скриншот "registration - confirmation start")
   step "видит правильные регистрационные данные"
   step "получает смс с паролем"
   #step "проверяет работу кнопки Отправить данные еще раз"
-  #step "вводит правильный пароль"
 
   # Проверка пустого и неправильного пароля
   step "подтверждает регистрацию неудачно"
@@ -116,5 +170,7 @@ end
   step %Q(скриншот "registration - confirmation finish")
   step "вводит правильный пароль"
   step "подтверждает регистрацию"
+  step "заполнен объект модели регистрации"
+  step "отмена контакт в Siebel существует"
   step %Q(скриншот "registration - payment start")
 end
