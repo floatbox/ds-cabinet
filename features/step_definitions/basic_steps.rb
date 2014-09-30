@@ -91,9 +91,12 @@ end
   page.evaluate_script('jQuery.active == 0').should == (negation == 'не ' ? true : false)
 end
 
-То(/^ждать завершения всех Ajax запросов$/) do
-  while page.evaluate_script('jQuery.active != 0')
+То(/^ждать завершения всех Ajax запросов(| \d* сек?)$/) do |delay| # e.g. delay == "30 секунд"
+  timeout = delay.empty? ? 60.seconds : delay.strip.split.first.to_i
+  counter = timeout / 0.1
+  while page.evaluate_script('jQuery.active != 0') && counter > 0
     sleep 0.1
+    counter -= 0.1
   end
 end
 
