@@ -35,7 +35,6 @@ VCR.configure do |c|
           req1.body == req2.body
 
         when %r(/api/orders) # Cart
-          binding.pry
           hash1 = JSON.parse req1.body
           hash2 = JSON.parse req2.body
           hash1.delete "SuccessUrl"
