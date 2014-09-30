@@ -3093,14 +3093,44 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJUb2tlbiI6ImErMkZaeU5TSWJmNExtXC9QYkljam5hYUxDc2tuampHSUo3
-        S2V1RWx1SmE0ME1DNXdkcFwvZXhscHNSWDN0UkVVeVcwVUJSWStDaTk4YitS
-        S1hkOHNtV3pGQkdZMnpCZW5kRjhJXC9Ibldzak5TdGN2Z2JwWVwvRWNWRzBQ
-        VzlzZWZcL0FNc1F1QjF4SU5KMkdmaEJpQjlIeGNRPT18MjAxNC0wOS0yNVQx
-        NDoxMjozNSIsIlVzZXIiOnsiRmlyc3ROYW1lIjoi0J7Qu9GM0LPQsCIsIkxh
-        c3ROYW1lIjoi0JHQsNGC0YPRgNC40L3QsCIsIkxvZ2luIjoiKzc3NDQxMTEx
-        MTExIiwiVXNlcklkIjoiVUFTMTAwMTczIiwiVXNlck5hdGl2ZUlkIjoiMS0x
-        V01ZVTAiLCJVc2VyU3lzTmFtZSI6InNpZWJlbCJ9fQ==
+        eyJUb2tlbiI6ImE0Rm1mTWZVXC9ObWVzZlZoTHc3RGlxc3JmM3hEXC9BdFpv
+        WEJaSlhaWG1FaUdIRDRWNEEzNStnV2gwbmo1UVlHVDU2WWNWaU9xcXlVSkdJ
+        VmNiWWZCR0x4MXdiWjhrT2VBcDN4UE1RUmkrRWxUbzFzVjNlQ0pCM0FGZFF5
+        dG1tdUUrYnF3bWMxNm1sSXFDeDFCODNnVnNnPT18MjAxNC0wOS0zMFQxNTo1
+        NzozNSIsIlVzZXIiOnsiRmlyc3ROYW1lIjoiw5DCnsOQwrvDkcKMw5DCs8OQ
+        wrAiLCJMYXN0TmFtZSI6IsOQwpHDkMKww5HCgsORwoPDkcKAw5DCuMOQwr3D
+        kMKwIiwiTG9naW4iOiIrNzc0NDExMTExMTEiLCJVc2VySWQiOiJVQVMxMDAx
+        NzMiLCJVc2VyTmF0aXZlSWQiOiIxLTFXTVlVMCIsIlVzZXJTeXNOYW1lIjoi
+        c2llYmVsIn19
     http_version: 
   recorded_at: Thu, 25 Sep 2014 12:13:03 GMT
+- request:
+    method: post
+    uri: https://ccdemopim.sredda.ru:5443/authentication/user/token/
+    body:
+      encoding: UTF-8
+      string: '{"token":"a4FmfMfU/NmesfVhLw7Diqsrf3xD/AtZoXBZJXZXmEiGHD4V4A35+gWh0nj5QYGT56YcViOqqyUJGIVcbYfBGLx1wbZ8kOeAp3xPMQRi+ElTo1sV3eCJB3AFdQytmmuE+bqwmc16mlIqCx1B83gVsg==|2014-09-30T15:57:35"}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '149'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Tue, 30 Sep 2014 14:30:40 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJGaXJzdE5hbWUiOiLQntC70YzQs9CwIiwiTGFzdE5hbWUiOiLQkdCw0YLR
+        g9GA0LjQvdCwIiwiTG9naW4iOiIrNzc0NDExMTExMTEiLCJVc2VySWQiOiJV
+        QVMxMDAxNzMiLCJVc2VyTmF0aXZlSWQiOiIxLTFXTVlVMCIsIlVzZXJTeXNO
+        YW1lIjoic2llYmVsIn0=
+    http_version: 
+  recorded_at: Tue, 30 Sep 2014 14:34:58 GMT
 recorded_with: VCR 2.9.2
