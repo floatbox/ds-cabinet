@@ -8,8 +8,8 @@ role :app, %w{ds-cabinet@10.1.251.154}
 role :web, %w{ds-cabinet@10.1.251.154}
 role :db,  %w{ds-cabinet@10.1.251.154}
 
-set :application, 'ds-cabinet'
-set :deploy_to, '/var/www/ds-cabinet'
+set :application, 'legko'
+set :deploy_to, '/var/www/legko'
 set :branch, 'master'
 
 namespace :deploy do

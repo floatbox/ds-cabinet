@@ -1,4 +1,4 @@
-deploy_to  = "/var/www/ds-cabinet"
+deploy_to  = "/var/www/legko"
 rails_root = "#{deploy_to}/current"
 pid_file   = "#{deploy_to}/shared/tmp/pids/unicorn.pid"
 socket_file= "#{deploy_to}/shared/tmp/sockets/unicorn.sock"
