@@ -1,7 +1,7 @@
 # config valid only for Capistrano 3.1
 lock '3.1.0'
 
-set :application, 'ds-cabinet'
+set :application, 'legko'
 set :repo_url, 'git@github.com:BusinessEnvironment/ds-cabinet.git'
 
 # Default branch is :master
