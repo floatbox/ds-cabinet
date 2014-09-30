@@ -8,6 +8,9 @@ module SelectorsHelpers
     when /форм(?:а|е) регистрации и входа/ then '.js-forms_container'
     when /форм(?:а|е) обратной связи/      then '.js-feedback_form'
     when /форм(?:а|е) подтверждения регистрации/ then '.js-confirmation_form'
+    when /форм(?:а|е) тариф Квартал/       then '#offering_price_id_3000329'
+    when /форм(?:а|е) тариф Год/           then '#offering_price_id_3000336'
+    when /форм(?:а|е) подтверждения тарифа/ then '.js-process_payment_form'
     else
       raise "Unknown area: #{name}, should be either шапк(а|е), контент(е), подвал(е) или форм(а|е) регистрации и входа или форм(а|е) обратной связи"
     end
