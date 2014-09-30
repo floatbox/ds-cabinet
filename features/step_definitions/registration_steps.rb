@@ -65,7 +65,6 @@ end
     u.approved.should be false
     u.siebel_id.should == Presets.current[:siebel_id]
     u.is_super_concierge.should be false
-    u.last_activity_at.should be nil
 
     r.uas_user.class.should == Uas::User
     r.uas_user.user_id.should == Presets.current[:integration_id]
@@ -141,6 +140,19 @@ end
   end
 end
 
+То(/^выбирает тарифный план (Квартал|Год?)$/) do |plan|
+  VCR.use_cassette(Presets.cassette) do
+    step %Q(пользователь кликает кнопку "Выбрать" в форме тариф #{plan})
+    step "Ajax запрос выполняется"
+    step "ждать завершения всех Ajax запросов 10 сек"
+    step "задержка 1 сек"
+    step %Q(скриншот "registration - tariff confirmation")
+    step %Q(пользователь кликает кнопку "Оплатить" в форме подтверждения тарифа)
+    step %Q(пользователь оказывается на "странице оплаты")
+    step %Q(скриншот "registration - payment page")
+  end
+end
+
 То(/^генератор паролей возвращает пароль "(.*?)"$/) do |given_password|
   allow(PasswordGenerator).to receive(:generate).and_return(given_password)
 end
@@ -172,5 +184,5 @@ end
   step "подтверждает регистрацию"
   step "заполнен объект модели регистрации"
   step "отмена контакт в Siebel существует"
-  step %Q(скриншот "registration - payment start")
+  step %Q(скриншот "registration - tariff choosing")
 end
