@@ -13,7 +13,20 @@ class Presets
       siebel_id:          '1-1WMYU0',
       inn:                '771607534337',
       workflow_state:     'awaiting_payment',
-      region_code:        '45'
+      region_code:        '45',
+      account_model_stub: (Class.new.tap.define_singleton_method :find_by_integration_id do
+                            Object.new.tap.define_singleton_method :id do
+                              '1-1WMYUL'
+                            end.tap.define_singleton_method :full_name do
+                              'Батурина Ольга Анатольевна'
+                            end
+                          end.tap.define_singleton_method :where do |*args|
+                            [(Object.new.tap.define_singleton_method :id do
+                              '1-1WMYUL'
+                            end.tap.define_singleton_method :full_name do
+                              'Батурина Ольга Анатольевна'
+                            end)]
+                          end)
     }
   }
  
@@ -105,6 +118,14 @@ end
   end
 end
 
+Если(/^(|отмена ?)аккаунт в Siebel существует$/) do |negation|
+  if negation == "отмена "
+    Object.send(:remove_const, :Account) if defined? :Account# RAILS will define it then
+  else
+    Account = Presets.current[:account_model_stub]
+  end
+end
+
 Если(/^правильно заполняет ОГРН и телефон и переходит к следующему шагу$/) do
   step %Q(пользователь заполняет поле ввода "Введите телефон" в форме регистрации и входа значением "#{Presets.current[:phone]}")
   step %Q(пользователь заполняет поле ввода "Введите ОГРН" в форме регистрации и входа значением "#{Presets.current[:ogrn]}")
@@ -167,7 +188,6 @@ end
 end
 
 Если(/^проверяет свои ОГРН, телефон и имя, вводит пароль и переходит к следующему шагу$/) do
-  step "контакт в Siebel существует"
   step %Q(скриншот "registration - confirmation start")
   step "видит правильные регистрационные данные"
   step "получает смс с паролем"
@@ -186,8 +206,11 @@ end
   
   step %Q(скриншот "registration - confirmation finish")
   step "вводит правильный пароль"
+  step "контакт в Siebel существует"
+  step "аккаунт в Siebel существует"
   step "подтверждает регистрацию"
-  step "заполнен объект модели регистрации"
   step "отмена контакт в Siebel существует"
+  step "отмена аккаунт в Siebel существует"
+  step "заполнен объект модели регистрации"
   step %Q(скриншот "registration - tariff choosing")
 end
