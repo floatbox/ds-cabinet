@@ -14,6 +14,11 @@ class Presets
       inn:                '771607534337',
       workflow_state:     'awaiting_payment',
       region_code:        '45',
+      contact_model_stub: (Class.new.tap.define_singleton_method :find_by_integration_id do |integration_id|
+                            Object.new.tap.define_singleton_method :id do
+                              '1-1WMYU0'
+                            end
+                          end),
       account_model_stub: (Class.new.tap.define_singleton_method :find_by_integration_id do
                             Object.new.tap.define_singleton_method :id do
                               '1-1WMYUL'
@@ -108,13 +113,9 @@ end
 
 Если(/^(|отмена ?)контакт в Siebel существует$/) do |negation|
   if negation == "отмена "
-    Contact.unstub(:find_by_integration_id)
+    Object.send(:remove_const, :Contact) if defined? :Contact# RAILS will define it then
   else
-    Contact.stub :find_by_integration_id do
-      Object.new.tap.define_singleton_method :id do
-        Presets.current[:contact_id]
-      end
-    end
+    Contact = Presets.current[:contact_model_stub]
   end
 end
 
