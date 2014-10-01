@@ -1,0 +1,37 @@
+---
+:scope: 
+:url: https://securepayments.sberbank.ru/payment/js/jquery.url.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Server: nginx/1.6.0
+  Date: Wed, 01 Oct 2014 12:24:17 GMT
+  Content-Type: application/x-javascript
+  Content-Length: '901'
+  Last-Modified: Thu, 26 Jun 2014 13:35:03 GMT
+  Connection: close
+  ETag: '"53ac2187-385"'
+  Accept-Ranges: bytes
+:content: !binary |-
+  LyoKalF1ZXJ5IFVybCBQbHVnaW4KCSogVmVyc2lvbiAxLjAKCSogMjAwOS0w
+  My0yMiAxOTozMDowNQoJKiBVUkw6IGh0dHA6Ly9hamF4Y3NzYmxvZy5jb20v
+  anF1ZXJ5L3VybC1yZWFkLWdldC12YXJpYWJsZXMvCgkqIERlc2NyaXB0aW9u
+  OiBqUXVlcnkgVXJsIFBsdWdpbiBnaXZlcyB0aGUgYWJpbGl0eSB0byByZWFk
+  IEdFVCBwYXJhbWV0ZXJzIGZyb20gdGhlIGFjdHVhbCBVUkwKCSogQXV0aG9y
+  OiBNYXR0aGlhcyBKw6RnZ2xpCgkqIENvcHlyaWdodDogQ29weXJpZ2h0IChj
+  KSAyMDA5IE1hdHRoaWFzIErDpGdnbGkgCgkqIExpY2VuY2U6IGR1YWwsIE1J
+  VC9HUEx2MgoqLwooZnVuY3Rpb24gKCQpIHsKCSQudXJsID0ge307CgkkLmV4
+  dGVuZCgkLnVybCwgewoJCV9wYXJhbXM6IHt9LAoJCWluaXQ6IGZ1bmN0aW9u
+  KCl7CgkJCXZhciBwYXJhbXNSYXcgPSAiIjsKCQkJdHJ5ewoJCQkJcGFyYW1z
+  UmF3ID0gCgkJCQkJKGRvY3VtZW50LmxvY2F0aW9uLmhyZWYuc3BsaXQoIj8i
+  LCAyKVsxXSB8fCAiIikuc3BsaXQoIiMiKVswXS5zcGxpdCgiJiIpIHx8IFtd
+  OwoJCQkJZm9yKHZhciBpID0gMDsgaTwgcGFyYW1zUmF3Lmxlbmd0aDsgaSsr
+  KXsKCQkJCQl2YXIgc2luZ2xlID0gcGFyYW1zUmF3W2ldLnNwbGl0KCI9Iik7
+  CgkJCQkJaWYoc2luZ2xlWzBdKQoJCQkJCQl0aGlzLl9wYXJhbXNbc2luZ2xl
+  WzBdXSA9IHVuZXNjYXBlKHNpbmdsZVsxXSk7CgkJCQl9CgkJCX0KCQkJY2F0
+  Y2goZSl7CgkJCQlhbGVydChlKTsKCQkJfQoJCX0sCgkJcGFyYW06IGZ1bmN0
+  aW9uKG5hbWUpewoJCQlyZXR1cm4gdGhpcy5fcGFyYW1zW25hbWVdIHx8ICIi
+  OwoJCX0sCgkJcGFyYW1BbGw6IGZ1bmN0aW9uKCl7CgkJCXJldHVybiB0aGlz
+  Ll9wYXJhbXM7CgkJfQoJfSk7CgkkLnVybC5pbml0KCk7DX0pKGpRdWVyeSk7
+  Cg==

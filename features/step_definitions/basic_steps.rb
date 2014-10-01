@@ -113,3 +113,8 @@ end
     click_button "Ок"
   end
 end
+
+Before('@billy') do
+  Capybara.current_driver = :webkit_billy
+  Capybara.javascript_driver = :webkit_billy
+end

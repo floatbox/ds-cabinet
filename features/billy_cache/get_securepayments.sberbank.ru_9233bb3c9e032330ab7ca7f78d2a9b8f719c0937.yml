@@ -1,0 +1,19 @@
+---
+:scope: 
+:url: https://securepayments.sberbank.ru/payment/merchants/dasreda/images/header_footer/header_shadow_bottom.png
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Server: nginx/1.6.0
+  Date: Wed, 01 Oct 2014 12:24:17 GMT
+  Content-Type: image/png
+  Content-Length: '125'
+  Last-Modified: Tue, 24 Jun 2014 16:36:27 GMT
+  Connection: close
+  ETag: '"53a9a90b-7d"'
+  Accept-Ranges: bytes
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAGXRFWHRTb2Z0
+  d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpiNDEx8WdAAiy/
+  fv06jiKgrq7+FlkAIMAAtYUGDDeg79oAAAAASUVORK5CYII=
