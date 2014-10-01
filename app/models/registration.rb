@@ -138,7 +138,7 @@ class Registration < ActiveRecord::Base
     end
 
     account = find_siebel_company(ogrn) || create_siebel_company
-    company = find_sns_company(person, account.id) || create_sns_company(person, account)
+    company = find_sns_company(person, account.id) || create_sns_company(person, account.id, account.full_name)
     
     user_id = User.find_or_create_by(siebel_id: contact_id, integration_id: integration_id).id
     self.update_column :user_id, user_id
@@ -255,9 +255,9 @@ class Registration < ActiveRecord::Base
     # @param account [Account] Siebel representation of the company
     # @return [Company] new SNS company
     # @note Person automatically becomes the admin of the account
-    def create_sns_company(person, account)
+    def create_sns_company(person, account_id, account_full_name)
       Ds::Sns.as person.id, 'siebel' do
-        Company.new(id: account.id, name: account.full_name).save
+        Company.new(id: account_id, name: account_full_name).save
       end
     end
 
