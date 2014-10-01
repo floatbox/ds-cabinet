@@ -86,11 +86,10 @@ end
 end
 
 Если(/^(|отмена ?)компании в Siebel не существует$/) do |negation|
-  #allow(Registration.any_instance).to receive(:siebel_company_exists?).and_return(false)
   if negation == "отмена "
-    Account.unstub(:where)
+    Registration.any_instance.unstub(:siebel_company_exists?)
   else
-    allow(Account).to receive(:where).and_return([])
+    Registration.any_instance.should_receive(:siebel_company_exists?).and_return(false)
   end
 end
 
