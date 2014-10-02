@@ -1,10 +1,16 @@
 var newMessages = [];
+var newMessagesContent = '';
 <% @messages.each do |message| %>
   if ($('#js-message-id-<%= message.id %>').length == 0) {
     newMessages.push('#js-message-id-<%= message.id %>');
+    newMessagesContent += "<%=j render partial: 'chat/message', object: message %>";
   }
 <% end %>
-$('.js-messages').html("<%=j render partial: 'chat/message', collection: @messages %>")
+if (newMessagesContent.length > 0) {
+  $('#js-messages').find('.js-new-message').after(newMessagesContent);
+}
+
+// $('#js-messages').html("<%=j render partial: 'chat/message', collection: @messages %>")
 newMessages.forEach(function(message) {
   $(message).hide().toggle('highlight', 2000);
 })
