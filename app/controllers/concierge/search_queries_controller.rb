@@ -1,5 +1,5 @@
 class Concierge::SearchQueriesController < Concierge::ApplicationController
-  layout 'chat'
+  layout 'concierge'
 
   before_action :authenticate
   before_action :set_user

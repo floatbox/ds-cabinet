@@ -1,5 +1,5 @@
 class Concierge::ShortcutsController < Concierge::ApplicationController
-  layout 'chat'
+  layout 'concierge'
 
   before_action :authenticate
   before_filter :new_shortcut, only: :create

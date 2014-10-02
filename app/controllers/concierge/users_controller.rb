@@ -1,5 +1,5 @@
 class Concierge::UsersController < Concierge::ApplicationController
-  layout 'chat'
+  layout 'concierge'
 
   before_action :authenticate
   load_and_authorize_resource
