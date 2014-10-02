@@ -105,7 +105,7 @@ $ ->
     error = form.find('.error_messages')
     message = ''
     for attribute, messages of errors
-      element = $('<span>').text("#{LOCALE[attribute]}: #{messages.join(', ')}")
+      element = $('<span>').text("#{LOCALE[attribute]} #{messages.join(', ')}")
       error.append(element).append('<br/>')
     error.show()
 
