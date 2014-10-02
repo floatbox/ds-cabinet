@@ -12,8 +12,10 @@ class Presets
       contact_id:         '1-1WMYU0',
       siebel_id:          '1-1WMYU0',
       inn:                '771607534337',
-      workflow_state:     'awaiting_payment',
       region_code:        '45',
+      offering_id:        '3000319',
+      offering_price_id:  '3000329',
+      user_id:            1,
       contact_model_stub: (Class.new.tap.define_singleton_method :find_by_integration_id do |integration_id|
                             Object.new.tap.define_singleton_method :id do
                               '1-1WMYU0'
@@ -53,40 +55,50 @@ end
   Presets.current.should be
 end
 
-Если(/^(отсутствует|имеется|заполнен) объект модели регистрации$/) do |state|
-  case state
-  when "отсутствует"
-    Registration.find_by_ogrn(Presets.current[:ogrn]).should_not be
-  when "имеется"
-    r = Registration.find_by_ogrn(Presets.current[:ogrn])
-    r.should be
-    r.password.should_not be_empty
-    r.inn.should_not be_empty
-  when "заполнен"
-    r = Registration.find_by_ogrn(Presets.current[:ogrn])
-    r.should be
-    r.phone.should          == Presets.current[:phone_confirmation]
-    r.password.should       == Presets.current[:password]
-    r.inn.should            == Presets.current[:inn]
-    r.contact_id            == Presets.current[:contact_id] 
-    r.person_id             == Presets.current[:person_id]
-    r.region_code.should    == Presets.current[:region_code]
-    r.workflow_state.should == Presets.current[:workflow_state]
-    r.admin_notified.should == true
-    r.user_id.should be
+Если(/^(отсутствует|имеется|заполнен|завершен) объект модели регистрации$/) do |state|
+  @registration = Registration.find_by_ogrn(Presets.current[:ogrn])
+  if state == "отсутствует"
+    @registration.should_not be
+  elsif state == "имеется"
+    @registration.workflow_state.should == "awaiting_confirmation"
+    @registration.admin_notified.should eq false
+    @registration.user_id.should        eq nil
+    @registration.contact_id.should     eq nil
+    @registration.person_id.should      eq nil
+  elsif state == "заполнен"
+    @registration.workflow_state.should == "awaiting_payment"
+    step "к регистрации должна быть привязана не оплаченная покупка доступа"
+  elsif state == "завершен"
+    @registration.workflow_state.should == "awaiting_payment"
+    step "к регистрации должна быть привязана оплаченная покупка доступа"
+  end
 
-    User.exists?(r.user_id).should be true
-    u = User.find(r.user_id)
-    u.api_token.should_not be_empty
-    u.integration_id.should == Presets.current[:integration_id]
-    u.is_concierge.should be false
-    u.approved.should be false
-    u.siebel_id.should == Presets.current[:siebel_id]
-    u.is_super_concierge.should be false
+  if  %w(имеется, заполнен, завершен).include? state
+    @registration.phone.should          == Presets.current[:phone_confirmation]
+    @registration.password.should       == Presets.current[:password]
+    @registration.inn.should            == Presets.current[:inn]
+    @registration.region_code.should    == Presets.current[:region_code]
 
-    r.uas_user.class.should == Uas::User
-    r.uas_user.user_id.should == Presets.current[:integration_id]
-    r.uas_user.is_disabled.should be false
+    if  %w(заполнен, завершен).include? state
+      @registration.admin_notified.should == true
+      @registration.user_id.should be
+      @registration.contact_id            == Presets.current[:contact_id] 
+      @registration.person_id             == Presets.current[:person_id]
+
+      User.exists?(@registration.user_id).should be true
+      u = User.find(@registration.user_id)
+      u.api_token.should_not be_empty
+      u.integration_id.should == Presets.current[:integration_id]
+      u.siebel_id.should == Presets.current[:siebel_id]
+      u.is_concierge.should be false
+      u.is_super_concierge.should be false
+      u.approved.should be false
+      u.registration.should == @registration
+    
+      @registration.uas_user.class.should == Uas::User
+      @registration.uas_user.user_id.should == Presets.current[:integration_id]
+      @registration.uas_user.is_disabled.should be false
+    end
   end
 end
 
@@ -214,4 +226,42 @@ end
   step "отмена аккаунт в Siebel существует"
   step "заполнен объект модели регистрации"
   step %Q(скриншот "registration - tariff choosing")
+end
+
+То(/^к регистрации должна быть привязана (|не ?)оплаченная покупка доступа$/) do |negation|
+  @ap = AccessPurchase.last
+  @ap.should be
+  @ap.offering_id.should       == Presets.current[:offering_id]
+  @ap.offering_price_id.should == Presets.current[:offering_price_id]
+  @ap.user.should be
+  @ap.user.registration.should == @registration
+  @ap.order.should be
+
+  if negation == 'не '
+    @ap.order.paid?.should be false
+    @ap.paid?.should be false
+  else
+    @ap.order.paid?.should be true
+    @ap.paid?.should be true
+  end
+end
+
+Если(/^платежная система подтверждает приложению выполнение платежа$/) do
+  step "к регистрации должна быть привязана не оплаченная покупка доступа"
+  Ds::Cart::Api.should_receive(:get_order).and_return(
+    {
+      "OrderStatus"=>Ds::Purchase::Order::PAID,
+      "LastEditedDate"=> 5.seconds.ago.to_s, 
+    }
+  )
+  get "/access_purchases/#{@ap.id}/processed"
+  step "к регистрации должна быть привязана оплаченная покупка доступа"
+end
+
+То(/^регистрация завершена$/) do
+  То "завершен объект модели регистрации"
+end
+
+То(/^пользователь имеет оплаченный доступ$/) do
+  User.last.has_paid_access?.should be true
 end
