@@ -3093,14 +3093,85 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJUb2tlbiI6ImErMkZaeU5TSWJmNExtXC9QYkljam5hYUxDc2tuampHSUo3
-        S2V1RWx1SmE0ME1DNXdkcFwvZXhscHNSWDN0UkVVeVcwVUJSWStDaTk4YitS
-        S1hkOHNtV3pGQkdZMnpCZW5kRjhJXC9Ibldzak5TdGN2Z2JwWVwvRWNWRzBQ
-        VzlzZWZcL0FNc1F1QjF4SU5KMkdmaEJpQjlIeGNRPT18MjAxNC0wOS0yNVQx
-        NDoxMjozNSIsIlVzZXIiOnsiRmlyc3ROYW1lIjoi0J7Qu9GM0LPQsCIsIkxh
-        c3ROYW1lIjoi0JHQsNGC0YPRgNC40L3QsCIsIkxvZ2luIjoiKzc3NDQxMTEx
-        MTExIiwiVXNlcklkIjoiVUFTMTAwMTczIiwiVXNlck5hdGl2ZUlkIjoiMS0x
-        V01ZVTAiLCJVc2VyU3lzTmFtZSI6InNpZWJlbCJ9fQ==
+        eyJUb2tlbiI6ImE0Rm1mTWZVXC9ObWVzZlZoTHc3RGlxc3JmM3hEXC9BdFpv
+        WEJaSlhaWG1FaUdIRDRWNEEzNStnV2gwbmo1UVlHVDU2WWNWaU9xcXlVSkdJ
+        VmNiWWZCR0x4MXdiWjhrT2VBcDN4UE1RUmkrRWxUbzFzVjNlQ0pCM0FGZFF5
+        dG1tdUUrYnF3bWMxNm1sSXFDeDFCODNnVnNnPT18MjAxNC0wOS0zMFQxNTo1
+        NzozNSIsIlVzZXIiOnsiRmlyc3ROYW1lIjoiw5DCnsOQwrvDkcKMw5DCs8OQ
+        wrAiLCJMYXN0TmFtZSI6IsOQwpHDkMKww5HCgsORwoPDkcKAw5DCuMOQwr3D
+        kMKwIiwiTG9naW4iOiIrNzc0NDExMTExMTEiLCJVc2VySWQiOiJVQVMxMDAx
+        NzMiLCJVc2VyTmF0aXZlSWQiOiIxLTFXTVlVMCIsIlVzZXJTeXNOYW1lIjoi
+        c2llYmVsIn19
     http_version: 
   recorded_at: Thu, 25 Sep 2014 12:13:03 GMT
+- request:
+    method: post
+    uri: https://ccdemopim.sredda.ru:5443/authentication/user/token/
+    body:
+      encoding: UTF-8
+      string: '{"token":"a4FmfMfU/NmesfVhLw7Diqsrf3xD/AtZoXBZJXZXmEiGHD4V4A35+gWh0nj5QYGT56YcViOqqyUJGIVcbYfBGLx1wbZ8kOeAp3xPMQRi+ElTo1sV3eCJB3AFdQytmmuE+bqwmc16mlIqCx1B83gVsg==|2014-09-30T15:57:35"}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '149'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Tue, 30 Sep 2014 14:30:40 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJGaXJzdE5hbWUiOiLQntC70YzQs9CwIiwiTGFzdE5hbWUiOiLQkdCw0YLR
+        g9GA0LjQvdCwIiwiTG9naW4iOiIrNzc0NDExMTExMTEiLCJVc2VySWQiOiJV
+        QVMxMDAxNzMiLCJVc2VyTmF0aXZlSWQiOiIxLTFXTVlVMCIsIlVzZXJTeXNO
+        YW1lIjoic2llYmVsIn0=
+    http_version: 
+  recorded_at: Tue, 30 Sep 2014 14:34:58 GMT
+- request:
+    method: post
+    uri: https://400004:cArt123QWE123@cart-delo.sredda.ru:5443/api/orders
+    body:
+      encoding: UTF-8
+      string: '{"UserId":"UAS100173","SuccessUrl":"http://127.0.0.1:60490/access_purchases/12/processed","ErrorUrl":"http://127.0.0.1:60490/access_purchases/12/processed","Offerings":[{"Offering":{"OfferingId":"3000319","OfferingPriceId":"3000329","ClientKey":"UAS100173","Characteristics":[]},"ArticleUrl":"http://market.yandex.ru/model-spec.xml?modelid=10890865\u0026hid=6427100","ArticleId":null,"SerializedOffering":null,"ProductsForUpdate":null,"MerchantId":null,"Promocode":null}],"Options":3,"ChoosePayer":true,"Promocode":null,"PayerCompanyId":null,"SellerCompanyId":null}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - '-1'
+      Location:
+      - https://cart-delo.sredda.ru/api/orders/20139
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 30 Sep 2014 16:18:06 GMT
+      Content-Length:
+      - '133'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"OrderId":20139,"TargetUrl":"http://payment-delo.sredda.ru:8081/Payment/Credentials?PaymentID=7ff2c703-3eec-4d72-ac20-adbaa6b76dd2"}'
+    http_version: 
+  recorded_at: Tue, 30 Sep 2014 16:24:48 GMT
 recorded_with: VCR 2.9.2

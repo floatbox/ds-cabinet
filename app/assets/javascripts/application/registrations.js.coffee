@@ -35,12 +35,13 @@ $ ->
       ga('send', 'pageview', @ga_url) if @ga_url
       if data
         PageFragment.set_registration_data(data.registration) if data.registration
-        @rs.set_payment_data(data.payment) if data.payment
+        @set_payment_data(data.payment) if data.payment
       @switch_next()
 
-    set_payment_data: (payment) ->
+    set_payment_data: (payment) =>
       $(@selector).find('span.js-process_payment_desc').text(payment.process_payment_desc)
       $(@selector).find('form.js-process_payment_form').attr('action', payment.process_payment_link)
+      $('#js-modal_success_dialog').modal("show")
   
   regStep1 = new PageFragment('.registration_input_fragment',   '/virtual/step1')
   regStep2 = new PageFragment('.registration_confirm_fragment', '/virtual/step2')

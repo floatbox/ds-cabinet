@@ -1,0 +1,25 @@
+---
+:scope: 
+:url: https://securepayments.sberbank.ru/payment/merchants/dasreda/images/header_footer/sub_select.png
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Server: nginx/1.6.0
+  Date: Wed, 01 Oct 2014 12:24:17 GMT
+  Content-Type: image/png
+  Content-Length: '373'
+  Last-Modified: Tue, 24 Jun 2014 16:36:27 GMT
+  Connection: close
+  ETag: '"53a9a90b-175"'
+  Accept-Ranges: bytes
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAAAkAAAAoCAIAAACjA0fUAAAAGXRFWHRTb2Z0
+  d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARdJREFUeNrckzuOhDAMhie8
+  nxpRUcANuP8hOAA3oKECxBsJ2C+wohiR6XddRPbv2LF/OyLP85dCjDiOdV0X
+  Qjz43u+3OOXB57qupmmPOcW+749BiKZySN9LLX/PN47jJy/HcSjjvviMdV1V
+  XBvTNCln1LatcrZVVanek3XO81yWJQm2bSMHm5CmqeM4gveKoiBnEAS+7w/D
+  0Pc9AVmWGURQZxRFnudx1zRNy7LqugaXtYRhiIPFkXnOomgMXOMN27atU64g
+  BARcdn31cDHAiQ7yy/VH77f5X3bpOOWGblP6oAeDz4bOiQ4iZws9y7JALgqE
+  raeAYMo/3XUd/F7ZmDOLyhTBtSRJyMPAmqbhEic6CPi3nfgRYABrzbAdu7KV
+  wgAAAABJRU5ErkJggg==

@@ -1,0 +1,19 @@
+---
+:scope: 
+:url: http://payment-delo.sredda.ru/Payment/Credentials?PaymentID=7ff2c703-3eec-4d72-ac20-adbaa6b76dd2
+:body: PaymentType=acquiring&Receipt.FIO=user_first_name+user_last_name&Receipt.Address=
+:status: 302
+:method: post
+:headers:
+  Cache-Control: private
+  Content-Type: text/html; charset=utf-8
+  Location: /acquiring/Register/7ff2c703-3eec-4d72-ac20-adbaa6b76dd2
+  Server: Microsoft-IIS/7.5
+  X-AspNetMvc-Version: '4.0'
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Date: Wed, 01 Oct 2014 12:24:00 GMT
+  Connection: close
+  Content-Length: '173'
+:content: "<html><head><title>Object moved</title></head><body>\r\n<h2>Object moved
+  to <a href=\"/acquiring/Register/7ff2c703-3eec-4d72-ac20-adbaa6b76dd2\">here</a>.</h2>\r\n</body></html>\r\n"

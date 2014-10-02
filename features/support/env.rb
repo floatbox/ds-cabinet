@@ -9,6 +9,7 @@ require 'capybara-webkit'
 require 'cucumber/rspec/doubles'
 require 'email_spec'
 require 'email_spec/cucumber'
+require 'billy/cucumber'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -71,8 +72,31 @@ WebMock.disable_net_connect!(:allow_localhost => true)
 
 Before do
   DatabaseCleaner.start
+  Capybara.use_default_driver
 end
 
 After do |scenario|
   DatabaseCleaner.clean
+end
+
+# https://github.com/oesmith/puffing-billy
+Billy.configure do |c|
+  c.cache = true
+  c.cache_request_headers = false
+  c.cache_path        = 'features/billy_cache/'
+  c.persist_cache     = true
+  c.ignore_cache_port = true # defaults to true
+  #c.ignore_params = ["http://www.google-analytics.com/__utm.gif",
+  #                   "http://www.google-analytics.com/analytics.js",
+  #                   "https://r.twimg.com/jot",
+  #                   "http://p.twitter.com/t.gif",
+  #                   "http://p.twitter.com/f.gif",
+  #                   "http://www.facebook.com/plugins/like.php",
+  #                   "https://www.facebook.com/dialog/oauth",
+  #                   "http://cdn.api.twitter.com/1/urls/count.json"]
+  c.whitelist = ['localhost', '127.0.0.1']
+  c.non_whitelisted_requests_disabled = false
+  c.path_blacklist = []
+  c.non_successful_cache_disabled = false
+  c.non_successful_error_level = :warn
 end

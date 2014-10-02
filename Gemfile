@@ -76,6 +76,7 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'email_spec'
+  gem 'puffing-billy' # stubbing and caching proxy for testing a browser initiated external resources loading
 end
 
 # Use debugger

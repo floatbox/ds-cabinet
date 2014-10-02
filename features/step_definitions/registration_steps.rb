@@ -13,7 +13,25 @@ class Presets
       siebel_id:          '1-1WMYU0',
       inn:                '771607534337',
       workflow_state:     'awaiting_payment',
-      region_code:        '45'
+      region_code:        '45',
+      contact_model_stub: (Class.new.tap.define_singleton_method :find_by_integration_id do |integration_id|
+                            Object.new.tap.define_singleton_method :id do
+                              '1-1WMYU0'
+                            end
+                          end),
+      account_model_stub: (Class.new.tap.define_singleton_method :find_by_integration_id do
+                            Object.new.tap.define_singleton_method :id do
+                              '1-1WMYUL'
+                            end.tap.define_singleton_method :full_name do
+                              'Батурина Ольга Анатольевна'
+                            end
+                          end.tap.define_singleton_method :where do |*args|
+                            [(Object.new.tap.define_singleton_method :id do
+                              '1-1WMYUL'
+                            end.tap.define_singleton_method :full_name do
+                              'Батурина Ольга Анатольевна'
+                            end)]
+                          end)
     }
   }
  
@@ -65,7 +83,6 @@ end
     u.approved.should be false
     u.siebel_id.should == Presets.current[:siebel_id]
     u.is_super_concierge.should be false
-    u.last_activity_at.should be nil
 
     r.uas_user.class.should == Uas::User
     r.uas_user.user_id.should == Presets.current[:integration_id]
@@ -81,24 +98,32 @@ end
   end
 end
 
+Если(/^не зарегистрированный пользователь заходит на сайт$/) do
+  step %Q(неавторизованный пользователь открывает "главную страницу")
+  step "имеется форма регистрации и входа"
+end
+
 Если(/^(|отмена ?)компании в Siebel не существует$/) do |negation|
-  #allow(Registration.any_instance).to receive(:siebel_company_exists?).and_return(false)
   if negation == "отмена "
-    Account.unstub(:where)
+    Registration.any_instance.unstub(:siebel_company_exists?)
   else
-    allow(Account).to receive(:where).and_return([])
+    Registration.any_instance.should_receive(:siebel_company_exists?).and_return(false)
   end
 end
 
 Если(/^(|отмена ?)контакт в Siebel существует$/) do |negation|
   if negation == "отмена "
-    Contact.unstub(:find_by_integration_id)
+    Object.send(:remove_const, :Contact) if defined? :Contact# RAILS will define it then
   else
-    Contact.stub :find_by_integration_id do
-      Object.new.tap.define_singleton_method :id do
-        Presets.current[:contact_id]
-      end
-    end
+    Contact = Presets.current[:contact_model_stub]
+  end
+end
+
+Если(/^(|отмена ?)аккаунт в Siebel существует$/) do |negation|
+  if negation == "отмена "
+    Object.send(:remove_const, :Account) if defined? :Account# RAILS will define it then
+  else
+    Account = Presets.current[:account_model_stub]
   end
 end
 
@@ -107,6 +132,7 @@ end
   step %Q(пользователь заполняет поле ввода "Введите ОГРН" в форме регистрации и входа значением "#{Presets.current[:ogrn]}")
   step "начинает регистрацию"
   step "имеется объект модели регистрации"
+  step "отмена компании в Siebel не существует"
 end
 
 То(/^видит правильные регистрационные данные$/) do
@@ -141,6 +167,19 @@ end
   end
 end
 
+То(/^выбирает тарифный план (Квартал|Год?)$/) do |plan|
+  VCR.use_cassette(Presets.cassette) do
+    step %Q(пользователь кликает кнопку "Выбрать" в форме тариф #{plan})
+    step "Ajax запрос выполняется"
+    step "ждать завершения всех Ajax запросов 10 сек"
+    step "задержка 1 сек"
+    step %Q(скриншот "registration - tariff confirmation")
+    step %Q(пользователь кликает кнопку "Оплатить" в форме подтверждения тарифа)
+    step %Q(пользователь оказывается на "странице оплаты")
+    step %Q(скриншот "registration - payment page")
+  end
+end
+
 То(/^генератор паролей возвращает пароль "(.*?)"$/) do |given_password|
   allow(PasswordGenerator).to receive(:generate).and_return(given_password)
 end
@@ -150,7 +189,6 @@ end
 end
 
 Если(/^проверяет свои ОГРН, телефон и имя, вводит пароль и переходит к следующему шагу$/) do
-  step "контакт в Siebel существует"
   step %Q(скриншот "registration - confirmation start")
   step "видит правильные регистрационные данные"
   step "получает смс с паролем"
@@ -169,8 +207,11 @@ end
   
   step %Q(скриншот "registration - confirmation finish")
   step "вводит правильный пароль"
+  step "контакт в Siebel существует"
+  step "аккаунт в Siebel существует"
   step "подтверждает регистрацию"
-  step "заполнен объект модели регистрации"
   step "отмена контакт в Siebel существует"
-  step %Q(скриншот "registration - payment start")
+  step "отмена аккаунт в Siebel существует"
+  step "заполнен объект модели регистрации"
+  step %Q(скриншот "registration - tariff choosing")
 end
