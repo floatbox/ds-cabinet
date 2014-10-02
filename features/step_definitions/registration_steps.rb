@@ -55,7 +55,7 @@ end
   Presets.current.should be
 end
 
-Если(/^(отсутствует|имеется|заполнен|завершен) объект модели регистрации$/) do |state|
+Если(/^(отсутствует|имеется|подтвержден|завершен) объект модели регистрации$/) do |state|
   @registration = Registration.find_by_ogrn(Presets.current[:ogrn])
   if state == "отсутствует"
     @registration.should_not be
@@ -65,7 +65,7 @@ end
     @registration.user_id.should        eq nil
     @registration.contact_id.should     eq nil
     @registration.person_id.should      eq nil
-  elsif state == "заполнен"
+  elsif state == "подтвержден"
     @registration.workflow_state.should == "awaiting_payment"
     step "к регистрации должна быть привязана не оплаченная покупка доступа"
   elsif state == "завершен"
@@ -73,13 +73,13 @@ end
     step "к регистрации должна быть привязана оплаченная покупка доступа"
   end
 
-  if  %w(имеется, заполнен, завершен).include? state
+  if  %w(имеется, подтвержден, завершен).include? state
     @registration.phone.should          == Presets.current[:phone_confirmation]
     @registration.password.should       == Presets.current[:password]
     @registration.inn.should            == Presets.current[:inn]
     @registration.region_code.should    == Presets.current[:region_code]
 
-    if  %w(заполнен, завершен).include? state
+    if  %w(подтвержден, завершен).include? state
       @registration.admin_notified.should == true
       @registration.user_id.should be
       @registration.contact_id            == Presets.current[:contact_id] 
@@ -224,7 +224,7 @@ end
   step "подтверждает регистрацию"
   step "отмена контакт в Siebel существует"
   step "отмена аккаунт в Siebel существует"
-  step "заполнен объект модели регистрации"
+  step "подтвержден объект модели регистрации"
   step %Q(скриншот "registration - tariff choosing")
 end
 
@@ -259,7 +259,7 @@ end
 end
 
 То(/^регистрация завершена$/) do
-  То "завершен объект модели регистрации"
+  step "завершен объект модели регистрации"
 end
 
 То(/^пользователь имеет оплаченный доступ$/) do
