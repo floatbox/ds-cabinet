@@ -1,5 +1,5 @@
 class Concierge::TagsController < Concierge::ApplicationController
-  layout 'chat'
+  layout 'concierge'
 
   before_action :authenticate
 
