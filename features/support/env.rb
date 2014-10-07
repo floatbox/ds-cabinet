@@ -73,6 +73,8 @@ WebMock.disable_net_connect!(:allow_localhost => true)
 Before do
   DatabaseCleaner.start
   Capybara.use_default_driver
+  Registration.destroy_all # FIXME
+  AccessPurchase.destroy_all #FIXME
 end
 
 After do |scenario|
