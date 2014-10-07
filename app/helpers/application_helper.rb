@@ -17,4 +17,12 @@ module ApplicationHelper
   def ogrn_input f
     f.input_field :ogrn, as: :string, placeholder: 'Введите ОГРН', class: :ogrn
   end
+
+  def promocode_input f
+    if f
+      f.input_field :promo_code, as: :string, placeholder: 'Введите промокод', class: 'string'
+    else
+      text_field_tag :promo_code, '', placeholder: 'Введите промокод', class: 'string'
+    end
+  end
 end

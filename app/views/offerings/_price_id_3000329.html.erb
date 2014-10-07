@@ -1,6 +1,6 @@
 <div class="item item1">
   <h3>Тариф Квартал</h3>
-  <div class="info">
+  <div class="info ">
     <div class="graph">
       <div class="circle">
         <div class="cost">
@@ -16,6 +16,9 @@
     </div>
     <%= form_tag access_purchases_path(code: offering.code), remote: true, 
       class: 'simple_form', id: "offering_price_id_#{offering.offering_price_id}" do |f| %>
+      <div class="field">
+        <%= promocode_input f %>
+      </div>
       <%= submit_tag "Выбрать", class: "btn-grn btn-right btn125" %>
     <% end -%>
   </div>

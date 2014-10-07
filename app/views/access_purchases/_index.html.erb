@@ -28,7 +28,7 @@
     <div class="globalwidth">
       <div class="content">
         <h2>Выберите тариф</h2>
-        <div class="items">
+        <div class="items forms">
           <% RegistrationOffering.all.each do |offering| -%>
             <% partial_name = "offerings/price_id_#{offering.offering_price_id}" -%>
             <%= 
