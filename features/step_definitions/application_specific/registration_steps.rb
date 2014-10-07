@@ -67,9 +67,9 @@ end
     @registration.person_id.should      eq nil
   elsif state == "подтвержден"
     @registration.workflow_state.should == "awaiting_payment"
-    step "к регистрации должна быть привязана не оплаченная покупка доступа"
+    step "к регистрации не должна быть привязана покупка доступа"
   elsif state == "завершен"
-    @registration.workflow_state.should == "awaiting_payment"
+    @registration.workflow_state.should == "done"
     step "к регистрации должна быть привязана оплаченная покупка доступа"
   end
 
@@ -225,18 +225,24 @@ end
   step "отмена контакт в Siebel существует"
   step "отмена аккаунт в Siebel существует"
   step "подтвержден объект модели регистрации"
-  step %Q(скриншот "registration - tariff choosing")
+end
+
+То(/^к регистрации (|не ?)должна быть привязана покупка доступа$/) do |negation|
+  @ap = AccessPurchase.last
+  if negation == 'не '
+    @ap.should_not be
+  else
+    @ap.should be
+    @ap.offering_id.should       == Presets.current[:offering_id]
+    @ap.offering_price_id.should == Presets.current[:offering_price_id]
+    @ap.user.should be
+    @ap.user.registration.should == @registration
+    @ap.order.should be
+  end
 end
 
 То(/^к регистрации должна быть привязана (|не ?)оплаченная покупка доступа$/) do |negation|
-  @ap = AccessPurchase.last
-  @ap.should be
-  @ap.offering_id.should       == Presets.current[:offering_id]
-  @ap.offering_price_id.should == Presets.current[:offering_price_id]
-  @ap.user.should be
-  @ap.user.registration.should == @registration
-  @ap.order.should be
-
+  step "к регистрации должна быть привязана покупка доступа"
   if negation == 'не '
     @ap.order.paid?.should be false
     @ap.paid?.should be false
