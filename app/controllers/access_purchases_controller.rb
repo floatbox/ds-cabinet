@@ -22,6 +22,8 @@ class AccessPurchasesController < ApplicationController
     ap = AccessPurchase.find params[:access_purchase_id]
     ap.update_status unless ap.paid?
     if ap.paid?
+      r = ap.user.registration
+      r.confirm_payment! if r && r.workflow_state == "awaiting_payment"
       redirect_to root_url
     else
       @error_message = "Платеж не выполнен" 
