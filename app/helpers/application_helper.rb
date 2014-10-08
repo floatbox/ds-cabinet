@@ -15,6 +15,6 @@ module ApplicationHelper
   end
 
   def ogrn_input f
-    f.input_field :ogrn, as: :string, placeholder: 'Введите ОГРН', class: :ogrn
+    f.input_field :ogrn, as: :string, placeholder: 'Введите ОГРНИП', class: :ogrn
   end
 end

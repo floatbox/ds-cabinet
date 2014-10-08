@@ -5,7 +5,7 @@ ru:
     attributes:
       registration:
         phone: Телефон
-        ogrn: ОГРН
+        ogrn: ОГРНИП
       recovery:
         phone: Телефон
         sms_verification_code: Код подтверждения
@@ -46,7 +46,7 @@ ru:
             phone:
               already_exist: уже зарегистрирован
             company:
-              does_not_exist: компания с таким ОГРН не существует
+              does_not_exist: компания с таким ОГРНИП не существует
             password:
               wrong_confirmation: не совпадает с подтверждением
               wrong_value: неправильный
@@ -93,7 +93,7 @@ ru:
 
   registrations:
     workflow_states:
-      new: Некорректный ОГРН
+      new: Некорректный ОГРНИП
       done: Успешная
       awaiting_confirmation: Не подтверждены данные о компании
       awaiting_verification: Не подтвержден телефон

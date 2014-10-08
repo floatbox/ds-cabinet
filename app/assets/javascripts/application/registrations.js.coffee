@@ -52,8 +52,8 @@ $ ->
 
 
   # Define messages IDs
-  ogrn_not_found_msg  = 'ogrn_not_found_msg' # ОГРН в базе ФНС не найден
-  ogrn_in_use_msg     = 'ogrn_in_use_msg'    # ОГРН уже использовался при регистрации
+  ogrn_not_found_msg  = 'ogrn_not_found_msg' # ОГРНИП в базе ФНС не найден
+  ogrn_in_use_msg     = 'ogrn_in_use_msg'    # ОГРНИП уже использовался при регистрации
   phone_in_use_msg    = 'phone_in_use_msg'   # Телефон уже использовался для регистрации
   password_sent_msg   = 'password_sent_msg'  # Пароль отослан в смс
 
