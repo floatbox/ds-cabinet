@@ -63,90 +63,9 @@
 
     <section class="case-messages">
     <div class="globalwidth">
-      <div class="content">
 
         <%= yield %>
-<!--
-        <div class="messages_pager">
-          <a href="#">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">4</a>
-          <a href="#">5</a>
-          <a href="#">&gt;&gt;</a>
-        </div>
- -->
-      </div>
 
-      <div class="content_right profile forms">
-        <h2>Профиль</h2>
-        <form>
-        <div class="profile_form">
-
-          <div class="user_data">
-            <div class="full_name">
-              <div class="first_name"><%= @current_user.first_name %></div>
-              <div class="first_name2"><%= @current_user.middle_name %></div>
-              <div class="last_name"><%= @current_user.last_name %></div>
-            </div>
-            <div id="act_logout" class="act"><%= link_to 'выйти', session_path('current_user'), method: :delete, class: 'logout' %></div>
-            <div id="act_profile_edit" class="act">редактировать</div>
-          </div>
-
-          <table class="tb_fields" id="profile_edit" style="display: none">
-            <tr class="fl">
-              <td>
-                <div class="field"><input type="text" id="form_fisrt_name1" value="<%= @current_user.first_name %>" placeholder="Фамилия" required="required"></div>
-              </td>
-            </tr>
-            <tr class="fl">
-              <td>
-                <div class="field"><input type="text" id="form_fisrt_name2" value="<%= @current_user.middle_name %>" placeholder="Имя" required="required"></div>
-              </td>
-            </tr>
-            <tr class="fl">
-              <td>
-                <div class="field"><input type="text" id="form_last_name" value="<%= @current_user.last_name %>" placeholder="Отчество" required="required"></div>
-              </td>
-            </tr>
-          </table>
-          <img src="/legko-bs/images/avatar.png" width="36" height="36" class="profile_ava" />
-        </div>
-
-        <div class="profile_data">
-          <div class="type">Телефон</div>
-          <div class="data"><%= @current_user.phone %></div>
-        </div>
-        <div class="profile_data">
-          <div class="type">Организация</div>
-          <div class="data"><%=j @current_user.siebel_company.try(:full_name) %></div>
-        </div>
-        <div class="profile_data">
-          <div class="type">ОГРН</div>
-          <div class="data"><%=j @current_user.siebel_company.try(:ogrn) %></div>
-        </div>
-        <div class="profile_data">
-          <div class="type">ИНН</div>
-          <div class="data"><%=j @current_user.siebel_company.try(:inn) %></div>
-        </div>
-        <div class="profile_data">
-          <div class="type">Налоговый режим</div>
-          <div class="data"><%= @current_user.tax_treatment %></div>
-        </div>
-
-<!--         <div id="podpiska">
-          <span>До окончания подписки осталось: 30 дней<br />
-          К оплате: 1860 р.</span>
-            <button class="btn-grn btn-left btn125">Оплатить</button>
-        </div> -->
-
-        <div id="profile_save" class="btn-group" style="display: none">
-            <button id="data_cancel" class="btn-grn btn-left btn125">Отменить</button>
-            <button id="data_save" class="btn-orn btn-right btn125">Сохранить</button>
-          </div>
-
-          </form>
-      </div>
     </div>
     </section>
 
@@ -193,6 +112,7 @@
         $('.first_name').text($('#form_fisrt_name1').val());
         $('.first_name2').text($('#form_fisrt_name2').val());
         $('.last_name').text($('#form_last_name').val());
+        $('#data_save').parents('form:first').submit();
         hideForm();
       });
       function hideForm() {

@@ -1,5 +1,5 @@
-<div id="js-message-id-<%= message.id %>" class="message avatar<% if message.author != message.user %> talker<% end %>">
-  <div class="message_head"><%= message.author.siebel.full_name %> <span class="message_time"><%=l message.created_at, format: :long %></span></div>
+<div id="js-message-id-<%= message.id %>" class="message avatar<% if message.author != message.user %> talker<% end %><% if message.is_system %> system<% end %>">
+  <div class="message_head"><% if message.is_system %>Системное сообщение<%else%><%= message.author.siebel.full_name %><% end%> <span class="message_time"><%=l message.created_at, format: :long %></span></div>
   <div class="message_body">
     <%= paragraphs message.text %>
     <div class="message_files">

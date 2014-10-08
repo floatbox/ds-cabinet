@@ -2,10 +2,10 @@ $ ->
   window.LOCALE =
     base: 'Ошибка'
     phone: 'Телефон'
-    ogrn: 'ОГРН'
+    ogrn: 'ОГРНИП'
     password: 'Пароль'
     offering: 'Тарифный план'
-    company: 'ОГРН'
+    company: 'ОГРНИП'
     timeout: 'Таймаут'
     limit: 'Кол-во попыток'
     server_error: 'На сервере произошла ошибка, попробуйте позже'

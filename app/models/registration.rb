@@ -9,6 +9,7 @@
 #   * done                    Everything is done, data was sent to UAS, SNS and Siebel.
 #
 require 'phone'
+require 'ogrnip'
 require 'password_sms_notifier'
 
 class Registration < ActiveRecord::Base
@@ -27,7 +28,7 @@ class Registration < ActiveRecord::Base
 
   validates_presence_of :phone, :ogrn
   validates_format_of :phone, with: Phone::RegExp
-  validates_format_of :ogrn, with: /\A([0-9]{13})([0-9]{2})?\Z/i
+  validates_format_of :ogrn, with: Ogrnip::RegExp
   validate :phone_uniqueness, if: :new_record?
   validate :company_exists, if: :new_record?
   validates_presence_of :password, :password_confirmation, if: :awaiting_confirmation?
