@@ -78,6 +78,10 @@ VCR.configure do |c|
     %r(www.google.com)
   ]
   c.before_record do |i|
-    i.ignore! unless BLACKLIST.select{|e| e =~ i.request.uri }.empty?
+    if BLACKLIST.select{|e| e =~ i.request.uri }.empty?
+      i.response.body.force_encoding('UTF-8') # to save cassette in human readable format
+    else
+      i.ignore! 
+    end
   end
 end
