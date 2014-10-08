@@ -89,7 +89,7 @@ module Ds
       # @param[String] offering_price_id - product price id
       # @param[String] offering_url      - product url
       #
-      def order_line_options offering_id, offering_price_id, offering_url
+      def order_line_options offering_id, offering_price_id, offering_url, promocode
         {
           Offering: {
             OfferingId:       offering_id,
@@ -102,7 +102,7 @@ module Ds
           SerializedOffering: nil,
           ProductsForUpdate:  nil,
           MerchantId:         nil,
-          Promocode:          nil
+          Promocode:          promocode
         }
       end
     end
