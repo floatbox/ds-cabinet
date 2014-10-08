@@ -1,6 +1,6 @@
 $ ->
   window.LOCALE =
-    base: 'Ошибка'
+    base: 'Ошибка:'
     phone: 'Телефон'
     ogrn: 'ОГРНИП'
     password: 'Пароль'
