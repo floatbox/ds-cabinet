@@ -46,12 +46,12 @@ ru:
             phone:
               already_exist: уже зарегистрирован
             company:
-              does_not_exist: компания с таким ОГРНИП не существует
+              does_not_exist: в базе ФНС не найден
             password:
               wrong_confirmation: не совпадает с подтверждением
               wrong_value: неправильный
             ogrn:
-              wrong_value: неправильной длины, должен состоять из 15 цифр для ИП или 13 цифр для ЮЛ 
+              wrong_value: неправильной длины, должен состоять из 15 цифр
         recovery:
           invalid_sms_verification_code: Неверный код подтверждения
           something_went_wrong: "Не удалось восстановить пароль. Обратитесь, пожалуйста, в службу поддержки."
