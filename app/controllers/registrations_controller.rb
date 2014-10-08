@@ -1,5 +1,5 @@
 require 'phone'
-require 'ogrn'
+require 'ogrnip'
 
 class RegistrationsController < ApplicationController
   include WithSmsVerification
@@ -14,7 +14,7 @@ class RegistrationsController < ApplicationController
     errors = Registration.new.errors
     if ogrn.nil? || ogrn.empty?  
       errors.add(:ogrn, :blank)
-    elsif !Ogrn.new(ogrn).valid? 
+    elsif !Ogrnip.new(ogrn).valid? 
       errors.add(:ogrn, :wrong_value)
     end
     
