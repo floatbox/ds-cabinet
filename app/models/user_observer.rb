@@ -52,7 +52,7 @@ class UserObserver < ActiveRecord::Observer
     def create_welcome_message_for(user)
       return unless user.concierge_id
       text = I18n.t('system_messages.welcome_topic')
-      user.messages.create(text: text, author_id: user.concierge.id)
+      user.messages.create(text: text, author_id: user.concierge.id, is_system: true)
     end
 
 end
