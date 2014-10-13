@@ -20,9 +20,9 @@ module ApplicationHelper
 
   def promocode_input f
     if f
-      f.input_field :promo_code, as: :string, placeholder: 'Введите промокод', class: 'string'
+      f.input_field :promocode, as: :string, placeholder: 'Введите промокод', class: 'string'
     else
-      text_field_tag :promo_code, '', placeholder: 'Введите промокод', class: 'string'
+      text_field_tag :promocode, '', placeholder: 'Введите промокод', class: 'string'
     end
   end
 end
