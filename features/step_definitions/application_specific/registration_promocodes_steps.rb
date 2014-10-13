@@ -3,7 +3,7 @@
   step %Q(в форме тариф #{plan} имеется поле ввода "Введите промокод")
   
   within(area_to_selector("форма тариф #{plan}")) do
-    fill_in 'promocode', with: promo_code
+    fill_in 'promocode', with: promocode
   end
 
   step "выбирает тарифный план #{plan}"
