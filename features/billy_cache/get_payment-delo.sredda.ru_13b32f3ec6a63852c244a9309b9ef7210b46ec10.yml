@@ -1,0 +1,19 @@
+---
+:scope: 
+:url: http://payment-delo.sredda.ru/acquiring/Register/c73bb0e5-6b78-4370-bd78-e6c48b042847
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Cache-Control: private
+  Content-Type: text/html; charset=utf-8
+  Location: https://securepayments.sberbank.ru/payment/merchants/dasreda/payment_ru.html?mdOrder=9c244402-0079-448d-8634-a16b631a083f
+  Server: Microsoft-IIS/7.5
+  X-AspNetMvc-Version: '4.0'
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Date: Tue, 14 Oct 2014 08:00:34 GMT
+  Connection: close
+  Content-Length: '238'
+:content: "<html><head><title>Object moved</title></head><body>\r\n<h2>Object moved
+  to <a href=\"https://securepayments.sberbank.ru/payment/merchants/dasreda/payment_ru.html?mdOrder=9c244402-0079-448d-8634-a16b631a083f\">here</a>.</h2>\r\n</body></html>\r\n"

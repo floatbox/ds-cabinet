@@ -27,7 +27,7 @@ http_interactions:
       Content-Length:
       - '118511'
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:s=\"http://www.w3.org/2001/XMLSchema\"
         xmlns:soap12=\"http://schemas.xmlsoap.org/wsdl/soap12/\" xmlns:http=\"http://schemas.xmlsoap.org/wsdl/http/\"
         xmlns:mime=\"http://schemas.xmlsoap.org/wsdl/mime/\" xmlns:tns=\"http://interfax.ru/ifax\"
@@ -1514,7 +1514,7 @@ http_interactions:
       Content-Length:
       - '360'
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><AuthmethodResponse
         xmlns="http://interfax.ru/ifax"><AuthmethodResult>True</AuthmethodResult></AuthmethodResponse></soap:Body></soap:Envelope>
@@ -1557,7 +1557,7 @@ http_interactions:
       Content-Length:
       - '2750'
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GetEntrepreneurShortReportResponse
         xmlns="http://interfax.ru/ifax"><GetEntrepreneurShortReportResult>True</GetEntrepreneurShortReportResult><xmlData>&lt;?xml
@@ -1604,7 +1604,7 @@ http_interactions:
       Date:
       - Wed, 24 Sep 2014 15:28:22 GMT
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"__type":"DataObjectNotFoundFault","ErrorMessage":"Can''t find user
         by login ''+77441111111''.","ServerStackTrace":"   at Dsrd.Uas.BusinessLogic.AuthenticationBll.User_Login(String
         login, String password)\u000d\u000a   at SyncInvokeUser_Login(Object , Object[]
@@ -1645,7 +1645,7 @@ http_interactions:
       Content-Length:
       - '6'
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '105065'
     http_version: 
   recorded_at: Wed, 24 Sep 2014 15:12:30 GMT
@@ -1670,7 +1670,7 @@ http_interactions:
       Date:
       - Thu, 25 Sep 2014 12:11:46 GMT
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"FirstName":"Ольга","IsDisabled":true,"LastName":"Батурина","Login":"+77441111111","UserId":"UAS100173","UserNativeId":"1-1WMYU0","UserSysName":"siebel"}'
     http_version: 
   recorded_at: Thu, 25 Sep 2014 12:12:14 GMT
@@ -1698,7 +1698,7 @@ http_interactions:
       Date:
       - Thu, 25 Sep 2014 12:12:09 GMT
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: ''
     http_version: 
   recorded_at: Thu, 25 Sep 2014 12:12:31 GMT
@@ -1743,7 +1743,7 @@ http_interactions:
       Date:
       - Thu, 25 Sep 2014 12:12:40 GMT
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><SOAP-ENV:Body><ns:AccountSync_Output
         xmlns:ns="http://siebel.com/CustomUI"><ns:Error_spcCode></ns:Error_spcCode><ns:Error_spcMessage></ns:Error_spcMessage><ns:Result>1</ns:Result></ns:AccountSync_Output></SOAP-ENV:Body></SOAP-ENV:Envelope>
@@ -1774,7 +1774,7 @@ http_interactions:
       Date:
       - Thu, 25 Sep 2014 12:12:25 GMT
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"__type":"DataObjectNotFoundFault","ErrorMessage":"Data object not
         found.","ServerStackTrace":"   at Dsrd.Sns.SocialNetwork.Service.Entity_Get(String
         entityType, String systemName, String systemId)\u000d\u000a   at SyncInvokeEntity_Get(Object
@@ -1810,7 +1810,7 @@ http_interactions:
       Date:
       - Thu, 25 Sep 2014 12:12:31 GMT
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: ''
     http_version: 
   recorded_at: Thu, 25 Sep 2014 12:12:52 GMT
@@ -1833,7 +1833,7 @@ http_interactions:
       Date:
       - Thu, 25 Sep 2014 12:12:29 GMT
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: ''
     http_version: 
   recorded_at: Thu, 25 Sep 2014 12:12:57 GMT
@@ -1858,7 +1858,7 @@ http_interactions:
       Date:
       - Thu, 25 Sep 2014 12:12:35 GMT
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: "{\"Token\":\"a4FmfMfU\\/NmesfVhLw7Diqsrf3xD\\/AtZoXBZJXZXmEiGHD4V4A35+gWh0nj5QYGT56YcViOqqyUJGIVcbYfBGLx1wbZ8kOeAp3xPMQRi+ElTo1sV3eCJB3AFdQytmmuE+bqwmc16mlIqCx1B83gVsg==|2014-09-30T15:57:35\",\"User\":{\"FirstName\":\"Ð\x9EÐ»Ñ\x8CÐ³Ð°\",\"LastName\":\"Ð\x91Ð°Ñ\x82Ñ\x83Ñ\x80Ð¸Ð½Ð°\",\"Login\":\"+77441111111\",\"UserId\":\"UAS100173\",\"UserNativeId\":\"1-1WMYU0\",\"UserSysName\":\"siebel\"}}"
     http_version: 
   recorded_at: Thu, 25 Sep 2014 12:13:03 GMT
@@ -1883,7 +1883,7 @@ http_interactions:
       Date:
       - Tue, 30 Sep 2014 14:30:40 GMT
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"FirstName":"Ольга","LastName":"Батурина","Login":"+77441111111","UserId":"UAS100173","UserNativeId":"1-1WMYU0","UserSysName":"siebel"}'
     http_version: 
   recorded_at: Tue, 30 Sep 2014 14:34:58 GMT
@@ -1924,8 +1924,106 @@ http_interactions:
       Content-Length:
       - '133'
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"OrderId":20139,"TargetUrl":"http://payment-delo.sredda.ru:8081/Payment/Credentials?PaymentID=7ff2c703-3eec-4d72-ac20-adbaa6b76dd2"}'
     http_version: 
   recorded_at: Tue, 30 Sep 2014 16:24:48 GMT
+- request:
+    method: post
+    uri: https://400004:cArt123QWE123@cart-delo.sredda.ru:5443/api/orders
+    body:
+      encoding: UTF-8
+      string: '{"UserId":"UAS100173","SuccessUrl":"http://127.0.0.1:44708/access_purchases/137/processed","ErrorUrl":"http://127.0.0.1:44708/access_purchases/137/processed","Promocode":"LEGKO-PROMO10","Offerings":[{"Offering":{"OfferingId":"3000319","OfferingPriceId":"3000329","ClientKey":"UAS100173","Characteristics":[]},"ArticleUrl":"http://market.yandex.ru/model-spec.xml?modelid=10890865\u0026hid=6427100","ArticleId":null,"SerializedOffering":null,"ProductsForUpdate":null,"MerchantId":null}],"Options":3,"ChoosePayer":true,"PayerCompanyId":null,"SellerCompanyId":null}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - '-1'
+      Location:
+      - https://cart-delo.sredda.ru/api/orders/20165
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 14 Oct 2014 06:52:29 GMT
+      Content-Length:
+      - '133'
+    body:
+      encoding: UTF-8
+      string: '{"OrderId":20165,"TargetUrl":"http://payment-delo.sredda.ru:8081/Payment/Credentials?PaymentID=c73bb0e5-6b78-4370-bd78-e6c48b042847"}'
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 06:52:45 GMT
+- request:
+    method: post
+    uri: http://payment-delo.sredda.ru:8081/Payment/Credentials?PaymentID=c73bb0e5-6b78-4370-bd78-e6c48b042847
+    body:
+      encoding: UTF-8
+      string: PaymentType=acquiring&Receipt.FIO=user_first_name+user_last_name&Receipt.Address=
+    headers:
+      Accept:
+      - text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+      Referer:
+      - http://127.0.0.1:52029/
+      Origin:
+      - http://127.0.0.1:52029
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '81'
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+      Host:
+      - payment-delo.sredda.ru:8081
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - text/html; charset=utf-8
+      Location:
+      - http://payment-delo.sredda.ru:8081/acquiring/Register/c73bb0e5-6b78-4370-bd78-e6c48b042847
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnetmvc-Version:
+      - '4.0'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 14 Oct 2014 08:00:34 GMT
+      Connection:
+      - close
+      Content-Length:
+      - '173'
+    body:
+      encoding: UTF-8
+      string: "<html><head><title>Object moved</title></head><body>\r\n<h2>Object
+        moved to <a href=\"/acquiring/Register/c73bb0e5-6b78-4370-bd78-e6c48b042847\">here</a>.</h2>\r\n</body></html>\r\n"
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 07:52:15 GMT
 recorded_with: VCR 2.9.2
