@@ -35,13 +35,17 @@ VCR.configure do |c|
           req1.body == req2.body
 
         when %r(/api/orders) # Cart
-          hash1 = JSON.parse req1.body
-          hash2 = JSON.parse req2.body
-          hash1.delete "SuccessUrl"
-          hash2.delete "SuccessUrl"
-          hash1.delete "ErrorUrl"
-          hash2.delete "ErrorUrl"
-          hash1 == hash2
+          if req1.method == :post
+            hash1 = JSON.parse req1.body
+            hash2 = JSON.parse req2.body
+            hash1.delete "SuccessUrl"
+            hash2.delete "SuccessUrl"
+            hash1.delete "ErrorUrl"
+            hash2.delete "ErrorUrl"
+            hash1 == hash2
+          else
+            true
+          end
         else 
           req1.headers == req2.headers &&
           req1.body    == req2.body 
