@@ -8,4 +8,4 @@
 
 # The application refuses to function w/o these config items 
 ConfigItem.create key: 'registration_enabled', value: 'true'
-ConfigItem.create key: 'search_banned_words',  value: ''
+ConfigItem.create key: 'search_banned_words',  value: nil
