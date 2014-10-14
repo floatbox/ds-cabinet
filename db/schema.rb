@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902112413) do
+ActiveRecord::Schema.define(version: 20141008072433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20140902112413) do
 
   add_index "attachments_messages", ["attachment_id"], name: "index_attachments_messages_on_attachment_id", using: :btree
   add_index "attachments_messages", ["message_id"], name: "index_attachments_messages_on_message_id", using: :btree
+
+  create_table "attempt_bases", force: true do |t|
+    t.integer  "attemptable_id"
+    t.string   "attemptable_type"
+    t.integer  "limit",            default: 0
+    t.integer  "count",            default: 0
+    t.integer  "timeout",          default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "config_items", force: true do |t|
     t.string   "key"
@@ -86,6 +96,7 @@ ActiveRecord::Schema.define(version: 20140902112413) do
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "promocode"
   end
 
   create_table "recoveries", force: true do |t|
