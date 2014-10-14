@@ -2026,4 +2026,43 @@ http_interactions:
         moved to <a href=\"/acquiring/Register/c73bb0e5-6b78-4370-bd78-e6c48b042847\">here</a>.</h2>\r\n</body></html>\r\n"
     http_version: 
   recorded_at: Tue, 14 Oct 2014 07:52:15 GMT
+- request:
+    method: get
+    uri: https://400004:cArt123QWE123@cart-delo.sredda.ru:5443/api/orders/20165
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - '-1'
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 14 Oct 2014 09:17:35 GMT
+      Content-Length:
+      - '174'
+    body:
+      encoding: UTF-8
+      string: '{"OrderId":20165,"CreatedDate":"2014-10-14T10:52:25.293","OrderStatus":2,"LastEditedDate":"2014-10-14T10:52:29.583","Amount":2160.00000,"CompanyId":null,"UserId":"UAS100173"}'
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 09:08:25 GMT
 recorded_with: VCR 2.9.2
