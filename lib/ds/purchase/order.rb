@@ -68,6 +68,23 @@ module Ds
         @status = order_info["OrderStatus"]
       end
 
+      # Returns effective order amount
+      # @return [Float] order amount with promocode applied
+      def get_amount
+        binding.pry
+        order_info = Ds::Cart::Api.get_order(@order_id)
+        #{
+        #  "OrderId"=>20026, 
+        #  "CreatedDate"=>"2014-08-12T16:47:13.527", 
+        #  "OrderStatus"=>2, 
+        #  "LastEditedDate"=>"2014-08-12T16:47:18.86", 
+        #  "Amount"=>7200.0, 
+        #  "CompanyId"=>nil, 
+        #  "UserId"=>"UAS100452"
+        #}
+        order_info["Amount"]
+      end
+
       protected
 
       # Builds and returns order hash, suitable to pass to external api
