@@ -3,7 +3,7 @@ class Order< ActiveRecord::Base
   belongs_to :orderable, polymorphic: true
 
   delegate :integration_id, :offering_id, :offering_price_id, :offering_url,
-    :promocode, :paid_and_not_expired?, :to => :orderable
+    :promocode, :to => :orderable
 
   delegate :order_id, :url, :status, :update_status, :to => :cart_order
 
@@ -13,9 +13,10 @@ class Order< ActiveRecord::Base
 
   def post success_url, error_url
     cart_order.post(integration_id, 
-                      [[offering_id, offering_price_id, offering_url, promocode]],
+                      [[offering_id, offering_price_id, offering_url]],
                       success_url, 
-                      error_url)
+                      error_url, 
+                      promocode)
     self.save
   end
 
