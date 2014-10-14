@@ -25,6 +25,9 @@ REGISTRATION_OFFERINGS = [{
                :type => "RegistrationOffering",
 }]
 
-REGISTRATION_OFFERINGS.each do |ro|
-  RegistrationOffering.where(ro).first_or_create
+Before do |scenario|
+  load Rails.root.join('db/seeds.rb')
+  REGISTRATION_OFFERINGS.each do |ro|
+    RegistrationOffering.where(ro).first_or_create
+  end
 end

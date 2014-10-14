@@ -36,12 +36,7 @@ ActionController::Base.allow_rescue = false
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin
-  # FIXME Стратегия DatabaseCleaner :transaction не работает с тестами, использующими js.
-  # Стратегия :truncation не работает сейчас из-за поломанной schema.rb (из-за адаптера oracle)
-  # Нужно изменить стратегию DatabaseCleaner на :truncation после починки schema.rb
-  # http://stackoverflow.com/questions/15945349/database-cleaner-issue-with-capybara-webkit
-  # http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/
-  DatabaseCleaner.strategy = :transaction
+  DatabaseCleaner.strategy = :truncation
 rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
@@ -74,8 +69,6 @@ WebMock.disable_net_connect!(:allow_localhost => true)
 Before do
   DatabaseCleaner.start
   Capybara.use_default_driver
-  Registration.destroy_all # FIXME
-  AccessPurchase.destroy_all #FIXME
 end
 
 After do |scenario|
