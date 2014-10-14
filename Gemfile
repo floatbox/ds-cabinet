@@ -8,7 +8,7 @@ gem 'pg'
 
 # Use Oracle adapter for reading from Siebel
 gem 'ruby-oci8'
-gem 'activerecord-oracle_enhanced-adapter', git: 'https://github.com/rsim/oracle-enhanced.git', branch: 'rails4'
+gem "activerecord-oracle_enhanced-adapter", "~> 1.5.0"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

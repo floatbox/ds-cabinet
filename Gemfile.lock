@@ -24,13 +24,6 @@ GIT
       memoist
       rails (>= 4.0.0)
 
-GIT
-  remote: https://github.com/rsim/oracle-enhanced.git
-  revision: f15de843c572f1d73a52907cb47f8a4b884c5ec5
-  branch: rails4
-  specs:
-    activerecord-oracle_enhanced-adapter (1.4.3)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -52,6 +45,7 @@ GEM
       activesupport (= 4.0.3)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
+    activerecord-oracle_enhanced-adapter (1.5.5)
     activesupport (4.0.3)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
@@ -355,7 +349,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-oracle_enhanced-adapter!
+  activerecord-oracle_enhanced-adapter (~> 1.5.0)
   acts-as-taggable-on
   awesome_print
   cancan
