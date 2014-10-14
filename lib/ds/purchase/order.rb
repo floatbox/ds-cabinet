@@ -38,9 +38,9 @@ module Ds
       # @param[String] success_url, An url to which brawser to be redirected after successful payment
       # @param[String] error_url, An url to which brawser to be redirected after unsuccessful payment
       # 
-      def post(client_integration_id, offerings_arr, success_url, error_url)
+      def post(client_integration_id, offerings_arr, success_url, error_url, promocode=nil)
         @client_integration_id = client_integration_id
-        @order_options = order_options(offerings_arr, success_url, error_url)
+        @order_options = order_options(offerings_arr, success_url, error_url, promocode)
         if @order_id.nil? 
           Ds::Cart::Api.add_order(@order_options).tap do |add_order_result|
             # {"OrderId"=>20026, 
@@ -75,11 +75,12 @@ module Ds
       #   [[offering1_id, offering1_price_id, offering1_url],...,[offeringN_id, offeringN_price_id, offeringN_url]]
       # @return[Hash]
       #
-      def order_options(offerings_arr, success_url, error_url)
+      def order_options(offerings_arr, success_url, error_url, promocode)
         {
           UserId:     @client_integration_id,
           SuccessUrl: success_url,
           ErrorUrl:   error_url,
+          Promocode:  promocode,
           Offerings:  offerings_arr.map{|o| self.order_line_options(*o)}
         }
       end
@@ -89,7 +90,7 @@ module Ds
       # @param[String] offering_price_id - product price id
       # @param[String] offering_url      - product url
       #
-      def order_line_options offering_id, offering_price_id, offering_url, promocode
+      def order_line_options offering_id, offering_price_id, offering_url
         {
           Offering: {
             OfferingId:       offering_id,
@@ -101,8 +102,7 @@ module Ds
           ArticleId:          nil,
           SerializedOffering: nil,
           ProductsForUpdate:  nil,
-          MerchantId:         nil,
-          Promocode:          promocode
+          MerchantId:         nil
         }
       end
     end
