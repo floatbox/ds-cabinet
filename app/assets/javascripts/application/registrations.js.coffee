@@ -39,9 +39,10 @@ $ ->
       @switch_next()
 
     set_payment_data: (payment) =>
-      $(@selector).find('span.js-process_payment_desc').text(payment.process_payment_desc)
-      $(@selector).find('form.js-process_payment_form').attr('action', payment.process_payment_link)
-      $('#js-modal_success_dialog').modal("show")
+      dialog_selector = "#confirm_dialog_id_" + payment.offering_price_id
+      $(dialog_selector + ' form.js-process_payment_form').attr('action', payment.link)
+      $(dialog_selector + ' span.js-process_payment_amount').text(payment.amount)
+      $(dialog_selector).modal("show")
   
   regStep1 = new PageFragment('.registration_input_fragment',   '/virtual/step1')
   regStep2 = new PageFragment('.registration_confirm_fragment', '/virtual/step2')
