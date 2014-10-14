@@ -1,3 +1,5 @@
+require 'ds/purchase/order'
+
 class Order< ActiveRecord::Base
 
   belongs_to :orderable, polymorphic: true
