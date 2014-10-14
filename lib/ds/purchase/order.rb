@@ -71,7 +71,6 @@ module Ds
       # Returns effective order amount
       # @return [Float] order amount with promocode applied
       def get_amount
-        binding.pry
         order_info = Ds::Cart::Api.get_order(@order_id)
         #{
         #  "OrderId"=>20026, 
