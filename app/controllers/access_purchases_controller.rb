@@ -10,7 +10,8 @@ class AccessPurchasesController < ApplicationController
       render json: { base: ['Продукт не найден'] }, status: :unprocessable_entity
     else
       @current_user.access_purchases.not_paid.destroy_all
-      ap = @current_user.access_purchases.create(ro.attributes_hash)
+      ap_attributes = ro.attributes_hash.merge(promocode: params[:promocode])
+      ap = @current_user.access_purchases.create(ap_attributes)
       ap.post(access_purchase_processed_url(ap.id), 
               access_purchase_processed_url(ap.id))
 
