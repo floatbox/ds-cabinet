@@ -23,3 +23,4 @@
     <% end -%>
   </div>
 </div>
+<%= render partial: "access_purchases/confirm_dialog", locals: {tariff_name: "Тариф Квартал", tariff_amount: offering.amount, tariff_desc: "за 3 месяца", dialog_id: "confirm_dialog_id_#{offering.offering_price_id}"} %>
