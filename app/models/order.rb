@@ -5,7 +5,7 @@ class Order< ActiveRecord::Base
   delegate :integration_id, :offering_id, :offering_price_id, :offering_url,
     :promocode, :to => :orderable
 
-  delegate :order_id, :url, :status, :update_status, :to => :cart_order
+  delegate :order_id, :url, :status, :update_status, :get_amount, :to => :cart_order
 
   serialize :cart_order, Ds::Purchase::Order
 
