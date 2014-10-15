@@ -16,13 +16,19 @@ class AccessPurchasesController < ApplicationController
               access_purchase_processed_url(ap.id))
 
       effective_amount = ap.effective_amount # gets effective order amount from cart
-      render json: { 
-          payment: { 
-            amount: effective_amount,
-            link: ap.order.url, 
-            offering_price_id: ap.offering_price_id
-          }
-        }, :content_type => 'application/json'
+      if !params[:promocode].empty? && ap.amount == ap.effective_amount
+        # Промокод указан, но цена заказа в корзине равна базовой цене тарифного плана
+        ap.errors.add(:promocode, :wrong_value)
+        render json: ap.errors, status: :unprocessable_entity, content_type: 'application/json' #FIXME somehow doesn't work without content_type
+      else
+        render json: { 
+            payment: { 
+              amount: effective_amount,
+              link: ap.order.url, 
+              offering_price_id: ap.offering_price_id
+            }
+          }, :content_type => 'application/json' #FIXME somehow doesn't work without content_type
+      end
     end
   end
 
