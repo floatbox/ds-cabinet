@@ -66,6 +66,10 @@ ru:
               exausted: исчерпано, обратитесь в службу поддержки
             timeout:
               not_expired: еще не истек
+        access_purchase:
+          attributes:
+            promocode:
+              wrong_value: не действителен
 
   views:
     pagination:
