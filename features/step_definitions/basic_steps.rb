@@ -100,8 +100,13 @@ end
   end
 end
 
+То(/^не появляется сообщение об ошибке$/) do
+  should_not have_selector('#myModal')
+end
+
 То(/^появляется сообщение об ошибке "(.*?)"$/) do |message|
-  should have_selector('#myModal', text:message)
+  should have_selector('#myModal')
+  find('#myModal p').text.should == message
 end
 
 То(/^появляется сообщение "(.*?)"$/) do |message|
