@@ -105,7 +105,8 @@ end
 end
 
 То(/^появляется сообщение об ошибке "(.*?)"$/) do |message|
-  should have_selector('#myModal', text:message)
+  should have_selector('#myModal')
+  find('#myModal p').text.should == message
 end
 
 То(/^появляется сообщение "(.*?)"$/) do |message|
