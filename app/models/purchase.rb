@@ -3,7 +3,7 @@ require 'ds/purchase/order'
 class Purchase< PimOffering
   belongs_to :user
   has_one :order, as: :orderable
-  delegate :update_status, :post, :get_amount, to: :order
+  delegate :update_status, :post, :effective_amount, to: :order
 
   def self.not_paid offering_id= '*', offering_price_id= '*'
     Purchase.joins(:order).where(

@@ -15,10 +15,10 @@ class AccessPurchasesController < ApplicationController
       ap.post(access_purchase_processed_url(ap.id), 
               access_purchase_processed_url(ap.id))
 
-      amount = ap.get_amount # gets effective order amount from cart
+      effective_amount = ap.effective_amount # gets effective order amount from cart
       render json: { 
           payment: { 
-            amount: amount,
+            amount: effective_amount,
             link: ap.order.url, 
             offering_price_id: ap.offering_price_id
           }

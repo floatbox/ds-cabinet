@@ -68,10 +68,10 @@ module Ds
         @status = order_info["OrderStatus"]
       end
 
-      # Returns effective order amount
+      # Returns order amount which is offering amount with the promocode discount applied
       # @return [Float] order amount with promocode applied
-      def get_amount
-        order_info = Ds::Cart::Api.get_order(@order_id)
+      def effective_amount
+        @effective_amount ||= Ds::Cart::Api.get_order(@order_id)["Amount"]
         #{
         #  "OrderId"=>20026, 
         #  "CreatedDate"=>"2014-08-12T16:47:13.527", 
@@ -81,7 +81,6 @@ module Ds
         #  "CompanyId"=>nil, 
         #  "UserId"=>"UAS100452"
         #}
-        order_info["Amount"]
       end
 
       protected
