@@ -29,8 +29,13 @@ class RegistrationsController < ApplicationController
     else
       @registration = Registration.find_by_phone_ogrn phone, ogrn
       if @registration
-        @registration.send_password_sms_notification
-        render json: @registration.as_json(only: [:id, :ogrn, :phone])
+        if %w/deferred done/.include? @registration.workflow_state
+          @registration.errors.add(:ogrn, :already_exist)
+          render json: @registration.errors, status: :unprocessable_entity
+        else
+          @registration.send_password_sms_notification
+          render json: @registration.as_json(only: [:id, :ogrn, :phone])
+        end
       else
         # external systems are called here by implicit call company and ogrn
         @registration = Registration.new(registration_params) 
