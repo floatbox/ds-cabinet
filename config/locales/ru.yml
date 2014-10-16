@@ -52,6 +52,7 @@ ru:
               wrong_value: неправильный
             ogrn:
               wrong_value: неправильной длины, должен состоять из 15 цифр
+              already_exist: уже зарегистрирован
         recovery:
           invalid_sms_verification_code: Неверный код подтверждения
           something_went_wrong: "Не удалось восстановить пароль. Обратитесь, пожалуйста, в службу поддержки."

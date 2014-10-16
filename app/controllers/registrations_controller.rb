@@ -37,12 +37,13 @@ class RegistrationsController < ApplicationController
         if @registration.save
           if @registration.siebel_company_exists?
             @registration.defer!
+            @registration.errors.add(:ogrn, :already_exist)
+            render json: @registration.errors, status: :unprocessable_entity
           else
             generate_send_password
             @registration.start!
+            render json: @registration.as_json(only: [:id, :ogrn, :phone])
           end
-
-          render json: @registration.as_json(only: [:id, :ogrn, :phone])
         else
           # Notify admins about invalid OGRN, but valid phone
           @registration.notify_admin if @registration.errors.messages.keys == [:company]
