@@ -73,13 +73,13 @@ end
     step "к регистрации должна быть привязана оплаченная покупка доступа"
   end
 
-  if  %w(имеется, подтвержден, завершен).include? state
+  if  ["имеется", "подтвержден", "завершен"].include? state
     @registration.phone.should          == Presets.current[:phone_confirmation]
     @registration.password.should       == Presets.current[:password]
     @registration.inn.should            == Presets.current[:inn]
     @registration.region_code.should    == Presets.current[:region_code]
 
-    if  %w(подтвержден, завершен).include? state
+    if  ["подтвержден", "завершен"].include? state
       @registration.admin_notified.should == true
       @registration.user_id.should be
       @registration.contact_id            == Presets.current[:contact_id] 
