@@ -115,11 +115,11 @@ end
   step "имеется форма регистрации и входа"
 end
 
-Если(/^(|отмена ?)компании в Siebel не существует$/) do |negation|
-  if negation == "отмена "
+Если(/^(|отмена ?)компани[ия] в Siebel (|не ?)существует$/) do |cancel, negation|
+  if cancel == "отмена "
     Registration.any_instance.unstub(:siebel_company_exists?)
   else
-    Registration.any_instance.should_receive(:siebel_company_exists?).and_return(false)
+    Registration.any_instance.should_receive(:siebel_company_exists?).and_return(negation == 'не ' ? false : true)
   end
 end
 
@@ -143,9 +143,6 @@ end
   step %Q(пользователь заполняет поле ввода "Введите телефон" в форме регистрации и входа значением "#{Presets.current[:phone]}")
   step %Q(пользователь заполняет поле ввода "Введите ОГРНИП" в форме регистрации и входа значением "#{Presets.current[:ogrn]}")
   step "начинает регистрацию"
-  step "не появляется сообщение об ошибке"
-  step "имеется объект модели регистрации"
-  step "отмена компании в Siebel не существует"
 end
 
 То(/^видит правильные регистрационные данные$/) do
