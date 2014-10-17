@@ -648,6 +648,7 @@ ul {
 }
 .case-tariff .item .econom {
   font-size: 22px;
+  margin-bottom: 9px;
 }
 .case-tariff .item1 .circle {
   background: url('/legko-bs/images/circle1.png?1407523496') no-repeat 0 0;
@@ -733,4 +734,21 @@ ul {
 
 .js__s_active {
   cursor: default;
+}
+.js-process_payment_tariff {
+  font-size: 24px;
+}
+.tariff-amount {
+  font-size: 40px;
+  line-height: 33px;
+}
+.js-process_payment_desc {
+  font-size: 24px;
+  padding-bottom: 20px;
+  display: block;
+}
+#promocode {
+  width: 200px;
+  background-color: #EFC;
+  margin:5px 0 20px;
 }
