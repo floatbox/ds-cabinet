@@ -55,25 +55,30 @@ end
   Presets.current.should be
 end
 
-Если(/^(отсутствует|имеется|подтвержден|завершен) объект модели регистрации$/) do |state|
+Если(/^(отсутствует|отложен|имеется|ожидает подтверждения|подтвержден|завершен) объект модели регистрации$/) do |state|
   @registration = Registration.find_by_ogrn(Presets.current[:ogrn])
-  if state == "отсутствует"
+  case state 
+  when "отсутствует"
     @registration.should_not be
-  elsif state == "имеется"
-    @registration.workflow_state.should == "awaiting_confirmation"
+  when "имеется", "ожидает подтверждения", "отложен"
+    @registration.workflow_state.should == case(state)
+      when "имеется"               then "new" 
+      when "отложен"               then "deferred"
+      when "ожидает подтверждения" then "awaiting_confirmation"
+      end
     @registration.admin_notified.should eq false
     @registration.user_id.should        eq nil
     @registration.contact_id.should     eq nil
     @registration.person_id.should      eq nil
-  elsif state == "подтвержден"
+  when "подтвержден"
     @registration.workflow_state.should == "awaiting_payment"
     step "к регистрации не должна быть привязана покупка доступа"
-  elsif state == "завершен"
+  when "завершен"
     @registration.workflow_state.should == "done"
     step "к регистрации должна быть привязана оплаченная покупка доступа"
   end
 
-  if  ["имеется", "подтвержден", "завершен"].include? state
+  if  ["ожидает подтверждения", "подтвержден", "завершен"].include? state
     @registration.phone.should          == Presets.current[:phone_confirmation]
     @registration.password.should       == Presets.current[:password]
     @registration.inn.should            == Presets.current[:inn]
