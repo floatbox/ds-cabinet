@@ -5,7 +5,9 @@ module ApplicationHelper
   # @return [ActiveSupport::SafeBuffer] HTML safe text splitted by <p> tags
   def paragraphs(text)
     paragraphs = text.split("\n").map(&:strip).select(&:present?)
-    paragraphs.map{|p| "<p>#{p}</p>"}.join("\r\n").html_safe
+    paragraphs.map { |p|
+      p = p.split(' ').map{ |w| w.scan(/.{1,80}/).join(' ') }.join(' ')
+      "<p>#{p}</p>"}.join("\r\n").html_safe
   end
 
   def phone_input f
@@ -13,6 +15,14 @@ module ApplicationHelper
   end
 
   def ogrn_input f
-    f.input_field :ogrn, as: :string, placeholder: 'Введите ОГРН', class: :ogrn
+    f.input_field :ogrn, as: :string, placeholder: 'Введите ОГРНИП', class: :ogrn
+  end
+
+  def promocode_input f
+    if f
+      f.input_field :promocode, as: :string, placeholder: 'Введите промокод', class: 'string'
+    else
+      text_field_tag :promocode, '', placeholder: 'Введите промокод', class: 'string'
+    end
   end
 end

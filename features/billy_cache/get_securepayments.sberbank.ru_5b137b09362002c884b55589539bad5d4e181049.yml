@@ -1,0 +1,38 @@
+---
+:scope: 
+:url: https://securepayments.sberbank.ru/payment/merchants/dasreda/images/input-submit-bg.png
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Server: nginx/1.6.0
+  Date: Wed, 01 Oct 2014 12:24:18 GMT
+  Content-Type: image/png
+  Content-Length: '964'
+  Last-Modified: Tue, 24 Jun 2014 16:36:27 GMT
+  Connection: close
+  ETag: '"53a9a90b-3c4"'
+  Accept-Ranges: bytes
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAAAEAAAAjCAIAAADaE/fjAAAAGXRFWHRTb2Z0
+  d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9i
+  ZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2Vo
+  aUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6
+  bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYx
+  LjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpS
+  REYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJk
+  Zi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIg
+  eG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxu
+  czp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1s
+  bnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9S
+  ZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9w
+  IENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkI2NTBB
+  RkFGM0VDOTExRTI5MEE0OTQ0OURDQjlFMzFCIiB4bXBNTTpEb2N1bWVudElE
+  PSJ4bXAuZGlkOkI2NTBBRkIwM0VDOTExRTI5MEE0OTQ0OURDQjlFMzFCIj4g
+  PHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6
+  QjY1MEFGQUQzRUM5MTFFMjkwQTQ5NDQ5RENCOUUzMUIiIHN0UmVmOmRvY3Vt
+  ZW50SUQ9InhtcC5kaWQ6QjY1MEFGQUUzRUM5MTFFMjkwQTQ5NDQ5RENCOUUz
+  MUIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1l
+  dGE+IDw/eHBhY2tldCBlbmQ9InIiPz4ZbhL8AAAAOklEQVR42mL4c4KDieE/
+  IxMDAyOEhmMmMP0fSkP4QPyPCS6HYDMx/UdiI4tD+Aj9/5HMhpsLsRsgwABY
+  7SUffzrnygAAAABJRU5ErkJggg==

@@ -9,7 +9,7 @@
               <div class="border">
                 <table>
                 <tr>
-                    <td class="pl25" width="112">ОГРН</td>
+                    <td class="pl25" width="112">ОГРНИП</td>
                     <td><span class="js-registration_ogrn">354277987918273912</span></td>
                   </tr>
                   <tr>
@@ -28,29 +28,31 @@
               </div>
               <table>
                 <tr>
-                  <td><label>Смс код для подтверждения</label>
+                  <td><label>Пароль (отправлен в смс)</label>
                     <div class="note">
-                      <%= link_to "Отправить еще раз через 60 сек", registration_regenerate_password_path(:registration_id), class: 'js-regenerate_password_link', remote: true, method: :post %>
+                      <%= link_to(
+                        "Отправить еще раз<span class='counter_text'></span>".html_safe, 
+                        '#', class: 'js-regenerate_password_link'
+                      ) %>
                     </div>
                   </td>
                   <td width="105">
                     <div class="field field-valid">
-                      <%= text_field_tag :password, params[:password] %>
+                      <%= text_field_tag :password, params[:password], required: true %>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td colspan="2">
                     <div class="btn-group">
-                      <a class="btn-grn btn-left js-back" href='#'>Отправить данные еще раз</a>
+                      <button class="btn-grn btn-left js-back" href='#'>Отправить данные еще раз</button>
                       <button class="btn-grn btn-right btn125" type="submit">Дальше</button>
-                    </div>
-                    <div class="send-status">
-                      Данные отправлены
                     </div>
                   </td>
                 </tr>
               </table>
+            <% end -%>
+            <%= form_tag registration_regenerate_password_path(:registration_id), class: 'js-regenerate_password_form', remote: true, method: :post do %>
             <% end -%>
           </div>
         </div>

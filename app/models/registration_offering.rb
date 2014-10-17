@@ -1,6 +1,6 @@
 require 'ds/purchase/offering_prices'
 
-class RegistrationOffering< AccessPurchase
+class RegistrationOffering< PimOffering
   after_initialize :init
 
   def self.reload_from_pim offering_id

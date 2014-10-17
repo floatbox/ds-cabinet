@@ -1,5 +1,5 @@
 class Concierge::TopicsController < Concierge::ApplicationController
-  layout 'chat'
+  layout 'concierge'
 
   before_action :set_user
 

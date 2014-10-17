@@ -1,0 +1,23 @@
+<div class="content">
+
+  <h2>Сообщения</h2>
+  <div class="messages" id="js-messages">
+    <%= render partial: 'chat/form', object: @new_message, as: :new_message %>
+
+    <%= render partial: 'chat/message', collection: @messages, locals: { total_size: @messages.size } %>
+
+    <%= render 'update_messages' %>
+  <!--
+          <div class="messages_pager">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">&gt;&gt;</a>
+          </div>
+   -->
+  </div>
+</div>
+<%= render partial: 'chat/profile' %>
+

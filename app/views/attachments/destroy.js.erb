@@ -1,0 +1,5 @@
+<% if @result %>
+  $('#js-attachment-id-<%= @attachment.id %>').hide();
+<% else %>
+  alert('Не удалось удалить');
+<% end %>

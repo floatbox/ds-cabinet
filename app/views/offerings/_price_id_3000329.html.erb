@@ -1,10 +1,10 @@
 <div class="item item1">
   <h3>Тариф Квартал</h3>
-  <div class="info">
+  <div class="info ">
     <div class="graph">
       <div class="circle">
         <div class="cost">
-          <p class="price"><%= offering.amount.to_i-1 %>р.</p>
+          <p class="price"><%= offering.amount.to_i %>р.</p>
           <p class="period">за 3 месяца</p>
         </div>
       </div>
@@ -14,8 +14,13 @@
       <p>Тариф включает в себя бухгалтерское обслуживание, в том числе подготовку и сдачу отчетности, в течение одного квартала для ИП на ЕНВД, УСН или Патентной системе налогооблажения.</p>
 <p>Для ИП на режиме УСН 6% в тариф включается обработка (создание) не более 5 документов в месяц. В случае обработки (создания) свыше 5 (пяти) документов в течение календарного месяца каждый последующий документ оплачивается дополнительно в соответствии с Договором.</p>
     </div>
-    <%= form_tag access_purchases_path(code: offering.code), remote: true, class: 'simple_form' do -%>  
+    <%= form_tag access_purchases_path(code: offering.code), remote: true, 
+      class: 'simple_form', id: "offering_price_id_#{offering.offering_price_id}" do |f| %>
+      <div class="field">
+        <%= promocode_input f %>
+      </div>
       <%= submit_tag "Выбрать", class: "btn-grn btn-right btn125" %>
     <% end -%>
   </div>
 </div>
+<%= render partial: "access_purchases/confirm_dialog", locals: {tariff_name: "Тариф Квартал", tariff_amount: offering.amount, tariff_desc: "за 3 месяца", dialog_id: "confirm_dialog_id_#{offering.offering_price_id}"} %>

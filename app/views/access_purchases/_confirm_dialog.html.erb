@@ -1,0 +1,20 @@
+<div class="modal fade" id="<%= dialog_id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="<%= :process_payment_link %>" method="post" class="js-process_payment_form">
+        <input type="hidden" name="PaymentType" value="acquiring">
+        <input type="hidden" name="Receipt.FIO" value="<%= :user_first_name %> <%= :user_last_name %>">
+        <input type="hidden" name="Receipt.Address" value="">
+        <p><span class="tariff-title">Подтвердите правильность</span></p>
+        <p><span class="tariff-title">выбранного тарифа</span></p>
+        <p><span class="tariff-name js-process_payment_tariff"><%= tariff_name %></span></p>
+        <p><span class="tariff-amount js-process_payment_amount"><%= tariff_amount %></span> р.</p>
+        <p><span class="tariff-desc js-process_payment_desc"><%= tariff_desc %></span></p>
+        <div class="btn-group">
+          <button data-dismiss="modal" class="btn-grn btn-left  btn125">Отмена</button>
+          <button type="submit"        class="btn-orn btn-right btn125"> Оплатить </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

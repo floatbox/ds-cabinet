@@ -1,0 +1,16 @@
+<div id="js-message-id-<%= message.id %>" class="message avatar<% if message.author != message.user %> talker<% end %><% if message.is_system %> system<% end %>">
+  <div class="message_head"><% if message.is_system %>Системное сообщение<%else%><%= message.author.siebel.full_name %><% end%> <span class="message_time"><%=l message.created_at, format: :long %></span></div>
+  <div class="message_body">
+    <%= paragraphs message.text %>
+    <div class="message_files">
+
+    <% message.attachments.each do |attachment| %>
+      <div class="message_file">
+        <%= link_to attachment.attachment.file.filename, attachment.attachment.url, target: '_blank' %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+  <img src="/legko-bs/images/avatar.png" width="36" height="36" class="message_ava" />
+  <div class="message_ico"></div>
+</div>

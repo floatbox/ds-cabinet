@@ -14,8 +14,10 @@
 //= require jquery_ujs
 //= require jquery.ui.effect.all
 //= require jquery-fileupload/basic
+//= require bootstrap.js
+
 //= require ./messages
-//= require ./topics
-//= require ./modal_window
 //= require ./length_validation
 //= require ./time
+//= require ./textarea
+//= require_self

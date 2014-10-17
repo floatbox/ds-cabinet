@@ -129,7 +129,7 @@ module Ds
       request = options.merge({
           Options: 3,
           ChoosePayer: true,
-          Promocode: nil,
+          #Promocode: nil, # Let Promocode being used
           PayerCompanyId: nil,
           SellerCompanyId:nil
         })

@@ -14,4 +14,17 @@ class RegistrationMailer < ActionMailer::Base
     @registration = registration
     mail(to: 'Legko_support@dasreda.ru', subject: 'Уведомление о неудачной отправке смс с паролем')
   end
+
+  def feedback_email(params)
+    @name  = params[:name]  || "Не указано"
+    @phone = params[:phone] || "Не указан"
+    @email = params[:email].empty? ? "no-reply@dasreda.ru" : params[:email]
+    @message = params[:message]
+
+    address = Mail::Address.new @email
+    address.display_name = @name.dup
+    from = address.format
+    
+    mail(to: 'Legko_support@dasreda.ru', subject: 'Сообщение через форму обратной связи', from: from)
+  end
 end

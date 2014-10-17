@@ -1,23 +1,18 @@
 module SelectorsHelpers
-  def selector_to_area(name)
+  def area_to_selector(name)
     case name
-    when /шапк(?:а|е)/
-       '.header'
-    when /контент(?:е)/
-       '.jumbotron'
-    when /подвал(?:е)/
-       '.footer'
-    end
-  end
-
-  def selector_to_element(type, name)
-    case name
-    when /кнопк(?:а|е)/
-       %Q/input[value="#{name}"]/
-    when /поле ввода/
-       %Q/input[name="#{name}"]/
-    when /ссылк(?:а|е)/
-       %Q/a[name="#{name}"]/
+    when /шапк(?:а|е)/                     then 'header.page-header'
+    when /контент(?:е|)/                    then 'section.page-body'
+    when /подвал(?:е)/                     then 'footer.page-footer'
+    when /сообщени(?:е|и|я)/               then '#myModal'
+    when /форм(?:а|е) регистрации и входа/ then '.js-forms_container'
+    when /форм(?:а|е) обратной связи/      then '.js-feedback_form'
+    when /форм(?:а|е) подтверждения регистрации/ then '.js-confirmation_form'
+    when /форм(?:а|е) тариф Квартал/       then '#offering_price_id_3000329'
+    when /форм(?:а|е) тариф Год/           then '#offering_price_id_3000336'
+    when /форм(?:а|е) подтверждения тарифа/ then '.js-process_payment_form'
+    else
+      raise "Unknown area: #{name}, should be either шапк(а|е), контент(е), подвал(е) или форм(а|е) регистрации и входа или форм(а|е) обратной связи"
     end
   end
 end

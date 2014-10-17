@@ -3,7 +3,7 @@ table.table
   tr
     th
     th ФИО
-    th ОГРН
+    th ОГРНИП
     th Телефон
     th Дата регистрации
     th Консьерж
@@ -20,7 +20,6 @@ table.table
       td= user.siebel.full_name
       td= user.siebel_company.try(:ogrn)
       td= user.siebel.phone
-      td=l user.sns.created_at.to_date, format: :long
       td= user.concierge.siebel.full_name if user.concierge
       td
         => user.topics.count
@@ -34,10 +33,8 @@ table.table
         - if can? :edit, user
           => link_to edit_concierge_user_path(user), class: 'btn btn-sm' do
             i.glyphicon.glyphicon-pencil
-        => link_to 'Топики', concierge_user_topics_path(user), class: 'btn btn-sm'
+        => link_to 'Чаты', chat_concierge_user_path(user), class: 'btn btn-sm'
         => link_to 'Запросы', concierge_user_search_queries_path(user), class: 'btn btn-sm'
-        => link_to 'Создать топик', new_concierge_user_topic_path(user), class: 'js-show-modal-window', data: { target: '#js-modal' }
-        => link_to 'Создать виджет', new_widget_concierge_user_path(user), class: 'js-show-modal-window', data: { target: '#js-modal' }
         - if can? :attach_concierge, user
           => link_to 'Назначить консьержа', attach_concierge_concierge_user_path(user), class: 'btn btn-sm'
 

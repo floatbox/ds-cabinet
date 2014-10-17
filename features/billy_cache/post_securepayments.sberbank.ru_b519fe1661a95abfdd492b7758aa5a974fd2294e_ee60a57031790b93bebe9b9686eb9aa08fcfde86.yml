@@ -1,0 +1,20 @@
+---
+:scope: 
+:url: https://securepayments.sberbank.ru/payment/rest/getSessionStatus.do
+:body: MDORDER=71b744db-b80e-4037-8460-cf74256745fa&language=ru&informRbsOnLoad=true&pageView=
+:status: 200
+:method: post
+:headers:
+  Server: nginx/1.6.0
+  Date: Wed, 15 Oct 2014 09:16:41 GMT
+  Content-Type: text/plain;charset=UTF-8
+  Connection: close
+:content: !binary |-
+  eyJyZW1haW5pbmdTZWNzIjoxMTk5LCJzZXNzaW9uU3RhdHVzIjowLCJvcmRl
+  ck51bWJlciI6IkNhcnRfMjAxNjhfMDAxIiwiYW1vdW50IjoiMjQwMC4wMCBS
+  VUIiLCJkZXNjcmlwdGlvbiI6ItCe0L/Qu9Cw0YLQsCDQt9Cw0LrQsNC30LAg
+  4oSWMjAxNjg60JrQvtGA0LfQuNC90LBf0JrQmjog0JvQuNGH0L3Ri9C5INC6
+  0LDQsdC40L3QtdGCLiDQkdCw0LfQvtCy0YvQuTsgICDQkiDRgi7Rhy4g0J3Q
+  lNChIDM2Ni4xMCDRgNGD0LHQu9C10LkiLCJib251c0Ftb3VudCI6MCwic3Ns
+  T25seSI6ZmFsc2UsImN2Y05vdFJlcXVpcmVkIjpmYWxzZSwib3RoZXJXYXlF
+  bmFibGVkIjpmYWxzZX0=

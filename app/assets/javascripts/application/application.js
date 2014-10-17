@@ -19,6 +19,12 @@
 //
 // Require project files
 //= require main.js
+//= require_tree ./global
+//= require ./dialog
+//= require ./preloader
+//= require ./header
+//= require ./regenerate_password
+//= require ./feedback
 //= require ./registrations
 //= require ./recoveries
 //= require ./sessions

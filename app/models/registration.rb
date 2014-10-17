@@ -9,11 +9,13 @@
 #   * done                    Everything is done, data was sent to UAS, SNS and Siebel.
 #
 require 'phone'
+require 'ogrnip'
 require 'password_sms_notifier'
 
 class Registration < ActiveRecord::Base
 
   belongs_to :user
+  has_one :password_notification_attempts, as: :attemptable, class_name: Attempt::RegistrationPasswordNotification
 
   include Workflow
 
@@ -26,7 +28,7 @@ class Registration < ActiveRecord::Base
 
   validates_presence_of :phone, :ogrn
   validates_format_of :phone, with: Phone::RegExp
-  validates_format_of :ogrn, with: /\A([0-9]{13})([0-9]{2})?\Z/i
+  validates_format_of :ogrn, with: Ogrnip::RegExp
   validate :phone_uniqueness, if: :new_record?
   validate :company_exists, if: :new_record?
   validates_presence_of :password, :password_confirmation, if: :awaiting_confirmation?
@@ -137,7 +139,7 @@ class Registration < ActiveRecord::Base
     end
 
     account = find_siebel_company(ogrn) || create_siebel_company
-    company = find_sns_company(person, account) || create_sns_company(person, account)
+    company = find_sns_company(person, account.id) || create_sns_company(person, account.id, account.full_name)
     
     user_id = User.find_or_create_by(siebel_id: contact_id, integration_id: integration_id).id
     self.update_column :user_id, user_id
@@ -145,8 +147,8 @@ class Registration < ActiveRecord::Base
     if uas_user_obj.is_disabled
       uas_user_obj.is_disabled = false
       uas_user_obj.save
-      self.update_column :uas_user, uas_user_obj # to serialize
     end
+    self.update_column :uas_user, uas_user_obj # to serialize
   rescue => e
     ExceptionNotifier.notify_exception(e, env: Rails.env, data: { message: 'Can not send data to DS' })
     logger.error "Can not send data to DS. #{e.message}"
@@ -236,10 +238,10 @@ class Registration < ActiveRecord::Base
     # @param account [Account] Siebel representation of the company
     # @return [Company] new SNS company
     # @note Person automatically becomes the admin of the account
-    def find_sns_company(person, account)
+    def find_sns_company(person, account_id)
       company = Ds::Sns.as person.id, 'siebel' do
         begin
-          Company.find(account.id)
+          Company.find(account_id)
         rescue
           nil
         end
@@ -254,9 +256,9 @@ class Registration < ActiveRecord::Base
     # @param account [Account] Siebel representation of the company
     # @return [Company] new SNS company
     # @note Person automatically becomes the admin of the account
-    def create_sns_company(person, account)
+    def create_sns_company(person, account_id, account_full_name)
       Ds::Sns.as person.id, 'siebel' do
-        Company.new(id: account.id, name: account.full_name).save
+        Company.new(id: account_id, name: account_full_name).save
       end
     end
 

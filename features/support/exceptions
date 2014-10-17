@@ -1,0 +1,19 @@
+exceptions = {
+  InternalError: [Ds::Cart::Api, Ds::Pim::Api, Uas::User],
+      #lib/ds/cart/api.rb:        when 500 then raise InternalError, JSON.parse(response[:body])["ErrorMessage"]
+      #lib/ds/pim/api.rb:          else raise InternalError
+      #app/models/uas/user.rb:      else raise InternalError, response[:body]
+  InvalidCredentials: [Ds::Pim::Api, Uas::User]
+      #lib/ds/pim/api.rb:          when 400 then raise InvalidCredentials
+      #app/models/uas/user.rb:      when 400 then raise InvalidCredentials, response[:body]
+  InvalidArguments: [Uas::User],
+      #app/models/uas/user.rb:      when 400 then raise InvalidArguments, response[:body]
+  Error: [Ds::Cart::Api],
+      #lib/ds/cart/api.rb:        when 500 then raise Error, JSON.parse(response[:body])["ErrorMessage"]
+  InvalidPrice: [Ds::Purchase::Offering],
+      #lib/ds/purchase/offering_prices.rb:            raise InvalidPrice, price.error_msg unless price.valid?
+  ActiveRecord::SerializationTypeMismatch: [SimpleSerializer],
+      #lib/simple_serializer.rb:      raise ::ActiveRecord::SerializationTypeMismatch,
+  ActiveRecord::RecordNotFound: [ConfigItem]
+      #app/models/config_item.rb:      raise ActiveRecord::RecordNotFound, "config item with key   #{key} not found"
+  }

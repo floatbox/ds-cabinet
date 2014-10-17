@@ -140,7 +140,7 @@ ul {
   position: absolute;
   top: 12px;
   right: 10px;
-  background: url('/legko-bs/images/icon_valid.png?1407537147') no-repeat 0 0;
+  background: url('/legko-bs/images/ico/icon_valid.png') no-repeat 0 0;
   z-index: 10;
 }
 
@@ -500,7 +500,7 @@ ul {
   float: left;
 }
 .case-lead .movie {
-  width: 360px;
+  width: 350px;
   padding: 15px 0;
   position: absolute;
   top: 0;
@@ -515,19 +515,13 @@ ul {
   text-align: center;
   background: #1a1a1a;
   overflow: hidden;
+  background: url('/legko-bs/images/bg/video_bg.jpg') no-repeat 0 0;
 }
-.case-lead .movie .crop img {
-  max-width: 100%;
-}
-.case-lead .movie .crop .play {
-  display: block;
-  width: 113px;
-  height: 111px;
-  margin: -55px 0 0 -56px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background: url('/legko-bs/images/btn_play.png?1407498735') no-repeat 0 0;
+.case-lead .movie .crop #playVideo {
+  width: 320px;
+  height: 180px;
+  cursor: pointer;
+  background: url('/legko-bs/images/bg/video_play_btn.png') no-repeat 50% 50%;
 }
 
 .case-guide .content {

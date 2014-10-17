@@ -1,5 +1,5 @@
 class Concierge::UsersController < Concierge::ApplicationController
-  layout 'chat'
+  layout 'concierge'
 
   before_action :authenticate
   load_and_authorize_resource
@@ -18,6 +18,15 @@ class Concierge::UsersController < Concierge::ApplicationController
   # GET /concierge/users/:id
   def edit
   end
+
+  # GET /concierge/users/:id/chat
+  def chat
+    @messages = @user.messages.published
+    @new_message = current_user.authored_messages.build
+    @new_message.user = @user
+    render 'chat/index', layout: 'chat'
+  end
+
 
   # PATCH /concierge/users/:id
   def update

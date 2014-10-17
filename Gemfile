@@ -8,7 +8,7 @@ gem 'pg'
 
 # Use Oracle adapter for reading from Siebel
 gem 'ruby-oci8'
-gem 'activerecord-oracle_enhanced-adapter', git: 'https://github.com/rsim/oracle-enhanced.git', branch: 'rails4'
+gem "activerecord-oracle_enhanced-adapter", "~> 1.5.0"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -41,8 +41,14 @@ end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
+gem 'quiet_assets'
+
 # Use unicorn as the app server
 gem 'unicorn'
+
+group :development do
+  gem 'thin'
+end
 
 # Use Capistrano for deployment
 group :development do
@@ -69,15 +75,17 @@ group :test do
   gem 'capybara-webkit'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'email_spec'
+  gem 'puffing-billy' # stubbing and caching proxy for testing a browser initiated external resources loading
 end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
 # Use DS gems
-gem 'ds-sns', git: 'git@github.com:SuperbCoders/ds-sns-gem.git', branch: 'sns2'
-gem 'ds-siebel', git: 'git@github.com:SuperbCoders/ds-siebel-gem.git'
-gem 'ds-spark', git: 'git@github.com:SuperbCoders/DS-Spark-gem.git'
+gem 'ds-sns', git: 'git@github.com:BusinessEnvironment/ds-sns-gem.git', branch: 'sns2'
+gem 'ds-siebel', git: 'git@github.com:BusinessEnvironment/ds-siebel-gem.git'
+gem 'ds-spark', git: 'git@github.com:BusinessEnvironment/DS-Spark-gem.git'
 
 # Helpers
 gem 'simple_form'

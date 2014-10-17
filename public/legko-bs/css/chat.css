@@ -1,0 +1,262 @@
+.main .case-intro .info {
+	padding-left: 22px;
+}
+	.main .case-intro .info h2 {
+		font-size: 39px;
+		margin: 7px 0 0;
+	}
+.page-header .tm li {
+	float: right;
+	margin-right: 90px;
+}
+.page-footer .content {
+	background: white;
+}
+.page-footer .info {
+	color: #989898;
+}
+.main .case-intro {
+	background: #f0eff0;
+}
+.main .case-intro .info {
+	height: 161px;
+}
+.case-messages .globalwidth {
+	width: 1003px;
+}
+.case-messages h2 {
+	color: #599a96;
+	font-size: 18px;
+	margin: 0 0 15px;
+}
+.case-messages .content {
+	width: 744px;
+	float: left;
+	margin-left: 1px;
+	border: 1px solid #dedede;
+	min-height: 630px;
+	padding: 26px 29px 15px;
+	background-color: white;
+}
+.case-messages {
+	margin-top: -40px;
+	overflow: hidden;
+	font-family: 'sansationregular', Arial, Helvetica, serif;
+}
+.case-messages .messages {
+	color: #989898;
+	font-size: 12px;
+	border: 1px solid #dedede;
+	margin-bottom: 30px;
+}
+	.case-messages .messages a {
+		color: #989898;
+	}
+	.case-messages .field input, .case-messages .field textarea {
+		color: #666666;
+		padding: 12px 10px;
+		border: 1px solid #dedede;
+	}
+	.case-messages .forms .btn-grn {
+		border-color: #188a86 ;
+		background: #1a9c98;
+	}
+	.case-messages .forms .btn125 {
+		height: auto;
+		padding: 0 14px;
+		line-height: 34px;
+	}
+	.case-messages .message {
+		position: relative;
+		padding: 20px 20px 20px 50px;
+		border-top: 1px solid #dedede;
+	}
+		.case-messages .message_body .message_files {
+			margin-top: 10px;
+		}
+		.case-messages .message_body .message_file {
+			padding: 1px 0 3px 19px;
+			background: url('../../legko-bs/images/ico/message_icons.png') no-repeat -54px 1px;
+		}
+		.case-messages .message_body .message_file a {
+			text-decoration: none;
+		}
+		.case-messages .message_body .message_file a:hover {
+			text-decoration: underline;
+		}
+		.case-messages .message_body p {
+			margin: 0;
+		}
+	.case-messages .message_ava {
+		top: 20px;
+		right: 20px;
+		position: absolute;
+	}
+	.case-messages .message_ico {
+		top: 25px;
+		left: 18px;
+		width: 17px;
+		height: 17px;
+		position: absolute;
+		background: url('../../legko-bs/images/ico/message_icons.png') no-repeat -35px 1px;
+	}
+	.case-messages .message.avatar {
+		padding-right: 100px;
+	}
+	.case-messages .message_time {
+		margin-left: 20px;
+	}
+	.case-messages .message_head {
+		color: #494949;
+		font-weight: bold;
+		font-size: 14px;
+		font-family: 'sansationbold', Arial, Helvetica, serif;
+	}
+	.case-messages .message.formbody {
+		border-top: 0;
+		overflow: hidden;
+		padding-left: 20px;
+		background-color: #f3f3f3;
+	}
+		.case-messages .message.formbody .field {
+			margin-bottom: 7px;
+		}
+		.case-messages .message.formbody textarea {
+			max-width: 640px;
+		}
+		.case-messages .message.formbody .add_file {
+			width: 127px;
+			float: left;
+			padding-top: 10px;
+		}
+		.case-messages .message.formbody .add_files {
+			width: 411px;
+			float: left;
+			padding-left: 8px;
+		}
+			.case-messages .message.formbody .add_files .file_item {
+				overflow: hidden;
+				margin-bottom: 2px;
+			}
+			.case-messages .message.formbody .add_files a {
+				text-decoration: none;
+			}
+			.case-messages .message.formbody .add_files .ico {
+				background: url('../../legko-bs/images/ico/message_icons.png') no-repeat -52px -20px;
+				padding-left: 20px;
+				margin-right: 5px;
+				display: block;
+				float: left;
+			}
+			.case-messages .message.formbody .add_files .delete {
+				width: 13px;
+				height: 13px;
+				float: left;
+				display: block;
+				cursor: pointer;
+				background: url('../../legko-bs/images/ico/message_icons.png') no-repeat 0px 0px;
+			}
+
+	.case-messages .messages_pager {
+		text-align: right;
+		margin-top: 20px;
+		font-size: 12px;
+	}
+		.case-messages .messages_pager a {
+			color: #989898;
+			margin-right: 7px;
+		}
+	.case-messages .message.yellow {
+		background-color: #fffcd7;
+	}
+
+	.case-messages .message.talker{
+  		background-color: #fbfbfb;
+ 	}
+	.case-messages .message.system {
+		background-color: #e5f1f0;
+	}
+		.case-messages .message.system .message_ico {
+			background: url('../../legko-bs/images/ico/message_icons.png') no-repeat -15px 1px;
+		}
+.case-messages .content_right {
+	width: 259px;
+	float: left;
+	margin-top: 39px;
+	margin-left: -1px;
+	border: 1px solid #dedede;
+	min-height: 550px;
+	padding: 19px 20px 15px;
+	background-color: #fbfbfb;
+}
+	.case-messages .content_right .profile_data {
+		margin-bottom: 10px;
+		word-wrap: break-word;
+	}
+		.case-messages .content_right.forms #podpiska,
+		.case-messages .content_right .profile_data .type {
+			color: #999999;
+		}
+	.case-messages .content_right .profile_form {
+		height: 186px;
+		position: relative;
+		padding-left: 47px;
+		margin-bottom: 5px;
+	}
+		.case-messages .content_right .profile_form .full_name {
+			line-height: 30px;
+			margin-bottom: 5px;
+		}
+		.case-messages .content_right .profile_form .act {
+			float: left;
+			color: #999999;
+			font-size: 12px;
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		.case-messages .content_right .profile_form #act_logout {
+			margin-right: 25px;
+		}
+		.case-messages .content_right.forms #profile_save.btn-group {
+			margin-top: 48px;
+		}
+		.case-messages .content_right.forms #profile_save .btn-left {
+			margin-right: 11px;
+		}
+		.case-messages .content_right.forms #podpiska {
+			margin-top: 30px;
+		}
+			.case-messages .content_right.forms #podpiska span {
+				margin-bottom: 15px;
+				display: block;
+			}
+			.case-messages .content_right.forms #podpiska .btn125 {
+				width: 180px;
+			}
+		.case-messages .content_right .profile_form .profile_ava {
+			position: absolute;
+			top: 0;
+			left: 1px;
+		}
+.page-footer .info {
+	padding: 10px 0 90px 4px;
+}
+.page-footer .logo {
+	background-size: 85%;
+}
+.page-footer .cols .col1 {
+	width: 90px;
+	padding-top: 7px;
+}
+.page-footer .cols .col2, .page-footer .cols .col3 {
+	padding-top: 39px;
+}
+.page-footer .cols .col3 {
+	float: right;
+	width: auto;
+	text-align: right;
+}
+
+
+
+

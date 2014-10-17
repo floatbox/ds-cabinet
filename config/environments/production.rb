@@ -95,7 +95,7 @@ DsCabinet::Application.configure do
   config.pim_curl_verbose = true
 
   # CART settings
-  config.cart_url = 'https://cart-delo.sredda.ru'
+  config.cart_url = 'http://cart-delo.sredda.ru:8081'
   config.cart_sertificate = "#{Rails.root}/certs/ds_admin.pem"
   config.cart_merchant_id = '400004'
   config.cart_merchant_password = 'cArt123QWE123'
@@ -105,7 +105,4 @@ DsCabinet::Application.configure do
   # Authentication settings
   config.auth_domain = 'legko.li'
 
-  # Widgets settings
-  config.widget_script_url = 'http://widgets.legko.li/assets/lib/widget.js'
-  config.widget_domain = 'widgets.legko.li'
 end

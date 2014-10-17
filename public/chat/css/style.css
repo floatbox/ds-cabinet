@@ -45,7 +45,7 @@ body {
     background: -o-linear-gradient(left,  rgba(244,246,250,1) 0%,rgba(237,238,242,1) 25%,rgba(212,214,217,1) 74%,rgba(204,205,209,1) 100%);
     background: -ms-linear-gradient(left,  rgba(244,246,250,1) 0%,rgba(237,238,242,1) 25%,rgba(212,214,217,1) 74%,rgba(204,205,209,1) 100%);
     background: linear-gradient(to right,  rgba(244,246,250,1) 0%,rgba(237,238,242,1) 25%,rgba(212,214,217,1) 74%,rgba(204,205,209,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f6fa', endColorstr='#cccdd1',GradientType=1 );    
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f6fa', endColorstr='#cccdd1',GradientType=1 );
 }
 
 .container {
@@ -99,7 +99,7 @@ strong { font-weight: normal; }
     background: -o-linear-gradient(top,  #1ca4a0 0%,#2cc5c1 72%,#2dc8c3 100%);
     background: -ms-linear-gradient(top,  #1ca4a0 0%,#2cc5c1 72%,#2dc8c3 100%);
     background: linear-gradient(to bottom,  #1ca4a0 0%,#2cc5c1 72%,#2dc8c3 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1ca4a0', endColorstr='#2dc8c3',GradientType=0 );    
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1ca4a0', endColorstr='#2dc8c3',GradientType=0 );
 }
 
 .default-button-orange {
@@ -112,7 +112,7 @@ strong { font-weight: normal; }
     border: 1px solid;
     border-radius: 5px;
     border-color: #fabe7c #c47f35 #a6661f #fabe7c;
-    background: #f9a648;  
+    background: #f9a648;
     text-decoration: none;
 }
 
@@ -136,7 +136,7 @@ strong { font-weight: normal; }
 
 .header li, .header li.active { margin-left: 20px; }
 
-.header li a { 
+.header li a {
     display: inline-block;
     vertical-align: top;
     text-decoration: none;
@@ -177,7 +177,7 @@ strong { font-weight: normal; }
     background: -o-linear-gradient(top,  #1ca4a0 0%,#2cc5c1 72%,#2dc8c3 100%);
     background: -ms-linear-gradient(top,  #1ca4a0 0%,#2cc5c1 72%,#2dc8c3 100%);
     background: linear-gradient(to bottom,  #1ca4a0 0%,#2cc5c1 72%,#2dc8c3 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1ca4a0', endColorstr='#2dc8c3',GradientType=0 );    
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1ca4a0', endColorstr='#2dc8c3',GradientType=0 );
 }
 
 .header-logged { float: right; margin: 20px 0 0 0; overflow: hidden; white-space: nowrap; }
@@ -199,7 +199,7 @@ strong { font-weight: normal; }
 .container .jumbotron { margin: 15px 0 0 0; padding: 0; border-radius: 0; }
 .j-home { position: relative; min-height: 510px; background: url(../images/wrap-home.jpg) no-repeat 50% 0; }
 .j-signin { position: relative; min-height: 510px; background: url(../images/wrap-signin.jpg) no-repeat 50% 0; }
-.container .j-messages { position: relative; padding-bottom: 55px; background: url(../images/wrap-messages.jpg) no-repeat 50% 0 fixed; }
+.container .j-messages { position: relative; padding-top: 45px; padding-bottom: 55px; background: url(../images/wrap-messages.jpg) no-repeat 50% 0 fixed; }
 
 .jumbotron p { font-weight: normal; }
 
@@ -254,7 +254,7 @@ strong { font-weight: normal; }
             font-family: 'Gotham Pro Medium';
             font-size: 22px;
             color: #fff;
-            text-shadow: 1px 1px 0 #83551e;            
+            text-shadow: 1px 1px 0 #83551e;
         }
 
         .signin .notice { display: none; position: absolute; left: 0; bottom: 100%; z-index: 666; margin-bottom: 35px; margin-left: -20px; width: 265px; padding: 18px; background: #fff; text-align: left; border-radius: 5px; }
@@ -333,7 +333,7 @@ strong { font-weight: normal; }
 
 /* question */
 .question { width: 100%; padding: 45px 0 40px 0; text-align: center; overflow: hidden; font-size: 0; }
-    .question .textbox { 
+    .question .textbox {
         width: 425px;
         margin-right: 15px;
         display: inline-block;
@@ -341,15 +341,15 @@ strong { font-weight: normal; }
         padding: 5px 13px;
         font-family: 'Gotham Pro Medium';
         font-size: 14px;
-        background: #fff; 
-        background: rgba(255,255,255,.7); 
-        color: #464646; 
+        background: #fff;
+        background: rgba(255,255,255,.7);
+        color: #464646;
         border: 2px solid #bfc7cc;
         border-radius: 5px;
     }
 
 /* messages */
-.messages { max-width: 1000px; margin: 0 auto; padding: 10px 20px; background: #f2f2f2; border: 2px solid #1ea8a4; border-color: rgba(30,168,164,.4); border-radius: 5px; }
+.messages { max-width: 1000px; margin: 0 auto; padding: 10px 20px; background: #fefefe; border: 2px solid #1ea8a4; border-color: rgba(30,168,164,.4); border-radius: 5px; }
     .messages .item { overflow: hidden; }
         .messages .view { float: left; }
             .messages .view img { border-radius: 50%; }
@@ -363,20 +363,20 @@ strong { font-weight: normal; }
             .messages .description p { font-size: 14px; margin: 10px 0; }
 
     .messages .reply .item { margin: 0 0 13px 50px; padding: 10px 25px; border: 1px solid #d6d4ce; border-radius: 7px; background: #fff; }
-    .messages .reply .item:nth-child(odd) { background: #eae8e0; }
+    .messages .reply .item-author { background: #eae8e0; }
 
         .messages .files { float: right; margin: -15px 0 0 0; }
             .messages .files a { margin-left: 13px; display: inline-block; vertical-align: top; text-align: center; font-size: 11px; color: #252525; }
             .messages .files a:hover { text-decoration: none; }
 
-.addcomment { overflow: hidden; margin: 0 -20px; padding: 10px 0; min-height: 100px; border-top: 1px solid #d6d6d6; border-radius: 7px 7px 0 0; }
+.addcomment { overflow: hidden; margin: 0; padding: 10px 0; min-height: 100px; }
     .addcomment .view { float: left; margin: 0 10px 0 100px; }
 
-    .addcomment .description { padding: 6px 0; }
+    .addcomment .description { margin: 0 0 13px 50px; padding: 10px 25px; }
         .addcomment .description h6 { font-family: 'Gotham Pro Bold'; font-size: 15px; }
 
         .addcomment .wrapper { overflow: hidden; }
-            .addcomment textarea { float: left; width: 640px; border: 0; resize: none; height: 33px; background: #fff; border-radius: 5px; padding: 7px 13px 0 13px; font-family: Arial, sans-serif; font-size: 13px; color: #252525; }
+            .addcomment textarea { float: left; width: 640px; border: 1px solid #d6d4ce; resize: none; height: 33px; background: #fff; border-radius: 5px; padding: 7px 13px 0 13px; font-family: Arial, sans-serif; font-size: 13px; color: #252525; }
             .addcomment .addfile { cursor: pointer; width: 33px; height: 33px; float: left; margin-left: 7px; border: 0; background: url(../images/plus.png) no-repeat 50% 50%; }
 
 .payment { margin: 20px 0; max-width: 500px; padding: 0 20px 0 10px; border: 2px solid #1da7a3; border-radius: 10px; }
@@ -398,7 +398,7 @@ strong { font-weight: normal; }
             .popup label { font-weight: normal; margin: 0; }
 
         .popup .value {  }
-            .popup-textbox {                
+            .popup-textbox {
                 width: 225px;
                 margin-right: 15px;
                 display: inline-block;

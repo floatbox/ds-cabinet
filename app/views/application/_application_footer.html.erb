@@ -4,7 +4,7 @@
       <div class="info">
         <div class="cols">
           <div class="col1">
-            <a class="logo" href="index.html"></a>
+            <a class="logo" href="/"></a>
             <div class="copyright">© 2014 ЗАО «Деловая среда»</div>
           </div>
           <div class="col2">
@@ -16,10 +16,10 @@
           <div class="col3">
             <nav class="bm">
               <ul>
-                <li><a href="#">О проекте</a></li>
-                <li><a href="#">Помощь</a></li>
-                <li><a href="#">Регистрация</a></li>
-                <li><a href="#">База знаний</a></li>
+                <li><%= link_to "Как это работает", '#', class: "js-gotoHowItWorks"       %></li>
+                <li><%= link_to "Тариф",            '#', class: "js-gotoTariffs"          %></li>
+                <li><%= link_to "Регистрация",      '#', class: "js-gotoLoginForm"        %></li>
+                <li><%= link_to "Войти",            '#', class: "js-gotoRegistrationForm" %></li>
               </ul>
             </nav>
           </div>

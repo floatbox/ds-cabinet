@@ -1,11 +1,13 @@
+require 'ds/purchase/order'
+
 class Order< ActiveRecord::Base
 
   belongs_to :orderable, polymorphic: true
 
   delegate :integration_id, :offering_id, :offering_price_id, :offering_url,
-    :paid_and_not_expired?, :to => :orderable
+    :promocode, :to => :orderable
 
-  delegate :order_id, :url, :status, :update_status, :to => :cart_order
+  delegate :order_id, :url, :status, :update_status, :effective_amount, :to => :cart_order
 
   serialize :cart_order, Ds::Purchase::Order
 
@@ -15,7 +17,8 @@ class Order< ActiveRecord::Base
     cart_order.post(integration_id, 
                       [[offering_id, offering_price_id, offering_url]],
                       success_url, 
-                      error_url)
+                      error_url, 
+                      promocode)
     self.save
   end
 

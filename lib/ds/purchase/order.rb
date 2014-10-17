@@ -38,9 +38,9 @@ module Ds
       # @param[String] success_url, An url to which brawser to be redirected after successful payment
       # @param[String] error_url, An url to which brawser to be redirected after unsuccessful payment
       # 
-      def post(client_integration_id, offerings_arr, success_url, error_url)
+      def post(client_integration_id, offerings_arr, success_url, error_url, promocode=nil)
         @client_integration_id = client_integration_id
-        @order_options = order_options(offerings_arr, success_url, error_url)
+        @order_options = order_options(offerings_arr, success_url, error_url, promocode)
         if @order_id.nil? 
           Ds::Cart::Api.add_order(@order_options).tap do |add_order_result|
             # {"OrderId"=>20026, 
@@ -68,6 +68,21 @@ module Ds
         @status = order_info["OrderStatus"]
       end
 
+      # Returns order amount which is offering amount with the promocode discount applied
+      # @return [Float] order amount with promocode applied
+      def effective_amount
+        @effective_amount ||= Ds::Cart::Api.get_order(@order_id)["Amount"]
+        #{
+        #  "OrderId"=>20026, 
+        #  "CreatedDate"=>"2014-08-12T16:47:13.527", 
+        #  "OrderStatus"=>2, 
+        #  "LastEditedDate"=>"2014-08-12T16:47:18.86", 
+        #  "Amount"=>7200.0, 
+        #  "CompanyId"=>nil, 
+        #  "UserId"=>"UAS100452"
+        #}
+      end
+
       protected
 
       # Builds and returns order hash, suitable to pass to external api
@@ -75,11 +90,12 @@ module Ds
       #   [[offering1_id, offering1_price_id, offering1_url],...,[offeringN_id, offeringN_price_id, offeringN_url]]
       # @return[Hash]
       #
-      def order_options(offerings_arr, success_url, error_url)
+      def order_options(offerings_arr, success_url, error_url, promocode)
         {
           UserId:     @client_integration_id,
           SuccessUrl: success_url,
           ErrorUrl:   error_url,
+          Promocode:  promocode,
           Offerings:  offerings_arr.map{|o| self.order_line_options(*o)}
         }
       end
@@ -101,8 +117,7 @@ module Ds
           ArticleId:          nil,
           SerializedOffering: nil,
           ProductsForUpdate:  nil,
-          MerchantId:         nil,
-          Promocode:          nil
+          MerchantId:         nil
         }
       end
     end

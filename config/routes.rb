@@ -1,6 +1,7 @@
 DsCabinet::Application.routes.draw do
   root to: 'pages#index'
   get 'contacts' => 'pages#contacts'
+  post 'feedback' => 'feedback#create'
 
   resources :registrations, only: [:create] do
     post 'confirm'
@@ -25,10 +26,14 @@ DsCabinet::Application.routes.draw do
     get 'search', to: 'search#index', as: :search
   end
 
-  resources :messages, only: [:edit, :update, :destroy]
+  resources :messages, only: [:create, :edit, :update, :destroy]
+
+  # resources :chat, only: [:index]
+  get 'chat' => 'chat#index'
+
 
   resources :topics do
-    resources :messages, only: [:index, :create]
+    resources :messages, only: [:index]
   end
 
   resources :notifications, only: [:index, :show] do
@@ -50,6 +55,7 @@ DsCabinet::Application.routes.draw do
         put :disapprove
         put :toggle_concierge
         get :new_widget
+        get :chat
       end
     end
     resources :topics do

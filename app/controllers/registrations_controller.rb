@@ -1,3 +1,6 @@
+require 'phone'
+require 'ogrnip'
+
 class RegistrationsController < ApplicationController
   include WithSmsVerification
 
@@ -5,31 +8,54 @@ class RegistrationsController < ApplicationController
   before_filter :set_registration, only: [:confirm, :regenerate_password]
 
   def create
-    # check if registration exists
-    phone= params[:registration][:phone]
-    ogrn=  params[:registration][:ogrn]
-    @registration = Registration.find_by_phone_ogrn phone, ogrn
-    if @registration
-      @registration.send_password_sms_notification
-      render json: @registration.as_json(only: [:id, :ogrn, :phone])
+    phone= params[:registration].try :[], :phone
+    ogrn=  params[:registration].try :[], :ogrn
+
+    errors = Registration.new.errors
+    if ogrn.nil? || ogrn.empty?  
+      errors.add(:ogrn, :blank)
+    elsif !Ogrnip.new(ogrn).valid? 
+      errors.add(:ogrn, :wrong_value)
+    end
+    
+    if phone.nil? || phone.empty?
+      errors.add(:phone, :blank)
+    elsif !Phone.new(phone).valid? 
+      errors.add(:phone, :wrong_value)
+    end
+
+    unless errors.empty?
+      render json: errors, status: :unprocessable_entity
     else
-      # external systems are called here by implicit call company and ogrn
-      @registration = Registration.new(registration_params) 
-      if @registration.save
-        if @registration.siebel_company_exists?
-          @registration.defer!
+      @registration = Registration.find_by_phone_ogrn phone, ogrn
+      if @registration
+        if %w/deferred done/.include? @registration.workflow_state
+          @registration.errors.add(:ogrn, :already_exist)
+          render json: @registration.errors, status: :unprocessable_entity
         else
-          generate_send_password
-          @registration.start!
+          @registration.send_password_sms_notification
+          render json: @registration.as_json(only: [:id, :ogrn, :phone])
         end
-
-        render json: @registration.as_json(only: [:id, :ogrn, :phone])
       else
-        # Notify admins about invalid OGRN, but valid phone
-        @registration.notify_admin if @registration.errors.messages.keys == [:company]
+        # external systems are called here by implicit call company and ogrn
+        @registration = Registration.new(registration_params) 
+        if @registration.save
+          if @registration.siebel_company_exists?
+            @registration.defer!
+            @registration.errors.add(:ogrn, :already_exist)
+            render json: @registration.errors, status: :unprocessable_entity
+          else
+            generate_send_password
+            @registration.start!
+            render json: @registration.as_json(only: [:id, :ogrn, :phone])
+          end
+        else
+          # Notify admins about invalid OGRN, but valid phone
+          @registration.notify_admin if @registration.errors.messages.keys == [:company]
 
-        # Render JSON with errors
-        render json: @registration.errors, status: :unprocessable_entity
+          # Render JSON with errors
+          render json: @registration.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -51,19 +77,23 @@ class RegistrationsController < ApplicationController
   def regenerate_password
     generate_send_password
     head :no_content
+  rescue ActiveRecord::RecordInvalid => e
+    render json: e.record.errors, status: :unprocessable_entity
   end
 
   private
     def generate_send_password
-      @registration.password = PasswordGenerator.generate
+      @registration.password ||= PasswordGenerator.generate
       @registration.password_confirmation = @registration.password
+
+      pna = @registration.password_notification_attempts
+      pna.nil? ? @registration.create_password_notification_attempts : pna.inc!
+      
       logger.info([
         "REGISTRATION LOGIN=='#{@registration.phone}'", 
         " PASSWORD=='#{@registration.password}'"].join) unless Rails.env.production?
 
-      @registration.update_column(:password, @registration.password) unless 
-        Rails.env.production?
-
+      @registration.update_column(:password, @registration.password)
       @registration.send_password_sms_notification
     end
 

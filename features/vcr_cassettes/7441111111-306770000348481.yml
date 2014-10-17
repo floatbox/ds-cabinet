@@ -1,0 +1,2228 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://sparkgatetest.interfax.ru/IfaxWebService/ifaxwebservice.asmx?WSDL
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Wed, 24 Sep 2014 15:28:34 GMT
+      Content-Length:
+      - '118511'
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:s=\"http://www.w3.org/2001/XMLSchema\"
+        xmlns:soap12=\"http://schemas.xmlsoap.org/wsdl/soap12/\" xmlns:http=\"http://schemas.xmlsoap.org/wsdl/http/\"
+        xmlns:mime=\"http://schemas.xmlsoap.org/wsdl/mime/\" xmlns:tns=\"http://interfax.ru/ifax\"
+        xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\" xmlns:tm=\"http://microsoft.com/wsdl/mime/textMatching/\"
+        xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" targetNamespace=\"http://interfax.ru/ifax\"
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">\r\n  <wsdl:types>\r\n    <s:schema
+        elementFormDefault=\"qualified\" targetNamespace=\"http://interfax.ru/ifax\">\r\n
+        \     <s:element name=\"Authmethod\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Login\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Password\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"AuthmethodResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AuthmethodResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"End\">\r\n
+        \       <s:complexType />\r\n      </s:element>\r\n      <s:element name=\"EndResponse\">\r\n
+        \       <s:complexType />\r\n      </s:element>\r\n      <s:element name=\"GetListRegion\">\r\n
+        \       <s:complexType />\r\n      </s:element>\r\n      <s:element name=\"GetListRegionResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetListRegionResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetListOKFS\">\r\n        <s:complexType
+        />\r\n      </s:element>\r\n      <s:element name=\"GetListOKFSResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetListOKFSResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetListOKOPF\">\r\n        <s:complexType
+        />\r\n      </s:element>\r\n      <s:element name=\"GetListOKOPFResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetListOKOPFResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetStateAccount\">\r\n        <s:complexType
+        />\r\n      </s:element>\r\n      <s:element name=\"GetStateAccountResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetStateAccountResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetPurchases\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"begin\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"end\" type=\"s:dateTime\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetPurchasesResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetPurchasesResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"FindCompanyByCode\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"companyCode\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"regionCode\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"excludeBranch\" type=\"s:int\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"FindCompanyByCodeResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"FindCompanyByCodeResult\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\" type=\"s:string\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetCompanyShortReport\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"sparkId\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"inn\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ogrn\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetCompanyShortReportResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyShortReportResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyExtendedReport\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"sparkId\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"inn\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ogrn\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyExtendedReportResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyExtendedReportResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyLicenses\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"sparkId\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"inn\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ogrn\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetCompanyLicensesResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyLicensesResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyStructure\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"sparkId\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"inn\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ogrn\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetCompanyStructureResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyStructureResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyCoownersHistory\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"sparkId\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"inn\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ogrn\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyCoownersHistoryResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyCoownersHistoryResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetOwnershipHierarchy\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"sparkId\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"code\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"idCountry\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetOwnershipHierarchyResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetOwnershipHierarchyResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyAccountingReportDateList\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"sparkId\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"inn\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ogrn\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyAccountingReportDateListResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyAccountingReportDateListResult\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"xmlData\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyAccountingReport\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"sparkId\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"inn\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ogrn\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"balanceDate\" nillable=\"true\" type=\"s:dateTime\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetCompanyAccountingReportResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyAccountingReportResult\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"xmlData\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"OrderEGRUL\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ogrn\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"sparkId\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"OrderEGRULResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"OrderEGRULResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetEGRULData\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"orderId\" type=\"s:int\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetEGRULDataResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetEGRULDataResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetEGRULOrderList\">\r\n        <s:complexType
+        />\r\n      </s:element>\r\n      <s:element name=\"GetEGRULOrderListResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetEGRULOrderListResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"OrderEGRIP\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ogrn\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"OrderEGRIPResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"OrderEGRIPResult\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"xmlData\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetEGRIPData\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"orderId\" type=\"s:int\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetEGRIPDataResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetEGRIPDataResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetEGRIPOrderList\">\r\n        <s:complexType
+        />\r\n      </s:element>\r\n      <s:element name=\"GetEGRIPOrderListResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetEGRIPOrderListResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetSparkListData\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"strRTS\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetSparkListDataResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetSparkListDataResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetSparkListDataByOkpo\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"okpo\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetSparkListDataByOkpoResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetSparkListDataByOkpoResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetSparkProfilePdfHttpResponseContent\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"strID\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetSparkProfilePdfHttpResponseContentResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetSparkProfilePdfHttpResponseContentResult\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"pdf\" type=\"s:base64Binary\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetForecastData\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ticker\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetForecastDataResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetForecastDataResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"Time\">\r\n        <s:complexType />\r\n      </s:element>\r\n
+        \     <s:element name=\"TimeResponse\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"TimeResult\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"CheckCompanyStatus\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"sparkId\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"inn\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ogrn\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"CheckCompanyStatusResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CheckCompanyStatusResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyListByPhone\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"phoneNumber\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"egrpoIncluded\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyListByPhoneResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyListByPhoneResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyListByAddress\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"address\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"regionCode\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"egrpoIncluded\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetCompanyListByAddressResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyListByAddressResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyListByName\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"companyName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"regionCode\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"exactSearch\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"egrpoIncluded\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetCompanyListByNameResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyListByNameResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyListByFIO\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"fio\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"searchType\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"egrpoIncluded\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"regionCode\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyListByFIOResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyListByFIOResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyListByPersonFIO\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"fio\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"searchType\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"historySearch\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"regionCode\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyListByPersonFIOResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyListByPersonFIOResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyListByPersonINN\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"inn\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"searchType\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"historySearch\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyListByPersonINNResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyListByPersonINNResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetEntrepreneurShortReport\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ogrnip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"inn\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetEntrepreneurShortReportResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetEntrepreneurShortReportResult\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"xmlData\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetEntrepreneurListByFIO\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"fio\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"isActing\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"regionCode\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetEntrepreneurListByFIOResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetEntrepreneurListByFIOResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"FindEntrepreneurByCode\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"entrepreneurCode\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"FindEntrepreneurByCodeResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"FindEntrepreneurByCodeResult\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\" type=\"s:string\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"CheckEntrepreneurStatus\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ogrnip\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"inn\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"CheckEntrepreneurStatusResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CheckEntrepreneurStatusResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetBankAccountingReport101102\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"sparkId\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"inn\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ogrn\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"balanceDate\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"formId\" type=\"s:int\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetBankAccountingReport101102Response\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetBankAccountingReport101102Result\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"xmlData\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"MonActivate\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"sparkId\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"inn\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ogrn\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"MonActivateResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"MonActivateResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"MonGetCompaniesList\">\r\n        <s:complexType
+        />\r\n      </s:element>\r\n      <s:element name=\"MonGetCompaniesListResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"MonGetCompaniesListResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"MonDisable\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"sparkId\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"inn\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ogrn\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"MonDisableResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"MonDisableResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"MonDisableCompainesList\">\r\n
+        \       <s:complexType />\r\n      </s:element>\r\n      <s:element name=\"MonDisableCompainesListResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"MonDisableCompainesListResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"MonGetEventsList\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"includeProcessed\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"MonGetEventsListResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"MonGetEventsListResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"MonGetCompanyEvents\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"sparkId\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"inn\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ogrn\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"includeProcessed\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"MonGetCompanyEventsResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"MonGetCompanyEventsResult\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\" type=\"s:string\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"IdentifyCompany\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"companyName\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"manager\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"postIndex\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"address\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"phone\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"fuzzySearch\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"historySearch\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"activeCompanySearch\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"minProbability\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"excludeBranch\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"IdentifyCompanyResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"IdentifyCompanyResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyShortReportUA\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"sparkId\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"edrpou\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetCompanyShortReportUAResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"GetCompanyShortReportUAResult\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\" type=\"s:string\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetCompanyExtendedReportUA\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"sparkId\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"edrpou\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetCompanyExtendedReportUAResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyExtendedReportUAResult\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"xmlData\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyStructureUA\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"sparkId\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"edrpou\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetCompanyStructureUAResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"GetCompanyStructureUAResult\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\" type=\"s:string\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetCompanyCoownersHistoryUA\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"sparkId\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"edrpou\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetCompanyCoownersHistoryUAResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyCoownersHistoryUAResult\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"xmlData\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyShortReportKZ\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"sparkId\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"code\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetCompanyShortReportKZResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"GetCompanyShortReportKZResult\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\" type=\"s:string\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetCompanyStructureKZ\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"sparkId\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"code\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetCompanyStructureKZResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyStructureKZResult\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyCoownersHistoryKZ\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"sparkId\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"code\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetCompanyCoownersHistoryKZResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"GetCompanyCoownersHistoryKZResult\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\" type=\"s:string\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetCompanyShortReportKZOld\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"sparkId\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"rnn\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetCompanyShortReportKZOldResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyShortReportKZOldResult\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"xmlData\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetCompanyStructureKZOld\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"sparkId\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"rnn\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetCompanyStructureKZOldResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"GetCompanyStructureKZOldResult\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"xmlData\" type=\"s:string\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetCompanyCoownersHistoryKZOld\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"sparkId\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"rnn\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetCompanyCoownersHistoryKZOldResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetCompanyCoownersHistoryKZOldResult\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"xmlData\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n    </s:schema>\r\n  </wsdl:types>\r\n  <wsdl:message
+        name=\"AuthmethodSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:Authmethod\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"AuthmethodSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:AuthmethodResponse\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"EndSoapIn\">\r\n    <wsdl:part
+        name=\"parameters\" element=\"tns:End\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"EndSoapOut\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:EndResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetListRegionSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetListRegion\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"GetListRegionSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:GetListRegionResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"GetListOKFSSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:GetListOKFS\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetListOKFSSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetListOKFSResponse\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetListOKOPFSoapIn\">\r\n    <wsdl:part
+        name=\"parameters\" element=\"tns:GetListOKOPF\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"GetListOKOPFSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:GetListOKOPFResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"GetStateAccountSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:GetStateAccount\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetStateAccountSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetStateAccountResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetPurchasesSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetPurchases\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"GetPurchasesSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:GetPurchasesResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"FindCompanyByCodeSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:FindCompanyByCode\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"FindCompanyByCodeSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:FindCompanyByCodeResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyShortReportSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyShortReport\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyShortReportSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyShortReportResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyExtendedReportSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyExtendedReport\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyExtendedReportSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyExtendedReportResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyLicensesSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyLicenses\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyLicensesSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyLicensesResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyStructureSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyStructure\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyStructureSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyStructureResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyCoownersHistorySoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyCoownersHistory\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyCoownersHistorySoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyCoownersHistoryResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetOwnershipHierarchySoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetOwnershipHierarchy\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetOwnershipHierarchySoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetOwnershipHierarchyResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyAccountingReportDateListSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyAccountingReportDateList\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyAccountingReportDateListSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyAccountingReportDateListResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyAccountingReportSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyAccountingReport\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyAccountingReportSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyAccountingReportResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"OrderEGRULSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:OrderEGRUL\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"OrderEGRULSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:OrderEGRULResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"GetEGRULDataSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:GetEGRULData\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetEGRULDataSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetEGRULDataResponse\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetEGRULOrderListSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetEGRULOrderList\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetEGRULOrderListSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetEGRULOrderListResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"OrderEGRIPSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:OrderEGRIP\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"OrderEGRIPSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:OrderEGRIPResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"GetEGRIPDataSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:GetEGRIPData\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetEGRIPDataSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetEGRIPDataResponse\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetEGRIPOrderListSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetEGRIPOrderList\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetEGRIPOrderListSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetEGRIPOrderListResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetSparkListDataSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetSparkListData\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetSparkListDataSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetSparkListDataResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetSparkListDataByOkpoSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetSparkListDataByOkpo\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetSparkListDataByOkpoSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetSparkListDataByOkpoResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetSparkProfilePdfHttpResponseContentSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetSparkProfilePdfHttpResponseContent\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetSparkProfilePdfHttpResponseContentSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetSparkProfilePdfHttpResponseContentResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetForecastDataSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetForecastData\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetForecastDataSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetForecastDataResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"TimeSoapIn\">\r\n    <wsdl:part
+        name=\"parameters\" element=\"tns:Time\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"TimeSoapOut\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:TimeResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CheckCompanyStatusSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:CheckCompanyStatus\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"CheckCompanyStatusSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:CheckCompanyStatusResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyListByPhoneSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyListByPhone\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyListByPhoneSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyListByPhoneResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyListByAddressSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyListByAddress\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyListByAddressSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyListByAddressResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyListByNameSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyListByName\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyListByNameSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyListByNameResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyListByFIOSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyListByFIO\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyListByFIOSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyListByFIOResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyListByPersonFIOSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyListByPersonFIO\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyListByPersonFIOSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyListByPersonFIOResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyListByPersonINNSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyListByPersonINN\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyListByPersonINNSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyListByPersonINNResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetEntrepreneurShortReportSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetEntrepreneurShortReport\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetEntrepreneurShortReportSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetEntrepreneurShortReportResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetEntrepreneurListByFIOSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetEntrepreneurListByFIO\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetEntrepreneurListByFIOSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetEntrepreneurListByFIOResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"FindEntrepreneurByCodeSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:FindEntrepreneurByCode\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"FindEntrepreneurByCodeSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:FindEntrepreneurByCodeResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CheckEntrepreneurStatusSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:CheckEntrepreneurStatus\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CheckEntrepreneurStatusSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:CheckEntrepreneurStatusResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetBankAccountingReport101102SoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetBankAccountingReport101102\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetBankAccountingReport101102SoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetBankAccountingReport101102Response\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"MonActivateSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:MonActivate\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"MonActivateSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:MonActivateResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"MonGetCompaniesListSoapIn\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:MonGetCompaniesList\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"MonGetCompaniesListSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:MonGetCompaniesListResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"MonDisableSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:MonDisable\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"MonDisableSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:MonDisableResponse\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"MonDisableCompainesListSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:MonDisableCompainesList\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"MonDisableCompainesListSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:MonDisableCompainesListResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"MonGetEventsListSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:MonGetEventsList\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"MonGetEventsListSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:MonGetEventsListResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"MonGetCompanyEventsSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:MonGetCompanyEvents\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"MonGetCompanyEventsSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:MonGetCompanyEventsResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"IdentifyCompanySoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:IdentifyCompany\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"IdentifyCompanySoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:IdentifyCompanyResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyShortReportUASoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyShortReportUA\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyShortReportUASoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyShortReportUAResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyExtendedReportUASoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyExtendedReportUA\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyExtendedReportUASoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyExtendedReportUAResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyStructureUASoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyStructureUA\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyStructureUASoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyStructureUAResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyCoownersHistoryUASoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyCoownersHistoryUA\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyCoownersHistoryUASoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyCoownersHistoryUAResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyShortReportKZSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyShortReportKZ\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyShortReportKZSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyShortReportKZResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyStructureKZSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyStructureKZ\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyStructureKZSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyStructureKZResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyCoownersHistoryKZSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyCoownersHistoryKZ\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyCoownersHistoryKZSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyCoownersHistoryKZResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyShortReportKZOldSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyShortReportKZOld\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyShortReportKZOldSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyShortReportKZOldResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyStructureKZOldSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyStructureKZOld\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyStructureKZOldSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyStructureKZOldResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyCoownersHistoryKZOldSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyCoownersHistoryKZOld\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetCompanyCoownersHistoryKZOldSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetCompanyCoownersHistoryKZOldResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:portType name=\"iFaxWebServiceSoap\">\r\n
+        \   <wsdl:operation name=\"Authmethod\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Авторизация</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:AuthmethodSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:AuthmethodSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"End\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Освободить
+        ресурсы</wsdl:documentation>\r\n      <wsdl:input message=\"tns:EndSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:EndSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetListRegion\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        возвращает список всех регионов</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetListRegionSoapIn\" />\r\n      <wsdl:output message=\"tns:GetListRegionSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetListOKFS\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        возвращает состав справочник ОКФС</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetListOKFSSoapIn\" />\r\n      <wsdl:output message=\"tns:GetListOKFSSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetListOKOPF\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        возвращает состав справочника ОКОПФ</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetListOKOPFSoapIn\" />\r\n      <wsdl:output message=\"tns:GetListOKOPFSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetStateAccount\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        возвращает текущий баланс клиента</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetStateAccountSoapIn\" />\r\n      <wsdl:output message=\"tns:GetStateAccountSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetPurchases\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        возвращает список вызовов тарифицируемых методов за указанный период</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetPurchasesSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetPurchasesSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"FindCompanyByCode\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        осуществляет поиск компаний по заданным параметрам. Должен быть задан хотя
+        бы один из параметров: ИНН, ОГРН, либо оба. Поиск происходит по логическому
+        «И».</wsdl:documentation>\r\n      <wsdl:input message=\"tns:FindCompanyByCodeSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:FindCompanyByCodeSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetCompanyShortReport\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод возвращает краткую справку
+        по компании. Должен быть задан хотя бы один из параметров: ИНН, ОГРН, либо
+        оба. Поиск происходит по логическому «И» без учета филиалов.</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetCompanyShortReportSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetCompanyShortReportSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetCompanyExtendedReport\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод возвращает расширенную
+        справку по компании. Должен быть задан хотя бы один из параметров: ИНН, ОГРН,
+        либо оба. Поиск происходит по логическому «И» без учета филиалов.</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetCompanyExtendedReportSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetCompanyExtendedReportSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetCompanyLicenses\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод возвращает список лицензий
+        компании</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetCompanyLicensesSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetCompanyLicensesSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"GetCompanyStructure\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        для получения актуальной информации о совладельцах, филиалах, дочерних компаниях
+        и некоммерческих партнерствах компании по данным самой компании (из анкеты
+        эмитента), Росстата и ЕГРЮЛ</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetCompanyStructureSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetCompanyStructureSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"GetCompanyCoownersHistory\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        для получения списка бывших совладельцев компании</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetCompanyCoownersHistorySoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetCompanyCoownersHistorySoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetOwnershipHierarchy\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод для получения информации
+        о структуре владения компанией</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetOwnershipHierarchySoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetOwnershipHierarchySoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"GetCompanyAccountingReportDateList\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        возвращает список дат, на которые имеется отчетность</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetCompanyAccountingReportDateListSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetCompanyAccountingReportDateListSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetCompanyAccountingReport\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        для получения всех имеющихся форм бухгалтерской отчетности компании по ее
+        идентификатору в СПАРК за указанный период</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetCompanyAccountingReportSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetCompanyAccountingReportSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"OrderEGRUL\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        для выписки из ЕГРЮЛ по ОГРН компании</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:OrderEGRULSoapIn\" />\r\n      <wsdl:output message=\"tns:OrderEGRULSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetEGRULData\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        для получения ранее заказанной выписки из ЕГРЮЛ</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetEGRULDataSoapIn\" />\r\n      <wsdl:output message=\"tns:GetEGRULDataSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetEGRULOrderList\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        для получения списка номеров выполненных заказов на выписку из ЕГРЮЛ</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetEGRULOrderListSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetEGRULOrderListSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"OrderEGRIP\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        для выписки из ЕГРИП по ОГРН индивидуального предпринимателя</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:OrderEGRIPSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:OrderEGRIPSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetEGRIPData\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        для получения ранее заказанной выписки из ЕГРИП</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetEGRIPDataSoapIn\" />\r\n      <wsdl:output message=\"tns:GetEGRIPDataSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetEGRIPOrderList\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        для получения списка номеров выполненных заказов на выписку из ЕГРИП</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetEGRIPOrderListSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetEGRIPOrderListSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetSparkListData\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Возвращает
+        данные для построения СПАРК-листа</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetSparkListDataSoapIn\" />\r\n      <wsdl:output message=\"tns:GetSparkListDataSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetSparkListDataByOkpo\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Возвращает
+        данные для построения СПАРК-листа</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetSparkListDataByOkpoSoapIn\" />\r\n      <wsdl:output message=\"tns:GetSparkListDataByOkpoSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetSparkProfilePdfHttpResponseContent\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Возвращает
+        бинарное содержимое Http-ответа от СПАРК при обращении к нему за отчететом
+        (Pdf) СПАРК-Профиль для компании</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetSparkProfilePdfHttpResponseContentSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetSparkProfilePdfHttpResponseContentSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetForecastData\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Возвращает данные по котировкам</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetForecastDataSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetForecastDataSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"Time\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Возвращает
+        время, хранимое на Сервере (тест для проверки работоспособности)</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:TimeSoapIn\" />\r\n      <wsdl:output message=\"tns:TimeSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"CheckCompanyStatus\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        служит для получения сведений о статусе компании</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:CheckCompanyStatusSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:CheckCompanyStatusSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetCompanyListByPhone\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод служит для получения
+        списка компаний по номеру телефона</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetCompanyListByPhoneSoapIn\" />\r\n      <wsdl:output message=\"tns:GetCompanyListByPhoneSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetCompanyListByAddress\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        служит для получения списка компаний по адресу</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetCompanyListByAddressSoapIn\" />\r\n      <wsdl:output message=\"tns:GetCompanyListByAddressSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetCompanyListByName\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        служит для получения списка компаний по наименованию (точный поиск) в указанном
+        регионе</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetCompanyListByNameSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetCompanyListByNameSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"GetCompanyListByFIO\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        служит для получения списка компаний по ФИО руководителя или учредителя</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetCompanyListByFIOSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetCompanyListByFIOSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetCompanyListByPersonFIO\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод служит для получения
+        списка компаний по ФИО руководителя или учредителя v2</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetCompanyListByPersonFIOSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetCompanyListByPersonFIOSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetCompanyListByPersonINN\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод служит для получения
+        списка компаний по ИНН руководителя или учредителя v2</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetCompanyListByPersonINNSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetCompanyListByPersonINNSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetEntrepreneurShortReport\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод служит для получения
+        краткой карточки индивидуального предпринимателя</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetEntrepreneurShortReportSoapIn\" />\r\n
+        \     <wsdl:output message=\"tns:GetEntrepreneurShortReportSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"GetEntrepreneurListByFIO\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        служит для получения списка индивидуальных предпринимателей по ФИО</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetEntrepreneurListByFIOSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetEntrepreneurListByFIOSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"FindEntrepreneurByCode\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод для получения списка
+        индивидуальных предпринимателей по коду</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:FindEntrepreneurByCodeSoapIn\" />\r\n      <wsdl:output message=\"tns:FindEntrepreneurByCodeSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"CheckEntrepreneurStatus\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        служит для получения сведений о статусе ИП</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:CheckEntrepreneurStatusSoapIn\" />\r\n      <wsdl:output message=\"tns:CheckEntrepreneurStatusSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetBankAccountingReport101102\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        для получения форм 101 и 102 бухгалтерской отчетности банка по его идентификатору
+        в СПАРК</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetBankAccountingReport101102SoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetBankAccountingReport101102SoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"MonActivate\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Включить
+        мониторинг компании</wsdl:documentation>\r\n      <wsdl:input message=\"tns:MonActivateSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:MonActivateSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"MonGetCompaniesList\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Получить список всех компаний,
+        включенных в мониторинг</wsdl:documentation>\r\n      <wsdl:input message=\"tns:MonGetCompaniesListSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:MonGetCompaniesListSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"MonDisable\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Выключить мониторинг компании</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:MonDisableSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:MonDisableSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"MonDisableCompainesList\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Выключить
+        мониторинг всех компаний</wsdl:documentation>\r\n      <wsdl:input message=\"tns:MonDisableCompainesListSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:MonDisableCompainesListSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"MonGetEventsList\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Возвращает
+        список событий мониторинга</wsdl:documentation>\r\n      <wsdl:input message=\"tns:MonGetEventsListSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:MonGetEventsListSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"MonGetCompanyEvents\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Возвращает изменения по компании</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:MonGetCompanyEventsSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:MonGetCompanyEventsSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"IdentifyCompany\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод служит для идентификации
+        компании по имени, адресу, руководителю, телефону. Идентификация производится
+        как по историческим данным, так и по актуальным.</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:IdentifyCompanySoapIn\" />\r\n      <wsdl:output
+        message=\"tns:IdentifyCompanySoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyShortReportUA\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        возвращает краткую справку по украинской компании. Поиск по ЕДРПОУ осуществляется
+        без учета филиалов.</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetCompanyShortReportUASoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetCompanyShortReportUASoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"GetCompanyExtendedReportUA\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        возвращает полную справку по украинской компании. Поиск по ЕДРПОУ осуществляется
+        без учета филиалов.</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetCompanyExtendedReportUASoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetCompanyExtendedReportUASoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetCompanyStructureUA\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        возвращает данные о филиалах, совладельцах и дочерних компаниях украинской
+        компании. Поиск по ЕДРПОУ осуществляется без учета филиалов.</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetCompanyStructureUASoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetCompanyStructureUASoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetCompanyCoownersHistoryUA\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод возвращает данные о
+        бывших совладельцах украинской компании. Поиск по ЕДРПОУ осуществляется без
+        учета филиалов.</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetCompanyCoownersHistoryUASoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetCompanyCoownersHistoryUASoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetCompanyShortReportKZ\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        возвращает краткую справку по казахстанской компании. Поиск по коду осуществляется
+        без учета филиалов.</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetCompanyShortReportKZSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetCompanyShortReportKZSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"GetCompanyStructureKZ\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        возвращает данные о филиалах, совладельцах и дочерних компаниях казахстанской
+        компании. Поиск по коду осуществляется без учета филиалов.</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetCompanyStructureKZSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetCompanyStructureKZSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetCompanyCoownersHistoryKZ\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод возвращает данные о
+        бывших совладельцах казахстанской компании. Поиск по коду осуществляется без
+        учета филиалов.</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetCompanyCoownersHistoryKZSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetCompanyCoownersHistoryKZSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetCompanyShortReportKZOld\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        возвращает краткую справку по казахстанской компании. Поиск по РНН осуществляется
+        без учета филиалов.</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetCompanyShortReportKZOldSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetCompanyShortReportKZOldSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetCompanyStructureKZOld\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод
+        возвращает данные о филиалах, совладельцах и дочерних компаниях казахстанской
+        компании. Поиск по РНН осуществляется без учета филиалов.</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetCompanyStructureKZOldSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetCompanyStructureKZOldSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetCompanyCoownersHistoryKZOld\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Метод возвращает данные о
+        бывших совладельцах казахстанской компании. Поиск по РНН осуществляется без
+        учета филиалов.</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetCompanyCoownersHistoryKZOldSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetCompanyCoownersHistoryKZOldSoapOut\"
+        />\r\n    </wsdl:operation>\r\n  </wsdl:portType>\r\n  <wsdl:binding name=\"iFaxWebServiceSoap\"
+        type=\"tns:iFaxWebServiceSoap\">\r\n    <soap:binding transport=\"http://schemas.xmlsoap.org/soap/http\"
+        />\r\n    <wsdl:operation name=\"Authmethod\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/Authmethod\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"End\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/End\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetListRegion\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetListRegion\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetListOKFS\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetListOKFS\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetListOKOPF\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetListOKOPF\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetStateAccount\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetStateAccount\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetPurchases\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetPurchases\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"FindCompanyByCode\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/FindCompanyByCode\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyShortReport\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyShortReport\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyExtendedReport\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyExtendedReport\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyLicenses\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyLicenses\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyStructure\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyStructure\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyCoownersHistory\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyCoownersHistory\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetOwnershipHierarchy\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetOwnershipHierarchy\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyAccountingReportDateList\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyAccountingReportDateList\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyAccountingReport\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyAccountingReport\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"OrderEGRUL\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/OrderEGRUL\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetEGRULData\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetEGRULData\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetEGRULOrderList\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetEGRULOrderList\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"OrderEGRIP\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/OrderEGRIP\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetEGRIPData\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetEGRIPData\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetEGRIPOrderList\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetEGRIPOrderList\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetSparkListData\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetSparkListData\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetSparkListDataByOkpo\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetSparkListDataByOkpo\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetSparkProfilePdfHttpResponseContent\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetSparkProfilePdfHttpResponseContent\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetForecastData\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetForecastData\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"Time\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/Time\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CheckCompanyStatus\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/CheckCompanyStatus\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyListByPhone\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyListByPhone\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyListByAddress\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyListByAddress\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyListByName\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyListByName\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyListByFIO\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyListByFIO\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyListByPersonFIO\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyListByPersonFIO\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyListByPersonINN\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyListByPersonINN\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetEntrepreneurShortReport\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetEntrepreneurShortReport\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetEntrepreneurListByFIO\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetEntrepreneurListByFIO\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"FindEntrepreneurByCode\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/FindEntrepreneurByCode\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CheckEntrepreneurStatus\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/CheckEntrepreneurStatus\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetBankAccountingReport101102\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetBankAccountingReport101102\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"MonActivate\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/MonActivate\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"MonGetCompaniesList\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/MonGetCompaniesList\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"MonDisable\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/MonDisable\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"MonDisableCompainesList\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/MonDisableCompainesList\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"MonGetEventsList\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/MonGetEventsList\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"MonGetCompanyEvents\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/MonGetCompanyEvents\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"IdentifyCompany\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/IdentifyCompany\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyShortReportUA\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyShortReportUA\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyExtendedReportUA\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyExtendedReportUA\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyStructureUA\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyStructureUA\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyCoownersHistoryUA\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyCoownersHistoryUA\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyShortReportKZ\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyShortReportKZ\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyStructureKZ\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyStructureKZ\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyCoownersHistoryKZ\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyCoownersHistoryKZ\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyShortReportKZOld\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyShortReportKZOld\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyStructureKZOld\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyStructureKZOld\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyCoownersHistoryKZOld\">\r\n      <soap:operation soapAction=\"http://interfax.ru/ifax/GetCompanyCoownersHistoryKZOld\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:binding name=\"iFaxWebServiceSoap12\" type=\"tns:iFaxWebServiceSoap\">\r\n
+        \   <soap12:binding transport=\"http://schemas.xmlsoap.org/soap/http\" />\r\n
+        \   <wsdl:operation name=\"Authmethod\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/Authmethod\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"End\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/End\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetListRegion\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetListRegion\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetListOKFS\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetListOKFS\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetListOKOPF\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetListOKOPF\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetStateAccount\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetStateAccount\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetPurchases\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetPurchases\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"FindCompanyByCode\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/FindCompanyByCode\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyShortReport\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyShortReport\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyExtendedReport\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyExtendedReport\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyLicenses\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyLicenses\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyStructure\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyStructure\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyCoownersHistory\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyCoownersHistory\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetOwnershipHierarchy\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetOwnershipHierarchy\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyAccountingReportDateList\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyAccountingReportDateList\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyAccountingReport\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyAccountingReport\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"OrderEGRUL\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/OrderEGRUL\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetEGRULData\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetEGRULData\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetEGRULOrderList\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetEGRULOrderList\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"OrderEGRIP\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/OrderEGRIP\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetEGRIPData\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetEGRIPData\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetEGRIPOrderList\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetEGRIPOrderList\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetSparkListData\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetSparkListData\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetSparkListDataByOkpo\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetSparkListDataByOkpo\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetSparkProfilePdfHttpResponseContent\">\r\n      <soap12:operation
+        soapAction=\"http://interfax.ru/ifax/GetSparkProfilePdfHttpResponseContent\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetForecastData\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetForecastData\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"Time\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/Time\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CheckCompanyStatus\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/CheckCompanyStatus\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyListByPhone\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyListByPhone\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyListByAddress\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyListByAddress\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyListByName\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyListByName\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyListByFIO\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyListByFIO\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyListByPersonFIO\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyListByPersonFIO\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyListByPersonINN\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyListByPersonINN\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetEntrepreneurShortReport\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetEntrepreneurShortReport\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetEntrepreneurListByFIO\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetEntrepreneurListByFIO\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"FindEntrepreneurByCode\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/FindEntrepreneurByCode\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CheckEntrepreneurStatus\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/CheckEntrepreneurStatus\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetBankAccountingReport101102\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetBankAccountingReport101102\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"MonActivate\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/MonActivate\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"MonGetCompaniesList\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/MonGetCompaniesList\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"MonDisable\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/MonDisable\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"MonDisableCompainesList\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/MonDisableCompainesList\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"MonGetEventsList\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/MonGetEventsList\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"MonGetCompanyEvents\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/MonGetCompanyEvents\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"IdentifyCompany\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/IdentifyCompany\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyShortReportUA\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyShortReportUA\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyExtendedReportUA\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyExtendedReportUA\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyStructureUA\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyStructureUA\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyCoownersHistoryUA\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyCoownersHistoryUA\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyShortReportKZ\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyShortReportKZ\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyStructureKZ\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyStructureKZ\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyCoownersHistoryKZ\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyCoownersHistoryKZ\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyShortReportKZOld\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyShortReportKZOld\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyStructureKZOld\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyStructureKZOld\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetCompanyCoownersHistoryKZOld\">\r\n      <soap12:operation soapAction=\"http://interfax.ru/ifax/GetCompanyCoownersHistoryKZOld\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:service name=\"iFaxWebService\">\r\n    <wsdl:port name=\"iFaxWebServiceSoap\"
+        binding=\"tns:iFaxWebServiceSoap\">\r\n      <soap:address location=\"http://sparkgatetest.interfax.ru/IfaxWebService/ifaxwebservice.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"iFaxWebServiceSoap12\" binding=\"tns:iFaxWebServiceSoap12\">\r\n
+        \     <soap12:address location=\"http://sparkgatetest.interfax.ru/IfaxWebService/ifaxwebservice.asmx\"
+        />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
+    http_version: 
+  recorded_at: Wed, 24 Sep 2014 15:12:06 GMT
+- request:
+    method: post
+    uri: http://sparkgatetest.interfax.ru/IfaxWebService/ifaxwebservice.asmx
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://interfax.ru/ifax"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><tns:Authmethod><tns:Login>ds_gate</tns:Login><tns:Password>Vz3JW9h</tns:Password></tns:Authmethod></env:Body></env:Envelope>
+    headers:
+      Soapaction:
+      - '"http://interfax.ru/ifax/Authmethod"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '376'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      Set-Cookie:
+      - ASP.NET_SessionId=ubxw3clu0vypq2ejo5tzauwv; path=/; HttpOnly
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Wed, 24 Sep 2014 15:28:39 GMT
+      Content-Length:
+      - '360'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><AuthmethodResponse
+        xmlns="http://interfax.ru/ifax"><AuthmethodResult>True</AuthmethodResult></AuthmethodResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Wed, 24 Sep 2014 15:12:11 GMT
+- request:
+    method: post
+    uri: http://sparkgatetest.interfax.ru/IfaxWebService/ifaxwebservice.asmx
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://interfax.ru/ifax"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><tns:GetEntrepreneurShortReport><tns:ogrnip>306770000348481</tns:ogrnip></tns:GetEntrepreneurShortReport></env:Body></env:Envelope>
+    headers:
+      Cookie:
+      - ASP.NET_SessionId=ubxw3clu0vypq2ejo5tzauwv
+      Soapaction:
+      - '"http://interfax.ru/ifax/GetEntrepreneurShortReport"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '382'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Wed, 24 Sep 2014 15:28:45 GMT
+      Content-Length:
+      - '2750'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GetEntrepreneurShortReportResponse
+        xmlns="http://interfax.ru/ifax"><GetEntrepreneurShortReportResult>True</GetEntrepreneurShortReportResult><xmlData>&lt;?xml
+        version="1.0" encoding="UTF-8"?&gt;&lt;Response&gt;&lt;Data&gt;&lt;Report&gt;&lt;SparkID&gt;34264016&lt;/SparkID&gt;&lt;Status
+        IsActing="1" Text="Действующее" Code="24" /&gt;&lt;DateReg&gt;2006-08-22&lt;/DateReg&gt;&lt;FullNameRus&gt;Батурина
+        Ольга Анатольевна&lt;/FullNameRus&gt;&lt;INN&gt;771607534337&lt;/INN&gt;&lt;OGRNIP&gt;306770000348481&lt;/OGRNIP&gt;&lt;OKPO&gt;0116133597&lt;/OKPO&gt;&lt;OKATO
+        Code="45280565000" RegionName="Москва" RegionCode="45" /&gt;&lt;OKVEDList&gt;&lt;OKVED
+        Code="51.53.22" Name="Оптовая торговля лакокрасочными материалами" IsMain="true"
+        /&gt;&lt;OKVED Code="50.20.1" Name="Техническое обслуживание и ремонт легковых
+        автомобилей" IsMain="false" /&gt;&lt;OKVED Code="50.20.2" Name="Техническое
+        обслуживание и ремонт прочих автотранспортных средств" IsMain="false" /&gt;&lt;OKVED
+        Code="50.20.3" Name="Предоставление прочих видов услуг по техническому обслуживанию
+        автотранспортных средств" IsMain="false" /&gt;&lt;OKVED Code="50.30.1" Name="Оптовая
+        торговля автомобильными деталями, узлами и принадлежностями" IsMain="false"
+        /&gt;&lt;OKVED Code="50.30.2" Name="Розничная торговля автомобильными деталями,
+        узлами и  принадлежностями" IsMain="false" /&gt;&lt;OKVED Code="52.46.2" Name="Розничная
+        торговля красками, лаками и эмалями" IsMain="false" /&gt;&lt;OKVED Code="52.63"
+        Name="Прочая розничная торговля вне магазинов" IsMain="false" /&gt;&lt;OKVED
+        Code="72.60" Name="Прочая деятельность, связанная с использованием вычислительной
+        техники и информационных технологий" IsMain="false" /&gt;&lt;OKVED Code="74.84"
+        Name="Предоставление прочих услуг" IsMain="false" /&gt;&lt;/OKVEDList&gt;&lt;/Report&gt;&lt;/Data&gt;&lt;ResultInfo
+        ResultType="True" ExecutionTime="270" /&gt;&lt;/Response&gt;</xmlData></GetEntrepreneurShortReportResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Wed, 24 Sep 2014 15:12:17 GMT
+- request:
+    method: post
+    uri: https://ccdemopim.sredda.ru:5443/authentication/user/login/
+    body:
+      encoding: UTF-8
+      string: '{"login":"+77441111111","password":"fake password to test if login
+        exists"}'
+    headers: {}
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Length:
+      - '832'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Wed, 24 Sep 2014 15:28:22 GMT
+    body:
+      encoding: UTF-8
+      string: '{"__type":"DataObjectNotFoundFault","ErrorMessage":"Can''t find user
+        by login ''+77441111111''.","ServerStackTrace":"   at Dsrd.Uas.BusinessLogic.AuthenticationBll.User_Login(String
+        login, String password)\u000d\u000a   at SyncInvokeUser_Login(Object , Object[]
+        , Object[] )\u000d\u000a   at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object
+        instance, Object[] inputs, Object[]& outputs)\u000d\u000a   at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean
+        isOperationContextSet)","ObjectName":"User"}'
+    http_version: 
+  recorded_at: Wed, 24 Sep 2014 15:12:22 GMT
+- request:
+    method: post
+    uri: https://api.sredda.ru:4444/SMSGateway/sms
+    body:
+      encoding: UTF-8
+      string: Text=%D0%94%D0%BB%D1%8F+%D0%B2%D1%85%D0%BE%D0%B4%D0%B0+%D0%BD%D0%B0+%D1%81%D0%B0%D0%B9%D1%82+%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D0%B9%D1%82%D0%B5%0A%D0%BB%D0%BE%D0%B3%D0%B8%D0%BD%3A+%2B77441111111%0A%D0%BF%D0%B0%D1%80%D0%BE%D0%BB%D1%8C+768&ToPhoneNumber=%2B77441111111&WithVerificationCode=false
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.15
+      Date:
+      - Wed, 24 Sep 2014 15:28:52 GMT
+      Content-Type:
+      - text/plain
+      Connection:
+      - keep-alive
+      Http.status:
+      - '200'
+      X-Mule-Session:
+      - rO0ABXNyACNvcmcubXVsZS5zZXNzaW9uLkRlZmF1bHRNdWxlU2Vzc2lvbi7rdtEW7GGKAwAEWgAFdmFsaWRMAA1mbG93Q29uc3RydWN0dAAmTG9yZy9tdWxlL2FwaS9jb25zdHJ1Y3QvRmxvd0NvbnN0cnVjdDtMAAJpZHQAEkxqYXZhL2xhbmcvU3RyaW5nO0wAD3NlY3VyaXR5Q29udGV4dHQAJ0xvcmcvbXVsZS9hcGkvc2VjdXJpdHkvU2VjdXJpdHlDb250ZXh0O3hwAXB0ACQ3Y2M2MDBmMy00M2ZmLTExZTQtYmQwMi0wNTE0ODhlNTNiMGZwc3IAJWphdmEudXRpbC5Db2xsZWN0aW9ucyRTeW5jaHJvbml6ZWRNYXAbc/kJS0s5ewMAAkwAAW10AA9MamF2YS91dGlsL01hcDtMAAVtdXRleHQAEkxqYXZhL2xhbmcvT2JqZWN0O3hwc3IAJG9yZy5tdWxlLnV0aWwuQ2FzZUluc2Vuc2l0aXZlSGFzaE1hcJ3R2e9nRc4AAwAAeHB3DD9AAAAAAAAQAAAAAHhxAH4ACXh4
+      X-Mule-Encoding:
+      - UTF-8
+      Content-Length:
+      - '6'
+    body:
+      encoding: UTF-8
+      string: '105065'
+    http_version: 
+  recorded_at: Wed, 24 Sep 2014 15:12:30 GMT
+- request:
+    method: post
+    uri: https://ccdemopim.sredda.ru:5443/authentication/user/
+    body:
+      encoding: UTF-8
+      string: '{"Login":"+77441111111","Password":"180","FirstName":"Ольга","LastName":"Батурина","PatronymicName":"Анатольевна","Country":null,"Phone":"+77441111111","IsDisabled":true}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '167'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Thu, 25 Sep 2014 12:11:46 GMT
+    body:
+      encoding: UTF-8
+      string: '{"FirstName":"Ольга","IsDisabled":true,"LastName":"Батурина","Login":"+77441111111","UserId":"UAS100173","UserNativeId":"1-1WMYU0","UserSysName":"siebel"}'
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:12:14 GMT
+- request:
+    method: post
+    uri: https://sns.sredda.ru:4443/socialNetwork2/entity
+    body:
+      encoding: UTF-8
+      string: '{"__type":"Person.SaveData","ComplexId":{"EntityType":"Person","SystemId":"1-1WMYU0","SystemName":"siebel"},"Content":null,"Name":"Не
+        определено","IsVip":false,"VipText":"","Categories":[]}'
+    headers:
+      User-Id:
+      - 1-4DFE
+      User-Sysname:
+      - siebel
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '0'
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Thu, 25 Sep 2014 12:12:09 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:12:31 GMT
+- request:
+    method: post
+    uri: https://siebel.dasreda.ru:9443/eai_anon_rus/start.swe?SWEExtCmd=Execute&SWEExtSource=SecureWebService
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://siebel.com/CustomUI" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ins0="http://www.siebel.com/xml/SBT%20Account"><env:Header><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/07/secext">
+                    <wsse:UsernameToken xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility">
+                      <wsse:Username>Club</wsse:Username>
+                      <wsse:Password Type="wsse:PasswordText">Xxrhvdlz</wsse:Password>
+                    </wsse:UsernameToken>
+                  </wsse:Security></env:Header><env:Body><tns:AccountSync_Input><tns:ListOfSbtAccount><tns:Account><tns:IntegrationId>DC1411647154221</tns:IntegrationId><tns:Type>Юридическое лицо</tns:Type><tns:SBTName>Батурина Ольга Анатольевна</tns:SBTName><tns:SBTINN>771607534337</tns:SBTINN><tns:SBTOGRN>306770000348481</tns:SBTOGRN></tns:Account></tns:ListOfSbtAccount></tns:AccountSync_Input></env:Body></env:Envelope>
+    headers:
+      Accept-Encoding:
+      - gzip
+      Soapaction:
+      - '"document/http://siebel.com/CustomUI:AccountSync"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1093'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '455'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Server:
+      - Microsoft-IIS/7.5
+      -Charset:
+      - UTF-8
+      Date:
+      - Thu, 25 Sep 2014 12:12:40 GMT
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><SOAP-ENV:Body><ns:AccountSync_Output
+        xmlns:ns="http://siebel.com/CustomUI"><ns:Error_spcCode></ns:Error_spcCode><ns:Error_spcMessage></ns:Error_spcMessage><ns:Result>1</ns:Result></ns:AccountSync_Output></SOAP-ENV:Body></SOAP-ENV:Envelope>
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:12:42 GMT
+- request:
+    method: get
+    uri: https://sns.sredda.ru:4443/socialNetwork2/entity/?systemId=1-1WMYUL&systemName=siebel&type=Company
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Id:
+      - 1-1WMYU0
+      User-Sysname:
+      - siebel
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Length:
+      - '830'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Thu, 25 Sep 2014 12:12:25 GMT
+    body:
+      encoding: UTF-8
+      string: '{"__type":"DataObjectNotFoundFault","ErrorMessage":"Data object not
+        found.","ServerStackTrace":"   at Dsrd.Sns.SocialNetwork.Service.Entity_Get(String
+        entityType, String systemName, String systemId)\u000d\u000a   at SyncInvokeEntity_Get(Object
+        , Object[] , Object[] )\u000d\u000a   at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object
+        instance, Object[] inputs, Object[]& outputs)\u000d\u000a   at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&
+        rpc)\u000d\u000a   at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean
+        isOperationContextSet)","ObjectName":"Entity"}'
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:12:47 GMT
+- request:
+    method: post
+    uri: https://sns.sredda.ru:4443/socialNetwork2/entity
+    body:
+      encoding: UTF-8
+      string: '{"__type":"Company.SaveData","ComplexId":{"EntityType":"Company","SystemId":"1-1WMYUL","SystemName":"siebel"},"Name":"Батурина
+        Ольга Анатольевна"}'
+    headers:
+      User-Id:
+      - 1-1WMYU0
+      User-Sysname:
+      - siebel
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '0'
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Thu, 25 Sep 2014 12:12:31 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:12:52 GMT
+- request:
+    method: put
+    uri: https://ccdemopim.sredda.ru:5443/authentication/user/siebel/UAS100173/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '0'
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Thu, 25 Sep 2014 12:12:29 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:12:57 GMT
+- request:
+    method: post
+    uri: https://ccdemopim.sredda.ru:5443/authentication/user/login/
+    body:
+      encoding: UTF-8
+      string: '{"login":"+77441111111","password":"180"}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '346'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Thu, 25 Sep 2014 12:12:35 GMT
+    body:
+      encoding: UTF-8
+      string: "{\"Token\":\"a4FmfMfU\\/NmesfVhLw7Diqsrf3xD\\/AtZoXBZJXZXmEiGHD4V4A35+gWh0nj5QYGT56YcViOqqyUJGIVcbYfBGLx1wbZ8kOeAp3xPMQRi+ElTo1sV3eCJB3AFdQytmmuE+bqwmc16mlIqCx1B83gVsg==|2014-09-30T15:57:35\",\"User\":{\"FirstName\":\"Ð\x9EÐ»Ñ\x8CÐ³Ð°\",\"LastName\":\"Ð\x91Ð°Ñ\x82Ñ\x83Ñ\x80Ð¸Ð½Ð°\",\"Login\":\"+77441111111\",\"UserId\":\"UAS100173\",\"UserNativeId\":\"1-1WMYU0\",\"UserSysName\":\"siebel\"}}"
+    http_version: 
+  recorded_at: Thu, 25 Sep 2014 12:13:03 GMT
+- request:
+    method: post
+    uri: https://ccdemopim.sredda.ru:5443/authentication/user/token/
+    body:
+      encoding: UTF-8
+      string: '{"token":"a4FmfMfU/NmesfVhLw7Diqsrf3xD/AtZoXBZJXZXmEiGHD4V4A35+gWh0nj5QYGT56YcViOqqyUJGIVcbYfBGLx1wbZ8kOeAp3xPMQRi+ElTo1sV3eCJB3AFdQytmmuE+bqwmc16mlIqCx1B83gVsg==|2014-09-30T15:57:35"}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '149'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-HTTPAPI/2.0
+      Date:
+      - Tue, 30 Sep 2014 14:30:40 GMT
+    body:
+      encoding: UTF-8
+      string: '{"FirstName":"Ольга","LastName":"Батурина","Login":"+77441111111","UserId":"UAS100173","UserNativeId":"1-1WMYU0","UserSysName":"siebel"}'
+    http_version: 
+  recorded_at: Tue, 30 Sep 2014 14:34:58 GMT
+- request:
+    method: post
+    uri: https://400004:cArt123QWE123@cart-delo.sredda.ru:5443/api/orders
+    body:
+      encoding: UTF-8
+      string: '{"UserId":"UAS100173","SuccessUrl":"http://127.0.0.1:60490/access_purchases/12/processed","ErrorUrl":"http://127.0.0.1:60490/access_purchases/12/processed","Offerings":[{"Offering":{"OfferingId":"3000319","OfferingPriceId":"3000329","ClientKey":"UAS100173","Characteristics":[]},"ArticleUrl":"http://market.yandex.ru/model-spec.xml?modelid=10890865\u0026hid=6427100","ArticleId":null,"SerializedOffering":null,"ProductsForUpdate":null,"MerchantId":null,"Promocode":null}],"Options":3,"ChoosePayer":true,"Promocode":null,"PayerCompanyId":null,"SellerCompanyId":null}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - '-1'
+      Location:
+      - https://cart-delo.sredda.ru/api/orders/20139
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 30 Sep 2014 16:18:06 GMT
+      Content-Length:
+      - '133'
+    body:
+      encoding: UTF-8
+      string: '{"OrderId":20139,"TargetUrl":"http://payment-delo.sredda.ru:8081/Payment/Credentials?PaymentID=7ff2c703-3eec-4d72-ac20-adbaa6b76dd2"}'
+    http_version: 
+  recorded_at: Tue, 30 Sep 2014 16:24:48 GMT
+- request:
+    method: post
+    uri: https://400004:cArt123QWE123@cart-delo.sredda.ru:5443/api/orders
+    body:
+      encoding: UTF-8
+      string: '{"UserId":"UAS100173","SuccessUrl":"http://127.0.0.1:44708/access_purchases/137/processed","ErrorUrl":"http://127.0.0.1:44708/access_purchases/137/processed","Promocode":"LEGKO-PROMO10","Offerings":[{"Offering":{"OfferingId":"3000319","OfferingPriceId":"3000329","ClientKey":"UAS100173","Characteristics":[]},"ArticleUrl":"http://market.yandex.ru/model-spec.xml?modelid=10890865\u0026hid=6427100","ArticleId":null,"SerializedOffering":null,"ProductsForUpdate":null,"MerchantId":null}],"Options":3,"ChoosePayer":true,"PayerCompanyId":null,"SellerCompanyId":null}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - '-1'
+      Location:
+      - https://cart-delo.sredda.ru/api/orders/20165
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 14 Oct 2014 06:52:29 GMT
+      Content-Length:
+      - '133'
+    body:
+      encoding: UTF-8
+      string: '{"OrderId":20165,"TargetUrl":"http://payment-delo.sredda.ru:8081/Payment/Credentials?PaymentID=c73bb0e5-6b78-4370-bd78-e6c48b042847"}'
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 06:52:45 GMT
+- request:
+    method: post
+    uri: http://payment-delo.sredda.ru:8081/Payment/Credentials?PaymentID=c73bb0e5-6b78-4370-bd78-e6c48b042847
+    body:
+      encoding: UTF-8
+      string: PaymentType=acquiring&Receipt.FIO=user_first_name+user_last_name&Receipt.Address=
+    headers:
+      Accept:
+      - text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+      Referer:
+      - http://127.0.0.1:52029/
+      Origin:
+      - http://127.0.0.1:52029
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '81'
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+      Host:
+      - payment-delo.sredda.ru:8081
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - text/html; charset=utf-8
+      Location:
+      - http://payment-delo.sredda.ru:8081/acquiring/Register/c73bb0e5-6b78-4370-bd78-e6c48b042847
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnetmvc-Version:
+      - '4.0'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 14 Oct 2014 08:00:34 GMT
+      Connection:
+      - close
+      Content-Length:
+      - '173'
+    body:
+      encoding: UTF-8
+      string: "<html><head><title>Object moved</title></head><body>\r\n<h2>Object
+        moved to <a href=\"/acquiring/Register/c73bb0e5-6b78-4370-bd78-e6c48b042847\">here</a>.</h2>\r\n</body></html>\r\n"
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 07:52:15 GMT
+- request:
+    method: get
+    uri: https://400004:cArt123QWE123@cart-delo.sredda.ru:5443/api/orders/20165
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - '-1'
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 14 Oct 2014 09:17:35 GMT
+      Content-Length:
+      - '174'
+    body:
+      encoding: UTF-8
+      string: '{"OrderId":20165,"CreatedDate":"2014-10-14T10:52:25.293","OrderStatus":2,"LastEditedDate":"2014-10-14T10:52:29.583","Amount":2160.00000,"CompanyId":null,"UserId":"UAS100173"}'
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 09:08:25 GMT
+- request:
+    method: post
+    uri: https://400004:cArt123QWE123@cart-delo.sredda.ru:5443/api/orders
+    body:
+      encoding: UTF-8
+      string: '{"UserId":"UAS100173","SuccessUrl":"http://127.0.0.1:52816/access_purchases/4/processed","ErrorUrl":"http://127.0.0.1:52816/access_purchases/4/processed","Promocode":null,"Offerings":[{"Offering":{"OfferingId":"3000319","OfferingPriceId":"3000329","ClientKey":"UAS100173","Characteristics":[]},"ArticleUrl":"http://market.yandex.ru/model-spec.xml?modelid=10890865\u0026hid=6427100","ArticleId":null,"SerializedOffering":null,"ProductsForUpdate":null,"MerchantId":null}],"Options":3,"ChoosePayer":true,"PayerCompanyId":null,"SellerCompanyId":null}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - '-1'
+      Location:
+      - https://cart-delo.sredda.ru/api/orders/20168
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Wed, 15 Oct 2014 08:53:46 GMT
+      Content-Length:
+      - '133'
+    body:
+      encoding: UTF-8
+      string: '{"OrderId":20168,"TargetUrl":"http://payment-delo.sredda.ru:8081/Payment/Credentials?PaymentID=5bb059f7-a134-463c-98b2-b510daabecfa"}'
+    http_version: 
+  recorded_at: Wed, 15 Oct 2014 08:50:04 GMT
+- request:
+    method: get
+    uri: https://400004:cArt123QWE123@cart-delo.sredda.ru:5443/api/orders/20168
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - '-1'
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Wed, 15 Oct 2014 08:53:52 GMT
+      Content-Length:
+      - '174'
+    body:
+      encoding: UTF-8
+      string: '{"OrderId":20168,"CreatedDate":"2014-10-15T12:53:46.597","OrderStatus":2,"LastEditedDate":"2014-10-15T12:53:46.767","Amount":2400.00000,"CompanyId":null,"UserId":"UAS100173"}'
+    http_version: 
+  recorded_at: Wed, 15 Oct 2014 08:50:10 GMT
+- request:
+    method: post
+    uri: https://400004:cArt123QWE123@cart-delo.sredda.ru:5443/api/orders
+    body:
+      encoding: UTF-8
+      string: '{"UserId":"UAS100173","SuccessUrl":"http://127.0.0.1:60600/access_purchases/4/processed","ErrorUrl":"http://127.0.0.1:60600/access_purchases/4/processed","Promocode":"INVALID","Offerings":[{"Offering":{"OfferingId":"3000319","OfferingPriceId":"3000329","ClientKey":"UAS100173","Characteristics":[]},"ArticleUrl":"http://market.yandex.ru/model-spec.xml?modelid=10890865\u0026hid=6427100","ArticleId":null,"SerializedOffering":null,"ProductsForUpdate":null,"MerchantId":null}],"Options":3,"ChoosePayer":true,"PayerCompanyId":null,"SellerCompanyId":null}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - '-1'
+      Location:
+      - https://cart-delo.sredda.ru/api/orders/20169
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Wed, 15 Oct 2014 09:37:54 GMT
+      Content-Length:
+      - '133'
+    body:
+      encoding: UTF-8
+      string: '{"OrderId":20169,"TargetUrl":"http://payment-delo.sredda.ru:8081/Payment/Credentials?PaymentID=fc24e309-f970-447b-a9f0-cd93d4d55194"}'
+    http_version: 
+  recorded_at: Wed, 15 Oct 2014 09:34:14 GMT
+- request:
+    method: get
+    uri: https://400004:cArt123QWE123@cart-delo.sredda.ru:5443/api/orders/20169
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - '-1'
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Wed, 15 Oct 2014 09:38:00 GMT
+      Content-Length:
+      - '173'
+    body:
+      encoding: UTF-8
+      string: '{"OrderId":20169,"CreatedDate":"2014-10-15T13:37:49.967","OrderStatus":2,"LastEditedDate":"2014-10-15T13:37:54.34","Amount":2400.00000,"CompanyId":null,"UserId":"UAS100173"}'
+    http_version: 
+  recorded_at: Wed, 15 Oct 2014 09:34:20 GMT
+recorded_with: VCR 2.9.2

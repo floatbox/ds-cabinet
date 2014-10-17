@@ -1,19 +1,19 @@
 GIT
-  remote: git@github.com:SuperbCoders/DS-Spark-gem.git
+  remote: git@github.com:BusinessEnvironment/DS-Spark-gem.git
   revision: 1ec2a4342f23c41c4c67030d3488563a26ea27dc
   specs:
     ds-spark (0.0.1)
       savon (= 2.1.0)
 
 GIT
-  remote: git@github.com:SuperbCoders/ds-siebel-gem.git
+  remote: git@github.com:BusinessEnvironment/ds-siebel-gem.git
   revision: 55b78fd651c972f667c6e019ba5ce9bcf22518ee
   specs:
     ds-siebel (0.0.1)
       savon (= 2.1.0)
 
 GIT
-  remote: git@github.com:SuperbCoders/ds-sns-gem.git
+  remote: git@github.com:BusinessEnvironment/ds-sns-gem.git
   revision: 6430105e8efccd30de031017f91935c02bd03853
   branch: sns2
   specs:
@@ -23,13 +23,6 @@ GIT
       guid
       memoist
       rails (>= 4.0.0)
-
-GIT
-  remote: https://github.com/rsim/oracle-enhanced.git
-  revision: f15de843c572f1d73a52907cb47f8a4b884c5ec5
-  branch: rails4
-  specs:
-    activerecord-oracle_enhanced-adapter (1.4.3)
 
 GEM
   remote: https://rubygems.org/
@@ -52,6 +45,7 @@ GEM
       activesupport (= 4.0.3)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
+    activerecord-oracle_enhanced-adapter (1.5.5)
     activesupport (4.0.3)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
@@ -61,7 +55,7 @@ GEM
     acts-as-taggable-on (3.0.1)
       rails (>= 3, < 5)
     addressable (2.3.6)
-    akami (1.2.1)
+    akami (1.2.2)
       gyoku (>= 0.4.0)
       nokogiri
     andand (1.3.3)
@@ -114,6 +108,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     columnize (0.8.9)
+    cookiejar (0.3.2)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     cucumber (1.3.16)
@@ -129,11 +124,25 @@ GEM
       nokogiri (~> 1.5)
       rails (>= 3, < 5)
     curb (0.8.5)
+    daemons (1.1.9)
     database_cleaner (1.3.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
+    em-http-request (1.1.2)
+      addressable (>= 2.3.4)
+      cookiejar
+      em-socksify (>= 0.3)
+      eventmachine (>= 1.0.3)
+      http_parser.rb (>= 0.6.0)
+    em-socksify (0.3.0)
+      eventmachine (>= 1.0.0.beta.4)
+    email_spec (1.6.0)
+      launchy (~> 2.1)
+      mail (~> 2.2)
     erubis (2.7.0)
+    eventmachine (1.0.3)
+    eventmachine_httpserver (0.2.1)
     exception_notification (4.0.1)
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
@@ -149,6 +158,7 @@ GEM
     gyoku (1.0.0)
       builder (>= 2.1.2)
     hike (1.2.3)
+    http_parser.rb (0.6.0)
     httpi (2.0.2)
       rack
     i18n (0.6.9)
@@ -177,7 +187,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    memoist (0.9.1)
+    memoist (0.10.0)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_magick (3.7.0)
@@ -204,6 +214,15 @@ GEM
     pry-stack_explorer (0.4.9.1)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
+    puffing-billy (0.2.3)
+      capybara
+      em-http-request
+      eventmachine
+      eventmachine_httpserver
+      http_parser.rb
+      multi_json
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -291,6 +310,10 @@ GEM
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
+    thin (1.6.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 1.0.0)
+      rack (>= 1.0.0)
     thor (0.18.1)
     thread_safe (0.1.3)
       atomic
@@ -326,7 +349,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-oracle_enhanced-adapter!
+  activerecord-oracle_enhanced-adapter (~> 1.5.0)
   acts-as-taggable-on
   awesome_print
   cancan
@@ -343,6 +366,7 @@ DEPENDENCIES
   ds-siebel!
   ds-sns!
   ds-spark!
+  email_spec
   exception_notification
   factory_girl_rails
   jbuilder (~> 1.2)
@@ -356,6 +380,8 @@ DEPENDENCIES
   pg
   pry-byebug
   pry-stack_explorer
+  puffing-billy
+  quiet_assets
   rails (= 4.0.3)
   rails-observers
   rspec-mocks
@@ -367,6 +393,7 @@ DEPENDENCIES
   simple_form
   slim-rails
   therubyracer
+  thin
   timecop
   uglifier (>= 1.3.0)
   unicorn

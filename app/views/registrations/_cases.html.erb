@@ -1,3 +1,5 @@
+<script src="https://www.youtube.com/iframe_api"></script>
+
 <section class="case-lead">
   <div class="globalwidth">
     <div class="content">
@@ -12,7 +14,7 @@
       </div>
       <div class="movie">
         <div class="crop">
-          <iframe width="320" height="180" src="https://youtube.com/embed/YAasgDBM6Es" frameborder="0" allowfullscreen></iframe>
+          <div id="playVideo"></div>
         </div>
       </div>
     </div>
@@ -22,29 +24,34 @@
   <section class="case-guide">
     <div class="globalwidth">
       <div class="content">
-        <h2>Как это работает??</h2>
+        <h2>Как это работает?</h2>
         <div class="step step-lt step1">
           <div class="info">
-            <h3>Пользователь регистрируется на сайте</h3>
-            <div class="descript">Воспользуйтесь формой регистрации - после заполнения форм вы получите ссылку для подтверждения на указанную почту.</div>
+            <h3>Вы регистрируетесь на сайте</h3>
+            <div class="descript">Для регистрации на сайте заполните поля и после процесса верификации подтвердите
+правильность введенных Вами данных.</div>
           </div>
         </div>
         <div class="step step-rt step2">
           <div class="info">
-            <h3>Оплачивает бухгалтерское обслуживание на 3 или 12 месяцев</h3>
-            <div class="descript">Оплата производится бла бла бла плата производится бла бла бла Оплата производится бла бла бла Оплата производится бла бла бла</div>
+            <h3>Оплачиваете обслуживание</h3>
+            <div class="descript">Вы можете выбрать два варианта бух. обслуживания. На три месяца и на год. Оплачивая
+обслуживание на год, вы экономите сумму, эквивалентную трём месяцам обслуживания.</div>
           </div>
         </div>
         <div class="step step-lt step3">
           <div class="info">
-            <h3>Загружает необходимые документы</h3>
-            <div class="descript">Перечень необходимых документов можно найти там-то, документы должны быть предоставлены в таком-то виде. Требования к документам.</div>
+            <h3>Загружаете необходимые документы</h3>
+            <div class="descript">После того, как вы оплатили, вы попадаете в личный кабинет для общения с бухгалтером.
+В нужное время наш бухгалтер попросит вас загрузить необходимые документы. Для 
+этого Вы получите SMS-уведомление.</div>
           </div>
         </div>
         <div class="step step-rt step4">
           <div class="info">
-            <h3>Получает смс о статусе отчетности в ФНС</h3>
-            <div class="descript">Услуга СМС бесплатна для всех оплативших. Услуга СМС бесплатна для всех оплативших. Услуга СМС бесплатна для всех оплативших. Услуга СМС бесплатна для всех оплативших.</div>
+            <h3>Налоговая отчетность сдана</h3>
+            <div class="descript">Наш бухгалтер готовит и сдает Вашу отчетность. После того, как отчетность будет сдана,
+Вы получаете SMS-уведомление.</div>
           </div>
         </div>
       </div>
@@ -69,7 +76,7 @@
               <div class="per"><b>*800р.</b> в месяц</div>
             </div>
             <div class="descript">
-              <p>Тариф включает в себя бухгалтерское обслуживание, в том числе подготовку и сдачу отчетности, в течение одного квартала для ИП на ЕНВД, УСН или Патентной системе налогооблажения.</p>
+              <p>Тариф включает в себя бухгалтерское обслуживание, в том числе подготовку и сдачу отчетности, в течение одного квартала для ИП на ЕНВД, УСН или Патентной системе налогообложения.</p>
 <p>Для ИП на режиме УСН 6% в тариф включается обработка (создание) не более 5 документов в месяц. В случае обработки (создания) свыше 5 (пяти) документов в течение календарного месяца каждый последующий документ оплачивается дополнительно в соответствии с Договором.</p>
             </div>
           </div>
@@ -87,7 +94,7 @@
               <div class="per"><b>*600р.</b> в месяц</div>
             </div>
             <div class="descript">
-              <p>Тариф включает в себя бухгалтерское обслуживание, в том числе подготовку и сдачу отчетности,  в течение года для ИП на ЕНВД, УСН или Патентной системе налогооблажения.</p>
+              <p>Тариф включает в себя бухгалтерское обслуживание, в том числе подготовку и сдачу отчетности,  в течение года для ИП на ЕНВД, УСН или Патентной системе налогообложения.</p>
 <p>Для ИП на режиме УСН 6% в тариф включается обработка (создание) не более 5 документов в месяц. В случае обработки (создания) свыше 5 (пяти) документов в течение календарного месяца каждый последующий документ оплачивается дополнительно в соответствии с Договором.</p>
               <div class="econom"><b>Ваша экономия</b> — 25%</div>
             </div>
@@ -110,47 +117,13 @@
       </div>
     </div>
   </section>
-  <section class="case-callback">
-    <div class="globalwidth">
-      <div class="content">
-        <div class="board">
-          <h3>Обратная связь</h3>
-          <div class="info">
-            <div class="forms">
-              <form method="post" action="">
-                <table width="100%">
-                  <tr>
-                    <td width="270">
-                      <div class="field"><input type="text" placeholder="Имя" /></div>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td rowspan="2" width="270">
-                      <div class="field"><textarea cols="" rows="" placeholder="Сообщение"></textarea></div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="field"><input class="phone" type="text" placeholder="Номер телефона*" /></div>
-                    </td>
-                    <td>&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="field"><input type="text" placeholder="E-mail" /></div>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>
-                      <div class="btn-group">
-                        <button class="btn-orn btn-right btn155" type="submit">Отправить запрос</button>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+  <%= render partial: "feedback/form" %>
+</div>
+
+<div class="modal fade" id="showVideo" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" style="width:1000px">
+    <div class="modal-content" style="padding:0; border:0;background-color: transparent;box-shadow:none;-webkit-box-shadow:none">
+    	<iframe id="video_embed" class="youtube-player" type="text/html" width="1000" height="563" src="https://www.youtube.com/embed/Edl_4nkHqvA?rel=0&amp;hd=1&amp;vq=hd720&amp;enablejsapi=1" frameborder="0" allowfullscreen=""></iframe>
     </div>
-  </section>
+  </div>
 </div>
