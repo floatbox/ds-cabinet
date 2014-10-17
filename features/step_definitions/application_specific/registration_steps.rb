@@ -55,31 +55,36 @@ end
   Presets.current.should be
 end
 
-Если(/^(отсутствует|имеется|подтвержден|завершен) объект модели регистрации$/) do |state|
+Если(/^(отсутствует|отложен|имеется|ожидает подтверждения|подтвержден|завершен) объект модели регистрации$/) do |state|
   @registration = Registration.find_by_ogrn(Presets.current[:ogrn])
-  if state == "отсутствует"
+  case state 
+  when "отсутствует"
     @registration.should_not be
-  elsif state == "имеется"
-    @registration.workflow_state.should == "awaiting_confirmation"
+  when "имеется", "ожидает подтверждения", "отложен"
+    @registration.workflow_state.should == case(state)
+      when "имеется"               then "new" 
+      when "отложен"               then "deferred"
+      when "ожидает подтверждения" then "awaiting_confirmation"
+      end
     @registration.admin_notified.should eq false
     @registration.user_id.should        eq nil
     @registration.contact_id.should     eq nil
     @registration.person_id.should      eq nil
-  elsif state == "подтвержден"
+  when "подтвержден"
     @registration.workflow_state.should == "awaiting_payment"
     step "к регистрации не должна быть привязана покупка доступа"
-  elsif state == "завершен"
+  when "завершен"
     @registration.workflow_state.should == "done"
     step "к регистрации должна быть привязана оплаченная покупка доступа"
   end
 
-  if  %w(имеется, подтвержден, завершен).include? state
+  if  ["ожидает подтверждения", "подтвержден", "завершен"].include? state
     @registration.phone.should          == Presets.current[:phone_confirmation]
     @registration.password.should       == Presets.current[:password]
     @registration.inn.should            == Presets.current[:inn]
     @registration.region_code.should    == Presets.current[:region_code]
 
-    if  %w(подтвержден, завершен).include? state
+    if  ["подтвержден", "завершен"].include? state
       @registration.admin_notified.should == true
       @registration.user_id.should be
       @registration.contact_id            == Presets.current[:contact_id] 
@@ -115,11 +120,11 @@ end
   step "имеется форма регистрации и входа"
 end
 
-Если(/^(|отмена ?)компании в Siebel не существует$/) do |negation|
-  if negation == "отмена "
+Если(/^(|отмена ?)компани[ия] в Siebel (|не ?)существует$/) do |cancel, negation|
+  if cancel == "отмена "
     Registration.any_instance.unstub(:siebel_company_exists?)
   else
-    Registration.any_instance.should_receive(:siebel_company_exists?).and_return(false)
+    Registration.any_instance.should_receive(:siebel_company_exists?).and_return(negation == 'не ' ? false : true)
   end
 end
 
@@ -143,9 +148,6 @@ end
   step %Q(пользователь заполняет поле ввода "Введите телефон" в форме регистрации и входа значением "#{Presets.current[:phone]}")
   step %Q(пользователь заполняет поле ввода "Введите ОГРНИП" в форме регистрации и входа значением "#{Presets.current[:ogrn]}")
   step "начинает регистрацию"
-  step "не появляется сообщение об ошибке"
-  step "имеется объект модели регистрации"
-  step "отмена компании в Siebel не существует"
 end
 
 То(/^видит правильные регистрационные данные$/) do
