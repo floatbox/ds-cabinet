@@ -13,6 +13,7 @@
   </div>
   <%= form_for Attachment.new, html: { class: 'js-fileupload', multipart: true } do |f| %>
   <div class="add_file js-dropfile">
+      <div class="add_file_text">прикрепить файл</a>
       <%= f.file_field :attachment %>
   </div>
   <% end %>
