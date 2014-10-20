@@ -1,0 +1,26 @@
+---
+:scope: 
+:url: https://fonts.googleapis.com/css?family=PT+Sans:400&subset=latin,cyrillic
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/css
+  Timing-Allow-Origin: '*'
+  Expires: Mon, 20 Oct 2014 08:41:19 GMT
+  Date: Mon, 20 Oct 2014 08:41:19 GMT
+  Cache-Control: private, max-age=86400
+  Content-Length: '223'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Server: GSE
+  Alternate-Protocol: 443:quic,p=0.01
+  Connection: close
+:content: |
+  @font-face {
+    font-family: 'PT Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('PT Sans'), local('PTSans-Regular'), url(https://fonts.gstatic.com/s/ptsans/v8/pkYDSlCHbDnBWPT5PPFFTA.ttf) format('truetype');
+  }
