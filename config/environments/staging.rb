@@ -41,7 +41,7 @@ DsCabinet::Application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   #config.force_ssl = true
-  #config.ssl_port  = 4443 
+  #config.ssl_port  = 4443
 
   # Set to :debug to see everything in the log.
   config.log_level = :debug
@@ -65,6 +65,8 @@ DsCabinet::Application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+
+  config.registration_mail_to = 'legko_team@dasreda.ru'
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
