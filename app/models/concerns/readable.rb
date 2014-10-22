@@ -10,7 +10,7 @@ module Readable
   end
 
   def read_by(current_user)
-    if unread? && user.concierge_id == current_user.id
+    if unread? && author.concierge_id == current_user.id
       update_column(:read_at, Time.now)
     end
     after_read_by(current_user)
