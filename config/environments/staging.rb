@@ -66,7 +66,7 @@ DsCabinet::Application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  config.registration_mail_to = 'legko_team@dasreda.ru'
+  config.registration_mail_to = 'legkoteam@dasreda.ru'
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
