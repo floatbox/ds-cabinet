@@ -191,10 +191,20 @@ ul {
   border-color: #dc6d11;
   background: #ff7e14;
 }
+.btn-orn:hover {
+  border-color: #ff7e14;
+  background: #dc6d11;
+  text-decoration: none;
+}
 
 .btn-grn {
+  border-color: #188a86;
+  background: #1a9c98;
+}
+.btn-grn:hover {
   border-color: #1a9c98;
   background: #188a86;
+  text-decoration: none;
 }
 
 .btn125 {
