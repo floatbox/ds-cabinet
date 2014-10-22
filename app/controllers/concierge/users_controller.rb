@@ -6,7 +6,15 @@ class Concierge::UsersController < Concierge::ApplicationController
 
   # GET /concierge/users
   def index
+    @title = 'Bce пользователи'
     @users = @users.common.order('created_at DESC').page(params[:page]).per(10)
+  end
+
+  # GET /concierge/users/mine
+  def mine
+    @title = 'Мои пользователи'
+    @users = current_user.users.common.order('created_at DESC').page(params[:page]).per(10)
+    render :index
   end
 
   # GET /concierge/users/concierges

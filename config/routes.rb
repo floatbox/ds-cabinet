@@ -46,6 +46,7 @@ DsCabinet::Application.routes.draw do
     resources :users do
       resources :topics
       resources :search_queries, only: :index
+      get :mine, on: :collection
       get :concierges, on: :collection
       member do
         get :attach_concierge
