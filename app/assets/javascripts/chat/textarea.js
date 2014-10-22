@@ -6,5 +6,9 @@ $('#message_text').keyup(function(){
     	$(this).height(this.scrollHeight-22);
     }
 })
+$("#add-upload-file").click(function() {
+    //$("#attachment_attachment").trigger('click');
+    console.log('erererer')
+})
 
 });

@@ -4,7 +4,7 @@
   $('#js-messages').find('.js-new-message').after('<%=j render partial: "chat/message", object: @message %>');
   $('#js-messages').find('.js-new-message').show();
   var form = $('#js-messages').find('.js-new-message');
-  form.find('#message_text').val('');
+  form.find('#message_text').val('').height(42);
   form.find('#message_attachment_ids').val('');
   form.find('.js-attachments').html('');
 <% end %>

@@ -5,11 +5,11 @@
         <input type="hidden" name="PaymentType" value="acquiring">
         <input type="hidden" name="Receipt.FIO" value="<%= :user_first_name %> <%= :user_last_name %>">
         <input type="hidden" name="Receipt.Address" value="">
-        <p><span class="tariff-title">Подтвердите правильность</span></p>
-        <p><span class="tariff-title">выбранного тарифа</span></p>
-        <p><span class="tariff-name js-process_payment_tariff"><%= tariff_name %></span></p>
-        <p><span class="tariff-amount js-process_payment_amount"><%= tariff_amount %></span> р.</p>
-        <p><span class="tariff-desc js-process_payment_desc"><%= tariff_desc %></span></p>
+        <p><span class="tariff-title">Подтвердите правильность</span><br>
+        <span class="tariff-title">выбранного тарифа</span></p>
+        <div><span class="tariff-name js-process_payment_tariff"><%= tariff_name %></span></div>
+        <div><span class="tariff-amount js-process_payment_amount"><%= tariff_amount %></span><span class="tariff-amount"> р.</span></div>
+        <div><span class="tariff-desc js-process_payment_desc"><%= tariff_desc %></span></div>
         <div class="btn-group">
           <button data-dismiss="modal" class="btn-grn btn-left  btn125">Отмена</button>
           <button type="submit"        class="btn-orn btn-right btn125"> Оплатить </button>
