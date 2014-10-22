@@ -24,6 +24,7 @@ class Concierge::UsersController < Concierge::ApplicationController
     @messages = @user.messages.published
     @new_message = current_user.authored_messages.build
     @new_message.user = @user
+    @messages.each { |m| m.read_by(current_user) }
     render 'chat/index', layout: 'chat'
   end
 
