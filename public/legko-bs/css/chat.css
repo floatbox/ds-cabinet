@@ -66,6 +66,9 @@
 		padding: 0 14px;
 		line-height: 34px;
 	}
+	.case-messages .messages .btn-group {
+		float: right;
+	}
 	.case-messages .message {
 		position: relative;
 		padding: 20px 20px 20px 50px;
@@ -126,7 +129,7 @@
 		}
 		.case-messages .message.formbody .add_file {
 			width: 127px;
-			float: left;
+			float: right;
 			padding-top: 10px;
 		}
 		.case-messages .message.formbody .add_files {
