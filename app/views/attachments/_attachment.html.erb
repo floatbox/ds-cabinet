@@ -1,6 +1,4 @@
 <div id="js-attachment-id-<%= @attachment.id %>" class="file_item">
   <%= link_to @attachment.attachment.file.filename, @attachment.attachment.url, target: '_blank', class: 'ico' %>
-  <span class="delete">
-  	<%= link_to '', @attachment, method: :delete, remote: true  %>
-  </span>
+  <%= link_to '', @attachment, method: :delete, remote: true, class: 'delete_link'  %>
 </div>

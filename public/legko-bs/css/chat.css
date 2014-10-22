@@ -159,6 +159,14 @@
 				cursor: pointer;
 				background: url('../../legko-bs/images/ico/message_icons.png') no-repeat 0px 0px;
 			}
+			.case-messages .message.formbody .add_files .delete_link {
+				width: 13px;
+				height: 13px;
+				float: left;
+				display: block;
+				cursor: pointer;
+				background: url('../../legko-bs/images/ico/message_icons.png') no-repeat 0px 0px;
+			}
 
 	.case-messages .messages_pager {
 		text-align: right;
