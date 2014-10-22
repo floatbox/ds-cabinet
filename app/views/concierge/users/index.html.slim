@@ -1,40 +1,28 @@
-h1 Пользователи
+h3= @title
 table.table
   tr
-    th
     th ФИО
     th ОГРНИП
     th Телефон
     th Дата регистрации
     th Консьерж
-    th Топики
-    th Комментарии
+    th Сообщения
     th Действия
   - @users.each do |user|
     tr
-      td
-        - if user.approved?
-          = link_to_if can?(:disapprove, user), '<i class="glyphicon glyphicon-ok"></i>'.html_safe, disapprove_concierge_user_path(user), method: :put
-        - else
-          = link_to_if can?(:approve, user), '<i class="glyphicon glyphicon-unchecked"></i>'.html_safe, approve_concierge_user_path(user), method: :put
       td= user.siebel.full_name
       td= user.siebel_company.try(:ogrn)
       td= user.siebel.phone
+      td= l user.created_at, format: '%d-%m-%y %H:%M'
       td= user.concierge.siebel.full_name if user.concierge
       td
-        => user.topics.count
-        span.badge.bg-success=> user.topics.unread.count
-      td
         => user.messages.count
-        span.badge.bg-success=> user.messages.unread.count
+        span.badge.alert-danger=> user.authored_messages.unread.count if user.authored_messages.unread.count > 0
       td
-        - if can?(:toggle_concierge, user) && user.id != current_user.id
-          => link_to 'Сделать консьержем', toggle_concierge_concierge_user_path(user), method: :put, class: 'btn btn-sm'
         - if can? :edit, user
           => link_to edit_concierge_user_path(user), class: 'btn btn-sm' do
             i.glyphicon.glyphicon-pencil
-        => link_to 'Чаты', chat_concierge_user_path(user), class: 'btn btn-sm'
-        => link_to 'Запросы', concierge_user_search_queries_path(user), class: 'btn btn-sm'
+        => link_to 'Чат', chat_concierge_user_path(user), class: 'btn btn-sm'
         - if can? :attach_concierge, user
           => link_to 'Назначить консьержа', attach_concierge_concierge_user_path(user), class: 'btn btn-sm'
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Деловой Ассистент</title>
+  <title>Легко - Панель персонального менеджера</title>
 
   <!-- Bootstrap -->
   <link href="/chat/css/bootstrap.css" rel="stylesheet">
@@ -37,11 +37,13 @@
     <div class="header">
       <a href="/"><img src="/chat/images/header-logo.png" height="58" width="75" alt="" class="header-logo pull-left"></a>
 
-      <%= render partial: 'notifications/panel', object: current_user.notifications.unread.page(0).per(5), as: :notifications %>
-
-      <% if false && (!current_user.is_concierge? || params[:user_id].present?) %>
-        <%= render partial: 'search_bar' %>
-      <% end %>
+<div class="header-search">
+  <div class="btn-group btn-group-sm">
+    <%= link_to 'Все пользователи', concierge_users_path, {class: current_page?(action: 'index') ? 'btn btn-default disabled' : 'btn btn-default', role: 'button' } %> </button>
+    <%= link_to 'Мои пользователи', mine_concierge_users_path, {class: current_page?(action: 'mine') ? 'btn btn-default disabled' : 'btn btn-default', role: 'button' } %></button>
+    <%= link_to 'Косьержи', concierges_concierge_users_path, {class: current_page?(action: 'concierges') ? 'btn btn-default disabled' : 'btn btn-default', role: 'button' } %>
+  </div>
+</div>
 
       <div class="header-logged">
         <img src="/chat/images/avatar_dummy.png" height="32" width="32" alt="" class="ava">
@@ -79,7 +81,5 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/chat/js/bootstrap.min.js"></script>
     <script src="/chat/js/call.js"></script>
-
-    <%= render 'update_notifications' %>
   </body>
   </html>
