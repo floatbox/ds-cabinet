@@ -31,6 +31,7 @@ DsCabinet::Application.routes.draw do
   # resources :chat, only: [:index]
   get 'chat' => 'chat#index'
 
+  get 'demo' => 'demo#index'
 
   resources :topics do
     resources :messages, only: [:index]

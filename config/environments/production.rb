@@ -107,4 +107,6 @@ DsCabinet::Application.configure do
   # Authentication settings
   config.auth_domain = 'legko.li'
 
+  config.demo_user_id = 3
+
 end
