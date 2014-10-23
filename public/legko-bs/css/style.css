@@ -743,7 +743,7 @@ ul {
 }
 
 .js__s_right {
-  background-position: 0 100%;
+  background-position: 0 -28px;
 }
 
 .js__s_active {
@@ -783,3 +783,9 @@ input#attachment_attachment {
   opacity:0;
   filter:alpha(opacity=0); cursor:pointer;
 }
+#switch_status {
+	margin: 0;
+	font-weight: normal;
+}
+
+
