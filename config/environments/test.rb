@@ -62,9 +62,5 @@ DsCabinet::Application.configure do
   # Authentication settings
   config.auth_domain = nil # domain for auth_token cookie not applicable to localhost
 
-  # Widgets settings
-  config.widget_script_url = 'http://delo-widgets-dev.sredda.ru:8082/assets/lib/widget.js'
-  config.widget_domain = 'delo-widgets-dev.sredda.ru:8082'
-
   config.demo_user_id = 3
 end
